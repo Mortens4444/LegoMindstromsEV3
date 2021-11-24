@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mindstorms.Controller", "Mindstorms.Controller\Mindstorms.Controller.csproj", "{34F77AB9-1AC2-4B1D-B794-314CEB201120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mindstorms.Core", "Mindstorms.Core\Mindstorms.Core.csproj", "{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{A2BD71A0-1B29-427D-AC30-69E589DFF200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechRecognition", "SpeechRecognition\SpeechRecognition.csproj", "{88245A46-337C-48CB-AE76-73B808D9335A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joystick", "Joystick\Joystick.csproj", "{F07A63A5-870B-442B-9D78-CFF6B1269DF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18BBA5F6-20E7-48B3-8064-5185C43DD4B1}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34F77AB9-1AC2-4B1D-B794-314CEB201120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F77AB9-1AC2-4B1D-B794-314CEB201120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F77AB9-1AC2-4B1D-B794-314CEB201120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F77AB9-1AC2-4B1D-B794-314CEB201120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BD71A0-1B29-427D-AC30-69E589DFF200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BD71A0-1B29-427D-AC30-69E589DFF200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BD71A0-1B29-427D-AC30-69E589DFF200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BD71A0-1B29-427D-AC30-69E589DFF200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88245A46-337C-48CB-AE76-73B808D9335A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88245A46-337C-48CB-AE76-73B808D9335A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88245A46-337C-48CB-AE76-73B808D9335A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88245A46-337C-48CB-AE76-73B808D9335A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07A63A5-870B-442B-9D78-CFF6B1269DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07A63A5-870B-442B-9D78-CFF6B1269DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07A63A5-870B-442B-9D78-CFF6B1269DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07A63A5-870B-442B-9D78-CFF6B1269DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05B30CCF-9E84-4BB5-8926-9837C48EF91D}
+	EndGlobalSection
+EndGlobal

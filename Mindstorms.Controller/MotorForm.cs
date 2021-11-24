@@ -1,0 +1,79 @@
+﻿using Mindstorms.Core;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Mindstorms.Controller
+{
+    public partial class MotorForm : Form
+    {
+        private readonly Brick brick;
+
+        public MotorForm(Brick brick)
+        {
+            InitializeComponent();
+            this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
+        }
+
+        private void SetMotorSpeed(short acceleration, params SetMotorSpeedParams[] motorSpeedChanges)
+        {
+            foreach (var motorSpeedChange in motorSpeedChanges)
+            {
+                if (acceleration != 0)
+                {
+                    if (motorSpeedChange.Speed < 0)
+                    {
+                        for (short currentSpeed = 0; currentSpeed >= motorSpeedChange.Speed; currentSpeed -= acceleration)
+                        {
+                            brick.SetMediumMotorSpeed(motorSpeedChange);
+                            Thread.Sleep(100);
+                        }
+                    }
+                    else
+                    {
+                        for (short currentSpeed = 0; currentSpeed <= motorSpeedChange.Speed; currentSpeed += acceleration)
+                        {
+                            brick.SetMediumMotorSpeed(motorSpeedChange);
+                            Thread.Sleep(100);
+                        }
+                    }
+                }
+                brick.SetMediumMotorSpeed(motorSpeedChange);
+                StopMotorsWithDelay();
+            }
+        }
+
+        private void BtnSetLeftMotorSpeed_Click(object sender, EventArgs e)
+        {
+            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value));
+        }
+
+        private void BtnSetRightMotorSpeed_Click(object sender, EventArgs e)
+        {
+            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
+        }
+
+        private void BtnSetBothMotorSpeed_Click(object sender, EventArgs e)
+        {
+            brick.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value), new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
+        }
+
+        private void StopMotorsWithDelay()
+        {
+            if (chkTimeout.Checked)
+            {
+                Task.Run(async delegate
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds((double)nudTimeout.Value));
+                    brick.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+                });
+            }
+        }
+
+        private void BtnSetLeverMotorSpeed_Click(object sender, EventArgs e)
+        {
+            brick.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeverMotor, (short)tbLeverSpeed.Value));
+        }
+    }
+}

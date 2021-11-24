@@ -1,0 +1,23 @@
+﻿New features
+------------
+- Mailbox
+- Buttons (https://github.com/c0pperdragon/EV3Basic/blob/762f3638324f66a0ee6d4fb0f9e095683b742e4c/SmallBasicEV3Extension/Buttons.cs, https://sites.google.com/site/ev3basic/ev3-basic-programming/using-buttons-the-screen-and-the-leds)
+- Gyro sensor?
+- Recognize sensors
+- Games module (Snake, Sky, Car race)
+- IR remote control
+
+https://github.com/c0pperdragon/EV3Basic
+https://github.com/AndersSoborg/MonoBrick-Communication-Software/blob/master/MonoBrick/EV3/Commands.cs
+https://github.com/henkmollema/MindstormR/blob/master/src/MindstormR.MonoBrick/EV3/Commands.cs
+
+https://www.lego.com/cdn/cs/set/assets/bltbef4d6ce0f40363c/LMSUser_Guide_LEGO_MINDSTORMS_EV3_11_Tablet_ENUS.pdf
+http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/ev3.html#out-port-auto-mode
+
+Developer Kits
+https://education.lego.com/en-us/product-resources/mindstorms-ev3/downloads/developer-kits#ev3-firmware-developer-edition
+
+Details of small programs can be sent to brick (regular byte codes)
+https://education.lego.com/v3/assets/blt293eea581807678a/blt469be1e11ad37696/5f880384f71916144453a49f/lego-mindstorms-ev3-firmware-developer-kit.pdf
+Direct command examples:
+https://education.lego.com/v3/assets/blt293eea581807678a/blt09ac3101d9df2051/5f88037a69efd81ab4debf2e/lego-mindstorms-ev3-communication-developer-kit.pdf
