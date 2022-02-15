@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -14,7 +13,7 @@ namespace Mindstorms.Core.Commands.File
                 (byte)SystemCommand.DeleteFile
             };
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(fullPathFileName));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(fullPathFileName));
             dataList.Add(0);
 
             data = dataList.ToArray();

@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -15,6 +14,10 @@ namespace Mindstorms.Core.Commands.LCD
                 (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
                 0,
                 0,
+
+                (byte)OpCode.DrawUI,
+                (byte)DrawSubCode.TopLine,
+                0x00, // Disable
 
                 (byte)OpCode.DrawUI,
                 0x13, // FillWindow
@@ -32,7 +35,7 @@ namespace Mindstorms.Core.Commands.LCD
                 y,
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(filePath));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(filePath));
             dataList.AddRange(new byte[] {
                 0,
                 (byte)OpCode.DrawUI,

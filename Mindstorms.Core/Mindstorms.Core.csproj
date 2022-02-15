@@ -42,7 +42,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brick.cs" />
+    <Compile Include="Commands\Button\Flush.cs" />
+    <Compile Include="Commands\File\ContinueUploadFileToBrick.cs" />
+    <Compile Include="Commands\File\WriteBytesToFile.cs" />
+    <Compile Include="Commands\File\UploadFileToBrick.cs" />
+    <Compile Include="Commands\LCD\ChangeFontType.cs" />
+    <Compile Include="Commands\LCD\ChangeTopLine.cs" />
+    <Compile Include="Commands\LCD\GraphDraw.cs" />
+    <Compile Include="Commands\LCD\Restore.cs" />
+    <Compile Include="Commands\LCD\ScreenBlock.cs" />
+    <Compile Include="Commands\Motor\GetMotorPosition.cs" />
+    <Compile Include="Commands\Object\End.cs" />
+    <Compile Include="Commands\Object\Wait.cs" />
+    <Compile Include="Commands\Object\Trigger.cs" />
+    <Compile Include="Commands\Object\Start.cs" />
+    <Compile Include="Commands\Object\Stop.cs" />
+    <Compile Include="Commands\PowerControl\Shutdown.cs" />
+    <Compile Include="Commands\Program\StartNew.cs" />
+    <Compile Include="Commands\Program\GetInfo.cs" />
+    <Compile Include="Commands\Program\StopCurrent.cs" />
+    <Compile Include="Commands\System\GetBatteryLevel.cs" />
+    <Compile Include="Commands\System\GetBatteryTemperatureRise.cs" />
+    <Compile Include="Commands\System\GetFirmwareBuild.cs" />
+    <Compile Include="Commands\System\GetFirmwareVersion.cs" />
+    <Compile Include="Commands\System\GetHardwareVersion.cs" />
+    <Compile Include="Commands\System\GetOperatingSystemBuild.cs" />
+    <Compile Include="Commands\System\GetOperatingSystemVersion.cs" />
+    <Compile Include="Commands\System\GetBatteryCurrent.cs" />
+    <Compile Include="Commands\System\GetBatteryVoltage.cs" />
+    <Compile Include="Commands\System\GetPin.cs" />
+    <Compile Include="Commands\System\IsActive.cs" />
+    <Compile Include="Commands\System\GetBrickName.cs" />
+    <Compile Include="Commands\System\SetPin.cs" />
+    <Compile Include="Commands\System\SetBrickName.cs" />
+    <Compile Include="CommandReplyBase.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Enums\ComGetSubCommand.cs" />
+    <Compile Include="Enums\CommunicationInterface.cs" />
+    <Compile Include="Enums\ComSetSubCommand.cs" />
+    <Compile Include="Enums\MotorMode.cs" />
+    <Compile Include="Enums\ProgramMode.cs" />
+    <Compile Include="Enums\State.cs" />
+    <Compile Include="Enums\SystemInfoSubCommand.cs" />
+    <Compile Include="Enums\Warning.cs" />
+    <Compile Include="EV3\Brick.cs" />
     <Compile Include="Commands\AwaitableCommand.cs" />
     <Compile Include="Commands\Bluetooth\SetBluetoothPin.cs" />
     <Compile Include="Commands\Button\PressButton.cs" />
@@ -54,7 +97,7 @@
     <Compile Include="Commands\File\ListOpenHandles.cs" />
     <Compile Include="Commands\File\CloseFileHandle.cs" />
     <Compile Include="Commands\File\ContinueGetFile.cs" />
-    <Compile Include="Commands\File\ContinueDownloadFile.cs" />
+    <Compile Include="Commands\File\ContinueDownloadFileFromBrick.cs" />
     <Compile Include="Commands\File\ContinueListFiles.cs" />
     <Compile Include="Commands\File\DeleteFile.cs" />
     <Compile Include="Commands\File\CreateDirectory.cs" />
@@ -83,7 +126,7 @@
     <Compile Include="Commands\Speaker\Silence.cs" />
     <Compile Include="Commands\Speaker\PlaySound.cs" />
     <Compile Include="Commands\LCD\ShowImage.cs" />
-    <Compile Include="Commands\File\DownloadFile.cs" />
+    <Compile Include="Commands\File\DownloadFileFromBrick.cs" />
     <Compile Include="Commands\File\ListFiles.cs" />
     <Compile Include="Commands\Motor\SetMediumMotorSpeed.cs" />
     <Compile Include="Commands\Speaker\Beep.cs" />
@@ -94,7 +137,7 @@
     <Compile Include="Drawing\EV3Line.cs" />
     <Compile Include="Drawing\EV3Rectangle.cs" />
     <Compile Include="Drawing\IEV3DrawingElement.cs" />
-    <Compile Include="Enums\Button.cs" />
+    <Compile Include="Enums\ButtonType.cs" />
     <Compile Include="Enums\ButtonEvent.cs" />
     <Compile Include="Enums\LedPattern.cs" />
     <Compile Include="Enums\GyroSensorMode.cs" />
@@ -126,6 +169,7 @@
     <Compile Include="Enums\UIWriteSubCommand.cs" />
     <Compile Include="Extensions\OutputPortExtensions.cs" />
     <Compile Include="ICommandReply.cs" />
+    <Compile Include="Responses\ButtonStates.cs" />
     <Compile Include="Signaling\Codes.cs" />
     <Compile Include="Signaling\MorseCode.cs" />
     <Compile Include="Signaling\Signal.cs" />
@@ -1022,5 +1066,10 @@
     <Content Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\GameFrame.rbf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

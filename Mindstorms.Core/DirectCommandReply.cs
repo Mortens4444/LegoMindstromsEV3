@@ -1,7 +1,4 @@
-﻿using Mindstorms.Core.Enums;
-using System;
-
-namespace Mindstorms.Core
+﻿namespace Mindstorms.Core
 {
     /// <summary>
     /// 
@@ -14,25 +11,10 @@ namespace Mindstorms.Core
     /// bytes 5 to 68.
     /// 
     /// </summary>
-    public class DirectCommandReply : ICommandReply
+    public class DirectCommandReply : CommandReplyBase
     {
-        public const byte ResponseHeaderLength = 5;
-
-        public ushort MessageCounter { get; }
-
-        public CommandType TypeOfMessage { get; }
-
-        public CommandReplyStatus CommandReplyStatus { get; }
-
-        public byte[] RawResponseData { get; }
-
-        public DirectCommandReply(byte[] rawResponseData)
+        public DirectCommandReply(byte[] rawResponseData) : base(rawResponseData)
         {
-            RawResponseData = rawResponseData;
-            MessageCounter = BitConverter.ToUInt16(rawResponseData, 0);
-            TypeOfMessage = (CommandType)rawResponseData[2];
-
-            CommandReplyStatus = rawResponseData.Length > 4 ? (CommandReplyStatus)(rawResponseData[4]) : CommandReplyStatus.NoErrorFlagIsPresent;
         }
     }
 }

@@ -5,11 +5,12 @@ using MessageBoxes;
 using Mindstorms.Controller.SensorRead;
 using Mindstorms.Core;
 using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using Mindstorms.Core.Extensions;
 using Mindstorms.Core.Music.Melodies;
 using Mindstorms.Core.Signaling;
+using Mindstorms.Game.Snake;
 #if USE_JOYSTICK
-using MindstormUtils;
 #endif
 using SpeechRecognition;
 using System;
@@ -37,12 +38,12 @@ namespace Mindstorms.Controller
             tscbLeverMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.A.GetIndex());
             tscbLeftMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.B.GetIndex());
             tscbRightMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.C.GetIndex());
-            cbPort.ComboBox.FillAndSelectFirst(SerialPort.GetPortNames());
+            cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());
         }
 
         ~MainForm()
         {
-            brick?.Disconnect();
+            brick?.Dispose();
         }
 
         private void BtnConnectOrDisconnect_Click(object sender, EventArgs e)
@@ -100,6 +101,9 @@ namespace Mindstorms.Controller
             tsmiTouchSensor.Enabled = !enable;
             tsmiUltrasonicSensor.Enabled = !enable;
             tsmiVoiceControl.Enabled = !enable;
+            tsmiSnake.Enabled = !enable;
+            tsmiDeviceInfo.Enabled = !enable;
+            tsmiCircles.Enabled = !enable;
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -258,6 +262,8 @@ namespace Mindstorms.Controller
                         var rightMotorSpeed = (short)deltaY;
                         if (leftMotorSpeed > rightMotorSpeed)
                         {
+                            
+                            
                             ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
@@ -403,6 +409,24 @@ namespace Mindstorms.Controller
         {
             var buttonForm = new ButtonForm(brick);
             buttonForm.Show();
+        }
+
+        private void TsmiSnake_Click(object sender, EventArgs e)
+        {
+            var snakeGameEngine = new SnakeGameEngine(brick);
+            snakeGameEngine.GameLoop();
+        }
+
+        private void TsmiDeviceInfo_Click(object sender, EventArgs e)
+        {
+            var deviceInfo = new DeviceInfo(brick);
+            deviceInfo.Show();
+        }
+
+        private void TsmiCircles_Click(object sender, EventArgs e)
+        {
+            var circlesGameEngine = new CirclesGameEngine(brick);
+            circlesGameEngine.GameLoop();
         }
     }
 }

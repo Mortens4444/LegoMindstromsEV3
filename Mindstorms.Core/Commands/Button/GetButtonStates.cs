@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.LCD
+namespace Mindstorms.Core.Commands.Button
 {
     public class GetButtonStates : Command
     {
@@ -14,32 +14,37 @@ namespace Mindstorms.Core.Commands.LCD
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Back,
+                (byte)ButtonType.Up,
+                0 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+
+                (byte)OpCode.Button,
+                (byte)ButtonEvent.Pressed,
+                (byte)ButtonType.Center,
                 1 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Up,
+                (byte)ButtonType.Down,
                 2 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Center,
+                (byte)ButtonType.Right,
                 3 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Down,
+                (byte)ButtonType.Left,
                 4 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Left,
+                (byte)ButtonType.Back,
                 5 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
-                (byte)Button.Right,
+                (byte)ButtonType.Any,
                 6 | (byte)ParameterType.Variable | (byte)VariableScope.Global
             };
         }

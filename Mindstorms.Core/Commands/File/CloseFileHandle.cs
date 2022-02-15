@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -16,7 +15,7 @@ namespace Mindstorms.Core.Commands.File
                 fileHandle
             };
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(hash));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(hash));
             dataList.Add(0);
 
             data = dataList.ToArray();

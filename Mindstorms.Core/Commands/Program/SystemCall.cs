@@ -1,9 +1,7 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Mindstorms.Core.Commands.LCD
+namespace Mindstorms.Core.Commands.Program
 {
     public class SystemCall : Command
     {
@@ -19,7 +17,7 @@ namespace Mindstorms.Core.Commands.LCD
                 (byte)OpCode.System,
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(command));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(command));
             dataList.Add(0);
 
             dataList.Add((byte)ParameterType.Variable | (byte)VariableScope.Local);

@@ -19,7 +19,7 @@ namespace Utils
 
         public static void FillAndSelectLast(this ComboBox comboBox, IList list)
         {
-            FillAndSelect(comboBox, list, comboBox.Items.Count - 1);
+            FillAndSelect(comboBox, list, list.Count - 1);
         }
 
         public static void FillWithTypesInNamespace(this ComboBox comboBox, Assembly assembly, string @namespace)

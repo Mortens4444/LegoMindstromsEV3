@@ -1,7 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -17,14 +16,14 @@ namespace Mindstorms.Core.Commands.File
                 (byte)name.Length,
             };
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(name));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(name));
             dataList.Add(0);
 
             var messageLength = BitConverter.GetBytes((ushort)message.Length);
             dataList.Add(messageLength[0]);
             dataList.Add(messageLength[1]);
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(message));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(message));
             dataList.Add(0);
 
             data = dataList.ToArray();

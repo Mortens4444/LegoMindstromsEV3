@@ -1,17 +1,17 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Motor
+namespace Mindstorms.Core.Commands.Program
 {
-    public class StopCommand : Command
+    public class Stop : Command
     {
         /// <summary>
         /// Stops all running application.
         /// </summary>
-        public StopCommand()
+        public Stop()
         {
             data = new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
+                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
                 0,
                 0,
 

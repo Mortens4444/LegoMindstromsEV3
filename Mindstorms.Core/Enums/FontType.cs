@@ -2,8 +2,8 @@
 {
     public enum FontType : byte
     {
-        Tiny,
-        Small,
-        Big
+        Tiny = 3,
+        Normal = 1,
+        Big = 2
     }
 }

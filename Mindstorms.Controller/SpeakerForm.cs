@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core;
+﻿using Mindstorms.Core.EV3;
 using Mindstorms.Core.Music;
 using Mindstorms.Core.Music.Melodies;
 using System;

@@ -11,19 +11,19 @@
 		/// Program slot used to execute user projects, apps and tools
 		/// </summary>
 		User = 1,
-		
+
 		/// <summary>
-		/// Program slot used for direct commands coming from c_com
+		/// Program slot used for direct commands received from external (c_com)
 		/// </summary>
 		Cmd = 2,
-		
+
 		/// <summary>
-		/// Program slot used for direct commands coming from c_ui
+		/// Program slot used for direct commands coming from the user interface (c_ui)
 		/// </summary>
 		Term = 3,
-		
+
 		/// <summary>
-		/// Program slot used to run the debug ui
+		/// Program slot used to run the debug user interface
 		/// </summary>
 		Debug = 4,
 		

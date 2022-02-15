@@ -1,6 +1,5 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Enums;
-using MindstormUtils;
+﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

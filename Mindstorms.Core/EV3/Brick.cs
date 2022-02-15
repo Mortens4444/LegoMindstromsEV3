@@ -1,11 +1,16 @@
 ﻿using Mindstorms.Core.Commands;
+using Mindstorms.Core.Commands.Button;
 using Mindstorms.Core.Commands.File;
 using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Commands.Motor;
+using Mindstorms.Core.Commands.PowerControl;
+using Mindstorms.Core.Commands.Program;
 using Mindstorms.Core.Commands.Speaker;
+using Mindstorms.Core.Commands.System;
 using Mindstorms.Core.Drawing;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.Music;
+using Mindstorms.Core.Responses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,15 +20,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Mindstorms.Core
+namespace Mindstorms.Core.EV3
 {
-    public class Brick
+    public class Brick : IDisposable
     {
         private readonly SerialPort comPort = null;
         private const int ReadWriteTimeout = 6000;
         private int sendingData = 0;
         private ushort messageCounter = 1;
         private readonly object soundPlayLock = new object();
+        private bool disposed;
 
         public OutputPort LeftMotor { get; }
 
@@ -54,6 +60,11 @@ namespace Mindstorms.Core
             LeverMotor = leverMotor;
         }
 
+        ~Brick()
+        {
+            Dispose(false);
+        }
+
         public bool IsConnected { get; private set; }
 
         public void Connect()
@@ -77,6 +88,7 @@ namespace Mindstorms.Core
         private ICommandReply Execute(Command command)
         {
             ICommandReply result = null;
+            var hasError = false;
             try
             {
                 if (Interlocked.Exchange(ref sendingData, 1) == 0)
@@ -100,21 +112,26 @@ namespace Mindstorms.Core
 
                         if (result.MessageCounter != messageCounter)
                         {
-                            goto Read;
-                            throw new Exception($"This is not my reply ({result.MessageCounter} != {messageCounter})");
+                            //goto Read;
+                            hasError = true;
+                            throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
                         }
                         if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
                         {
-                            throw new Exception($"Error occurred: {result.CommandReplyStatus}");
+                            hasError = true;
+                            throw new Exception($"Error occurred: {result}");
                         }
                     }
                     messageCounter++;
                 }
             }
-            catch (Exception)
+            finally
             {
                 sendingData = 0;
-                throw;
+                if (hasError)
+                {
+                    Dispose();
+                }
             }
             return result;
         }
@@ -133,6 +150,88 @@ namespace Mindstorms.Core
         public void KeepAlive(byte minutes)
         {
             Execute(new KeepAlive(minutes));
+        }
+
+        public string GetBrickName()
+        {
+            var response = Execute(new GetBrickName());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public bool IsActive(CommunicationInterface communicationInterface)
+        {
+            var response = Execute(new IsActive(communicationInterface));
+            return Convert.ToBoolean(response.RawResponseData[3]);
+        }
+
+        public void SetBrickName(string brickName)
+        {
+            Execute(new SetBrickName(brickName));
+        }
+
+        public string GetPin(CommunicationInterface communicationInterface, string brickName)
+        {
+            var response = Execute(new GetPin(communicationInterface, brickName));
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public void SetPin(CommunicationInterface communicationInterface, string brickName, string pinCode)
+        {
+            Execute(new SetPin(communicationInterface, brickName, pinCode));
+        }
+        
+        public float GetBatteryVoltage()
+        {
+            var response = Execute(new GetBatteryVoltage());
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+        
+        public float GetBatteryCurrent()
+        {
+            var response = Execute(new GetBatteryCurrent());
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+
+        public byte GetBatteryLevel()
+        {
+            var response = Execute(new GetBatteryLevel());
+            return response.RawResponseData[3];
+        }
+
+        public float GetBatteryTemperatureRise()
+        {
+            var response = Execute(new GetBatteryTemperatureRise());
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+
+        public string GetOperatingSystemVersion()
+        {
+            var response = Execute(new GetOperatingSystemVersion());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public string GetOperatingSystemBuild()
+        {
+            var response = Execute(new GetOperatingSystemBuild());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public string GetHardwareVersion()
+        {
+            var response = Execute(new GetHardwareVersion());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public string GetFirmwareVersion()
+        {
+            var response = Execute(new GetFirmwareVersion());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public string GetFirmwareBuild()
+        {
+            var response = Execute(new GetFirmwareBuild());
+            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
         }
 
         public SensorPort GetSensor(SensorType searchedSensorType)
@@ -177,15 +276,20 @@ namespace Mindstorms.Core
             return response.RawResponseData;
         }
 
-        public byte[] GetButtonStates()
+        public ButtonStates GetButtonStates()
         {
             var response = Execute(new GetButtonStates());
-            return response.RawResponseData;
+            return new ButtonStates(response.RawResponseData);
         }
 
-        public void PressButton(Button button, ButtonEvent buttonEvent = ButtonEvent.Press)
+        public void PressButton(ButtonType button)
         {
-            Execute(new PressButton(button, buttonEvent));
+            Execute(new PressButton(button));
+        }
+        
+        public void Flush()
+        {
+            Execute(new Flush());
         }
 
         public void Beep(byte volume, ushort frequency, ushort duration)
@@ -295,9 +399,14 @@ namespace Mindstorms.Core
             DrawString(text.X, text.Y, text.Text);
         }
 
-        public void DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Small)
+        public void DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Normal)
         {
             Execute(new DrawString(x, y, text, color, fontType));
+        }
+
+        public void ChangeFontType(FontType fontType)
+        {
+            Execute(new ChangeFontType(fontType));
         }
 
         public void InverseRectangle(EV3InverseRectangle rectangle)
@@ -320,19 +429,65 @@ namespace Mindstorms.Core
             Execute(new Clean());
         }
 
+        public void RestoreScreen(byte level)
+        {
+            Execute(new Restore(level));
+        }
+
+        public void GraphDraw(byte view)
+        {
+            Execute(new GraphDraw(view));
+        }
+
+        public void ChangeTopLine(State state)
+        {
+            Execute(new ChangeTopLine(state));
+        }
+
         public void UpdateScreen()
         {
             Execute(new Update());
         }
 
+        public void ScreenBlock(bool set)
+        {
+            Execute(new ScreenBlock(set));
+        }
+
         public void Start(string command)
         {
-            Execute(new StartCommand(command));
+            Execute(new Start(command));
+        }
+
+        public void GetProgramInfo()
+        {
+            //Execute(new GetInfo());
+        }
+
+        public void StartNew()
+        {
+            Execute(new StartNew());
         }
 
         public void StopApplication()
         {
-            Execute(new StopCommand());
+            Execute(new Stop());
+        }
+
+        public void StopCurrent()
+        {
+            Execute(new StopCurrent());
+        }
+
+        public void Shutdown()
+        {
+            Execute(new Shutdown());
+        }
+
+        public byte[] GetMotorPosition(OutputPort outputPort, MotorType motorType)
+        {
+            var response = Execute(new GetMotorPosition(outputPort, motorType));
+            return response.RawResponseData;
         }
 
         public void SetMediumMotorSpeed(params SetMotorSpeedParams[] motorSpeedChanges)
@@ -357,7 +512,8 @@ namespace Mindstorms.Core
 
             var rawDataWithOffset = response.RawResponseData.Skip(SystemCommandReply.SystemCommandResponseHeaderLength).ToArray();
             var folderContent = Encoding.UTF8.GetString(rawDataWithOffset).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            
+
+#warning Fix folder listing.
             //while (reply.ListSize > ListFilesCommand.MaxListSize)
             //{
             //    Execute(new ContinueListFilesCommand(reply.Handle));
@@ -370,25 +526,51 @@ namespace Mindstorms.Core
             return folderContent;
         }
 
-        public void CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
+        public void CopyFileToBrick(string sourceFilePath, string destinationFilePath)
         {
-            var reply = Execute(new DownloadFile(sourceFilePath)) as SystemCommandReply;
+            var fileContentToSend = File.ReadAllBytes(sourceFilePath);
+            var fileSize = fileContentToSend.Length;
+            var reply = Execute(new UploadFileToBrick(destinationFilePath, fileContentToSend)) as SystemCommandReply;
             var fileHandle = reply.Handle;
 
             if (reply.RawResponseData.Length == SystemCommandReply.ContinueSystemCommandResponseHeaderLength)
             {
-                reply = Execute(new ContinueDownloadFile(fileHandle)) as SystemCommandReply;
+                reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
+            }
+
+            //using (var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
+            //{
+            //    var chunkSize = (ushort)Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
+            //    fileStream.Write(reply.RawResponseData, SystemCommandReply.SystemCommandResponseHeaderLength, chunkSize);
+
+            //    while ((fileSize -= UploadFileToBrick.MaxChunkSize) > 0)
+            //    {
+            //        reply = Execute(new ContinueUploadFileToBrick(fileHandle)) as SystemCommandReply;
+            //        chunkSize = (ushort)Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
+            //        fileStream.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
+            //    }
+            //}
+        }
+
+        public void CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
+        {
+            var reply = Execute(new DownloadFileFromBrick(sourceFilePath)) as SystemCommandReply;
+            var fileHandle = reply.Handle;
+
+            if (reply.RawResponseData.Length == SystemCommandReply.ContinueSystemCommandResponseHeaderLength)
+            {
+                reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
             }
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
             {
-                var chunkSize = Math.Min(fileSize, DownloadFile.MaxChunkSize);
+                var chunkSize = Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize);
                 fileStream.Write(reply.RawResponseData, SystemCommandReply.SystemCommandResponseHeaderLength, chunkSize);
 
-                while ((fileSize -= DownloadFile.MaxChunkSize) > 0)
+                while ((fileSize -= DownloadFileFromBrick.MaxChunkSize) > 0)
                 {
-                    reply = Execute(new ContinueDownloadFile(fileHandle)) as SystemCommandReply;
-                    chunkSize = Math.Min(fileSize, DownloadFile.MaxChunkSize);
+                    reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
+                    chunkSize = Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize);
                     fileStream.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
                 }
             }
@@ -404,9 +586,15 @@ namespace Mindstorms.Core
             Execute(new DeleteFile(fullPathFileName));
         }
 
-        public void SystemCall(string command)
+        /// <summary>
+        /// Execute a command.
+        /// </summary>
+        /// <param name="command">The command to be executed.</param>
+        /// <returns>Return code of the command.</returns>
+        public byte SystemCall(string command)
         {
-            Execute(new SystemCall(command));
+            var response = Execute(new SystemCall(command));
+            return response.RawResponseData[3];
         }
 
         private void ExecuteAndWait(AwaitableCommand command)
@@ -475,6 +663,26 @@ namespace Mindstorms.Core
             var payload = new byte[expectedlength];
             _ = comPort.Read(payload, 0, expectedlength);
             return payload;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Disconnect();
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    comPort.Dispose();
+                }
+
+                disposed = true;
+            }
         }
     }
 }

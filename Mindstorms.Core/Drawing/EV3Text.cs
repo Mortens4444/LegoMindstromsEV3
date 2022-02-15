@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using System;
 using System.Drawing;
 
 namespace Mindstorms.Core.Drawing
@@ -13,11 +14,11 @@ namespace Mindstorms.Core.Drawing
 
         public FontType FontType { get; }
 
-        public EV3Text(EV3Point point, string text, FontType fontType = FontType.Small)
+        public EV3Text(EV3Point point, string text, FontType fontType = FontType.Normal)
             : this(point.X, point.Y, text, fontType)
         { }
 
-        public EV3Text(byte x, byte y, string text, FontType fontType = FontType.Small)
+        public EV3Text(byte x, byte y, string text, FontType fontType = FontType.Normal)
         {
             X = x;
             Y = y;
@@ -32,7 +33,7 @@ namespace Mindstorms.Core.Drawing
 
         public void DrawOnGraphics(Graphics graphics, System.Drawing.Color color)
         {
-            var fontSize = FontType == FontType.Tiny ? 8 : FontType == FontType.Small ? 12 : 16;
+            var fontSize = (float)(Math.Pow(2, (int)FontType) * 5);
             graphics.DrawString(Text, new Font(FontFamily.GenericSerif, fontSize), new SolidBrush(color), X, Y);
         }
     }

@@ -80,6 +80,12 @@
       <DependentUpon>ButtonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="DeviceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceInfo.Designer.cs">
+      <DependentUpon>DeviceInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ButtonForm.resx">
       <DependentUpon>ButtonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceInfo.resx">
+      <DependentUpon>DeviceInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileSystemForm.resx">
       <DependentUpon>FileSystemForm.cs</DependentUpon>
@@ -199,13 +208,17 @@
       <Project>{3e4fad31-f6a5-4fc1-8d51-6b734e9738e3}</Project>
       <Name>Mindstorms.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{a2bd71a0-1b29-427d-ac30-69e589dff200}</Project>
-      <Name>Utils</Name>
+    <ProjectReference Include="..\Mindstorms.Game\Mindstorms.Game.csproj">
+      <Project>{c9d64565-e85f-4960-9c54-8e48454a8e54}</Project>
+      <Name>Mindstorms.Game</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpeechRecognition\SpeechRecognition.csproj">
       <Project>{88245a46-337c-48cb-ae76-73b808d9335a}</Project>
       <Name>SpeechRecognition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{a2bd71a0-1b29-427d-ac30-69e589dff200}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

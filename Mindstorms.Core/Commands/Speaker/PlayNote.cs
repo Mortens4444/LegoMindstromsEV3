@@ -1,7 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.Speaker
 {
@@ -35,7 +34,7 @@ namespace Mindstorms.Core.Commands.Speaker
                 (byte)OpCode.NoteToFrequency,
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2,
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(note));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(note));
             dataList.Add(0);
             dataList.AddRange(new byte[] {
                 (byte)ParameterType.Variable | (byte)VariableScope.Local,

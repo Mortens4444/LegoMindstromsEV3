@@ -1,6 +1,6 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Drawing;
+﻿using Mindstorms.Core.Drawing;
 using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -127,7 +127,6 @@ namespace Mindstorms.Controller
         private void BtnSetLedsState_Click(object sender, EventArgs e)
         {
             brick.ChangeLedsState((LedPattern)cbLedPattern.SelectedItem);
-            brick.KeepAlive(1);
         }
     }
 }

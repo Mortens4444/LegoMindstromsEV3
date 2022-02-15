@@ -96,6 +96,7 @@
 		MemoryRead = 0x7F,
 
 		// UI
+		UIRead = 0x81,
 		UIWrite = 0x82,
 		Button = 0x83,
 		DrawUI = 0x84,
@@ -165,6 +166,9 @@
 		Write16 = 0xCD,
 		Write32 = 0xCE,
 		WriteF = 0xCF,
+
+		ComGet = 0xD3,
+		ComSet = 0xD4,
 
 		// Mailbox
 		MailboxOpen = 0xD8,

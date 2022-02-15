@@ -9,16 +9,16 @@
 		NXTColor = 4,
 		NXTUltraSonic = 5,
 		NXTTemperature = 6,
-		LMotor = 7,
-		MMotor = 8,
+		LargeMotor = 7,
+		MediumMotor = 8,
 		Touch = 16,
 		Test = 21,
-		I2C = 100,
-		NXTTest = 101,
 		Color = 29,
 		Ultrasonic = 30,
 		Gyro = 32,
 		IR = 33,
+		I2C = 100,
+		NXTTest = 101,
 		None = 126
 	};
 }

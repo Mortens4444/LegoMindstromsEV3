@@ -3,13 +3,12 @@ using System;
 
 namespace Mindstorms.Core.Commands.File
 {
-    public class ContinueDownloadFile : Command
+    public class ContinueDownloadFileFromBrick : Command
     {
-        //TODO: Fix DownloadFileCommand
-#warning File download result arrives into the listView after a List command is executed.
-        public ContinueDownloadFile(byte fileHandle)
+#warning May not work for big files.
+        public ContinueDownloadFileFromBrick(byte fileHandle)
         {
-            var maxBytesInReply = BitConverter.GetBytes(DownloadFile.MaxChunkSize);
+            var maxBytesInReply = BitConverter.GetBytes(DownloadFileFromBrick.MaxChunkSize);
 
             data = new byte[]
             {

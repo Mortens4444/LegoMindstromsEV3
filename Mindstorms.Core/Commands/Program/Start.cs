@@ -1,16 +1,15 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Mindstorms.Core.Commands.Motor
+namespace Mindstorms.Core.Commands.Program
 {
-    public class StartCommand : Command
+    public class Start : Command
     {
         /// <summary>
         /// Starts an application.
         /// </summary>
         /// <param name="command">The full or relative path of the application to start. Ex.: /home/root/lms2012/prjs/everstorm/everstorm.rbf</param>
-        public StartCommand(string command)
+        public Start(string command)
         {
             var dataList = new List<byte>
             {
@@ -27,7 +26,7 @@ namespace Mindstorms.Core.Commands.Motor
 
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2,
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(command));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(command));
             dataList.AddRange(new byte[] {
                 0,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global, // Return Image Size at Global Var offset 0. Offset encoded as single byte.
@@ -36,7 +35,7 @@ namespace Mindstorms.Core.Commands.Motor
                 (byte)ProgramSlot.User,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global,
                 4 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
-                0
+                (byte)ProgramMode.Normal
             });
 
             data =  dataList.ToArray();

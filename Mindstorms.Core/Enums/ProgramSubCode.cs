@@ -2,6 +2,10 @@
 {
     public enum ProgramSubCode
 	{
-		GetStatus = 0x16
+        Stop = 0x00,
+        Start = 0x04,
+		GetStatus = 0x16,
+        GetSpeed = 0x17,
+        GetProgramResult = 0x18
     }
 }

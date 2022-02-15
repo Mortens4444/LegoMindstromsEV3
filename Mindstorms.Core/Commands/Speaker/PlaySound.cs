@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.Speaker
 {
@@ -31,14 +30,14 @@ namespace Mindstorms.Core.Commands.Speaker
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 volume,
 
-                (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString
+                (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
             };
             if (filePath.EndsWith(".rsf"))
             {
                 filePath = filePath.Substring(0, filePath.Length - 4);
             }
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(filePath));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(filePath));
             dataList.Add(0);
 
             data = dataList.ToArray();

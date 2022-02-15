@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core;
+﻿using Mindstorms.Core.EV3;
 using System;
 using System.Windows.Forms;
 using Utils;

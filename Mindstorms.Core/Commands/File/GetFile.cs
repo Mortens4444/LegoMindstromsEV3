@@ -1,7 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -21,7 +20,7 @@ namespace Mindstorms.Core.Commands.File
                 maxBytesInReply[0],
                 maxBytesInReply[1]
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(filePath));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(filePath));
             dataList.Add(0);
 
             data = dataList.ToArray();

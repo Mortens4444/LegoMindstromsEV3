@@ -16,14 +16,18 @@ namespace Mindstorms.Core.Commands.LCD
                 (byte)(fill ? DrawSubCode.FillRectangle : DrawSubCode.Rectangle),
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 x,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 y,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 width,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                height
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
+                height,
+                0
             };
         }
     }

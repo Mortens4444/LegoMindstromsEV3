@@ -16,12 +16,15 @@ namespace Mindstorms.Core.Commands.LCD
                 (byte)(fill ? DrawSubCode.FillCircle : DrawSubCode.Circle),
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 x,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 y,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                radius
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
+                radius,
+                0
             };
         }
     }

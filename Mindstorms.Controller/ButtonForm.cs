@@ -1,14 +1,11 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Enums;
-using MindstormUtils;
+﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using System;
-using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 using Color = System.Drawing.Color;
-using Button = Mindstorms.Core.Enums.Button;
 
 namespace Mindstorms.Controller
 {
@@ -31,16 +28,16 @@ namespace Mindstorms.Controller
                 {
                     while (!this.IsDisposingOrDisposed())
                     {
-                        var rawStates = brick.GetButtonStates();
+                        var buttonStates = brick.GetButtonStates();
                     
                         Invoke(new Action(() => {
-                            lblButtonStates.Text = String.Join(", ", rawStates);
-
-                            btnUp.BackColor = rawStates[5] != 0 ? Color.Green : Color.WhiteSmoke;
-                            btnCenter.BackColor = rawStates[6] != 0 ? Color.Green : Color.WhiteSmoke;
-                            btnDown.BackColor = rawStates[7] != 0 ? Color.Green : Color.WhiteSmoke;
-                            btnLeft.BackColor = rawStates[8] != 0 ? Color.Green : Color.WhiteSmoke;
-                            btnRight.BackColor = rawStates[9] != 0 ? Color.Green : Color.WhiteSmoke;
+                            lblButtonStates.Text = buttonStates.ToString();
+                            btnBack.BackColor = buttonStates.IsBackButtonPressed() ? Color.Green : Color.WhiteSmoke;
+                            btnUp.BackColor = buttonStates.IsUpButtonPressed() ? Color.Green : Color.WhiteSmoke;
+                            btnCenter.BackColor = buttonStates.IsCenterButtonPressed() ? Color.Green : Color.WhiteSmoke;
+                            btnDown.BackColor = buttonStates.IsDownButtonPressed() ? Color.Green : Color.WhiteSmoke;
+                            btnRight.BackColor = buttonStates.IsRightButtonPressed() ? Color.Green : Color.WhiteSmoke;
+                            btnLeft.BackColor = buttonStates.IsLeftButtonPressed() ? Color.Green : Color.WhiteSmoke;
                         }));
                     
                         Thread.Sleep(100);
@@ -52,8 +49,8 @@ namespace Mindstorms.Controller
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            var button = sender as System.Windows.Forms.Button;
-            brick.PressButton((Button)button.TabIndex, (ButtonEvent)((byte)cbButtonEvent.SelectedItem - 1));
+            var button = sender as Button;
+            brick.PressButton((ButtonType)button.TabIndex);
         }
     }
 }

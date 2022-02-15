@@ -1,5 +1,6 @@
 ﻿using Mindstorms.Core.Commands.Speaker;
 using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using System;
 using System.Linq;
 using System.Threading;

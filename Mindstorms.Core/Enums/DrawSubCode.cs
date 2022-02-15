@@ -17,6 +17,8 @@
         TopLine = 18,
         
         FillCircle = 24,
-        BmpFile = 28
-	}
+        Restore = 0x1A,
+        BmpFile = 0x1C,
+        GraphDraw = 0x1F
+    }
 }

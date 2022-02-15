@@ -1,16 +1,20 @@
-﻿New features
-------------
+﻿New features / Bugfixes
+-----------------------
 - Mailbox
-- Buttons (https://github.com/c0pperdragon/EV3Basic/blob/762f3638324f66a0ee6d4fb0f9e095683b742e4c/SmallBasicEV3Extension/Buttons.cs, https://sites.google.com/site/ev3basic/ev3-basic-programming/using-buttons-the-screen-and-the-leds)
 - Gyro sensor?
-- Recognize sensors
-- Games module (Snake, Sky, Car race)
+- Recognize sensors (TouchSensor already working)
+- Games (Skiing, Car race, Space invader)
 - IR remote control
+- Fix SnakeGameEngine ToDos
 
+Other EV3 projects
+------------------
 https://github.com/c0pperdragon/EV3Basic
 https://github.com/AndersSoborg/MonoBrick-Communication-Software/blob/master/MonoBrick/EV3/Commands.cs
 https://github.com/henkmollema/MindstormR/blob/master/src/MindstormR.MonoBrick/EV3/Commands.cs
 
+Documentation
+-------------
 https://www.lego.com/cdn/cs/set/assets/bltbef4d6ce0f40363c/LMSUser_Guide_LEGO_MINDSTORMS_EV3_11_Tablet_ENUS.pdf
 http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/ev3.html#out-port-auto-mode
 

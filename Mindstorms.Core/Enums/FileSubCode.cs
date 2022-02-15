@@ -31,7 +31,7 @@
 		GetCacheName = 26,
 		OpenLog = 27,
 		ReadBytes = 28,
-		WriteBytes = 29,
+		WriteBytes = 0x1D,
 		Remove = 30,
 		Move = 31
     }

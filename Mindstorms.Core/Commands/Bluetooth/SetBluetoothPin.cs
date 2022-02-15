@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -21,11 +20,15 @@ namespace Mindstorms.Core.Commands.File
                 (byte)macOfPC.Length,
             };
 
-            dataList.AddRange(Encoding.ASCII.GetBytes(macOfPC));
+            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2);
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(macOfPC));
             dataList.Add(0);
 
+            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.OneByte);
             dataList.Add((byte)pin.Length);
-            dataList.AddRange(Encoding.ASCII.GetBytes(pin));
+
+            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2);
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(pin));
             dataList.Add(0);
 
             data = dataList.ToArray();

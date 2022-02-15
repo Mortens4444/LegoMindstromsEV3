@@ -1,12 +1,11 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.LCD
 {
     public class DrawString : LCDCommand
     {
-        public DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Small)
+        public DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Normal)
         {
             var dataList = new List<byte>
             {
@@ -21,13 +20,15 @@ namespace Mindstorms.Core.Commands.LCD
                 (byte)DrawSubCode.Text,
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 x,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                0,
+                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
                 y,
+                0,
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
             };
-            dataList.AddRange(Encoding.ASCII.GetBytes(text));
+            dataList.AddRange(Constants.DefaultEncoding.GetBytes(text));
             dataList.Add(0);
 
             data = dataList.ToArray();

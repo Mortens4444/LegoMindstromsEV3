@@ -7,8 +7,8 @@
     <ProjectGuid>{88245A46-337C-48CB-AE76-73B808D9335A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MindstormVoiceControl</RootNamespace>
-    <AssemblyName>MindstormVoiceControl</AssemblyName>
+    <RootNamespace>SpeechRecognition</RootNamespace>
+    <AssemblyName>SpeechRecognition</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

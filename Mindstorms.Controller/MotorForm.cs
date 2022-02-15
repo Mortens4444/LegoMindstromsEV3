@@ -1,4 +1,6 @@
 ﻿using Mindstorms.Core;
+using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace Mindstorms.Controller
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
+
+            RefreshPositions();
         }
 
         private void SetMotorSpeed(short acceleration, params SetMotorSpeedParams[] motorSpeedChanges)
@@ -74,6 +78,18 @@ namespace Mindstorms.Controller
         private void BtnSetLeverMotorSpeed_Click(object sender, EventArgs e)
         {
             brick.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeverMotor, (short)tbLeverSpeed.Value));
+        }
+
+        private void BtnRefreshPositions_Click(object sender, EventArgs e)
+        {
+            RefreshPositions();
+        }
+
+        private void RefreshPositions()
+        {
+            lblLeftMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeftMotor, MotorType.Medium));
+            lblRightMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.RightMotor, MotorType.Medium));
+            lblLeverMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeverMotor, MotorType.Large));
         }
     }
 }
