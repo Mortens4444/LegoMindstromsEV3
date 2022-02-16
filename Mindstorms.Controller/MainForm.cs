@@ -99,6 +99,7 @@ namespace Mindstorms.Controller
             tsmiScreen.Enabled = !enable;
             tsmiSpeaker.Enabled = !enable;
             tsmiTouchSensor.Enabled = !enable;
+            tsmiInfraredSensor.Enabled = !enable;
             tsmiUltrasonicSensor.Enabled = !enable;
             tsmiVoiceControl.Enabled = !enable;
             tsmiSnake.Enabled = !enable;
@@ -427,6 +428,12 @@ namespace Mindstorms.Controller
         {
             var circlesGameEngine = new CirclesGameEngine(brick);
             circlesGameEngine.GameLoop();
+        }
+
+        private void TsmiInfraredSensor_Click(object sender, EventArgs e)
+        {
+            var infraredSensorForm = new InfraredSensorForm(brick);
+            infraredSensorForm.Show();
         }
     }
 }

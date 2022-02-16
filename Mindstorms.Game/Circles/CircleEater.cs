@@ -11,7 +11,7 @@ namespace Mindstorms.Game.Circles
 
         private int currentCycles;
         private sbyte moveModifierRigth = 0, moveModifierLeft = 0, moveModifierUp = 0, moveModifierDown = 0;
-        private sbyte PixelsToMove = 2;
+        private readonly sbyte PixelsToMove = 2;
 
         public CircleEater(byte x, byte y, byte radius) : base(x, y, radius, true)
         {

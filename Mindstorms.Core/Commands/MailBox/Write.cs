@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.File
 {
-    public class WriteMailboxCommand : Command
+    public class Write : Command
     {
 #warning This command must be tested.
-        public WriteMailboxCommand(string name, string message)
+        public Write(string name, string message)
         {
             var dataList = new List<byte>
             {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
+                (byte)CommandType.SystemCommand | (byte)Response.NotExpected,
                 (byte)SystemCommand.WriteMailbox,
                 (byte)name.Length,
             };

@@ -1,23 +1,29 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Mindstorms.Core.Commands.File
 {
     public class ContinueUploadFileToBrick : Command
     {
 #warning May not work for big files.
-        public ContinueUploadFileToBrick(byte fileHandle)
+        public ContinueUploadFileToBrick(byte fileHandle, IEnumerable<byte> fileContent)
         {
-            var maxBytesInReply = BitConverter.GetBytes(DownloadFileFromBrick.MaxChunkSize);
+            var bytesToSend = BitConverter.GetBytes(fileContent.Count());
 
-            data = new byte[]
+            var dataList = new List<byte>
             {
                 (byte)CommandType.SystemCommand | (byte)Response.Required,
                 (byte)SystemCommand.ContinueFileDownload,
                 fileHandle,
-                maxBytesInReply[0],
-                maxBytesInReply[1]
+                bytesToSend[0],
+                bytesToSend[1],
+                bytesToSend[2],
+                bytesToSend[3]
             };
+            dataList.AddRange(fileContent);
+            data = dataList.ToArray();
         }
     }
 }

@@ -24,12 +24,21 @@ namespace Mindstorms.Core.EV3
 {
     public class Brick : IDisposable
     {
+        #region Members
+
         private readonly SerialPort comPort = null;
         private const int ReadWriteTimeout = 6000;
         private int sendingData = 0;
         private ushort messageCounter = 1;
         private readonly object soundPlayLock = new object();
         private bool disposed;
+        private CancellationTokenSource musicPlayerCancellationTokenSource;
+
+        #endregion
+
+        #region Properties
+
+        public bool IsConnected { get; private set; }
 
         public OutputPort LeftMotor { get; }
 
@@ -46,7 +55,10 @@ namespace Mindstorms.Core.EV3
         }
 
         public Melody CurrentlyPlayedMelody { get; set; }
-        private CancellationTokenSource musicPlayCancellationTokenSource;
+
+        #endregion
+
+        #region Constructor
 
         public Brick(string port, OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
         {
@@ -60,12 +72,9 @@ namespace Mindstorms.Core.EV3
             LeverMotor = leverMotor;
         }
 
-        ~Brick()
-        {
-            Dispose(false);
-        }
+        #endregion
 
-        public bool IsConnected { get; private set; }
+        #region Connect / Disconnect
 
         public void Connect()
         {
@@ -85,67 +94,9 @@ namespace Mindstorms.Core.EV3
             }
         }
 
-        private ICommandReply Execute(Command command)
-        {
-            ICommandReply result = null;
-            var hasError = false;
-            try
-            {
-                if (Interlocked.Exchange(ref sendingData, 1) == 0)
-                {
-                    var messageCounterBytes = BitConverter.GetBytes(messageCounter);
-                    var dataToSendLength = BitConverter.GetBytes((ushort)(command.Data.Length + messageCounterBytes.Length));
+        #endregion
 
-                    comPort.Write(dataToSendLength, 0, dataToSendLength.Length);
-                    comPort.Write(messageCounterBytes, 0, messageCounterBytes.Length);
-                    comPort.Write(command.Data, 0, command.Data.Length);
-                    sendingData = 0;
-
-                    if ((command.Data[0] & (byte)Response.NotExpected) == 0)
-                    {
-                        Read:
-                        var rawResponseData = Receive();
-
-                        result = (command.Data[0] & (byte)CommandType.SystemCommand) == 1 ? (ICommandReply)
-                                new SystemCommandReply(rawResponseData) :
-                                new DirectCommandReply(rawResponseData);
-
-                        if (result.MessageCounter != messageCounter)
-                        {
-                            //goto Read;
-                            hasError = true;
-                            throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
-                        }
-                        if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
-                        {
-                            hasError = true;
-                            throw new Exception($"Error occurred: {result}");
-                        }
-                    }
-                    messageCounter++;
-                }
-            }
-            finally
-            {
-                sendingData = 0;
-                if (hasError)
-                {
-                    Dispose();
-                }
-            }
-            return result;
-        }
-
-        public byte[] GetSensorType(SensorPort sensorPort)
-        {
-            var result = Execute(new GetSensorType(sensorPort));
-            return result.RawResponseData;
-        }
-
-        public void ChangeLedsState(LedPattern ledPattern)
-        {
-            Execute(new ChangeLedsState(ledPattern));
-        }
+        #region Device
 
         public void KeepAlive(byte minutes)
         {
@@ -234,6 +185,16 @@ namespace Mindstorms.Core.EV3
             return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
         }
 
+        #endregion
+
+        #region Sensor
+
+        public byte[] GetSensorType(SensorPort sensorPort)
+        {
+            var result = Execute(new GetSensorType(sensorPort));
+            return result.RawResponseData;
+        }
+
         public SensorPort GetSensor(SensorType searchedSensorType)
         {
             var sensorPorts = Enum.GetValues(typeof(SensorPort));
@@ -276,6 +237,16 @@ namespace Mindstorms.Core.EV3
             return response.RawResponseData;
         }
 
+        public byte[] ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode)
+        {
+            var response = Execute(new ReadInfraredSensor(sensorPort, sensorMode));
+            return response.RawResponseData;
+        }
+
+        #endregion
+
+        #region Button
+
         public ButtonStates GetButtonStates()
         {
             var response = Execute(new GetButtonStates());
@@ -292,6 +263,15 @@ namespace Mindstorms.Core.EV3
             Execute(new Flush());
         }
 
+        public void Shutdown()
+        {
+            Execute(new Shutdown());
+        }
+
+        #endregion
+
+        #region Sound
+
         public void Beep(byte volume, ushort frequency, ushort duration)
         {
             Execute(new Beep(volume, frequency, duration));
@@ -304,9 +284,9 @@ namespace Mindstorms.Core.EV3
 
         public void Silence()
         {
-            if (musicPlayCancellationTokenSource != null)
+            if (musicPlayerCancellationTokenSource != null)
             {
-                musicPlayCancellationTokenSource.Cancel();
+                musicPlayerCancellationTokenSource.Cancel();
             }
             Execute(new Silence());
         }
@@ -325,6 +305,67 @@ namespace Mindstorms.Core.EV3
         public void PlayNote(string note)
         {
             Execute(new PlayNote(note));
+        }
+
+        public void PlayMusic(Melody melody)
+        {
+            if (CurrentlyPlayedMelody != null)
+            {
+                return;
+            }
+
+            musicPlayerCancellationTokenSource = new CancellationTokenSource();
+            Task.Factory.StartNew(() =>
+            {
+                lock (soundPlayLock)
+                {
+                    CurrentlyPlayedMelody = melody;
+
+                    if (melody.Notes != null)
+                    {
+                        foreach (var note in melody.Notes)
+                        {
+                            if (musicPlayerCancellationTokenSource.IsCancellationRequested)
+                            {
+                                break;
+                            }
+
+                            ExecuteAndWait(new PlayNote(note));
+                        }
+                    }
+                    else
+                    {
+                        foreach (var note in melody)
+                        {
+                            if (musicPlayerCancellationTokenSource.IsCancellationRequested)
+                            {
+                                break;
+                            }
+
+                            var duration = melody.GetNoteLength(note.NoteType);
+                            if (note is Fermata)
+                            {
+                                Thread.Sleep(duration);
+                            }
+                            else
+                            {
+                                ExecuteAndWait(new Beep(note, duration));
+                            }
+                        }
+                    }
+
+                    CurrentlyPlayedMelody = null;
+                }
+            }, musicPlayerCancellationTokenSource.Token);
+        }
+
+        #endregion
+
+        #region LED, LCD
+
+        public void ChangeLedsState(LedPattern ledPattern)
+        {
+            Execute(new ChangeLedsState(ledPattern));
         }
 
         public void PutPixel(EV3Point point, Color color = Color.Black)
@@ -454,19 +495,19 @@ namespace Mindstorms.Core.EV3
             Execute(new ScreenBlock(set));
         }
 
+        #endregion
+
+        #region Program
+
         public void Start(string command)
         {
             Execute(new Start(command));
         }
 
-        public void GetProgramInfo()
+        public byte[] GetProgramInfo(ushort programSlotId)
         {
-            //Execute(new GetInfo());
-        }
-
-        public void StartNew()
-        {
-            Execute(new StartNew());
+            var response = Execute(new GetInfo(programSlotId));
+            return response.RawResponseData;
         }
 
         public void StopApplication()
@@ -479,10 +520,20 @@ namespace Mindstorms.Core.EV3
             Execute(new StopCurrent());
         }
 
-        public void Shutdown()
+        /// <summary>
+        /// Execute a command.
+        /// </summary>
+        /// <param name="command">The command to be executed.</param>
+        /// <returns>Return code of the command.</returns>
+        public byte SystemCall(string command)
         {
-            Execute(new Shutdown());
+            var response = Execute(new SystemCall(command));
+            return response.RawResponseData[3];
         }
+
+        #endregion
+
+        #region Motor
 
         public byte[] GetMotorPosition(OutputPort outputPort, MotorType motorType)
         {
@@ -505,6 +556,10 @@ namespace Mindstorms.Core.EV3
                 Execute(new SetLargeMotorSpeed(motorSpeedChange));
             }
         }
+
+        #endregion
+
+        #region Filesystem
 
         public IEnumerable<string> GetFolderContent(string path)
         {
@@ -530,26 +585,20 @@ namespace Mindstorms.Core.EV3
         {
             var fileContentToSend = File.ReadAllBytes(sourceFilePath);
             var fileSize = fileContentToSend.Length;
-            var reply = Execute(new UploadFileToBrick(destinationFilePath, fileContentToSend)) as SystemCommandReply;
+
+            var bytesToSend = Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
+
+            var reply = Execute(new UploadFileToBrick(destinationFilePath, fileContentToSend.Take(bytesToSend))) as SystemCommandReply;
             var fileHandle = reply.Handle;
 
-            if (reply.RawResponseData.Length == SystemCommandReply.ContinueSystemCommandResponseHeaderLength)
+            int skippedBytes = 0;
+            while ((fileSize -= bytesToSend) > 0)
             {
-                reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
+                skippedBytes += bytesToSend;
+                bytesToSend = Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
+                var dataBytes = fileContentToSend.Skip(skippedBytes).Take(bytesToSend);
+                _ = Execute(new ContinueUploadFileToBrick(fileHandle, dataBytes)) as SystemCommandReply;
             }
-
-            //using (var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
-            //{
-            //    var chunkSize = (ushort)Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
-            //    fileStream.Write(reply.RawResponseData, SystemCommandReply.SystemCommandResponseHeaderLength, chunkSize);
-
-            //    while ((fileSize -= UploadFileToBrick.MaxChunkSize) > 0)
-            //    {
-            //        reply = Execute(new ContinueUploadFileToBrick(fileHandle)) as SystemCommandReply;
-            //        chunkSize = (ushort)Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
-            //        fileStream.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
-            //    }
-            //}
         }
 
         public void CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
@@ -586,73 +635,63 @@ namespace Mindstorms.Core.EV3
             Execute(new DeleteFile(fullPathFileName));
         }
 
-        /// <summary>
-        /// Execute a command.
-        /// </summary>
-        /// <param name="command">The command to be executed.</param>
-        /// <returns>Return code of the command.</returns>
-        public byte SystemCall(string command)
+        #endregion
+
+        #region General
+
+        private ICommandReply Execute(Command command)
         {
-            var response = Execute(new SystemCall(command));
-            return response.RawResponseData[3];
+            ICommandReply result = null;
+            var hasError = false;
+            try
+            {
+                if (Interlocked.Exchange(ref sendingData, 1) == 0)
+                {
+                    var messageCounterBytes = BitConverter.GetBytes(messageCounter);
+                    var dataToSendLength = BitConverter.GetBytes((ushort)(command.Data.Length + messageCounterBytes.Length));
+
+                    comPort.Write(dataToSendLength, 0, dataToSendLength.Length);
+                    comPort.Write(messageCounterBytes, 0, messageCounterBytes.Length);
+                    comPort.Write(command.Data, 0, command.Data.Length);
+                    sendingData = 0;
+
+                    if ((command.Data[0] & (byte)Response.NotExpected) == 0)
+                    {
+                        var rawResponseData = Receive();
+
+                        result = (command.Data[0] & (byte)CommandType.SystemCommand) == 1 ? (ICommandReply)
+                                new SystemCommandReply(rawResponseData) :
+                                new DirectCommandReply(rawResponseData);
+
+                        if (result.MessageCounter != messageCounter)
+                        {
+                            hasError = true;
+                            throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
+                        }
+                        if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
+                        {
+                            hasError = true;
+                            throw new Exception($"Error occurred: {result}");
+                        }
+                    }
+                    messageCounter++;
+                }
+            }
+            finally
+            {
+                sendingData = 0;
+                if (hasError)
+                {
+                    Dispose();
+                }
+            }
+            return result;
         }
 
         private void ExecuteAndWait(AwaitableCommand command)
         {
             Execute(command);
             Thread.Sleep(command.DurationMs);
-        }
-
-        public void PlayMusic(Melody melody)
-        {
-            if (CurrentlyPlayedMelody != null)
-            {
-                return;
-            }
-
-            musicPlayCancellationTokenSource = new CancellationTokenSource();
-            Task.Factory.StartNew(() =>
-            {
-                lock (soundPlayLock)
-                {
-                    CurrentlyPlayedMelody = melody;
-
-                    if (melody.Notes != null)
-                    {
-                        foreach (var note in melody.Notes)
-                        {
-                            if (musicPlayCancellationTokenSource.IsCancellationRequested)
-                            {
-                                break;
-                            }
-
-                            ExecuteAndWait(new PlayNote(note));
-                        }
-                    }
-                    else
-                    {
-                        foreach (var note in melody)
-                        {
-                            if (musicPlayCancellationTokenSource.IsCancellationRequested)
-                            {
-                                break;
-                            }
-
-                            var duration = melody.GetNoteLength(note.NoteType);
-                            if (note is Fermata)
-                            {
-                                Thread.Sleep(duration);
-                            }
-                            else
-                            {
-                                ExecuteAndWait(new Beep(note, duration));
-                            }
-                        }
-                    }
-
-                    CurrentlyPlayedMelody = null;
-                }
-            }, musicPlayCancellationTokenSource.Token);
         }
 
         private byte[] Receive()
@@ -663,6 +702,15 @@ namespace Mindstorms.Core.EV3
             var payload = new byte[expectedlength];
             _ = comPort.Read(payload, 0, expectedlength);
             return payload;
+        }
+
+        #endregion
+
+        #region IDisposable pattern
+
+        ~Brick()
+        {
+            Dispose(false);
         }
 
         public void Dispose()
@@ -684,5 +732,7 @@ namespace Mindstorms.Core.EV3
                 disposed = true;
             }
         }
+
+        #endregion
     }
 }

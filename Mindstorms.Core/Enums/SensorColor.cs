@@ -2,12 +2,13 @@
 {
     public enum SensorColor
     {
-        Black = 0x00,
-        Blue = 0x01,
-        Green = 0x02,
-        Yellow = 0x03,
-        Red = 0x04,
-        White = 0x05,
-        Brown = 0x06
+        NoColorDetected = 0x00,
+        Black = 0x01,
+        Blue = 0x02,
+        Green = 0x03,
+        Yellow = 0x04,
+        Red = 0x05,
+        White = 0x06,
+        Brown = 0x07
     }
 }

@@ -14,7 +14,7 @@ namespace Mindstorms.Game.Snake
 
         private CircleEater player;
         private IList<CircleEater> enemies;
-        private Random random = new Random(Environment.TickCount);
+        private readonly Random random = new Random(Environment.TickCount);
 
         private const int NumberOfEnemies = 15;
 
@@ -48,8 +48,7 @@ namespace Mindstorms.Game.Snake
 
             if (inGame)
             {
-                var enemy = player.GetCollidingCircle(enemies) as CircleEater;
-                if (enemy == null)
+                if (!(player.GetCollidingCircle(enemies) is CircleEater enemy))
                 {
                     for (byte enemyIndex = 0; enemyIndex < enemies.Count; enemyIndex++)
                     {

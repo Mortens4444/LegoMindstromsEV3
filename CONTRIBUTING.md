@@ -1,11 +1,15 @@
-﻿New features / Bugfixes
+New features / Bugfixes
 -----------------------
-- Mailbox
-- Gyro sensor?
-- Recognize sensors (TouchSensor already working)
-- Games (Skiing, Car race, Space invader)
 - IR remote control
-- Fix SnakeGameEngine ToDos
+- Daisy chain
+- Mailbox
+- Gyro sensor
+- Line follower algorithm
+- Recognize sensors (TouchSensor already working sometimes...)
+- Games (Skiing, Car race, Space invader, Flipper, Tetris, etc...)
+- Get a nice solution for the dirty hack in SnakeGameEngine (GameFrame.cs should be deleted and a DirectCommand should create the underlying application)
+- Fix filesystem commands in Brick.cs
+- Implement USB, WiFi commnunication
 
 Other EV3 projects
 ------------------

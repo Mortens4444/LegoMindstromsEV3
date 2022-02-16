@@ -3,7 +3,7 @@
 namespace Mindstorms.Core.Commands.System
 {
     /// <summary>
-    /// Get the name of the brick.
+    /// Get if a communication device is active or not.
     /// </summary>
     public class IsActive : Command
     {

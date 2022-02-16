@@ -11,7 +11,7 @@ namespace Mindstorms.Core.Commands.File
 
         public WriteBytesToFile(byte handle, byte[] bytes)
         {
-            var maxBytesInReply = BitConverter.GetBytes(MaxChunkSize);
+            //var maxBytesInReply = BitConverter.GetBytes(MaxChunkSize);
 
             var dataList = new List<byte>
             {

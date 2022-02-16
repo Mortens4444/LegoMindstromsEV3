@@ -58,9 +58,9 @@
     <Compile Include="Commands\Object\Start.cs" />
     <Compile Include="Commands\Object\Stop.cs" />
     <Compile Include="Commands\PowerControl\Shutdown.cs" />
-    <Compile Include="Commands\Program\StartNew.cs" />
     <Compile Include="Commands\Program\GetInfo.cs" />
     <Compile Include="Commands\Program\StopCurrent.cs" />
+    <Compile Include="Commands\Sensor\ReadInfraredSensor.cs" />
     <Compile Include="Commands\System\GetBatteryLevel.cs" />
     <Compile Include="Commands\System\GetBatteryTemperatureRise.cs" />
     <Compile Include="Commands\System\GetFirmwareBuild.cs" />
@@ -80,6 +80,8 @@
     <Compile Include="Enums\ComGetSubCommand.cs" />
     <Compile Include="Enums\CommunicationInterface.cs" />
     <Compile Include="Enums\ComSetSubCommand.cs" />
+    <Compile Include="Enums\InfraredBeaconButtonsCombination.cs" />
+    <Compile Include="Enums\InfraredSensorMode.cs" />
     <Compile Include="Enums\MotorMode.cs" />
     <Compile Include="Enums\ProgramMode.cs" />
     <Compile Include="Enums\State.cs" />
@@ -111,7 +113,7 @@
     <Compile Include="Commands\LCD\DrawLine.cs" />
     <Compile Include="Commands\LCD\Clean.cs" />
     <Compile Include="Commands\LED\ChangeLedsState.cs" />
-    <Compile Include="Commands\MailBox\WriteMailbox.cs" />
+    <Compile Include="Commands\MailBox\Write.cs" />
     <Compile Include="Commands\PowerControl\KeepAlive.cs" />
     <Compile Include="Commands\Program\SystemCall.cs" />
     <Compile Include="Commands\Program\Stop.cs" />
@@ -1061,9 +1063,6 @@
     <Compile Include="DirectCommandReply.cs" />
     <Compile Include="SystemCommandReply.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

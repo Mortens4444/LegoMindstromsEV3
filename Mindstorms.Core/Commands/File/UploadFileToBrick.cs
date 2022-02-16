@@ -1,6 +1,7 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -8,9 +9,9 @@ namespace Mindstorms.Core.Commands.File
     {
         public const ushort MaxChunkSize = 65534;
 
-        public UploadFileToBrick(string destinationFilePath, byte[] fileContent)
+        public UploadFileToBrick(string destinationFilePath, IEnumerable<byte> fileContent)
         {
-            var bytesToSend = BitConverter.GetBytes(fileContent.Length);
+            var bytesToSend = BitConverter.GetBytes(fileContent.Count());
 
             var dataList = new List<byte>
             {
