@@ -4,7 +4,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class DrawRectangle : LCDCommand
     {
-        public DrawRectangle(byte x, byte y, byte width, byte height, Color color, bool fill)
+        public DrawRectangle(byte x, byte y, byte width, byte height, LCDColor color, bool fill)
         {
             data = new byte[]
             {

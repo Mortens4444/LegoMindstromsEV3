@@ -1,7 +1,7 @@
 ﻿using Mindstorms.Core.Drawing;
 using System;
 
-namespace Mindstorms.Core
+namespace Mindstorms.Core.Commands.LCD
 {
     public abstract class LCDCommand : Command
     {

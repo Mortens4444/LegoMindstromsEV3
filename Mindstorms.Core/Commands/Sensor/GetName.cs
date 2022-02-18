@@ -1,23 +1,21 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core
+namespace Mindstorms.Core.Commands.Sensor
 {
-    public abstract class SensorCommand : Command
+    public class GetName : Command
     {
-        protected byte[] GetData(byte sensorPort, byte sensorType, byte sensorMode)
+        public GetName(byte sensorPort)
         {
-            return new byte[]
+            data = new byte[]
             {
                 (byte)CommandType.DirectCommand | (byte)Response.Required,
-                4,
+                0x3F,
                 0,
                 (byte)OpCode.InputDevice,
-                (byte)InputSubCode.ReadySI,
+                (byte)InputSubCode.GetName,
                 (byte)DaisyChainLayer.EV3,
                 sensorPort,
-                sensorType,
-                sensorMode,
-                1,
+                0x3F,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
             };
         }

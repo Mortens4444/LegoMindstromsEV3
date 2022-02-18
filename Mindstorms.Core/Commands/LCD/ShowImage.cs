@@ -5,7 +5,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class ShowImage : LCDCommand
     {
-        public ShowImage(byte x, byte y, string filePath, Color color)
+        public ShowImage(byte x, byte y, string filePath, LCDColor color)
         {
             ValidatePixel(x, y);
 
@@ -21,7 +21,7 @@ namespace Mindstorms.Core.Commands.LCD
 
                 (byte)OpCode.DrawUI,
                 0x13, // FillWindow
-                color == Color.White ? (byte)Color.Black : (byte)Color.White, // BackgroundColor
+                color == LCDColor.White ? (byte)LCDColor.Black : (byte)LCDColor.White, // BackgroundColor
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 0x00, // Start y
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,

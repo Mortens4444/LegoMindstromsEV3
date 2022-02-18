@@ -45,7 +45,7 @@ namespace Mindstorms.Game.Snake
                     foodProducer.ProduceFood();
                     worm.Grow(nutrition);
                 }
-                brick.DrawString(0, 0, $"Score: {Constants.MaxPoints} / {scoreCounter.Score}", Color.Black, FontType.Tiny);
+                brick.DrawString(0, 0, $"Score: {Constants.MaxPoints} / {scoreCounter.Score}", LCDColor.Black, FontType.Tiny);
             }
 
             return directionHandler.HandleKeyPress(brick);

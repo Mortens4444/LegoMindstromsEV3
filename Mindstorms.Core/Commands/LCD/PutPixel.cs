@@ -4,7 +4,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class PutPixel : LCDCommand
     {
-        public PutPixel(byte x, byte y, Color color)
+        public PutPixel(byte x, byte y, LCDColor color)
         {
             ValidatePixel(x, y);
 

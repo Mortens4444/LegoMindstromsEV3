@@ -2,22 +2,12 @@
 
 namespace Mindstorms.Core.Commands.Program
 {
-    public class Stop : Command
+    public class Stop : StopBase
     {
         /// <summary>
         /// Stops all running application.
         /// </summary>
-        public Stop()
-        {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.ProgramStop,
-                (byte)ProgramSlot.User
-            };
-        }
+        public Stop() : base(ProgramSlot.User)
+        { }
     }
 }

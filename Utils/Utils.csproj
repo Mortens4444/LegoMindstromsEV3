@@ -45,7 +45,6 @@
     <Compile Include="AssemblyExtensions.cs" />
     <Compile Include="ComboBoxExtensions.cs" />
     <Compile Include="ComboBoxItem.cs" />
-    <Compile Include="Drawing\EV3Point.cs" />
     <Compile Include="FormExtensions.cs" />
     <Compile Include="ListViewItemExtensions.cs" />
     <Compile Include="ListViewExtensions.cs" />

@@ -79,7 +79,7 @@ namespace Mindstorms.Controller
             if (element != null)
             {
                 objectsToDraw.Add(element);
-                brick.Draw(element, Color.Black, chkFill.Checked);
+                brick.Draw(element, LCDColor.Black, chkFill.Checked);
             }
             startPoint = null;
             pDisplay.Invalidate();

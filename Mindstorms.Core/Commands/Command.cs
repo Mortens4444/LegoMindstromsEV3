@@ -1,4 +1,4 @@
-﻿namespace Mindstorms.Core
+﻿namespace Mindstorms.Core.Commands
 {
     public abstract class Command
 	{

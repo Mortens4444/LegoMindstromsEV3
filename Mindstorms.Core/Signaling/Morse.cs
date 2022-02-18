@@ -63,8 +63,8 @@ namespace Mindstorms.Core.Signaling
                 }
 
                 brick.ClearScreen();
-                brick.DrawString(85, 60, character.ToString(), Color.Black, FontType.Big);
-                brick.DrawString(10, 80, word, Color.Black, FontType.Big);
+                brick.DrawString(85, 60, character.ToString(), LCDColor.Black, FontType.Big);
+                brick.DrawString(10, 80, word, LCDColor.Black, FontType.Big);
                 brick.UpdateScreen();
 
                 Thread.Sleep(character == Space ? WaitBetweenWords : WaitBetweenCharacters);

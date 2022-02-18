@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core;
+﻿using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Drawing;
 using Mindstorms.Game.General;
 using System;

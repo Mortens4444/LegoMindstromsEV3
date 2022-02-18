@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.File
+namespace Mindstorms.Core.Commands.Firmware
 {
     public class EnterFirmwareUpdate : Command
     {

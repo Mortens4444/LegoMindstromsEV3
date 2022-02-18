@@ -1,5 +1,4 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Enums;
+﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Responses;
 using System.Threading;
@@ -34,7 +33,7 @@ namespace Mindstorms.Game.General
 
                 if (!inGame)
                 {
-                    brick.DrawString(LCDCommand.HorizontalCenter - 40, LCDCommand.VerticalCenter, message);
+                    brick.ShowOnMiddleOfScreen(message, FontType.Normal);
                 }
 
                 brick.UpdateScreen();
@@ -71,8 +70,8 @@ namespace Mindstorms.Game.General
 
         private void Pause()
         {
-            brick.DrawString(LCDCommand.HorizontalCenter - 30, LCDCommand.VerticalCenter, "Paused", Color.Black, FontType.Normal);
-            brick.DrawString(20, LCDCommand.VerticalCenter + 30, "Press down/up key", Color.Black, FontType.Normal);
+            brick.ShowOnMiddleOfScreen("Paused", FontType.Normal);
+            brick.ShowOnMiddleOfScreen("Press down/up key", FontType.Normal, 30);
             brick.UpdateScreen();
 
             ButtonStates buttonStates;

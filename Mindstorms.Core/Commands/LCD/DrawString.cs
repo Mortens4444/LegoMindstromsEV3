@@ -5,7 +5,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class DrawString : LCDCommand
     {
-        public DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Normal)
+        public DrawString(byte x, byte y, string text, LCDColor color = LCDColor.Black, FontType fontType = FontType.Normal)
         {
             var dataList = new List<byte>
             {

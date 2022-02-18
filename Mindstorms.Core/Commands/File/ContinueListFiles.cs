@@ -1,7 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mindstorms.Core.Commands.File
 {

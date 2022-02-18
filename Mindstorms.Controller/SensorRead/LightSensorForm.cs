@@ -1,4 +1,5 @@
-﻿using Mindstorms.Core.Enums;
+﻿using Mindstorms.Core.Commands.Sensor;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using System;
 using System.Threading;
@@ -25,11 +26,12 @@ namespace Mindstorms.Controller.SensorRead
 
         private void BtnStartStopRead_Click(object sender, EventArgs e)
         {
-            if (!readSensor)
+            cbSensorMode.Enabled = readSensor;
+            readSensor = !readSensor;
+            if (readSensor)
             {
                 var sensorPort = (SensorPort)cbSensorPort.SelectedItem;
                 var sensorMode = (LightSensorMode)cbSensorMode.SelectedItem;
-                readSensor = true;
                 btnStartStopRead.Text = "Stop";
 
                 Task.Factory.StartNew(() =>
@@ -52,7 +54,6 @@ namespace Mindstorms.Controller.SensorRead
             }
             else
             {
-                readSensor = false;
                 btnStartStopRead.Text = "Start";
                 lblResult.Text = String.Empty;
                 Update();

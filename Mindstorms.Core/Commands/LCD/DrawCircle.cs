@@ -4,7 +4,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class DrawCircle : LCDCommand
     {
-        public DrawCircle(byte x, byte y, byte radius, Color color, bool fill)
+        public DrawCircle(byte x, byte y, byte radius, LCDColor color, bool fill)
         {
             data = new byte[]
             {

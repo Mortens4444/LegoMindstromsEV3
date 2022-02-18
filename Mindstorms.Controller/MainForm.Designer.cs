@@ -61,6 +61,7 @@ namespace Mindstorms.Controller
             this.tsmiGyroSensor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLightSensor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTouchSensor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInfraredSensor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUltrasonicSensor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGames = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSnake = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,7 @@ namespace Mindstorms.Controller
             this.btnNorthWest = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiInfraredSensor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbRobotPartner = new System.Windows.Forms.TextBox();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.pMain.SuspendLayout();
@@ -319,7 +320,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiGyroSensor.Enabled = false;
             this.tsmiGyroSensor.Name = "tsmiGyroSensor";
-            this.tsmiGyroSensor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiGyroSensor.Size = new System.Drawing.Size(164, 22);
             this.tsmiGyroSensor.Text = "Gyro sensor";
             this.tsmiGyroSensor.Click += new System.EventHandler(this.TsmiGyroSensor_Click);
             // 
@@ -327,7 +328,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiLightSensor.Enabled = false;
             this.tsmiLightSensor.Name = "tsmiLightSensor";
-            this.tsmiLightSensor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLightSensor.Size = new System.Drawing.Size(164, 22);
             this.tsmiLightSensor.Text = "Light sensor";
             this.tsmiLightSensor.Click += new System.EventHandler(this.TsmiLightSensor_Click);
             // 
@@ -335,15 +336,23 @@ namespace Mindstorms.Controller
             // 
             this.tsmiTouchSensor.Enabled = false;
             this.tsmiTouchSensor.Name = "tsmiTouchSensor";
-            this.tsmiTouchSensor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTouchSensor.Size = new System.Drawing.Size(164, 22);
             this.tsmiTouchSensor.Text = "Touch sensor";
             this.tsmiTouchSensor.Click += new System.EventHandler(this.TsmiTouchSensor_Click);
+            // 
+            // tsmiInfraredSensor
+            // 
+            this.tsmiInfraredSensor.Enabled = false;
+            this.tsmiInfraredSensor.Name = "tsmiInfraredSensor";
+            this.tsmiInfraredSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiInfraredSensor.Text = "Infrared sensor";
+            this.tsmiInfraredSensor.Click += new System.EventHandler(this.TsmiInfraredSensor_Click);
             // 
             // tsmiUltrasonicSensor
             // 
             this.tsmiUltrasonicSensor.Enabled = false;
             this.tsmiUltrasonicSensor.Name = "tsmiUltrasonicSensor";
-            this.tsmiUltrasonicSensor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiUltrasonicSensor.Size = new System.Drawing.Size(164, 22);
             this.tsmiUltrasonicSensor.Text = "Ultrasonic sensor";
             this.tsmiUltrasonicSensor.Click += new System.EventHandler(this.TsmiUltrasonicSensor_Click);
             // 
@@ -360,7 +369,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiSnake.Enabled = false;
             this.tsmiSnake.Name = "tsmiSnake";
-            this.tsmiSnake.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSnake.Size = new System.Drawing.Size(109, 22);
             this.tsmiSnake.Text = "Snake";
             this.tsmiSnake.Click += new System.EventHandler(this.TsmiSnake_Click);
             // 
@@ -368,7 +377,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiCircles.Enabled = false;
             this.tsmiCircles.Name = "tsmiCircles";
-            this.tsmiCircles.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCircles.Size = new System.Drawing.Size(109, 22);
             this.tsmiCircles.Text = "Circles";
             this.tsmiCircles.Click += new System.EventHandler(this.TsmiCircles_Click);
             // 
@@ -385,6 +394,7 @@ namespace Mindstorms.Controller
             // 
             // gbMorse
             // 
+            this.gbMorse.Controls.Add(this.tbRobotPartner);
             this.gbMorse.Controls.Add(this.rtbMorse);
             this.gbMorse.Controls.Add(this.btnMorse);
             this.gbMorse.Enabled = false;
@@ -570,13 +580,12 @@ namespace Mindstorms.Controller
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
-            // tsmiInfraredSensor
+            // tbRobotPartner
             // 
-            this.tsmiInfraredSensor.Enabled = false;
-            this.tsmiInfraredSensor.Name = "tsmiInfraredSensor";
-            this.tsmiInfraredSensor.Size = new System.Drawing.Size(180, 22);
-            this.tsmiInfraredSensor.Text = "Infrared sensor";
-            this.tsmiInfraredSensor.Click += new System.EventHandler(this.TsmiInfraredSensor_Click);
+            this.tbRobotPartner.Location = new System.Drawing.Point(6, 85);
+            this.tbRobotPartner.Name = "tbRobotPartner";
+            this.tbRobotPartner.Size = new System.Drawing.Size(162, 20);
+            this.tbRobotPartner.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -601,6 +610,7 @@ namespace Mindstorms.Controller
             this.menuStrip.PerformLayout();
             this.pMain.ResumeLayout(false);
             this.gbMorse.ResumeLayout(false);
+            this.gbMorse.PerformLayout();
             this.gbJoystick.ResumeLayout(false);
             this.gbJoystick.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbMinimumDelta)).EndInit();
@@ -665,6 +675,7 @@ namespace Mindstorms.Controller
         private System.Windows.Forms.ToolStripMenuItem tsmiDeviceInfo;
         private System.Windows.Forms.ToolStripMenuItem tsmiCircles;
         private System.Windows.Forms.ToolStripMenuItem tsmiInfraredSensor;
+        private System.Windows.Forms.TextBox tbRobotPartner;
     }
 }
 

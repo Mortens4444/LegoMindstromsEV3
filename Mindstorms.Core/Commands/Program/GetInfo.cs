@@ -17,7 +17,7 @@ namespace Mindstorms.Core.Commands.Program
                 0,
 
                 (byte)OpCode.ProgramInfo,
-                (byte)ProgramSlot.User,
+                //(byte)ProgramSlot.User,
 
                 programSlotIdBytes[0],
                 programSlotIdBytes[1],

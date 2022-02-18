@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.LCD
+namespace Mindstorms.Core.Commands.LED
 {
     public class ChangeLedsState : Command
     {

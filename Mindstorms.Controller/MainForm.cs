@@ -4,6 +4,7 @@ using Joystick;
 using MessageBoxes;
 using Mindstorms.Controller.SensorRead;
 using Mindstorms.Core;
+using Mindstorms.Core.Commands.MailBox;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Extensions;
@@ -404,6 +405,10 @@ namespace Mindstorms.Controller
         {
             var morse = new Morse(brick);
             morse.Text(rtbMorse.Text);
+            if (tbRobotPartner.Text != String.Empty)
+            {
+                brick.Execute(new SendMail(tbRobotPartner.Text, rtbMorse.Text));
+            }
         }
 
         private void TsmiButtons_Click(object sender, EventArgs e)

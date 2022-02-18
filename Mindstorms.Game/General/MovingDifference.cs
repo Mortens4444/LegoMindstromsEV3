@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core;
+﻿using Mindstorms.Core.Commands.LCD;
 using System;
 
 namespace Mindstorms.Game.General

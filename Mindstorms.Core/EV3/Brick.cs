@@ -1,7 +1,9 @@
 ﻿using Mindstorms.Core.Commands;
 using Mindstorms.Core.Commands.Button;
 using Mindstorms.Core.Commands.File;
+using Mindstorms.Core.Commands.Input;
 using Mindstorms.Core.Commands.LCD;
+using Mindstorms.Core.Commands.LED;
 using Mindstorms.Core.Commands.Motor;
 using Mindstorms.Core.Commands.PowerControl;
 using Mindstorms.Core.Commands.Program;
@@ -330,6 +332,7 @@ namespace Mindstorms.Core.EV3
                                 break;
                             }
 
+                            ShowOnMiddleOfScreen(note, FontType.Big);
                             ExecuteAndWait(new PlayNote(note));
                         }
                     }
@@ -349,6 +352,7 @@ namespace Mindstorms.Core.EV3
                             }
                             else
                             {
+                                ShowOnMiddleOfScreen(note.Name, FontType.Big);
                                 ExecuteAndWait(new Beep(note, duration));
                             }
                         }
@@ -363,42 +367,52 @@ namespace Mindstorms.Core.EV3
 
         #region LED, LCD
 
+        public void ShowOnMiddleOfScreen(string text, FontType fontType = FontType.Normal, byte verticalDelta = 0)
+        {
+            var horizontalDelta = text.Length * 10;
+            ClearScreen();
+            var x = (byte)(LCDCommand.HorizontalCenter - horizontalDelta);
+            var y = (byte)(LCDCommand.VerticalCenter + verticalDelta);
+            DrawString(x, y, text, LCDColor.Black, fontType);
+            UpdateScreen();
+        }
+
         public void ChangeLedsState(LedPattern ledPattern)
         {
             Execute(new ChangeLedsState(ledPattern));
         }
 
-        public void PutPixel(EV3Point point, Color color = Color.Black)
+        public void PutPixel(EV3Point point, LCDColor color = LCDColor.Black)
         {
             PutPixel(point.X, point.Y, color);
         }
 
-        public void PutPixel(byte x, byte y, Color color = Color.Black)
+        public void PutPixel(byte x, byte y, LCDColor color = LCDColor.Black)
         {
             Execute(new PutPixel(x, y, color));
         }
 
-        public void DrawLine(EV3Line line, Color color = Color.Black)
+        public void DrawLine(EV3Line line, LCDColor color = LCDColor.Black)
         {
             DrawLine(line.X1, line.Y1, line.X2, line.Y2, color);
         }
 
-        public void DrawLine(byte x1, byte y1, byte x2, byte y2, Color color = Color.Black)
+        public void DrawLine(byte x1, byte y1, byte x2, byte y2, LCDColor color = LCDColor.Black)
         {
             Execute(new DrawLine(x1, y1, x2, y2, color));
         }
 
-        public void DrawCircle(EV3Circle circle, Color color = Color.Black, bool fill = false)
+        public void DrawCircle(EV3Circle circle, LCDColor color = LCDColor.Black, bool fill = false)
         {
             DrawCircle(circle.Center.X, circle.Center.Y, circle.Radius, color, fill);
         }
 
-        public void DrawCircle(byte x, byte y, byte radius, Color color = Color.Black, bool fill = false)
+        public void DrawCircle(byte x, byte y, byte radius, LCDColor color = LCDColor.Black, bool fill = false)
         {
             Execute(new DrawCircle(x, y, radius, color, fill));
         }
 
-        public void Draw(IEV3DrawingElement element, Color color = Color.Black, bool fill = false)
+        public void Draw(IEV3DrawingElement element, LCDColor color = LCDColor.Black, bool fill = false)
         {
             switch (element)
             {
@@ -425,12 +439,12 @@ namespace Mindstorms.Core.EV3
             }
         }
 
-        public void DrawRectangle(EV3Rectangle rectangle, Color color = Color.Black, bool fill = false)
+        public void DrawRectangle(EV3Rectangle rectangle, LCDColor color = LCDColor.Black, bool fill = false)
         {
             DrawRectangle(rectangle.TopLeftCorner.X, rectangle.TopLeftCorner.Y, rectangle.Width, rectangle.Height, color, fill);
         }
 
-        public void DrawRectangle(byte x, byte y, byte width, byte height, Color color = Color.Black, bool fill = false)
+        public void DrawRectangle(byte x, byte y, byte width, byte height, LCDColor color = LCDColor.Black, bool fill = false)
         {
             Execute(new DrawRectangle(x, y, width, height, color, fill));
         }
@@ -440,7 +454,7 @@ namespace Mindstorms.Core.EV3
             DrawString(text.X, text.Y, text.Text);
         }
 
-        public void DrawString(byte x, byte y, string text, Color color = Color.Black, FontType fontType = FontType.Normal)
+        public void DrawString(byte x, byte y, string text, LCDColor color = LCDColor.Black, FontType fontType = FontType.Normal)
         {
             Execute(new DrawString(x, y, text, color, fontType));
         }
@@ -460,7 +474,7 @@ namespace Mindstorms.Core.EV3
             Execute(new InverseRectangle(x, y, width, height));
         }
 
-        public void ShowImage(byte x, byte y, string imageFilePath, Color color = Color.Black)
+        public void ShowImage(byte x, byte y, string imageFilePath, LCDColor color = LCDColor.Black)
         {
             Execute(new ShowImage(x, y, imageFilePath, color));
         }
@@ -639,7 +653,7 @@ namespace Mindstorms.Core.EV3
 
         #region General
 
-        private ICommandReply Execute(Command command)
+        public ICommandReply Execute(Command command)
         {
             ICommandReply result = null;
             var hasError = false;
@@ -688,7 +702,7 @@ namespace Mindstorms.Core.EV3
             return result;
         }
 
-        private void ExecuteAndWait(AwaitableCommand command)
+        public void ExecuteAndWait(AwaitableCommand command)
         {
             Execute(command);
             Thread.Sleep(command.DurationMs);

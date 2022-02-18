@@ -1,4 +1,5 @@
-﻿using Mindstorms.Core.Enums;
+﻿using Mindstorms.Core.Commands.Sensor;
+using Mindstorms.Core.Enums;
 
 namespace Mindstorms.Core.Commands.Motor
 {
@@ -6,7 +7,7 @@ namespace Mindstorms.Core.Commands.Motor
     {
         public ReadLightSensor(SensorPort sensorPort, LightSensorMode sensorMode)
         {
-            data = GetData((byte)sensorPort, (byte)SensorType.Color, (byte)sensorMode);
+            data = GetData((byte)sensorPort, (byte)SensorType.Color, (byte)sensorMode, InputSubCode.ReadySI);
         }
     }
 }

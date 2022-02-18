@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Motor
+namespace Mindstorms.Core.Commands.Input
 {
     public class GetSensorType : Command
     {

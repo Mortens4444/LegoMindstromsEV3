@@ -59,8 +59,10 @@
     <Compile Include="Commands\Object\Stop.cs" />
     <Compile Include="Commands\PowerControl\Shutdown.cs" />
     <Compile Include="Commands\Program\GetInfo.cs" />
+    <Compile Include="Commands\Program\StopBase.cs" />
     <Compile Include="Commands\Program\StopCurrent.cs" />
     <Compile Include="Commands\Sensor\ReadInfraredSensor.cs" />
+    <Compile Include="Commands\Sensor\GetName.cs" />
     <Compile Include="Commands\System\GetBatteryLevel.cs" />
     <Compile Include="Commands\System\GetBatteryTemperatureRise.cs" />
     <Compile Include="Commands\System\GetFirmwareBuild.cs" />
@@ -94,8 +96,8 @@
     <Compile Include="Commands\Button\GetButtonStates.cs" />
     <Compile Include="Commands\Input\GetSensorType.cs" />
     <Compile Include="Commands\Motor\SetLargeMotorSpeed.cs" />
-    <Compile Include="Commands\SensorCommand.cs" />
-    <Compile Include="Commands\LCDCommand.cs" />
+    <Compile Include="Commands\Sensor\SensorCommand.cs" />
+    <Compile Include="Commands\LCD\LCDCommand.cs" />
     <Compile Include="Commands\File\ListOpenHandles.cs" />
     <Compile Include="Commands\File\CloseFileHandle.cs" />
     <Compile Include="Commands\File\ContinueGetFile.cs" />
@@ -113,7 +115,7 @@
     <Compile Include="Commands\LCD\DrawLine.cs" />
     <Compile Include="Commands\LCD\Clean.cs" />
     <Compile Include="Commands\LED\ChangeLedsState.cs" />
-    <Compile Include="Commands\MailBox\Write.cs" />
+    <Compile Include="Commands\MailBox\SendMail.cs" />
     <Compile Include="Commands\PowerControl\KeepAlive.cs" />
     <Compile Include="Commands\Program\SystemCall.cs" />
     <Compile Include="Commands\Program\Stop.cs" />
@@ -149,7 +151,7 @@
     <Compile Include="Enums\UltrasonicSensorMode.cs" />
     <Compile Include="Enums\OpCode.cs" />
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Enums\Color.cs" />
+    <Compile Include="Enums\LCDColor.cs" />
     <Compile Include="Enums\CommandType.cs" />
     <Compile Include="Enums\ConstantParameterType.cs" />
     <Compile Include="Enums\DaisyChainLayer.cs" />

@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mindstorms.Core.Commands.File
+namespace Mindstorms.Core.Commands.MailBox
 {
-    public class Write : Command
+    public class SendMail : Command
     {
 #warning This command must be tested.
-        public Write(string name, string message)
+        public SendMail(string name, string message)
         {
             var dataList = new List<byte>
             {
