@@ -2,7 +2,7 @@
 
 namespace Mindstorms.Core.Commands.Sensor
 {
-    public abstract class SensorCommand : Command
+    public abstract class SensorRead : Command
     {
         protected byte[] GetData(byte sensorPort, byte sensorType, byte sensorMode, InputSubCode inputSubCode)
         {

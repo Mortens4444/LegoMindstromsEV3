@@ -19,7 +19,7 @@ namespace Mindstorms.Game.Circles
 
         public CircleEater(byte radius) : base(
             (byte)random.Next(radius, LCDCommand.ScreenWidth - radius),
-            (byte)random.Next(radius, LCDCommand.ScreenHeight - radius), radius, true)
+            (byte)random.Next(radius, LCDCommand.ScreenHeight - radius), radius, false)
         {
             ChangeMoving();
         }

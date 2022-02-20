@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Commands.LCD;
+using Mindstorms.Core.Drawing;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Responses;
 using Mindstorms.Game.Circles;
@@ -29,6 +30,7 @@ namespace Mindstorms.Game.Snake
             movingHandler = new MovingHandler(player);
             enemies = new List<CircleEater>();
 
+            var playerZone = new EV3Circle(LCDCommand.HorizontalCenter, LCDCommand.VerticalCenter, 20, false);
             for (int i = 0; i < NumberOfEnemies; i++)
             {
                 CircleEater enemy;
@@ -36,7 +38,7 @@ namespace Mindstorms.Game.Snake
                 {
                     enemy = new CircleEater((byte)random.Next(2, 10));
                 }
-                while (player.IsColliding(enemy));
+                while (playerZone.IsColliding(enemy));
                 enemies.Add(enemy);
             }
         }

@@ -15,7 +15,7 @@ namespace Mindstorms.Game.Snake
         {
             for (byte i = 0; i < Constants.NumberOfBodyParts; i++)
             {
-                bodyParts.Add(new EV3Circle((byte)(LCDCommand.HorizontalCenter + ((int)Direction * i * MovingDifferenceProvider.PixelsToMove)), LCDCommand.VerticalCenter, Constants.WormBodyRadius, true));
+                bodyParts.Add(new EV3Circle((byte)(20 + ((int)Direction * i * MovingDifferenceProvider.PixelsToMove)), LCDCommand.VerticalCenter, Constants.WormBodyRadius, true));
             }
         }
 

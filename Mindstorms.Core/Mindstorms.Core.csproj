@@ -83,6 +83,7 @@
     <Compile Include="Enums\CommunicationInterface.cs" />
     <Compile Include="Enums\ComSetSubCommand.cs" />
     <Compile Include="Enums\InfraredBeaconButtonsCombination.cs" />
+    <Compile Include="Enums\InfraredChannel.cs" />
     <Compile Include="Enums\InfraredSensorMode.cs" />
     <Compile Include="Enums\MotorMode.cs" />
     <Compile Include="Enums\ProgramMode.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="Commands\Button\GetButtonStates.cs" />
     <Compile Include="Commands\Input\GetSensorType.cs" />
     <Compile Include="Commands\Motor\SetLargeMotorSpeed.cs" />
-    <Compile Include="Commands\Sensor\SensorCommand.cs" />
+    <Compile Include="Commands\Sensor\SensorRead.cs" />
     <Compile Include="Commands\LCD\LCDCommand.cs" />
     <Compile Include="Commands\File\ListOpenHandles.cs" />
     <Compile Include="Commands\File\CloseFileHandle.cs" />

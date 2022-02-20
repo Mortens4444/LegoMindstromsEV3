@@ -3,7 +3,7 @@ using Mindstorms.Core.Enums;
 
 namespace Mindstorms.Core.Commands.Motor
 {
-    public class ReadTouchSensor : SensorCommand
+    public class ReadTouchSensor : SensorRead
     {
         public ReadTouchSensor(SensorPort sensorPort, TouchSensorMode sensorMode)
         {

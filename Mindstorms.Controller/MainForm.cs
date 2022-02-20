@@ -36,7 +36,7 @@ namespace Mindstorms.Controller
         {
             InitializeComponent();
 
-            tscbLeverMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.A.GetIndex());
+            tscbLeverMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.D.GetIndex());
             tscbLeftMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.B.GetIndex());
             tscbRightMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.C.GetIndex());
             cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());

@@ -18,17 +18,18 @@ namespace Mindstorms.Controller.SensorRead
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
-            cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)SensorPort.In2);
+            cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)SensorPort.In4);
             cbSensorMode.FillAndSelect(Enum.GetValues(typeof(InfraredSensorMode)), (byte)InfraredSensorMode.InfraredRemoteMode);
         }
 
         private void BtnStartStopRead_Click(object sender, EventArgs e)
         {
-            if (!readSensor)
+            cbSensorMode.Enabled = readSensor;
+            readSensor = !readSensor;
+            if (readSensor)
             {
                 var sensorPort = (SensorPort)cbSensorPort.SelectedItem;
                 var sensorMode = (InfraredSensorMode)cbSensorMode.SelectedItem;
-                readSensor = true;
                 btnStartStopRead.Text = "Stop";
 
                 Task.Factory.StartNew(() =>
@@ -50,7 +51,6 @@ namespace Mindstorms.Controller.SensorRead
             }
             else
             {
-                readSensor = false;
                 btnStartStopRead.Text = "Start";
                 lblResult.Text = String.Empty;
                 Update();

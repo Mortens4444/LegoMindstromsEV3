@@ -24,11 +24,12 @@ namespace Mindstorms.Controller.SensorRead
 
         private void BtnStartStopRead_Click(object sender, EventArgs e)
         {
-            if (!readSensor)
+            cbSensorMode.Enabled = readSensor;
+            readSensor = !readSensor;
+            if (readSensor)
             {
                 var sensorPort = (SensorPort)cbSensorPort.SelectedItem;
                 var sensorMode = (GyroSensorMode)cbSensorMode.SelectedItem;
-                readSensor = true;
                 btnStartStopRead.Text = "Stop";
 
                 Task.Factory.StartNew(() =>
@@ -50,7 +51,6 @@ namespace Mindstorms.Controller.SensorRead
             }
             else
             {
-                readSensor = false;
                 btnStartStopRead.Text = "Start";
                 lblResult.Text = String.Empty;
                 Update();

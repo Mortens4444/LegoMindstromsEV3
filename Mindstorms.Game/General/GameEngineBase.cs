@@ -70,9 +70,9 @@ namespace Mindstorms.Game.General
 
         private void Pause()
         {
-            brick.ShowOnMiddleOfScreen("Paused", FontType.Normal);
+            brick.ClearScreen();
+            brick.ShowOnMiddleOfScreen("Paused", FontType.Big);
             brick.ShowOnMiddleOfScreen("Press down/up key", FontType.Normal, 30);
-            brick.UpdateScreen();
 
             ButtonStates buttonStates;
             do

@@ -36,6 +36,11 @@
             this.cbSensorMode = new System.Windows.Forms.ComboBox();
             this.lblSensorPort = new System.Windows.Forms.Label();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
+            this.btnRedUpper = new System.Windows.Forms.Button();
+            this.btnRedLower = new System.Windows.Forms.Button();
+            this.btnBlueUpper = new System.Windows.Forms.Button();
+            this.btnBlueLower = new System.Windows.Forms.Button();
+            this.btnLong = new System.Windows.Forms.Button();
             this.pMain.SuspendLayout();
             this.gbLightSensor.SuspendLayout();
             this.SuspendLayout();
@@ -46,11 +51,16 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(334, 91);
+            this.pMain.Size = new System.Drawing.Size(334, 205);
             this.pMain.TabIndex = 0;
             // 
             // gbLightSensor
             // 
+            this.gbLightSensor.Controls.Add(this.btnLong);
+            this.gbLightSensor.Controls.Add(this.btnBlueLower);
+            this.gbLightSensor.Controls.Add(this.btnBlueUpper);
+            this.gbLightSensor.Controls.Add(this.btnRedLower);
+            this.gbLightSensor.Controls.Add(this.btnRedUpper);
             this.gbLightSensor.Controls.Add(this.lblResult);
             this.gbLightSensor.Controls.Add(this.btnStartStopRead);
             this.gbLightSensor.Controls.Add(this.lblSensorMode);
@@ -60,7 +70,7 @@
             this.gbLightSensor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbLightSensor.Location = new System.Drawing.Point(0, 0);
             this.gbLightSensor.Name = "gbLightSensor";
-            this.gbLightSensor.Size = new System.Drawing.Size(334, 91);
+            this.gbLightSensor.Size = new System.Drawing.Size(334, 205);
             this.gbLightSensor.TabIndex = 0;
             this.gbLightSensor.TabStop = false;
             // 
@@ -118,15 +128,52 @@
             this.cbSensorPort.Size = new System.Drawing.Size(75, 21);
             this.cbSensorPort.TabIndex = 6;
             // 
+            // btnRedUpper
+            // 
+            this.btnRedUpper.Location = new System.Drawing.Point(208, 129);
+            this.btnRedUpper.Name = "btnRedUpper";
+            this.btnRedUpper.Size = new System.Drawing.Size(23, 23);
+            this.btnRedUpper.TabIndex = 12;
+            this.btnRedUpper.UseVisualStyleBackColor = true;
+            // 
+            // btnRedLower
+            // 
+            this.btnRedLower.Location = new System.Drawing.Point(208, 158);
+            this.btnRedLower.Name = "btnRedLower";
+            this.btnRedLower.Size = new System.Drawing.Size(23, 23);
+            this.btnRedLower.TabIndex = 13;
+            this.btnRedLower.UseVisualStyleBackColor = true;
+            // 
+            // btnBlueUpper
+            // 
+            this.btnBlueUpper.Location = new System.Drawing.Point(237, 129);
+            this.btnBlueUpper.Name = "btnBlueUpper";
+            this.btnBlueUpper.Size = new System.Drawing.Size(23, 23);
+            this.btnBlueUpper.TabIndex = 14;
+            this.btnBlueUpper.UseVisualStyleBackColor = true;
+            // 
+            // btnBlueLower
+            // 
+            this.btnBlueLower.Location = new System.Drawing.Point(237, 158);
+            this.btnBlueLower.Name = "btnBlueLower";
+            this.btnBlueLower.Size = new System.Drawing.Size(23, 23);
+            this.btnBlueLower.TabIndex = 15;
+            this.btnBlueLower.UseVisualStyleBackColor = true;
+            // 
+            // btnLong
+            // 
+            this.btnLong.Location = new System.Drawing.Point(208, 100);
+            this.btnLong.Name = "btnLong";
+            this.btnLong.Size = new System.Drawing.Size(52, 23);
+            this.btnLong.TabIndex = 16;
+            this.btnLong.UseVisualStyleBackColor = true;
             // InfraredSensorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 91);
+            this.ClientSize = new System.Drawing.Size(334, 205);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(350, 130);
-            this.MinimumSize = new System.Drawing.Size(350, 130);
             this.Name = "InfraredSensorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Infrared sensor";
@@ -148,5 +195,10 @@
         private System.Windows.Forms.ComboBox cbSensorMode;
         private System.Windows.Forms.Label lblSensorPort;
         private System.Windows.Forms.ComboBox cbSensorPort;
+        private System.Windows.Forms.Button btnBlueLower;
+        private System.Windows.Forms.Button btnBlueUpper;
+        private System.Windows.Forms.Button btnRedLower;
+        private System.Windows.Forms.Button btnRedUpper;
+        private System.Windows.Forms.Button btnLong;
     }
 }

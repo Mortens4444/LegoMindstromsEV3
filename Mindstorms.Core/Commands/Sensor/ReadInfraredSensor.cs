@@ -3,7 +3,7 @@ using Mindstorms.Core.Enums;
 
 namespace Mindstorms.Core.Commands.Motor
 {
-    public class ReadInfraredSensor : SensorCommand
+    public class ReadInfraredSensor : SensorRead
     {
         public ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode)
         {
