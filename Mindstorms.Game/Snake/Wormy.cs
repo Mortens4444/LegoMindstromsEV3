@@ -15,7 +15,7 @@ namespace Mindstorms.Game.Snake
         {
             for (byte i = 0; i < Constants.NumberOfBodyParts; i++)
             {
-                bodyParts.Add(new EV3Circle((byte)(20 + ((int)Direction * i * MovingDifferenceProvider.PixelsToMove)), LCDCommand.VerticalCenter, Constants.WormBodyRadius, true));
+                bodyParts.Add(new EV3Circle((byte)(20 + ((int)Direction * i * MovingDifferenceProvider.PixelsToMove)), LCDCommand.VerticalCenter, Constants.WormBodyRadius, false));
             }
         }
 
@@ -32,16 +32,15 @@ namespace Mindstorms.Game.Snake
             bodyParts.RemoveAt(0);
             var head = GetHead();
             var movingModifier = movingDifferenceProvider.GetMovingDifference(Direction);
-            bodyParts.Add(new EV3Circle((byte)(head.Center.X + movingModifier.DeltaX), (byte)(head.Center.Y + movingModifier.DeltaY), Constants.WormBodyRadius, true));
-
+            bodyParts.Add(new EV3Circle((byte)(head.Center.X + movingModifier.DeltaX), (byte)(head.Center.Y + movingModifier.DeltaY), Constants.WormBodyRadius, false));
             return LCDCommand.IsPointInScreen(head.Center) && !HasCollision();
         }
 
-        public bool CanConsumeFood(EV3Point foodLocation)
+        public bool CanConsumeFood(EV3Circle foodLocation)
         {
             for (int i = 0; i < bodyParts.Count; i++)
             {
-                if (bodyParts[i].Center.GetDistance(foodLocation) <= Constants.WormBodyRadius)
+                if (bodyParts[i].IsColliding(foodLocation))
                 {
                     return true;
                 }
@@ -55,7 +54,7 @@ namespace Mindstorms.Game.Snake
             var tail = GetTail();
             for (int i = 0; i < count; i++)
             {
-                bodyParts.Insert(0, new EV3Circle(tail.Center.X, tail.Center.Y, Constants.WormBodyRadius, true));
+                bodyParts.Insert(0, new EV3Circle(tail.Center.X, tail.Center.Y, Constants.WormBodyRadius, false));
             }
         }
 

@@ -4,7 +4,7 @@ namespace Mindstorms.Game.General
 {
     public class MovingDifferenceProvider
     {
-        public const byte PixelsToMove = 3;
+        public const byte PixelsToMove = 4;
 
         private readonly Dictionary<Direction, MovingDifference> differences = new Dictionary<Direction, MovingDifference>()
         {

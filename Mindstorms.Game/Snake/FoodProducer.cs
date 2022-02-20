@@ -20,9 +20,9 @@ namespace Mindstorms.Game.Snake
             brick.DrawCircle(circle);
         }
 
-        public EV3Point GetFoodLocation()
+        public EV3Circle GetFoodLocation()
         {
-            return circle.Center;
+            return circle;
         }
 
         public void ProduceFood()

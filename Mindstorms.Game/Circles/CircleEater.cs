@@ -39,26 +39,51 @@ namespace Mindstorms.Game.Circles
 
         private void ChangeDirection()
         {
-            if (GetRandomBool())
+            bool upAndDown, leftAndRight;
+
+            do
             {
-                MoveDown(false);
-                MoveUp(true);
+                upAndDown = GetRandomBool();
+                leftAndRight = GetRandomBool();
+            }
+            while (!upAndDown && !leftAndRight);
+
+            if (upAndDown)
+            {
+                if (GetRandomBool())
+                {
+                    MoveDown(false);
+                    MoveUp(true);
+                }
+                else
+                {
+                    MoveUp(false);
+                    MoveDown(true);
+                }
             }
             else
             {
                 MoveUp(false);
-                MoveDown(true);
+                MoveDown(false);
             }
 
-            if (GetRandomBool())
+            if (leftAndRight)
             {
-                MoveRight(false);
-                MoveLeft(true);
+                if (GetRandomBool())
+                {
+                    MoveRight(false);
+                    MoveLeft(true);
+                }
+                else
+                {
+                    MoveLeft(false);
+                    MoveRight(true);
+                }
             }
             else
             {
                 MoveLeft(false);
-                MoveRight(true);
+                MoveRight(false);
             }
         }
 

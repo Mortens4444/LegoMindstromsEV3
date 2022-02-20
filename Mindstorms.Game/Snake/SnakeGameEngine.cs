@@ -36,7 +36,7 @@ namespace Mindstorms.Game.Snake
                 if (worm.CanConsumeFood(foodProducer.GetFoodLocation()))
                 {
                     var nutrition = foodProducer.GetFoodNutrition();
-                    scoreCounter.Add(nutrition);
+                    scoreCounter.Add(nutrition * 2);
                     if (scoreCounter.Score > Constants.MaxPoints)
                     {
                         message = "You won!";
