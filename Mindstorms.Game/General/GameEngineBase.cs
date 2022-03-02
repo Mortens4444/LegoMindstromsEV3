@@ -64,7 +64,7 @@ namespace Mindstorms.Game.General
 
         private void Initialize()
         {
-            GameFrame.Upload(brick);
+            GameFrame.UploadAndStart(brick);
             brick.ChangeTopLine(State.Disable);
         }
 

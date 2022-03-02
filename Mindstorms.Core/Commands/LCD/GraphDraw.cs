@@ -4,7 +4,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class GraphDraw : LCDCommand
     {
-#warning 'This command must be tested.'
+#warning This command must be tested.
         public GraphDraw(byte view)
         {
             data = new byte[]

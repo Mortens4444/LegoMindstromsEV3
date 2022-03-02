@@ -31,18 +31,23 @@
             this.components = new System.ComponentModel.Container();
             this.pMain = new System.Windows.Forms.Panel();
             this.gbFilesystem = new System.Windows.Forms.GroupBox();
+            this.btnStopProgram = new System.Windows.Forms.Button();
             this.lblWorkingDirectory = new System.Windows.Forms.Label();
             this.lvDirectoryContent = new System.Windows.Forms.ListView();
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHash = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdFolderContent = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiDownloadFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.downloadFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.btnStopProgram = new System.Windows.Forms.Button();
+            this.tsmiDownloadFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.pMain.SuspendLayout();
             this.gbFilesystem.SuspendLayout();
             this.cmdFolderContent.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pMain
@@ -59,6 +64,7 @@
             this.gbFilesystem.Controls.Add(this.btnStopProgram);
             this.gbFilesystem.Controls.Add(this.lblWorkingDirectory);
             this.gbFilesystem.Controls.Add(this.lvDirectoryContent);
+            this.gbFilesystem.Controls.Add(this.statusStrip);
             this.gbFilesystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbFilesystem.Location = new System.Drawing.Point(0, 0);
             this.gbFilesystem.Name = "gbFilesystem";
@@ -66,6 +72,17 @@
             this.gbFilesystem.TabIndex = 8;
             this.gbFilesystem.TabStop = false;
             this.gbFilesystem.Text = "Filesystem";
+            // 
+            // btnStopProgram
+            // 
+            this.btnStopProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStopProgram.Image = global::Mindstorms.Controller.Properties.Resources.stop;
+            this.btnStopProgram.Location = new System.Drawing.Point(760, 11);
+            this.btnStopProgram.Name = "btnStopProgram";
+            this.btnStopProgram.Size = new System.Drawing.Size(33, 23);
+            this.btnStopProgram.TabIndex = 4;
+            this.btnStopProgram.UseVisualStyleBackColor = true;
+            this.btnStopProgram.Click += new System.EventHandler(this.BtnStopProgram_Click);
             // 
             // lblWorkingDirectory
             // 
@@ -84,13 +101,14 @@
             this.lvDirectoryContent.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chName,
             this.chType,
-            this.chSize});
+            this.chSize,
+            this.chHash});
             this.lvDirectoryContent.ContextMenuStrip = this.cmdFolderContent;
             this.lvDirectoryContent.FullRowSelect = true;
             this.lvDirectoryContent.HideSelection = false;
             this.lvDirectoryContent.Location = new System.Drawing.Point(7, 36);
             this.lvDirectoryContent.Name = "lvDirectoryContent";
-            this.lvDirectoryContent.Size = new System.Drawing.Size(787, 405);
+            this.lvDirectoryContent.Size = new System.Drawing.Size(787, 386);
             this.lvDirectoryContent.TabIndex = 2;
             this.lvDirectoryContent.UseCompatibleStateImageBehavior = false;
             this.lvDirectoryContent.View = System.Windows.Forms.View.Details;
@@ -109,31 +127,46 @@
             // 
             this.chSize.Text = "Size";
             // 
+            // chHash
+            // 
+            this.chHash.Text = "Hash";
+            // 
             // cmdFolderContent
             // 
             this.cmdFolderContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiDownloadFile});
+            this.tsmiDownloadFiles,
+            this.tsmiDeleteFiles});
             this.cmdFolderContent.Name = "cmdFolderContent";
-            this.cmdFolderContent.Size = new System.Drawing.Size(148, 26);
-            this.cmdFolderContent.Opening += new System.ComponentModel.CancelEventHandler(this.CmdFolderContent_Opening);
+            this.cmdFolderContent.Size = new System.Drawing.Size(161, 48);
             // 
-            // tsmiDownloadFile
+            // tsmiDownloadFiles
             // 
-            this.tsmiDownloadFile.Name = "tsmiDownloadFile";
-            this.tsmiDownloadFile.Size = new System.Drawing.Size(147, 22);
-            this.tsmiDownloadFile.Text = "Download file";
-            this.tsmiDownloadFile.Click += new System.EventHandler(this.TsmiDownloadFile_Click);
+            this.tsmiDownloadFiles.Name = "tsmiDownloadFiles";
+            this.tsmiDownloadFiles.Size = new System.Drawing.Size(160, 22);
+            this.tsmiDownloadFiles.Text = "Download file(s)";
+            this.tsmiDownloadFiles.Click += new System.EventHandler(this.TsmiDownloadFile_Click);
             // 
-            // btnStopProgram
+            // tsmiDeleteFiles
             // 
-            this.btnStopProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStopProgram.Image = global::Mindstorms.Controller.Properties.Resources.stop;
-            this.btnStopProgram.Location = new System.Drawing.Point(760, 11);
-            this.btnStopProgram.Name = "btnStopProgram";
-            this.btnStopProgram.Size = new System.Drawing.Size(33, 23);
-            this.btnStopProgram.TabIndex = 4;
-            this.btnStopProgram.UseVisualStyleBackColor = true;
-            this.btnStopProgram.Click += new System.EventHandler(this.BtnStopProgram_Click);
+            this.tsmiDeleteFiles.Name = "tsmiDeleteFiles";
+            this.tsmiDeleteFiles.Size = new System.Drawing.Size(160, 22);
+            this.tsmiDeleteFiles.Text = "Delete file(s)";
+            this.tsmiDeleteFiles.Click += new System.EventHandler(this.TsmiDeleteFiles_Click);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslStatus});
+            this.statusStrip.Location = new System.Drawing.Point(3, 425);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(794, 22);
+            this.statusStrip.TabIndex = 5;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // tsslStatus
+            // 
+            this.tsslStatus.Name = "tsslStatus";
+            this.tsslStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // FileSystemForm
             // 
@@ -149,6 +182,8 @@
             this.gbFilesystem.ResumeLayout(false);
             this.gbFilesystem.PerformLayout();
             this.cmdFolderContent.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -164,7 +199,11 @@
         private System.Windows.Forms.ColumnHeader chType;
         private System.Windows.Forms.ColumnHeader chSize;
         private System.Windows.Forms.ContextMenuStrip cmdFolderContent;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDownloadFile;
-        private System.Windows.Forms.SaveFileDialog downloadFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDownloadFiles;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeleteFiles;
+        private System.Windows.Forms.ColumnHeader chHash;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
     }
 }

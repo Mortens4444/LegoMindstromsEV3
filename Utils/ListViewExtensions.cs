@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Utils
@@ -10,6 +12,8 @@ namespace Utils
         public const string Directory = "DIR";
 
         public const string ParentDirectory = "..";
+
+        private static readonly Comparison<ListViewItem> Comparer = new Comparison<ListViewItem>((item1, item2) => { return String.Compare(item1.Text, item2.Text); });
 
         public static void PopulateWithLegoMindstormEV3FolderContent(this ListView listView, IEnumerable<string> folderContent, bool addLinkToParentDirectory)
         {
@@ -26,6 +30,7 @@ namespace Utils
                 listView.Items.Add(listViewItem);
             }
 
+            var items = new List<ListViewItem>();
             foreach (var item in folderContent)
             {
                 listViewItem = new ListViewItem();
@@ -42,14 +47,24 @@ namespace Utils
                         if (properties.Length > 2)
                         {
                             var fileSize = Int32.Parse(properties[1], NumberStyles.HexNumber);
-                            listViewItem.Text = properties[2];
+                            listViewItem.Text = String.Join(" ", properties.Skip(2));
                             listViewItem.SubItems.Add(String.Empty);
                             listViewItem.SubItems.Add(fileSize.ToString());
+                            listViewItem.SubItems.Add(properties[0]);
                         }
                     }
-                    listView.Items.Add(listViewItem);
+                    items.Add(listViewItem);
                 }
             }
+            items.Sort(Comparer);
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    items[i].BackColor = Color.LightBlue;
+                }
+            }
+            listView.Items.AddRange(items.ToArray());
         }
     }
 }

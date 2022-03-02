@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotorForm));
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMotor = new System.Windows.Forms.GroupBox();
+            this.btnRefreshPositions = new System.Windows.Forms.Button();
+            this.lblLeverMotorPosition = new System.Windows.Forms.Label();
+            this.lblRightMotorPosition = new System.Windows.Forms.Label();
+            this.lblLeftMotorPosition = new System.Windows.Forms.Label();
             this.btnSetLeverMotorSpeed = new System.Windows.Forms.Button();
             this.tbLeverSpeed = new System.Windows.Forms.TrackBar();
             this.tbAccelerate = new System.Windows.Forms.TrackBar();
@@ -44,10 +48,6 @@
             this.chkTimeout = new System.Windows.Forms.CheckBox();
             this.nudTimeout = new System.Windows.Forms.NumericUpDown();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.lblLeftMotorPosition = new System.Windows.Forms.Label();
-            this.lblRightMotorPosition = new System.Windows.Forms.Label();
-            this.lblLeverMotorPosition = new System.Windows.Forms.Label();
-            this.btnRefreshPositions = new System.Windows.Forms.Button();
             this.pMain.SuspendLayout();
             this.gbMotor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeverSpeed)).BeginInit();
@@ -63,7 +63,7 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(303, 149);
+            this.pMain.Size = new System.Drawing.Size(361, 149);
             this.pMain.TabIndex = 0;
             // 
             // gbMotor
@@ -86,14 +86,48 @@
             this.gbMotor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMotor.Location = new System.Drawing.Point(0, 0);
             this.gbMotor.Name = "gbMotor";
-            this.gbMotor.Size = new System.Drawing.Size(303, 149);
+            this.gbMotor.Size = new System.Drawing.Size(361, 149);
             this.gbMotor.TabIndex = 7;
             this.gbMotor.TabStop = false;
+            // 
+            // btnRefreshPositions
+            // 
+            this.btnRefreshPositions.Location = new System.Drawing.Point(209, 118);
+            this.btnRefreshPositions.Name = "btnRefreshPositions";
+            this.btnRefreshPositions.Size = new System.Drawing.Size(105, 23);
+            this.btnRefreshPositions.TabIndex = 31;
+            this.btnRefreshPositions.Text = "Refresh positions";
+            this.btnRefreshPositions.UseVisualStyleBackColor = true;
+            this.btnRefreshPositions.Click += new System.EventHandler(this.BtnRefreshPositions_Click);
+            // 
+            // lblLeverMotorPosition
+            // 
+            this.lblLeverMotorPosition.AutoSize = true;
+            this.lblLeverMotorPosition.Location = new System.Drawing.Point(206, 16);
+            this.lblLeverMotorPosition.Name = "lblLeverMotorPosition";
+            this.lblLeverMotorPosition.Size = new System.Drawing.Size(0, 13);
+            this.lblLeverMotorPosition.TabIndex = 30;
+            // 
+            // lblRightMotorPosition
+            // 
+            this.lblRightMotorPosition.AutoSize = true;
+            this.lblRightMotorPosition.Location = new System.Drawing.Point(103, 16);
+            this.lblRightMotorPosition.Name = "lblRightMotorPosition";
+            this.lblRightMotorPosition.Size = new System.Drawing.Size(0, 13);
+            this.lblRightMotorPosition.TabIndex = 29;
+            // 
+            // lblLeftMotorPosition
+            // 
+            this.lblLeftMotorPosition.AutoSize = true;
+            this.lblLeftMotorPosition.Location = new System.Drawing.Point(11, 16);
+            this.lblLeftMotorPosition.Name = "lblLeftMotorPosition";
+            this.lblLeftMotorPosition.Size = new System.Drawing.Size(0, 13);
+            this.lblLeftMotorPosition.TabIndex = 28;
             // 
             // btnSetLeverMotorSpeed
             // 
             this.btnSetLeverMotorSpeed.Image = global::Mindstorms.Controller.Properties.Resources.lever;
-            this.btnSetLeverMotorSpeed.Location = new System.Drawing.Point(195, 63);
+            this.btnSetLeverMotorSpeed.Location = new System.Drawing.Point(227, 63);
             this.btnSetLeverMotorSpeed.Name = "btnSetLeverMotorSpeed";
             this.btnSetLeverMotorSpeed.Size = new System.Drawing.Size(23, 23);
             this.btnSetLeverMotorSpeed.TabIndex = 27;
@@ -103,7 +137,7 @@
             // 
             // tbLeverSpeed
             // 
-            this.tbLeverSpeed.Location = new System.Drawing.Point(168, 34);
+            this.tbLeverSpeed.Location = new System.Drawing.Point(200, 34);
             this.tbLeverSpeed.Maximum = 100;
             this.tbLeverSpeed.Minimum = -100;
             this.tbLeverSpeed.Name = "tbLeverSpeed";
@@ -113,7 +147,7 @@
             // 
             // tbAccelerate
             // 
-            this.tbAccelerate.Location = new System.Drawing.Point(80, 113);
+            this.tbAccelerate.Location = new System.Drawing.Point(100, 113);
             this.tbAccelerate.Maximum = 50;
             this.tbAccelerate.Minimum = 1;
             this.tbAccelerate.Name = "tbAccelerate";
@@ -124,7 +158,7 @@
             // chkAccelerate
             // 
             this.chkAccelerate.AutoSize = true;
-            this.chkAccelerate.Location = new System.Drawing.Point(86, 92);
+            this.chkAccelerate.Location = new System.Drawing.Point(106, 92);
             this.chkAccelerate.Name = "chkAccelerate";
             this.chkAccelerate.Size = new System.Drawing.Size(77, 17);
             this.chkAccelerate.TabIndex = 23;
@@ -145,7 +179,7 @@
             // btnSetRightMotorSpeed
             // 
             this.btnSetRightMotorSpeed.Image = ((System.Drawing.Image)(resources.GetObject("btnSetRightMotorSpeed.Image")));
-            this.btnSetRightMotorSpeed.Location = new System.Drawing.Point(118, 63);
+            this.btnSetRightMotorSpeed.Location = new System.Drawing.Point(140, 63);
             this.btnSetRightMotorSpeed.Name = "btnSetRightMotorSpeed";
             this.btnSetRightMotorSpeed.Size = new System.Drawing.Size(23, 23);
             this.btnSetRightMotorSpeed.TabIndex = 22;
@@ -156,7 +190,7 @@
             // btnSetBothMotorSpeed
             // 
             this.btnSetBothMotorSpeed.Image = global::Mindstorms.Controller.Properties.Resources.pair_of_gears;
-            this.btnSetBothMotorSpeed.Location = new System.Drawing.Point(65, 63);
+            this.btnSetBothMotorSpeed.Location = new System.Drawing.Point(76, 63);
             this.btnSetBothMotorSpeed.Name = "btnSetBothMotorSpeed";
             this.btnSetBothMotorSpeed.Size = new System.Drawing.Size(23, 23);
             this.btnSetBothMotorSpeed.TabIndex = 5;
@@ -166,7 +200,7 @@
             // 
             // tbRightSpeed
             // 
-            this.tbRightSpeed.Location = new System.Drawing.Point(76, 33);
+            this.tbRightSpeed.Location = new System.Drawing.Point(98, 33);
             this.tbRightSpeed.Maximum = 100;
             this.tbRightSpeed.Minimum = -100;
             this.tbRightSpeed.Name = "tbRightSpeed";
@@ -218,45 +252,11 @@
             0,
             0});
             // 
-            // lblLeftMotorPosition
-            // 
-            this.lblLeftMotorPosition.AutoSize = true;
-            this.lblLeftMotorPosition.Location = new System.Drawing.Point(11, 16);
-            this.lblLeftMotorPosition.Name = "lblLeftMotorPosition";
-            this.lblLeftMotorPosition.Size = new System.Drawing.Size(0, 13);
-            this.lblLeftMotorPosition.TabIndex = 28;
-            // 
-            // lblRightMotorPosition
-            // 
-            this.lblRightMotorPosition.AutoSize = true;
-            this.lblRightMotorPosition.Location = new System.Drawing.Point(83, 16);
-            this.lblRightMotorPosition.Name = "lblRightMotorPosition";
-            this.lblRightMotorPosition.Size = new System.Drawing.Size(0, 13);
-            this.lblRightMotorPosition.TabIndex = 29;
-            // 
-            // lblLeverMotorPosition
-            // 
-            this.lblLeverMotorPosition.AutoSize = true;
-            this.lblLeverMotorPosition.Location = new System.Drawing.Point(183, 16);
-            this.lblLeverMotorPosition.Name = "lblLeverMotorPosition";
-            this.lblLeverMotorPosition.Size = new System.Drawing.Size(0, 13);
-            this.lblLeverMotorPosition.TabIndex = 30;
-            // 
-            // btnRefreshPositions
-            // 
-            this.btnRefreshPositions.Location = new System.Drawing.Point(168, 120);
-            this.btnRefreshPositions.Name = "btnRefreshPositions";
-            this.btnRefreshPositions.Size = new System.Drawing.Size(123, 23);
-            this.btnRefreshPositions.TabIndex = 31;
-            this.btnRefreshPositions.Text = "Refresh positions";
-            this.btnRefreshPositions.UseVisualStyleBackColor = true;
-            this.btnRefreshPositions.Click += new System.EventHandler(this.BtnRefreshPositions_Click);
-            // 
             // MotorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 149);
+            this.ClientSize = new System.Drawing.Size(361, 149);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MotorForm";

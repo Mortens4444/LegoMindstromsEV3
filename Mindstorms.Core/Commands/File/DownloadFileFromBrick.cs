@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.File
 {
-#warning May not work for big files.
     public class DownloadFileFromBrick : Command
     {
-        public const ushort MaxChunkSize = 65534;
+        public const ushort MaxChunkSize = 900;
 
-        public DownloadFileFromBrick(string filePath)
+        public DownloadFileFromBrick(string filePath, int fileSize)
         {
-            var maxBytesInReply = BitConverter.GetBytes(MaxChunkSize);
+            var bytesToRead = Math.Min(fileSize, MaxChunkSize);
+            var maxBytesInReply = BitConverter.GetBytes(bytesToRead);
 
             var dataList = new List<byte>
             {

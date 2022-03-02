@@ -1,8 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
-using System;
-using System.IO;
-using System.Linq;
+using Mindstorms.Core.Resources;
 
 namespace Mindstorms.Game.General
 {
@@ -12,19 +10,9 @@ namespace Mindstorms.Game.General
         /// Dirty hack to get an application running in the background.
         /// </summary>
         /// <param name="brick">The EV3 brick</param>
-        public static void Upload(Brick brick)
+        public static void UploadAndStart(Brick brick)
         {
-            var destinationFolder = "/home/root/lms2012/prjs";
-            var applicationName = "GameFrame.rbf";
-
-            var destinationAppName = $"{destinationFolder}/{applicationName}";
-
-            var folderContent = brick.GetFolderContent(destinationFolder);
-            if (!folderContent.Any(c => c.EndsWith($" {applicationName}")))
-            {
-                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", applicationName);
-                brick.CopyFileToBrick(path, destinationAppName);
-            }
+            var destinationAppName = ResourceUploader.UploadApplication(brick, "GameFrame.rbf");
             brick.Start(destinationAppName);
             brick.ChangeLedsState(LedPattern.Off);
         }

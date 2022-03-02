@@ -30,6 +30,11 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbScreen = new System.Windows.Forms.GroupBox();
+            this.btnShow = new System.Windows.Forms.Button();
+            this.cbEmbeddedImages = new System.Windows.Forms.ComboBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnSetLedsState = new System.Windows.Forms.ToolStripButton();
+            this.cbLedPattern = new System.Windows.Forms.ToolStripComboBox();
             this.chkFill = new System.Windows.Forms.CheckBox();
             this.tbText = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -41,9 +46,6 @@
             this.rbPixel = new System.Windows.Forms.RadioButton();
             this.btnClear = new System.Windows.Forms.Button();
             this.pDisplay = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnSetLedsState = new System.Windows.Forms.ToolStripButton();
-            this.cbLedPattern = new System.Windows.Forms.ToolStripComboBox();
             this.pMain.SuspendLayout();
             this.gbScreen.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -55,11 +57,13 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(194, 226);
+            this.pMain.Size = new System.Drawing.Size(194, 255);
             this.pMain.TabIndex = 0;
             // 
             // gbScreen
             // 
+            this.gbScreen.Controls.Add(this.btnShow);
+            this.gbScreen.Controls.Add(this.cbEmbeddedImages);
             this.gbScreen.Controls.Add(this.toolStrip1);
             this.gbScreen.Controls.Add(this.chkFill);
             this.gbScreen.Controls.Add(this.tbText);
@@ -75,9 +79,58 @@
             this.gbScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbScreen.Location = new System.Drawing.Point(0, 0);
             this.gbScreen.Name = "gbScreen";
-            this.gbScreen.Size = new System.Drawing.Size(194, 226);
+            this.gbScreen.Size = new System.Drawing.Size(194, 255);
             this.gbScreen.TabIndex = 0;
             this.gbScreen.TabStop = false;
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(133, 201);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(58, 23);
+            this.btnShow.TabIndex = 35;
+            this.btnShow.Text = "Show";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
+            // 
+            // cbEmbeddedImages
+            // 
+            this.cbEmbeddedImages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEmbeddedImages.FormattingEnabled = true;
+            this.cbEmbeddedImages.Location = new System.Drawing.Point(6, 203);
+            this.cbEmbeddedImages.Name = "cbEmbeddedImages";
+            this.cbEmbeddedImages.Size = new System.Drawing.Size(121, 21);
+            this.cbEmbeddedImages.TabIndex = 34;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSetLedsState,
+            this.cbLedPattern});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 227);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(188, 25);
+            this.toolStrip1.TabIndex = 33;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnSetLedsState
+            // 
+            this.btnSetLedsState.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSetLedsState.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSetLedsState.Image = global::Mindstorms.Controller.Properties.Resources.led;
+            this.btnSetLedsState.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSetLedsState.Name = "btnSetLedsState";
+            this.btnSetLedsState.Size = new System.Drawing.Size(23, 22);
+            this.btnSetLedsState.Text = "Change LEDs state";
+            this.btnSetLedsState.Click += new System.EventHandler(this.BtnSetLedsState_Click);
+            // 
+            // cbLedPattern
+            // 
+            this.cbLedPattern.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cbLedPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLedPattern.Name = "cbLedPattern";
+            this.cbLedPattern.Size = new System.Drawing.Size(121, 25);
             // 
             // chkFill
             // 
@@ -199,41 +252,12 @@
             this.pDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Display_MouseMove);
             this.pDisplay.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Display_MouseUp);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSetLedsState,
-            this.cbLedPattern});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 198);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(188, 25);
-            this.toolStrip1.TabIndex = 33;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnSetLedsState
-            // 
-            this.btnSetLedsState.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnSetLedsState.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSetLedsState.Image = global::Mindstorms.Controller.Properties.Resources.led;
-            this.btnSetLedsState.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSetLedsState.Name = "btnSetLedsState";
-            this.btnSetLedsState.Size = new System.Drawing.Size(23, 22);
-            this.btnSetLedsState.Text = "toolStripButton1";
-            this.btnSetLedsState.Click += new System.EventHandler(this.BtnSetLedsState_Click);
-            // 
-            // cbLedPattern
-            // 
-            this.cbLedPattern.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cbLedPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLedPattern.Name = "cbLedPattern";
-            this.cbLedPattern.Size = new System.Drawing.Size(121, 25);
-            // 
             // ScreenForm
             // 
+            this.AcceptButton = this.btnShow;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(194, 226);
+            this.ClientSize = new System.Drawing.Size(194, 255);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "ScreenForm";
@@ -266,5 +290,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnSetLedsState;
         private System.Windows.Forms.ToolStripComboBox cbLedPattern;
+        private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.ComboBox cbEmbeddedImages;
     }
 }

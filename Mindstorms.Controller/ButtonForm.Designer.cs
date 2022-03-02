@@ -36,13 +36,11 @@
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.cbButtonEvent = new System.Windows.Forms.ComboBox();
             this.gbButtonStates.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbButtonStates
             // 
-            this.gbButtonStates.Controls.Add(this.cbButtonEvent);
             this.gbButtonStates.Controls.Add(this.lblButtonStates);
             this.gbButtonStates.Controls.Add(this.btnDown);
             this.gbButtonStates.Controls.Add(this.btnRight);
@@ -121,18 +119,11 @@
             this.btnBack.Location = new System.Drawing.Point(16, 16);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(23, 23);
-            this.btnBack.TabIndex = 0;
+            this.btnBack.TabIndex = 6;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // cbButtonEvent
-            // 
-            this.cbButtonEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbButtonEvent.FormattingEnabled = true;
-            this.cbButtonEvent.Location = new System.Drawing.Point(47, 16);
-            this.cbButtonEvent.Name = "cbButtonEvent";
-            this.cbButtonEvent.Size = new System.Drawing.Size(127, 21);
-            this.cbButtonEvent.TabIndex = 13;
+            this.btnBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_MouseDown);
+            this.btnBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_MouseUp);
             // 
             // ButtonForm
             // 
@@ -161,6 +152,5 @@
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblButtonStates;
-        private System.Windows.Forms.ComboBox cbButtonEvent;
     }
 }

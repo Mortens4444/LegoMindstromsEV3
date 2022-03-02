@@ -33,6 +33,8 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbPlayMusic = new System.Windows.Forms.ToolStripButton();
             this.cbMelodies = new System.Windows.Forms.ToolStripComboBox();
+            this.cbSounds = new System.Windows.Forms.ToolStripComboBox();
+            this.tsbPlaySound = new System.Windows.Forms.ToolStripButton();
             this.tbVolume = new System.Windows.Forms.TrackBar();
             this.btnSilence = new System.Windows.Forms.Button();
             this.lblFrequecncy = new System.Windows.Forms.Label();
@@ -55,7 +57,7 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(229, 106);
+            this.pMain.Size = new System.Drawing.Size(359, 111);
             this.pMain.TabIndex = 0;
             // 
             // gbBeep
@@ -72,7 +74,7 @@
             this.gbBeep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbBeep.Location = new System.Drawing.Point(0, 0);
             this.gbBeep.Name = "gbBeep";
-            this.gbBeep.Size = new System.Drawing.Size(229, 106);
+            this.gbBeep.Size = new System.Drawing.Size(359, 111);
             this.gbBeep.TabIndex = 5;
             this.gbBeep.TabStop = false;
             // 
@@ -81,10 +83,12 @@
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbPlayMusic,
-            this.cbMelodies});
-            this.toolStrip.Location = new System.Drawing.Point(3, 78);
+            this.cbMelodies,
+            this.cbSounds,
+            this.tsbPlaySound});
+            this.toolStrip.Location = new System.Drawing.Point(3, 83);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(223, 25);
+            this.toolStrip.Size = new System.Drawing.Size(353, 25);
             this.toolStrip.TabIndex = 13;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -96,7 +100,7 @@
             this.tsbPlayMusic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPlayMusic.Name = "tsbPlayMusic";
             this.tsbPlayMusic.Size = new System.Drawing.Size(23, 22);
-            this.tsbPlayMusic.Text = "toolStripButton1";
+            this.tsbPlayMusic.Text = "Play melody";
             this.tsbPlayMusic.Click += new System.EventHandler(this.BtnPlayMusic_Click);
             // 
             // cbMelodies
@@ -106,10 +110,27 @@
             this.cbMelodies.Name = "cbMelodies";
             this.cbMelodies.Size = new System.Drawing.Size(121, 25);
             // 
+            // cbSounds
+            // 
+            this.cbSounds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSounds.Name = "cbSounds";
+            this.cbSounds.Size = new System.Drawing.Size(121, 25);
+            // 
+            // tsbPlaySound
+            // 
+            this.tsbPlaySound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPlaySound.Image = global::Mindstorms.Controller.Properties.Resources.notes;
+            this.tsbPlaySound.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPlaySound.Name = "tsbPlaySound";
+            this.tsbPlaySound.Size = new System.Drawing.Size(23, 22);
+            this.tsbPlaySound.Text = "Play sound";
+            this.tsbPlaySound.Click += new System.EventHandler(this.BtnPlaySound_Click);
+            // 
             // tbVolume
             // 
             this.tbVolume.Location = new System.Drawing.Point(6, 29);
             this.tbVolume.Maximum = 100;
+            this.tbVolume.Minimum = 1;
             this.tbVolume.Name = "tbVolume";
             this.tbVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tbVolume.Size = new System.Drawing.Size(45, 50);
@@ -211,11 +232,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 106);
+            this.ClientSize = new System.Drawing.Size(359, 111);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(245, 145);
-            this.MinimumSize = new System.Drawing.Size(245, 145);
             this.Name = "SpeakerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Speaker";
@@ -246,5 +265,7 @@
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton tsbPlayMusic;
         private System.Windows.Forms.ToolStripComboBox cbMelodies;
+        private System.Windows.Forms.ToolStripComboBox cbSounds;
+        private System.Windows.Forms.ToolStripButton tsbPlaySound;
     }
 }

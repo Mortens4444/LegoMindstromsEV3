@@ -5,10 +5,8 @@ namespace Mindstorms.Core.Commands.Speaker
 {
     public class PlaySound : Command
     {
-        public static byte DefaultVolume = 20;
-
         public PlaySound(string filePath)
-            : this(DefaultVolume, filePath)
+            : this(Constants.DefaultVolume, filePath)
         { }
 
         /// <summary>

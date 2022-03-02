@@ -9,16 +9,16 @@ namespace Mindstorms.Core.Commands.Speaker
     /// </summary>
     public class PlayNote : AwaitableCommand
     {
-        public static byte DefaultVolume = 10;
-
-        public static ushort DefaultNoteDurationMs = 500;
-
         public PlayNote(string note)
-            : this(DefaultVolume, note, DefaultNoteDurationMs)
+            : this(Constants.DefaultVolume, note, Constants.DefaultNoteDurationMs)
         { }
 
         public PlayNote(string note, ushort durationMs)
-            : this(DefaultVolume, note, durationMs)
+            : this(Constants.DefaultVolume, note, durationMs)
+        { }
+
+        public PlayNote(byte volume, string note)
+            : this(volume, note, Constants.DefaultNoteDurationMs)
         { }
 
         public PlayNote(byte volume, string note, ushort durationMs)

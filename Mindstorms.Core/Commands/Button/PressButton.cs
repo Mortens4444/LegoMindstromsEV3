@@ -19,7 +19,7 @@ namespace Mindstorms.Core.Commands.Button
                 (byte)button,
 
                 (byte)OpCode.Button,
-                (byte)ButtonEvent.WaitForPress,
+                (byte)ButtonEvent.WaitForPress
             };
         }
     }

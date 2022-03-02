@@ -30,7 +30,7 @@ namespace Mindstorms.Controller
                     {
                         for (short currentSpeed = 0; currentSpeed >= motorSpeedChange.Speed; currentSpeed -= acceleration)
                         {
-                            brick.SetMediumMotorSpeed(motorSpeedChange);
+                            brick.SetLargeMotorSpeed(motorSpeedChange);
                             Thread.Sleep(100);
                         }
                     }
@@ -38,12 +38,12 @@ namespace Mindstorms.Controller
                     {
                         for (short currentSpeed = 0; currentSpeed <= motorSpeedChange.Speed; currentSpeed += acceleration)
                         {
-                            brick.SetMediumMotorSpeed(motorSpeedChange);
+                            brick.SetLargeMotorSpeed(motorSpeedChange);
                             Thread.Sleep(100);
                         }
                     }
                 }
-                brick.SetMediumMotorSpeed(motorSpeedChange);
+                brick.SetLargeMotorSpeed(motorSpeedChange);
                 StopMotorsWithDelay();
             }
         }
@@ -60,7 +60,7 @@ namespace Mindstorms.Controller
 
         private void BtnSetBothMotorSpeed_Click(object sender, EventArgs e)
         {
-            brick.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value), new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
+            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value), new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
         }
 
         private void StopMotorsWithDelay()
@@ -70,14 +70,14 @@ namespace Mindstorms.Controller
                 Task.Run(async delegate
                 {
                     await Task.Delay(TimeSpan.FromMilliseconds((double)nudTimeout.Value));
-                    brick.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+                    brick.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
                 });
             }
         }
 
         private void BtnSetLeverMotorSpeed_Click(object sender, EventArgs e)
         {
-            brick.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeverMotor, (short)tbLeverSpeed.Value));
+            brick.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeverMotor, (short)tbLeverSpeed.Value));
         }
 
         private void BtnRefreshPositions_Click(object sender, EventArgs e)
@@ -87,9 +87,9 @@ namespace Mindstorms.Controller
 
         private void RefreshPositions()
         {
-            lblLeftMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeftMotor, MotorType.Medium));
-            lblRightMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.RightMotor, MotorType.Medium));
-            lblLeverMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeverMotor, MotorType.Large));
+            lblLeftMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeftMotor, MotorType.Large));
+            lblRightMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.RightMotor, MotorType.Large));
+            lblLeverMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeverMotor, MotorType.Medium));
         }
     }
 }

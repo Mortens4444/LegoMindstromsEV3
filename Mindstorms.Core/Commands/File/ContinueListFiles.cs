@@ -11,8 +11,6 @@ namespace Mindstorms.Core.Commands.File
         /// If it is a folder: foldername + / + new line
         /// </summary>
         /// <param name="path"></param>
-        //TODO: Fix ListFilesCommand
-#warning Listing long folders should use CONTINUE_LISTING
         public ContinueListFiles(byte handle)
         {
             var maxBytesInFileList = BitConverter.GetBytes(ListFiles.MaxListSize);

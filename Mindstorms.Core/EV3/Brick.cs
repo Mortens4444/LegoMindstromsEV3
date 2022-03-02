@@ -12,6 +12,7 @@ using Mindstorms.Core.Commands.System;
 using Mindstorms.Core.Drawing;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.Music;
+using Mindstorms.Core.Resources;
 using Mindstorms.Core.Responses;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Utils;
 
 namespace Mindstorms.Core.EV3
 {
@@ -29,7 +31,7 @@ namespace Mindstorms.Core.EV3
         #region Members
 
         private readonly SerialPort comPort = null;
-        private const int ReadWriteTimeout = 6000;
+        private const int ReadWriteTimeout = 10000;
         private int sendingData = 0;
         private ushort messageCounter = 1;
         private readonly object soundPlayLock = new object();
@@ -64,14 +66,20 @@ namespace Mindstorms.Core.EV3
 
         public Brick(string port, OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
         {
-            comPort = new SerialPort(port)
+            comPort = new SerialPort(port, 115200)
             {
                 WriteTimeout = ReadWriteTimeout,
                 ReadTimeout = ReadWriteTimeout
             };
+            comPort.ErrorReceived += ComPort_ErrorReceived;
             LeftMotor = leftMotor;
             RightMotor = rightMotor;
             LeverMotor = leverMotor;
+        }
+
+        private void ComPort_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            throw new Exception($"Error Received from brick: {e.EventType}. Details: {e}");
         }
 
         #endregion
@@ -267,6 +275,16 @@ namespace Mindstorms.Core.EV3
         {
             Execute(new PressButton(button));
         }
+
+        public void PressAndReleaseButton(ButtonType button)
+        {
+            Execute(new PressAndReleaseButton(button));
+        }
+
+        public void ReleaseButton(ButtonType button)
+        {
+            Execute(new ReleaseButton(button));
+        }
         
         public void Flush()
         {
@@ -307,17 +325,17 @@ namespace Mindstorms.Core.EV3
             return response.RawResponseData[response.RawResponseData.Length - 1] != 0;
         }
 
-        public void PlaySound(string soundFilePath)
+        public void PlaySound(string soundFilePath, byte volume = Constants.DefaultVolume)
         {
-            Execute(new PlaySound(soundFilePath));
+            Execute(new PlaySound(volume, soundFilePath));
         }
 
-        public void PlayNote(string note)
+        public void PlayNote(string note, byte volume = Constants.DefaultVolume, ushort durationMs = Constants.DefaultNoteDurationMs)
         {
-            Execute(new PlayNote(note));
+            Execute(new PlayNote(volume, note, durationMs));
         }
 
-        public void PlayMusic(Melody melody)
+        public void PlayMusic(Melody melody, byte volume = Constants.DefaultVolume)
         {
             if (CurrentlyPlayedMelody != null)
             {
@@ -342,7 +360,7 @@ namespace Mindstorms.Core.EV3
 
                             ClearScreen();
                             ShowOnMiddleOfScreen(note, FontType.Big);
-                            ExecuteAndWait(new PlayNote(note));
+                            ExecuteAndWait(new PlayNote(volume, note));
                         }
                     }
                     else
@@ -363,7 +381,7 @@ namespace Mindstorms.Core.EV3
                             {
                                 ClearScreen();
                                 ShowOnMiddleOfScreen(note.Name, FontType.Big);
-                                ExecuteAndWait(new Beep(note, duration));
+                                ExecuteAndWait(new Beep(volume, note, duration));
                             }
                         }
                     }
@@ -373,9 +391,23 @@ namespace Mindstorms.Core.EV3
             }, musicPlayerCancellationTokenSource.Token);
         }
 
+        public void PlaySound(EmbeddedSound embeddedSound, byte volume = Constants.DefaultVolume)
+        {
+            var description = embeddedSound.GetDescription();
+            var file = ResourceUploader.UploadSound(this, $"{description}.rsf");
+            Execute(new PlaySound(volume, file));
+        }
+
         #endregion
 
         #region LED, LCD
+
+        public void ShowImage(EmbeddedImage embeddedImage)
+        {
+            var description = embeddedImage.GetDescription();
+            var file = ResourceUploader.UploadImage(this, $"{description}.rgf");            
+            Execute(new ShowImage(0, 0, file, LCDColor.Black));
+        }
 
         public void ShowOnMiddleOfScreen(string text, FontType fontType = FontType.Normal, byte verticalDelta = 0)
         {
@@ -423,7 +455,7 @@ namespace Mindstorms.Core.EV3
             Execute(new DrawCircle(x, y, radius, color, fill));
         }
 
-        public void Draw(IEV3DrawingElement element, LCDColor color = LCDColor.Black, bool fill = false)
+        public void Draw(IEV3DrawingElement element, LCDColor color = LCDColor.Black)
         {
             switch (element)
             {
@@ -588,22 +620,28 @@ namespace Mindstorms.Core.EV3
 
         public IEnumerable<string> GetFolderContent(string path)
         {
-            var response = Execute(new ListFiles(path));
-
+            var response = Execute(new ListFiles(path)) as SystemCommandReply;
             var rawDataWithOffset = response.RawResponseData.Skip(SystemCommandReply.SystemCommandResponseHeaderLength).ToArray();
-            var folderContent = Encoding.UTF8.GetString(rawDataWithOffset).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var folderContentString = Encoding.UTF8.GetString(rawDataWithOffset);
 
-#warning Fix folder listing.
-            //while (reply.ListSize > ListFilesCommand.MaxListSize)
-            //{
-            //    Execute(new ContinueListFilesCommand(reply.Handle));
-            //    rawDataWithOffset = rawData.Skip(SystemCommandReply.ContinueSystemCommandResponseHeaderLength).ToArray();
-            //    //folderContent += Encoding.UTF8.GetString(rawDataWithOffset).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            //    reply.ListSize -= ListFilesCommand.MaxListSize;
-            //}
+            while (response.CommandReplyStatus != CommandReplyStatus.EndOfFile)
+            {
+                response = Execute(new ContinueListFiles(response.Handle)) as SystemCommandReply;
+                rawDataWithOffset = response.RawResponseData.Skip(SystemCommandReply.ContinueSystemCommandResponseHeaderLength).ToArray();
+                folderContentString += Encoding.UTF8.GetString(rawDataWithOffset);
+            }
 
-            Array.Sort(folderContent);
-            return folderContent;
+            return folderContentString.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public bool HasFile(string folder, string file)
+        {
+            var folderContent = GetFolderContent(folder);
+            if (file[file.Length - 1] == '/')
+            {
+                return folderContent.Any(c => c == file);
+            }
+            return folderContent.Any(c => c.EndsWith($" {file}"));
         }
 
         public void CopyFileToBrick(string sourceFilePath, string destinationFilePath)
@@ -611,43 +649,54 @@ namespace Mindstorms.Core.EV3
             var fileContentToSend = File.ReadAllBytes(sourceFilePath);
             var fileSize = fileContentToSend.Length;
 
-            var bytesToSend = Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
-
-            var reply = Execute(new UploadFileToBrick(destinationFilePath, fileContentToSend.Take(bytesToSend))) as SystemCommandReply;
+            var reply = Execute(new UploadFileToBrick(destinationFilePath, fileSize)) as SystemCommandReply;
             var fileHandle = reply.Handle;
 
-            int skippedBytes = 0;
+            var bytesToSend = 0;
+            var skippedBytes = 0;
+
             while ((fileSize -= bytesToSend) > 0)
             {
                 skippedBytes += bytesToSend;
                 bytesToSend = Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
                 var dataBytes = fileContentToSend.Skip(skippedBytes).Take(bytesToSend);
-                _ = Execute(new ContinueUploadFileToBrick(fileHandle, dataBytes)) as SystemCommandReply;
+                Execute(new ContinueUploadFileToBrick(fileHandle, dataBytes));
             }
         }
 
-        public void CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
+        public bool CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
         {
-            var reply = Execute(new DownloadFileFromBrick(sourceFilePath)) as SystemCommandReply;
-            var fileHandle = reply.Handle;
-
-            if (reply.RawResponseData.Length == SystemCommandReply.ContinueSystemCommandResponseHeaderLength)
-            {
-                reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
-            }
+            int chunkSize = 0;
+            byte fileHandle = 0;
+            SystemCommandReply reply;
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
             {
-                var chunkSize = Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize);
-                fileStream.Write(reply.RawResponseData, SystemCommandReply.SystemCommandResponseHeaderLength, chunkSize);
-
-                while ((fileSize -= DownloadFileFromBrick.MaxChunkSize) > 0)
+                while ((fileSize -= chunkSize) > 0)
                 {
-                    reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
-                    chunkSize = Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize);
+                    var notFirstChunk = chunkSize != 0;
+                    if (notFirstChunk)
+                    {
+                        reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
+                    }
+                    else
+                    {
+                        reply = Execute(new DownloadFileFromBrick(sourceFilePath, fileSize)) as SystemCommandReply;
+                        fileHandle = reply.Handle;
+                    }
+
+                    chunkSize = GetChunkSize(fileSize, reply.RawResponseData.Length, notFirstChunk);
                     fileStream.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
                 }
             }
+
+            return true;
+        }
+
+        private static int GetChunkSize(int fileSize, int rawResponseDataLength, bool @continue)
+        {
+            var modifier = @continue ? SystemCommandReply.ContinueSystemCommandResponseHeaderLength : SystemCommandReply.SystemCommandResponseHeaderLength;
+            return Math.Min(Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize), rawResponseDataLength - modifier);
         }
 
         public void CreateDirectory(string fullPathDirectoryName)
@@ -655,9 +704,10 @@ namespace Mindstorms.Core.EV3
             Execute(new CreateDirectory(fullPathDirectoryName));
         }
 
-        public void DeleteFile(string fullPathFileName)
+        public bool DeleteFile(string fullPathFileName)
         {
-            Execute(new DeleteFile(fullPathFileName));
+            var result = Execute(new DeleteFile(fullPathFileName));
+            return result?.CommandReplyStatus == CommandReplyStatus.Success;
         }
 
         #endregion
@@ -682,21 +732,27 @@ namespace Mindstorms.Core.EV3
 
                     if ((command.Data[0] & (byte)Response.NotExpected) == 0)
                     {
+                        Read:
                         var rawResponseData = Receive();
 
-                        result = (command.Data[0] & (byte)CommandType.SystemCommand) == 1 ? (ICommandReply)
-                                new SystemCommandReply(rawResponseData) :
-                                new DirectCommandReply(rawResponseData);
+                        if (rawResponseData != null && rawResponseData.Length > 0)
+                        {
+                            result = (command.Data[0] & (byte)CommandType.SystemCommand) == 1 ? (ICommandReply)
+                                    new SystemCommandReply(rawResponseData) :
+                                    new DirectCommandReply(rawResponseData);
 
-                        if (result.MessageCounter != messageCounter)
-                        {
-                            hasError = true;
-                            throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
-                        }
-                        if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
-                        {
-                            hasError = true;
-                            throw new Exception($"Error occurred: {result}");
+                            if (result.MessageCounter != messageCounter)
+                            {
+                                goto Read;
+                                hasError = true;
+                                throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
+                            }
+                            if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
+                            {
+                                return null;
+                                hasError = true;
+                                throw new Exception($"Error occurred: {result}");
+                            }
                         }
                     }
                     messageCounter++;

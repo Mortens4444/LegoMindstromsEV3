@@ -42,6 +42,11 @@ namespace Mindstorms.Controller.SensorRead
                             Invoke(new Action(() =>
                             {
                                 var distance = BitConverter.ToSingle(result, result.Length - 4);
+                                label1.Text = ((InfraredBeaconButtonsCombination)Convert.ToInt32(distance)).ToString();
+                                label2.Text = ((InfraredBeaconButtonsCombination)result[4]).ToString();
+                                label3.Text = ((InfraredBeaconButtonsCombination)result[5]).ToString();
+                                label4.Text = ((InfraredBeaconButtonsCombination)result[6]).ToString();
+
                                 lblResult.Text = $"Distance: {distance}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
                             }));
                         }

@@ -1,4 +1,5 @@
-﻿using Mindstorms.Core.EV3;
+﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.EV3;
 using Mindstorms.Core.Music;
 using Mindstorms.Core.Music.Melodies;
 using System;
@@ -19,6 +20,7 @@ namespace Mindstorms.Controller
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
             var assembly = Assembly.GetAssembly(typeof(BociBoci));
+            cbSounds.ComboBox.FillAndSelect(Enum.GetValues(typeof(EmbeddedSound)), (int)EmbeddedSound.EV3);
             cbMelodies.ComboBox.FillWithTypesInNamespace(assembly, MelodiesNamespace);
         }
 
@@ -35,7 +37,12 @@ namespace Mindstorms.Controller
         private void BtnPlayMusic_Click(object sender, EventArgs e)
         {
             var melody = (Melody)((ComboBoxItem)cbMelodies.SelectedItem).Object;
-            brick.PlayMusic(melody);
+            brick.PlayMusic(melody, (byte)tbVolume.Value);
+        }
+
+        private void BtnPlaySound_Click(object sender, EventArgs e)
+        {
+            brick.PlaySound((EmbeddedSound)cbSounds.SelectedItem, (byte)tbVolume.Value);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Mindstorms.Controller
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
             cbLedPattern.ComboBox.FillAndSelect(Enum.GetValues(typeof(LedPattern)), (byte)LedPattern.Off);
+            cbEmbeddedImages.FillAndSelectFirst(Enum.GetValues(typeof(EmbeddedImage)));
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace Mindstorms.Controller
             if (element != null)
             {
                 objectsToDraw.Add(element);
-                brick.Draw(element, LCDColor.Black, chkFill.Checked);
+                brick.Draw(element, LCDColor.Black);
             }
             startPoint = null;
             pDisplay.Invalidate();
@@ -127,6 +128,11 @@ namespace Mindstorms.Controller
         private void BtnSetLedsState_Click(object sender, EventArgs e)
         {
             brick.ChangeLedsState((LedPattern)cbLedPattern.SelectedItem);
+        }
+
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+            brick.ShowImage((EmbeddedImage)cbEmbeddedImages.SelectedItem);
         }
     }
 }

@@ -1,17 +1,21 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace Mindstorms.Core
 {
     public class SystemCommandReply : CommandReplyBase
     {
-        public const byte ContinueSystemCommandResponseHeaderLength = 8;
+        private readonly List<SystemCommand> CommandsWithLength = new List<SystemCommand> { SystemCommand.BeginFileUpload, SystemCommand.BeginGetFile, SystemCommand.ContinueGetFile, SystemCommand.ListFiles };
+        private readonly List<SystemCommand> CommandsWithoutHandle = new List<SystemCommand> { SystemCommand.CloseFileHandle, SystemCommand.CreateDir, SystemCommand.DeleteFile, SystemCommand.ListOpenHandles, SystemCommand.BluetoothPin };
+
+        public const byte ContinueSystemCommandResponseHeaderLength = 6;
 
         public const byte SystemCommandResponseHeaderLength = 10;
 
         public SystemCommand SystemCommand { get; }
 
-        public uint ListSize { get; }
+        public uint Length { get; }
 
         public byte Handle { get; }
 
@@ -19,19 +23,18 @@ namespace Mindstorms.Core
         {
             SystemCommand = (SystemCommand)rawResponseData[3];
 
-            try
+            if (CommandsWithLength.Contains(SystemCommand))
             {
-                if (rawResponseData.Length != ContinueSystemCommandResponseHeaderLength)
-                {
-                    ListSize = BitConverter.ToUInt32(rawResponseData, 5);
-                    Handle = rawResponseData[9];
-                }
-                else
+                Length = BitConverter.ToUInt32(rawResponseData, 5);
+                Handle = rawResponseData[9];
+            }
+            else
+            {
+                if (!CommandsWithoutHandle.Contains(SystemCommand))
                 {
                     Handle = rawResponseData[5];
                 }
             }
-            catch { }
         }
     }
 }

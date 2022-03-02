@@ -4,7 +4,7 @@ namespace Mindstorms.Core.Commands.LCD
 {
     public class Restore : LCDCommand
     {
-#warning 'This command must be tested.'
+#warning This command must be tested.
         public Restore(byte level)
         {
             data = new byte[]

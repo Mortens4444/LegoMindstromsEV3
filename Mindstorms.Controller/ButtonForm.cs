@@ -17,7 +17,6 @@ namespace Mindstorms.Controller
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
-            cbButtonEvent.FillAndSelect(Enum.GetValues(typeof(ButtonEvent)), (byte)ButtonEvent.ShortPress - 1);
         }
 
         private void ButtonForm_Shown(object sender, EventArgs e)
@@ -40,7 +39,7 @@ namespace Mindstorms.Controller
                             btnLeft.BackColor = buttonStates.IsLeftButtonPressed() ? Color.Green : Color.WhiteSmoke;
                         }));
                     
-                        Thread.Sleep(100);
+                        Thread.Sleep(500);
                     }
                 });
             }
@@ -50,7 +49,19 @@ namespace Mindstorms.Controller
         private void Btn_Click(object sender, EventArgs e)
         {
             var button = sender as Button;
-            brick.PressButton((ButtonType)button.TabIndex);
+            brick.PressAndReleaseButton((ButtonType)button.TabIndex);
+        }
+
+        private void Btn_MouseDown(object sender, MouseEventArgs e)
+        {
+            //var button = sender as Button;
+            //brick.PressButton((ButtonType)button.TabIndex);
+        }
+
+        private void Btn_MouseUp(object sender, MouseEventArgs e)
+        {
+            //var button = sender as Button;
+            //brick.ReleaseButton((ButtonType)button.TabIndex);
         }
     }
 }

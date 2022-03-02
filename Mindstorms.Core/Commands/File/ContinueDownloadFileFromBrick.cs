@@ -5,7 +5,6 @@ namespace Mindstorms.Core.Commands.File
 {
     public class ContinueDownloadFileFromBrick : Command
     {
-#warning May not work for big files.
         public ContinueDownloadFileFromBrick(byte fileHandle)
         {
             var maxBytesInReply = BitConverter.GetBytes(DownloadFileFromBrick.MaxChunkSize);

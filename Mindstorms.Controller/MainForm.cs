@@ -115,12 +115,12 @@ namespace Mindstorms.Controller
 
         private void StopMotors()
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
         }
 
         private void BtnNorthWest_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, 100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, 100));
         }
 
         private void BtnNorth_MouseDown(object sender, MouseEventArgs e)
@@ -130,17 +130,17 @@ namespace Mindstorms.Controller
 
         private void MoveNorth()
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, 100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 100));
         }
 
         private void BtnNorthEast_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, 0));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, 0));
         }
 
         private void TurnEast()
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, -100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, -100));
         }
 
         private void BtnWest_MouseDown(object sender, MouseEventArgs e)
@@ -150,7 +150,7 @@ namespace Mindstorms.Controller
 
         private void TurnWest()
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 100));
         }
 
         private void BtnEast_MouseDown(object sender, MouseEventArgs e)
@@ -160,7 +160,7 @@ namespace Mindstorms.Controller
 
         private void BtnSouthWest_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, -100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, -100));
         }
 
         private void BtnSouth_MouseDown(object sender, MouseEventArgs e)
@@ -170,12 +170,12 @@ namespace Mindstorms.Controller
 
         private void MoveSouth()
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, -100));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, -100));
         }
 
         private void BtnSouthEast_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 0));
+            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 0));
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -252,11 +252,11 @@ namespace Mindstorms.Controller
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.Motors, (short)deltaY));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, (short)deltaY));
                     },
                     (int deltaX, int deltaY) =>
                     {
@@ -269,7 +269,7 @@ namespace Mindstorms.Controller
                             ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
@@ -280,28 +280,28 @@ namespace Mindstorms.Controller
                             ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)deltaY;
                         var rightMotorSpeed = (short)(deltaY + deltaX);
                         Console.WriteLine($"Backward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)(deltaY - deltaX);
                         var rightMotorSpeed = (short)deltaY;
                         Console.WriteLine($"Backward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)deltaX;
                         var rightMotorSpeed = (short)-deltaX;
                         Console.WriteLine($"Turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetMediumMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     () =>
                     {
