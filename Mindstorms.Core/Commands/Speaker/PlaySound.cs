@@ -30,7 +30,7 @@ namespace Mindstorms.Core.Commands.Speaker
 
                 (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
             };
-            if (filePath.EndsWith(".rsf"))
+            if (filePath.EndsWith(Constants.SoundFileExtension))
             {
                 filePath = filePath.Substring(0, filePath.Length - 4);
             }

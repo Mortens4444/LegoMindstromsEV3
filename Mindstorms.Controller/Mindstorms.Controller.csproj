@@ -92,6 +92,12 @@
     <Compile Include="FileSystemForm.Designer.cs">
       <DependentUpon>FileSystemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageConverter.Designer.cs">
+      <DependentUpon>ImageConverter.cs</DependentUpon>
+    </Compile>
     <Compile Include="SensorRead\GyroSensorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FileSystemForm.resx">
       <DependentUpon>FileSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageConverter.resx">
+      <DependentUpon>ImageConverter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SensorRead\GyroSensorForm.resx">
       <DependentUpon>GyroSensorForm.cs</DependentUpon>

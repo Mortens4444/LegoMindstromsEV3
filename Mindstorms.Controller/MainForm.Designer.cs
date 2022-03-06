@@ -68,6 +68,7 @@ namespace Mindstorms.Controller
             this.tsmiCircles = new System.Windows.Forms.ToolStripMenuItem();
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMorse = new System.Windows.Forms.GroupBox();
+            this.tbRobotPartner = new System.Windows.Forms.TextBox();
             this.rtbMorse = new System.Windows.Forms.RichTextBox();
             this.btnMorse = new System.Windows.Forms.Button();
             this.gbJoystick = new System.Windows.Forms.GroupBox();
@@ -84,7 +85,8 @@ namespace Mindstorms.Controller
             this.btnNorthWest = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tbRobotPartner = new System.Windows.Forms.TextBox();
+            this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImageConverter = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.pMain.SuspendLayout();
@@ -197,7 +199,8 @@ namespace Mindstorms.Controller
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiControl,
             this.tsmiSensors,
-            this.tsmiGames});
+            this.tsmiGames,
+            this.tsmiTools});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(619, 24);
@@ -226,7 +229,7 @@ namespace Mindstorms.Controller
             this.tsmiButtons.Enabled = false;
             this.tsmiButtons.Image = global::Mindstorms.Controller.Properties.Resources.button;
             this.tsmiButtons.Name = "tsmiButtons";
-            this.tsmiButtons.Size = new System.Drawing.Size(143, 22);
+            this.tsmiButtons.Size = new System.Drawing.Size(180, 22);
             this.tsmiButtons.Text = "Buttons";
             this.tsmiButtons.Click += new System.EventHandler(this.TsmiButtons_Click);
             // 
@@ -235,7 +238,7 @@ namespace Mindstorms.Controller
             this.tsmiFileSystem.Enabled = false;
             this.tsmiFileSystem.Image = ((System.Drawing.Image)(resources.GetObject("tsmiFileSystem.Image")));
             this.tsmiFileSystem.Name = "tsmiFileSystem";
-            this.tsmiFileSystem.Size = new System.Drawing.Size(143, 22);
+            this.tsmiFileSystem.Size = new System.Drawing.Size(180, 22);
             this.tsmiFileSystem.Text = "File system";
             this.tsmiFileSystem.Click += new System.EventHandler(this.TsmiFileSystem_Click);
             // 
@@ -244,7 +247,7 @@ namespace Mindstorms.Controller
             this.tsmiMotors.Enabled = false;
             this.tsmiMotors.Image = ((System.Drawing.Image)(resources.GetObject("tsmiMotors.Image")));
             this.tsmiMotors.Name = "tsmiMotors";
-            this.tsmiMotors.Size = new System.Drawing.Size(143, 22);
+            this.tsmiMotors.Size = new System.Drawing.Size(180, 22);
             this.tsmiMotors.Text = "Motors";
             this.tsmiMotors.Click += new System.EventHandler(this.TsmiMotors_Click);
             // 
@@ -253,7 +256,7 @@ namespace Mindstorms.Controller
             this.tsmiScreen.Enabled = false;
             this.tsmiScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScreen.Image")));
             this.tsmiScreen.Name = "tsmiScreen";
-            this.tsmiScreen.Size = new System.Drawing.Size(143, 22);
+            this.tsmiScreen.Size = new System.Drawing.Size(180, 22);
             this.tsmiScreen.Text = "Screen";
             this.tsmiScreen.Click += new System.EventHandler(this.TsmiScreen_Click);
             // 
@@ -262,14 +265,14 @@ namespace Mindstorms.Controller
             this.tsmiSpeaker.Enabled = false;
             this.tsmiSpeaker.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSpeaker.Image")));
             this.tsmiSpeaker.Name = "tsmiSpeaker";
-            this.tsmiSpeaker.Size = new System.Drawing.Size(143, 22);
+            this.tsmiSpeaker.Size = new System.Drawing.Size(180, 22);
             this.tsmiSpeaker.Text = "Speaker";
             this.tsmiSpeaker.Click += new System.EventHandler(this.TsmiSpeaker_Click);
             // 
             // separator
             // 
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(140, 6);
+            this.separator.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiJoystick
             // 
@@ -277,7 +280,7 @@ namespace Mindstorms.Controller
             this.tsmiJoystick.Enabled = false;
             this.tsmiJoystick.Image = ((System.Drawing.Image)(resources.GetObject("tsmiJoystick.Image")));
             this.tsmiJoystick.Name = "tsmiJoystick";
-            this.tsmiJoystick.Size = new System.Drawing.Size(143, 22);
+            this.tsmiJoystick.Size = new System.Drawing.Size(180, 22);
             this.tsmiJoystick.Text = "Joystick";
             this.tsmiJoystick.CheckedChanged += new System.EventHandler(this.ChkJoystick_CheckedChanged);
             // 
@@ -287,20 +290,20 @@ namespace Mindstorms.Controller
             this.tsmiVoiceControl.Enabled = false;
             this.tsmiVoiceControl.Image = ((System.Drawing.Image)(resources.GetObject("tsmiVoiceControl.Image")));
             this.tsmiVoiceControl.Name = "tsmiVoiceControl";
-            this.tsmiVoiceControl.Size = new System.Drawing.Size(143, 22);
+            this.tsmiVoiceControl.Size = new System.Drawing.Size(180, 22);
             this.tsmiVoiceControl.Text = "Voice control";
             this.tsmiVoiceControl.CheckedChanged += new System.EventHandler(this.ChkVoiceControl_CheckedChanged);
             // 
             // separator2
             // 
             this.separator2.Name = "separator2";
-            this.separator2.Size = new System.Drawing.Size(140, 6);
+            this.separator2.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiDeviceInfo
             // 
             this.tsmiDeviceInfo.Enabled = false;
             this.tsmiDeviceInfo.Name = "tsmiDeviceInfo";
-            this.tsmiDeviceInfo.Size = new System.Drawing.Size(143, 22);
+            this.tsmiDeviceInfo.Size = new System.Drawing.Size(180, 22);
             this.tsmiDeviceInfo.Text = "Device info";
             this.tsmiDeviceInfo.Click += new System.EventHandler(this.TsmiDeviceInfo_Click);
             // 
@@ -320,7 +323,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiGyroSensor.Enabled = false;
             this.tsmiGyroSensor.Name = "tsmiGyroSensor";
-            this.tsmiGyroSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiGyroSensor.Size = new System.Drawing.Size(180, 22);
             this.tsmiGyroSensor.Text = "Gyro sensor";
             this.tsmiGyroSensor.Click += new System.EventHandler(this.TsmiGyroSensor_Click);
             // 
@@ -328,7 +331,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiLightSensor.Enabled = false;
             this.tsmiLightSensor.Name = "tsmiLightSensor";
-            this.tsmiLightSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiLightSensor.Size = new System.Drawing.Size(180, 22);
             this.tsmiLightSensor.Text = "Light sensor";
             this.tsmiLightSensor.Click += new System.EventHandler(this.TsmiLightSensor_Click);
             // 
@@ -336,7 +339,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiTouchSensor.Enabled = false;
             this.tsmiTouchSensor.Name = "tsmiTouchSensor";
-            this.tsmiTouchSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiTouchSensor.Size = new System.Drawing.Size(180, 22);
             this.tsmiTouchSensor.Text = "Touch sensor";
             this.tsmiTouchSensor.Click += new System.EventHandler(this.TsmiTouchSensor_Click);
             // 
@@ -344,7 +347,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiInfraredSensor.Enabled = false;
             this.tsmiInfraredSensor.Name = "tsmiInfraredSensor";
-            this.tsmiInfraredSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiInfraredSensor.Size = new System.Drawing.Size(180, 22);
             this.tsmiInfraredSensor.Text = "Infrared sensor";
             this.tsmiInfraredSensor.Click += new System.EventHandler(this.TsmiInfraredSensor_Click);
             // 
@@ -352,7 +355,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiUltrasonicSensor.Enabled = false;
             this.tsmiUltrasonicSensor.Name = "tsmiUltrasonicSensor";
-            this.tsmiUltrasonicSensor.Size = new System.Drawing.Size(164, 22);
+            this.tsmiUltrasonicSensor.Size = new System.Drawing.Size(180, 22);
             this.tsmiUltrasonicSensor.Text = "Ultrasonic sensor";
             this.tsmiUltrasonicSensor.Click += new System.EventHandler(this.TsmiUltrasonicSensor_Click);
             // 
@@ -404,6 +407,13 @@ namespace Mindstorms.Controller
             this.gbMorse.TabIndex = 13;
             this.gbMorse.TabStop = false;
             this.gbMorse.Text = "Morse";
+            // 
+            // tbRobotPartner
+            // 
+            this.tbRobotPartner.Location = new System.Drawing.Point(6, 85);
+            this.tbRobotPartner.Name = "tbRobotPartner";
+            this.tbRobotPartner.Size = new System.Drawing.Size(162, 20);
+            this.tbRobotPartner.TabIndex = 13;
             // 
             // rtbMorse
             // 
@@ -580,12 +590,20 @@ namespace Mindstorms.Controller
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
-            // tbRobotPartner
+            // tsmiTools
             // 
-            this.tbRobotPartner.Location = new System.Drawing.Point(6, 85);
-            this.tbRobotPartner.Name = "tbRobotPartner";
-            this.tbRobotPartner.Size = new System.Drawing.Size(162, 20);
-            this.tbRobotPartner.TabIndex = 13;
+            this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiImageConverter});
+            this.tsmiTools.Name = "tsmiTools";
+            this.tsmiTools.Size = new System.Drawing.Size(46, 20);
+            this.tsmiTools.Text = "Tools";
+            // 
+            // tsmiImageConverter
+            // 
+            this.tsmiImageConverter.Name = "tsmiImageConverter";
+            this.tsmiImageConverter.Size = new System.Drawing.Size(180, 22);
+            this.tsmiImageConverter.Text = "Image converter";
+            this.tsmiImageConverter.Click += new System.EventHandler(this.TsmiImageConverter_Click);
             // 
             // MainForm
             // 
@@ -676,6 +694,8 @@ namespace Mindstorms.Controller
         private System.Windows.Forms.ToolStripMenuItem tsmiCircles;
         private System.Windows.Forms.ToolStripMenuItem tsmiInfraredSensor;
         private System.Windows.Forms.TextBox tbRobotPartner;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTools;
+        private System.Windows.Forms.ToolStripMenuItem tsmiImageConverter;
     }
 }
 

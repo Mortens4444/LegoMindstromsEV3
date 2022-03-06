@@ -6,8 +6,6 @@ namespace Mindstorms.Core.Commands.File
 {
     public class UploadFileToBrick : Command
     {
-        public const ushort MaxChunkSize = 900;
-
         public UploadFileToBrick(string destinationFilePath, int fileSize)
         {
             var bytesToSend = BitConverter.GetBytes(fileSize);

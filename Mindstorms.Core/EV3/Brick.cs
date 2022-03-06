@@ -394,7 +394,7 @@ namespace Mindstorms.Core.EV3
         public void PlaySound(EmbeddedSound embeddedSound, byte volume = Constants.DefaultVolume)
         {
             var description = embeddedSound.GetDescription();
-            var file = ResourceUploader.UploadSound(this, $"{description}.rsf");
+            var file = ResourceUploader.UploadSound(this, $"{description}{Constants.SoundFileExtension}");
             Execute(new PlaySound(volume, file));
         }
 
@@ -405,7 +405,7 @@ namespace Mindstorms.Core.EV3
         public void ShowImage(EmbeddedImage embeddedImage)
         {
             var description = embeddedImage.GetDescription();
-            var file = ResourceUploader.UploadImage(this, $"{description}.rgf");            
+            var file = ResourceUploader.UploadImage(this, $"{description}{Constants.GraphicsFileExtension}");
             Execute(new ShowImage(0, 0, file, LCDColor.Black));
         }
 
@@ -658,7 +658,7 @@ namespace Mindstorms.Core.EV3
             while ((fileSize -= bytesToSend) > 0)
             {
                 skippedBytes += bytesToSend;
-                bytesToSend = Math.Min(fileSize, UploadFileToBrick.MaxChunkSize);
+                bytesToSend = Math.Min(fileSize, Constants.ChunkSize);
                 var dataBytes = fileContentToSend.Skip(skippedBytes).Take(bytesToSend);
                 Execute(new ContinueUploadFileToBrick(fileHandle, dataBytes));
             }
@@ -696,7 +696,7 @@ namespace Mindstorms.Core.EV3
         private static int GetChunkSize(int fileSize, int rawResponseDataLength, bool @continue)
         {
             var modifier = @continue ? SystemCommandReply.ContinueSystemCommandResponseHeaderLength : SystemCommandReply.SystemCommandResponseHeaderLength;
-            return Math.Min(Math.Min(fileSize, DownloadFileFromBrick.MaxChunkSize), rawResponseDataLength - modifier);
+            return Math.Min(Math.Min(fileSize, Constants.ChunkSize), rawResponseDataLength - modifier);
         }
 
         public void CreateDirectory(string fullPathDirectoryName)

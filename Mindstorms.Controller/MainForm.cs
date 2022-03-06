@@ -440,5 +440,11 @@ namespace Mindstorms.Controller
             var infraredSensorForm = new InfraredSensorForm(brick);
             infraredSensorForm.Show();
         }
+
+        private void TsmiImageConverter_Click(object sender, EventArgs e)
+        {
+            var imageConverter = new ImageConverter();
+            imageConverter.Show();
+        }
     }
 }

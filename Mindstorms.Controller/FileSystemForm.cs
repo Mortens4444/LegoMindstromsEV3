@@ -2,6 +2,7 @@
 using Mindstorms.Core.EV3;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Utils;
 
@@ -40,15 +41,15 @@ namespace Mindstorms.Controller
                     lblWorkingDirectory.Text = lvDirectoryContent.SelectedItems[0].ChangeWorkingDirectory(lblWorkingDirectory.Text);
                     ListFolder(lblWorkingDirectory.Text);
                 }
-                else if (selectedFilenameFullPath.EndsWith(".rsf"))
+                else if (selectedFilenameFullPath.EndsWith(Core.Constants.SoundFileExtension))
                 {
                     brick.PlaySound(selectedFilenameFullPath);
                 }
-                else if (selectedFilenameFullPath.EndsWith(".rgf"))
+                else if (selectedFilenameFullPath.EndsWith(Core.Constants.GraphicsFileExtension))
                 {
                     brick.ShowImage(0, 0, selectedFilenameFullPath);
                 }
-                else if (selectedFilenameFullPath.EndsWith(".rbf"))
+                else if (selectedFilenameFullPath.EndsWith(Core.Constants.BinaryFileExtension))
                 {
                     brick.Start(selectedFilenameFullPath);
                 }
@@ -57,7 +58,7 @@ namespace Mindstorms.Controller
 
         private void TsmiDownloadFile_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 try
                 {
@@ -80,7 +81,7 @@ namespace Mindstorms.Controller
                     }
                     if (numberOfDownloadedFiles > 0)
                     {
-                        InfoBox.Show($"Downloading files", $"Succewsfully downloaded {numberOfDownloadedFiles} file(s)");
+                        InfoBox.Show($"Downloading files", $"Successfully downloaded {numberOfDownloadedFiles} file(s)");
                         for (int i = indices.Count - 1; i >= 0; i--)
                         {
                             lvDirectoryContent.Items[indices[i]].Selected = false;
@@ -115,13 +116,25 @@ namespace Mindstorms.Controller
                 }
                 if (numberOfDeletedFiles > 0)
                 {
-                    InfoBox.Show($"Deleting files", $"Succewsfully deleted {numberOfDeletedFiles} file(s)");
+                    InfoBox.Show($"Deleting files", $"Successfully deleted {numberOfDeletedFiles} file(s)");
                     ListFolder(lblWorkingDirectory.Text);
                 }
             }
             catch (Exception ex)
             {
                 ErrorBox.Show(ex);
+            }
+        }
+
+        private void TsmiUploadFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                var fileName = Path.GetFileName(openFileDialog.FileName);
+                var destination = $"{lblWorkingDirectory.Text}/{fileName}";
+                brick.CopyFileToBrick(openFileDialog.FileName, destination);
+                InfoBox.Show($"Uploading file", $"Successfully uploaded file to {destination}");
+                ListFolder(lblWorkingDirectory.Text);
             }
         }
     }

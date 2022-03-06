@@ -13,7 +13,7 @@ namespace Mindstorms.Core.Commands.File
         /// <param name="path"></param>
         public ContinueListFiles(byte handle)
         {
-            var maxBytesInFileList = BitConverter.GetBytes(ListFiles.MaxListSize);
+            var maxBytesInFileList = BitConverter.GetBytes(Constants.ChunkSize);
 
             data = new byte[]
             {

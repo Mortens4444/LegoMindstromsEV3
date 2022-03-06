@@ -180,6 +180,7 @@
     <Compile Include="Enums\UIWriteSubCommand.cs" />
     <Compile Include="Extensions\OutputPortExtensions.cs" />
     <Compile Include="ICommandReply.cs" />
+    <Compile Include="ImageConverter\BmpToRgfConverter.cs" />
     <Compile Include="Resources\ResourceUploader.cs" />
     <Compile Include="Responses\ButtonStates.cs" />
     <Compile Include="Signaling\Codes.cs" />

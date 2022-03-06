@@ -8,8 +8,8 @@ New features / Bugfixes
 - Recognize sensors (TouchSensor already working sometimes...)
 - Games (Skiing, Car race, Space invader, Flipper, Tetris, etc...)
 - Get a nice solution for the dirty hack in SnakeGameEngine (GameFrame.cs should be deleted and a DirectCommand should create the underlying application)
-- Fix filesystem commands in Brick.cs
 - Implement USB, WiFi commnunication
+- Convert sound files (etc. wav, mp3) to rsf
 
 Other EV3 projects
 ------------------

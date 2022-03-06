@@ -6,11 +6,9 @@ namespace Mindstorms.Core.Commands.File
 {
     public class DownloadFileFromBrick : Command
     {
-        public const ushort MaxChunkSize = 900;
-
         public DownloadFileFromBrick(string filePath, int fileSize)
         {
-            var bytesToRead = Math.Min(fileSize, MaxChunkSize);
+            var bytesToRead = Math.Min(fileSize, Constants.ChunkSize);
             var maxBytesInReply = BitConverter.GetBytes(bytesToRead);
 
             var dataList = new List<byte>

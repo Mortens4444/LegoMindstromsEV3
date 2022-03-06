@@ -6,12 +6,10 @@ namespace Mindstorms.Core.Commands.File
 {
     public class GetFile : Command
     {
-        public const int MaxChunkSize = 65534;
-
 #warning This command must be tested.
         public GetFile(string filePath)
         {
-            var maxBytesInReply = BitConverter.GetBytes(MaxChunkSize);
+            var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
 
             var dataList = new List<byte>
             {

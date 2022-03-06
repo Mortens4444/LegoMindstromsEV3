@@ -7,11 +7,9 @@ namespace Mindstorms.Core.Commands.File
 #warning This command must be tested.
     public class WriteBytesToFile : Command
     {
-        public const ushort MaxChunkSize = 65534;
-
         public WriteBytesToFile(byte handle, byte[] bytes)
         {
-            //var maxBytesInReply = BitConverter.GetBytes(MaxChunkSize);
+            //var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
 
             var dataList = new List<byte>
             {

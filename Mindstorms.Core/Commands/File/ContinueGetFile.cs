@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
 #warning This command must be tested.
         public ContinueGetFile(byte fileHandle)
         {
-            var maxBytesInReply = BitConverter.GetBytes(GetFile.MaxChunkSize);
+            var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
 
             data = new byte[]
             {
