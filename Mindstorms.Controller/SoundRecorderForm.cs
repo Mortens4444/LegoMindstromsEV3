@@ -33,7 +33,6 @@ namespace Mindstorms.Controller
             soundRecorder.Record();
             btnRecordOrStop.Text = "Stop";
 
-
             Task.Factory.StartNew(() =>
             {
                 while (soundRecorder.IsRecording())
