@@ -8,20 +8,30 @@ using Mindstorms.Core.Commands.MailBox;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Extensions;
+#if USE_SPEECH_RECOGNITION
 using Mindstorms.Core.Music.Melodies;
+#endif
 using Mindstorms.Core.Signaling;
 using Mindstorms.Game.Snake;
-#if USE_JOYSTICK
-#endif
+#if USE_SPEECH_RECOGNITION
 using SpeechRecognition;
+#endif
 using System;
+#if USE_SPEECH_RECOGNITION
 using System.Collections.Generic;
+#endif
 using System.IO.Ports;
+#if USE_SPEECH_RECOGNITION
 using System.Speech.Recognition;
+#endif
+#if USE_JOYSTICK
 using System.Threading;
+#endif
 using System.Windows.Forms;
 using Utils;
+#if USE_JOYSTICK
 using Action = System.Action;
+#endif
 
 namespace Mindstorms.Controller
 {
@@ -29,8 +39,12 @@ namespace Mindstorms.Controller
     {
         private Brick brick;
 
+#if USE_SPEECH_RECOGNITION
         private SpeechRecognitionEngine speechRecognitionEngine;
+#endif
+#if USE_JOYSTICK
         private CancellationTokenSource joystickPollCancellationTokenSource;
+#endif
 
         public MainForm()
         {
@@ -207,6 +221,7 @@ namespace Mindstorms.Controller
         {
             if (tsmiVoiceControl.Checked)
             {
+#if USE_SPEECH_RECOGNITION
                 var voiceCommands = new List<VoiceCommand>
                 {
                     new VoiceCommand("Ok Lego, go ahead", () => { MoveNorth(); }),
@@ -223,6 +238,7 @@ namespace Mindstorms.Controller
             else
             {
                 VoiceControl.StopVoiceControl(ref speechRecognitionEngine);
+#endif
             }
         }
 
