@@ -92,11 +92,11 @@
     <Compile Include="FileSystemForm.Designer.cs">
       <DependentUpon>FileSystemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageConverter.cs">
+    <Compile Include="ImageConverterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageConverter.Designer.cs">
-      <DependentUpon>ImageConverter.cs</DependentUpon>
+    <Compile Include="ImageConverterForm.Designer.cs">
+      <DependentUpon>ImageConverterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SensorRead\GyroSensorForm.cs">
       <SubType>Form</SubType>
@@ -134,6 +134,12 @@
     <Compile Include="ScreenForm.Designer.cs">
       <DependentUpon>ScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SoundRecorderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoundRecorderForm.Designer.cs">
+      <DependentUpon>SoundRecorderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpeakerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,8 +169,8 @@
     <EmbeddedResource Include="FileSystemForm.resx">
       <DependentUpon>FileSystemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageConverter.resx">
-      <DependentUpon>ImageConverter.cs</DependentUpon>
+    <EmbeddedResource Include="ImageConverterForm.resx">
+      <DependentUpon>ImageConverterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SensorRead\GyroSensorForm.resx">
       <DependentUpon>GyroSensorForm.cs</DependentUpon>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScreenForm.resx">
       <DependentUpon>ScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoundRecorderForm.resx">
+      <DependentUpon>SoundRecorderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpeakerForm.resx">
       <DependentUpon>SpeakerForm.cs</DependentUpon>

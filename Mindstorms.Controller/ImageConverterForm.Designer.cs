@@ -1,6 +1,6 @@
 ﻿namespace Mindstorms.Controller
 {
-    partial class ImageConverter
+    partial class ImageConverterForm
     {
         /// <summary>
         /// Required designer variable.

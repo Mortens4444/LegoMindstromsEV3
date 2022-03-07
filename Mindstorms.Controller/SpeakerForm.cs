@@ -42,7 +42,7 @@ namespace Mindstorms.Controller
 
         private void BtnPlaySound_Click(object sender, EventArgs e)
         {
-            brick.PlaySound((EmbeddedSound)cbSounds.SelectedItem, (byte)tbVolume.Value);
+            brick.PlaySound((EmbeddedSound)cbSounds.SelectedItem, false, (byte)tbVolume.Value);
         }
     }
 }

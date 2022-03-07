@@ -391,11 +391,18 @@ namespace Mindstorms.Core.EV3
             }, musicPlayerCancellationTokenSource.Token);
         }
 
-        public void PlaySound(EmbeddedSound embeddedSound, byte volume = Constants.DefaultVolume)
+        public void PlaySound(EmbeddedSound embeddedSound, bool waitForSound = false, byte volume = Constants.DefaultVolume)
         {
             var description = embeddedSound.GetDescription();
             var file = ResourceUploader.UploadSound(this, $"{description}{Constants.SoundFileExtension}");
             Execute(new PlaySound(volume, file));
+            if (waitForSound)
+            {
+                while (SpeakerIsBusy())
+                {
+                    Thread.Sleep(300);
+                }
+            }
         }
 
         #endregion

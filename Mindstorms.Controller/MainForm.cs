@@ -106,6 +106,7 @@ namespace Mindstorms.Controller
             tsmiSnake.Enabled = !enable;
             tsmiDeviceInfo.Enabled = !enable;
             tsmiCircles.Enabled = !enable;
+            tsmiBehaveLikeADog.Enabled = !enable;
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -443,8 +444,31 @@ namespace Mindstorms.Controller
 
         private void TsmiImageConverter_Click(object sender, EventArgs e)
         {
-            var imageConverter = new ImageConverter();
+            var imageConverter = new ImageConverterForm();
             imageConverter.Show();
+        }
+
+        private void TsmiBehaveLikeADog_Click(object sender, EventArgs e)
+        {
+            var volume = Byte.MaxValue;
+            brick?.ShowImage(EmbeddedImage.Neutral);
+            brick?.PlaySound(EmbeddedSound.DogSniff, true, volume);
+            brick?.ShowImage(EmbeddedImage.Angry);
+            brick?.PlaySound(EmbeddedSound.DogGrowl, true, volume);
+            brick?.PlaySound(EmbeddedSound.DogBark1, false, volume);
+            for (int i = 0; i < 3; i++)
+            {
+                brick?.ShowImage(EmbeddedImage.Mouth2Open);
+                brick?.ShowImage(EmbeddedImage.Mouth2Shut);
+            }
+            brick?.PlaySound(EmbeddedSound.DogBark2, true, volume);
+            brick?.ShowImage(EmbeddedImage.Evil);
+        }
+
+        private void TsmiSoundRecorder_Click(object sender, EventArgs e)
+        {
+            var soundRecorder = new SoundRecorderForm();
+            soundRecorder.Show();
         }
     }
 }

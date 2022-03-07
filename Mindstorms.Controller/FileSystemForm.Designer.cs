@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pMain = new System.Windows.Forms.Panel();
             this.gbFilesystem = new System.Windows.Forms.GroupBox();
+            this.btnProjects = new System.Windows.Forms.Button();
             this.btnStopProgram = new System.Windows.Forms.Button();
             this.lblWorkingDirectory = new System.Windows.Forms.Label();
             this.lvDirectoryContent = new System.Windows.Forms.ListView();
@@ -63,6 +64,7 @@
             // 
             // gbFilesystem
             // 
+            this.gbFilesystem.Controls.Add(this.btnProjects);
             this.gbFilesystem.Controls.Add(this.btnStopProgram);
             this.gbFilesystem.Controls.Add(this.lblWorkingDirectory);
             this.gbFilesystem.Controls.Add(this.lvDirectoryContent);
@@ -74,6 +76,17 @@
             this.gbFilesystem.TabIndex = 8;
             this.gbFilesystem.TabStop = false;
             this.gbFilesystem.Text = "Filesystem";
+            // 
+            // btnProjects
+            // 
+            this.btnProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProjects.Location = new System.Drawing.Point(698, 11);
+            this.btnProjects.Name = "btnProjects";
+            this.btnProjects.Size = new System.Drawing.Size(56, 23);
+            this.btnProjects.TabIndex = 6;
+            this.btnProjects.Text = "Projects";
+            this.btnProjects.UseVisualStyleBackColor = true;
+            this.btnProjects.Click += new System.EventHandler(this.BtnProjects_Click);
             // 
             // btnStopProgram
             // 
@@ -217,5 +230,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
         private System.Windows.Forms.ToolStripMenuItem tsmiUploadFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btnProjects;
     }
 }

@@ -6,7 +6,7 @@ namespace Mindstorms.Core.Resources
 {
     public class ResourceUploader
     {
-        private const string BaseDirectory = "/home/root/lms2012/prjs";
+        public const string BaseDirectory = "/home/root/lms2012/prjs";
 
         public static string UploadApplication(Brick brick, string fileame)
         {

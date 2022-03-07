@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mindstorms.Core.Commands.LCD;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -21,8 +22,8 @@ namespace Mindstorms.Core.ImageConverter
 
             var rgfBytes = new List<byte>
             {
-                0xB0, //(byte)bitmap.Width,
-                (byte)bitmap.Height
+                LCDCommand.ScreenWidth - 2,//(byte)Math.Min(bitmap.Width, LCDCommand.ScreenWidth - 2),
+                (byte)Math.Min(bitmap.Height, LCDCommand.ScreenHeight),
             };
 
             byte pixelIndex = 0;

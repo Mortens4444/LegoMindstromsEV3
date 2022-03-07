@@ -1,5 +1,6 @@
 ﻿using MessageBoxes;
 using Mindstorms.Core.EV3;
+using Mindstorms.Core.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,6 +26,7 @@ namespace Mindstorms.Controller
 
         private void ListFolder(string currentDirectory)
         {
+            lblWorkingDirectory.Text = currentDirectory;
             var folderContent = brick.GetFolderContent(currentDirectory);
             lvDirectoryContent.PopulateWithLegoMindstormEV3FolderContent(folderContent, currentDirectory != "/");
             tsslStatus.Text = $"{lvDirectoryContent.Items.Count} item(s)";
@@ -34,12 +36,11 @@ namespace Mindstorms.Controller
         {
             if (lvDirectoryContent.SelectedItems.Count == 1)
             {
-                var selectedFilenameFullPath = String.Concat(lblWorkingDirectory.Text, "/", lvDirectoryContent.SelectedItems[0].Text);
+                var selectedFilenameFullPath = $"{lblWorkingDirectory.Text}/{lvDirectoryContent.SelectedItems[0].Text}";
 
                 if (lvDirectoryContent.SelectedItems[0].SubItems[1].Text == ListViewExtensions.Directory)
                 {
-                    lblWorkingDirectory.Text = lvDirectoryContent.SelectedItems[0].ChangeWorkingDirectory(lblWorkingDirectory.Text);
-                    ListFolder(lblWorkingDirectory.Text);
+                    ListFolder(lvDirectoryContent.SelectedItems[0].ChangeWorkingDirectory(lblWorkingDirectory.Text));
                 }
                 else if (selectedFilenameFullPath.EndsWith(Core.Constants.SoundFileExtension))
                 {
@@ -70,8 +71,8 @@ namespace Mindstorms.Controller
                         if (item.SubItems[1].Text != ListViewExtensions.Directory)
                         {
                             var fileSize = Convert.ToInt32(item.SubItems[2].Text);
-                            var sourceFilenameFullPath = String.Concat(lblWorkingDirectory.Text, "/", item.Text);
-                            var destination = String.Concat(folderBrowserDialog.SelectedPath, "/", item.Text);
+                            var sourceFilenameFullPath = $"{lblWorkingDirectory.Text}/{item.Text}";
+                            var destination = $"{folderBrowserDialog.SelectedPath}/{item.Text}";
                             if (brick.CopyFileFromBrick(sourceFilenameFullPath, destination, fileSize))
                             {
                                 numberOfDownloadedFiles++;
@@ -108,7 +109,7 @@ namespace Mindstorms.Controller
                 for (int i = 0; i < lvDirectoryContent.SelectedItems.Count; i++)
                 {
                     var item = lvDirectoryContent.SelectedItems[i];
-                    var filenameFullPath = String.Concat(lblWorkingDirectory.Text, "/", item.Text);
+                    var filenameFullPath = $"{lblWorkingDirectory.Text}/{item.Text}";
                     if (brick.DeleteFile(filenameFullPath))
                     {
                         numberOfDeletedFiles++;
@@ -136,6 +137,11 @@ namespace Mindstorms.Controller
                 InfoBox.Show($"Uploading file", $"Successfully uploaded file to {destination}");
                 ListFolder(lblWorkingDirectory.Text);
             }
+        }
+
+        private void BtnProjects_Click(object sender, EventArgs e)
+        {
+            ListFolder(ResourceUploader.BaseDirectory);
         }
     }
 }

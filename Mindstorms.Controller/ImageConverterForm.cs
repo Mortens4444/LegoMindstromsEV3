@@ -8,12 +8,12 @@ using Utils.ImageConvertion.Converter;
 
 namespace Mindstorms.Controller
 {
-    public partial class ImageConverter : Form
+    public partial class ImageConverterForm : Form
     {
         private Bitmap bitmap;
         private Bitmap convertedBitmap;
 
-        public ImageConverter()
+        public ImageConverterForm()
         {
             InitializeComponent();
         }
@@ -26,7 +26,8 @@ namespace Mindstorms.Controller
                 if (File.Exists(tbFilePathToConvert.Text))
                 {
                     var image = Image.FromFile(tbFilePathToConvert.Text);
-                    bitmap = ResizeImage(image);
+                    bitmap = ((image.Width > LCDCommand.ScreenWidth) || (image.Height > LCDCommand.ScreenHeight)) ?
+                        ResizeImage(image) : new Bitmap(image);
                 }
                 Convert();
             }
