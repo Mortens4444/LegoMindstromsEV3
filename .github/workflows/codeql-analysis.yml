@@ -63,6 +63,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
+        nuget restore
         msbuild -property:Configuration=ReleaseWithoutJoystick
     #   make bootstrap
     #   make release
