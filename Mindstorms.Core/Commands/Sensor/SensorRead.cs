@@ -1,19 +1,20 @@
 ﻿using Mindstorms.Core.Enums;
+using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.Sensor
 {
     public abstract class SensorRead : Command
     {
-        protected byte[] GetData(byte sensorPort, byte sensorType, byte sensorMode, InputSubCode inputSubCode)
+        protected List<byte> GetData(byte sensorPort, byte sensorType, byte sensorMode, InputSubCode inputSubCode, DaisyChainLayer daisyChainLayer)
         {
-            return new byte[]
+            return new List<byte>
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
+                DirectCommandWithReply,
                 4,
                 0,
                 (byte)OpCode.InputDevice,
                 (byte)inputSubCode,
-                (byte)DaisyChainLayer.EV3,
+                (byte)daisyChainLayer,
                 sensorPort,
                 sensorType,
                 sensorMode,

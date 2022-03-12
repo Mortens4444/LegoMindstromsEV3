@@ -7,16 +7,13 @@ namespace Mindstorms.Core.Commands.PowerControl
 #warning This command must be tested.
         public KeepAlive(byte minutes)
         {
-            data = new byte[]
+            data = DirectCommandNoReply;
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
                 (byte)OpCode.KeepAlive,
                 (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
                 minutes
-            };
+            });
         }
     }
 }

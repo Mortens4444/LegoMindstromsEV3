@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -7,18 +8,10 @@ namespace Mindstorms.Core.Commands.LCD
 #warning This command must be tested.
         public GraphDraw(byte view)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.GraphDraw,
-                
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                view
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.GraphDraw);
+            data.AppendOneBytesParameter(view);
         }
     }
 }

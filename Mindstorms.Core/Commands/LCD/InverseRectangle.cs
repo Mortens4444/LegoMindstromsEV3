@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -6,23 +7,13 @@ namespace Mindstorms.Core.Commands.LCD
     {
         public InverseRectangle(byte x, byte y, byte width, byte height)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.InverseRectangle,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                x,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                y,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                width,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                height
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.InverseRectangle);
+            data.AppendOneBytesParameter(x);
+            data.AppendOneBytesParameter(y);
+            data.AppendOneBytesParameter(width);
+            data.AppendOneBytesParameter(height);
         }
     }
 }

@@ -7,14 +7,10 @@ namespace Mindstorms.Core.Commands.File
     {
         public ContinueUploadFileToBrick(byte fileHandle, IEnumerable<byte> fileContent)
         {
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.NotExpected,
-                (byte)SystemCommand.ContinueFileDownload,
-                fileHandle
-            };
-            dataList.AddRange(fileContent);
-            data = dataList.ToArray();
+            data = SystemCommandNoReply;
+            data.Add((byte)SystemCommand.ContinueFileDownload);
+            data.Add(fileHandle);
+            data.AddRange(fileContent);
         }
     }
 }

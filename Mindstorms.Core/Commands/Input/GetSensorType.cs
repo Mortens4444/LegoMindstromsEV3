@@ -4,20 +4,18 @@ namespace Mindstorms.Core.Commands.Input
 {
     public class GetSensorType : Command
     {
-        public GetSensorType(SensorPort sensorPort)
+        public GetSensorType(SensorPort sensorPort, DaisyChainLayer daisyChainLayer)
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(2);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                2,
-                0,
                 (byte)OpCode.InputDevice,
                 (byte)InputSubCode.GetTypeMode,
-                (byte)DaisyChainLayer.EV3,
+                (byte)daisyChainLayer,
                 (byte)sensorPort,
                 2,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

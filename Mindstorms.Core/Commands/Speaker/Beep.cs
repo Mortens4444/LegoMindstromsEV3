@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 using Mindstorms.Core.Music;
-using System;
 
 namespace Mindstorms.Core.Commands.Speaker
 {
@@ -21,28 +21,12 @@ namespace Mindstorms.Core.Commands.Speaker
         public Beep(byte volume, ushort frequency, ushort durationMs)
             : base(durationMs)
         {
-            var frequencyBytes = BitConverter.GetBytes(frequency);
-            var durationMsBytes =  BitConverter.GetBytes(durationMs);
-
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-                (byte)OpCode.Sound,
-                (byte)SoundSubCode.Tone,
-
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                volume,
-
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                frequencyBytes[0],
-                frequencyBytes[1],
-
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                durationMsBytes[0],
-                durationMsBytes[1]
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.Sound);
+            data.Add((byte)SoundSubCode.Tone);
+            data.AppendOneBytesParameter(volume);
+            data.AppendTwoBytesParameter(frequency);
+            data.AppendTwoBytesParameter(durationMs);
         }
     }
 }

@@ -6,16 +6,13 @@ namespace Mindstorms.Core.Commands.System
     {
         public GetBatteryLevel()
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(1);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                1,
-                0,
-
                 (byte)OpCode.UIRead,
                 (byte)SystemInfoSubCommand.GetBatteryLevel,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

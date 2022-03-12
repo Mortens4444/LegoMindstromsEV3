@@ -8,19 +8,16 @@ namespace Mindstorms.Core.Commands.Button
 
         public PressButton(ButtonType button)
         {
-            data = new byte[]
+            data = DirectCommandNoReply;
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Press,
                 (byte)button,
 
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.WaitForPress
-            };
+            });
         }
     }
 }

@@ -6,23 +6,20 @@ namespace Mindstorms.Core.Commands.Motor
 
     public class GetMotorPosition : Command
     {
-        public GetMotorPosition(OutputPort outputPort, MotorType motorType)
+        public GetMotorPosition(OutputPort outputPort, MotorType motorType, DaisyChainLayer daisyChainLayer)
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(4);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                4,
-                0,
-
                 (byte)OpCode.InputDevice,
                 (byte)InputSubCode.ReadyRaw,
-                (byte)DaisyChainLayer.EV3,
+                (byte)daisyChainLayer,
                 (byte)outputPort,
                 (byte)motorType,
                 (byte)MotorMode.Degree,
                 1,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

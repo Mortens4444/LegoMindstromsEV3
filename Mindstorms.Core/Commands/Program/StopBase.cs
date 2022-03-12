@@ -6,15 +6,9 @@ namespace Mindstorms.Core.Commands.Program
     {
         public StopBase(ProgramSlot programslot)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.ProgramStop,
-                unchecked((byte)programslot)
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.ProgramStop);
+            data.Add(unchecked((byte)programslot));
         }
     }
 }

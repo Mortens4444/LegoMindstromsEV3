@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.Speaker
@@ -24,30 +24,22 @@ namespace Mindstorms.Core.Commands.Speaker
         public PlayNote(byte volume, string note, ushort durationMs)
             : base(durationMs)
         {
-            var durationMsBytes =  BitConverter.GetBytes(durationMs);
-
-            var dataList = new List<byte>
+            data = new List<byte>
             {
                 (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
                 0,
                 8,
                 (byte)OpCode.NoteToFrequency,
-                (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2,
             };
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(note));
-            dataList.Add(0);
-            dataList.AddRange(new byte[] {
+            data.AppendStringParameter(note);
+            data.AddRange(new byte[] {
                 (byte)ParameterType.Variable | (byte)VariableScope.Local,
                 (byte)OpCode.Sound,
                 (byte)SoundSubCode.Tone,
                 volume,
-                (byte)ParameterType.Variable | (byte)VariableScope.Local,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                durationMsBytes[0],
-                durationMsBytes[1]
+                (byte)ParameterType.Variable | (byte)VariableScope.Local
             });
-
-            data = dataList.ToArray();
+            data.AppendTwoBytesParameter(durationMs);
         }
     }
 }

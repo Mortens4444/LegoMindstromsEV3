@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteExtensions.cs" />
     <Compile Include="AssemblyExtensions.cs" />
     <Compile Include="ComboBoxExtensions.cs" />
     <Compile Include="ComboBoxItem.cs" />

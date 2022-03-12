@@ -6,12 +6,9 @@ namespace Mindstorms.Core.Commands.PowerControl
     {
         public Shutdown()
         {
-            data = new byte[]
+            data = DirectCommandNoReply;
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Press,
                 (byte)ButtonType.Back,
@@ -29,7 +26,7 @@ namespace Mindstorms.Core.Commands.PowerControl
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Press,
                 (byte)ButtonType.Center
-            };
+            });
         }
     }
 }

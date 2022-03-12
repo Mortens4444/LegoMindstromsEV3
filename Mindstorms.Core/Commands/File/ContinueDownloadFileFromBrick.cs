@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -7,16 +7,10 @@ namespace Mindstorms.Core.Commands.File
     {
         public ContinueDownloadFileFromBrick(byte fileHandle)
         {
-            var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
-
-            data = new byte[]
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.ContinueFileUpload,
-                fileHandle,
-                maxBytesInReply[0],
-                maxBytesInReply[1]
-            };
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.ContinueFileUpload);
+            data.Add(fileHandle);
+            data.Append(Constants.ChunkSize);
         }
     }
 }

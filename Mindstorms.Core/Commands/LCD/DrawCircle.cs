@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -6,26 +7,13 @@ namespace Mindstorms.Core.Commands.LCD
     {
         public DrawCircle(byte x, byte y, byte radius, LCDColor color, bool fill)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)(fill ? DrawSubCode.FillCircle : DrawSubCode.Circle),
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                x,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                y,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                radius,
-                0
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)(fill ? DrawSubCode.FillCircle : DrawSubCode.Circle));
+            data.AppendOneBytesParameter((byte)color);
+            data.AppendTwoBytesParameter(x);
+            data.AppendTwoBytesParameter(y);
+            data.AppendTwoBytesParameter(radius);
         }
     }
 }

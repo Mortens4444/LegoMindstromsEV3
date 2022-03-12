@@ -36,7 +36,7 @@ namespace Mindstorms.Controller.SensorRead
                 {
                     while (readSensor)
                     {
-                        var result = brick.ReadGyroSensor(sensorPort, sensorMode);
+                        var result = brick.ReadGyroSensor(sensorPort, sensorMode, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
                         if (!this.IsDisposingOrDisposed())
                         {
                             Invoke(new Action(() =>

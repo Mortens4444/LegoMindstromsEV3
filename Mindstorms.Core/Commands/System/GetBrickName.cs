@@ -9,17 +9,14 @@ namespace Mindstorms.Core.Commands.System
     {
         public GetBrickName()
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                Constants.DefaultResponseLength,
-                0,
-
                 (byte)OpCode.ComGet,
                 (byte)ComGetSubCommand.GetBrickName,
                 Constants.DefaultResponseLength,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System.Collections.Generic;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -13,25 +13,18 @@ namespace Mindstorms.Core.Commands.File
         /// <param name="pin">Ex.: 1234</param>
         public SetBluetoothPin(string macOfPC, string pin)
         {
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.BluetoothPin,
-                (byte)macOfPC.Length,
-            };
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.BluetoothPin);
+            data.Add((byte)macOfPC.Length);
 
-            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2);
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(macOfPC));
-            dataList.Add(0);
+            //data.AppendStringParameter(macOfPC)
+            data.Append(macOfPC);
 
-            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.OneByte);
-            dataList.Add((byte)pin.Length);
+            //data.AppendOneBytesParameter((byte)pin.Length);
+            data.Add((byte)pin.Length);
 
-            //dataList.Add((byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2);
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(pin));
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+            //data.AppendStringParameter(pin)
+            data.Append(pin);
         }
     }
 }

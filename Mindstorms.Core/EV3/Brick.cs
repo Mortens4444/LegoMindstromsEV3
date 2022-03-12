@@ -11,6 +11,7 @@ using Mindstorms.Core.Commands.Speaker;
 using Mindstorms.Core.Commands.System;
 using Mindstorms.Core.Drawing;
 using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 using Mindstorms.Core.Music;
 using Mindstorms.Core.Resources;
 using Mindstorms.Core.Responses;
@@ -207,18 +208,18 @@ namespace Mindstorms.Core.EV3
 
         #region Sensor
 
-        public byte[] GetSensorType(SensorPort sensorPort)
+        public byte[] GetSensorType(SensorPort sensorPort, DaisyChainLayer daisyChainLayer)
         {
-            var result = Execute(new GetSensorType(sensorPort));
+            var result = Execute(new GetSensorType(sensorPort, daisyChainLayer));
             return result.RawResponseData;
         }
 
-        public SensorPort GetSensor(SensorType searchedSensorType)
+        public SensorPort GetSensor(SensorType searchedSensorType, DaisyChainLayer daisyChainLayer)
         {
             var sensorPorts = Enum.GetValues(typeof(SensorPort));
             foreach (SensorPort sensorPort in sensorPorts)
             {
-                var response = GetSensorType(sensorPort);
+                var response = GetSensorType(sensorPort, daisyChainLayer);
 
                 var sensorType = response[3];
                 //var sensorMode = response[4];
@@ -231,15 +232,15 @@ namespace Mindstorms.Core.EV3
             return (SensorPort)sensorPorts.GetValue(0);
         }
 
-        public byte[] ReadGyroSensor(SensorPort sensorPort, GyroSensorMode sensorMode)
+        public byte[] ReadGyroSensor(SensorPort sensorPort, GyroSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadGyroSensor(sensorPort, sensorMode));
+            var response = Execute(new ReadGyroSensor(sensorPort, sensorMode, daisyChainLayer));
             return response.RawResponseData;
         }
 
-        public byte[] ReadLightSensor(SensorPort sensorPort, LightSensorMode sensorMode)
+        public byte[] ReadLightSensor(SensorPort sensorPort, LightSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadLightSensor(sensorPort, sensorMode));
+            var response = Execute(new ReadLightSensor(sensorPort, sensorMode, daisyChainLayer));
             return response.RawResponseData;
         }
 
@@ -249,15 +250,15 @@ namespace Mindstorms.Core.EV3
             return response.RawResponseData;
         }
 
-        public byte[] ReadUltrasonicSensor(SensorPort sensorPort, UltrasonicSensorMode sensorMode)
+        public byte[] ReadUltrasonicSensor(SensorPort sensorPort, UltrasonicSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadUltrasonicSensor(sensorPort, sensorMode));
+            var response = Execute(new ReadUltrasonicSensor(sensorPort, sensorMode, daisyChainLayer));
             return response.RawResponseData;
         }
 
-        public byte[] ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode)
+        public byte[] ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadInfraredSensor(sensorPort, sensorMode));
+            var response = Execute(new ReadInfraredSensor(sensorPort, sensorMode, daisyChainLayer));
             return response.RawResponseData;
         }
 
@@ -599,25 +600,25 @@ namespace Mindstorms.Core.EV3
 
         #region Motor
 
-        public byte[] GetMotorPosition(OutputPort outputPort, MotorType motorType)
+        public byte[] GetMotorPosition(OutputPort outputPort, MotorType motorType, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new GetMotorPosition(outputPort, motorType));
+            var response = Execute(new GetMotorPosition(outputPort, motorType, daisyChainLayer));
             return response.RawResponseData;
         }
 
-        public void SetMediumMotorSpeed(params SetMotorSpeedParams[] motorSpeedChanges)
+        public void SetMediumMotorSpeed(DaisyChainLayer daisyChainLayer, params SetMotorSpeedParams[] motorSpeedChanges)
         {
             foreach (var motorSpeedChange in motorSpeedChanges)
             {
-                Execute(new SetMediumMotorSpeed(motorSpeedChange));
+                Execute(new SetMediumMotorSpeed(motorSpeedChange, daisyChainLayer));
             }
         }
 
-        public void SetLargeMotorSpeed(params SetMotorSpeedParams[] motorSpeedChanges)
+        public void SetLargeMotorSpeed(DaisyChainLayer daisyChainLayer, params SetMotorSpeedParams[] motorSpeedChanges)
         {
             foreach (var motorSpeedChange in motorSpeedChanges)
             {
-                Execute(new SetLargeMotorSpeed(motorSpeedChange));
+                Execute(new SetLargeMotorSpeed(motorSpeedChange, daisyChainLayer));
             }
         }
 
@@ -744,7 +745,7 @@ namespace Mindstorms.Core.EV3
 
                         if (rawResponseData != null && rawResponseData.Length > 0)
                         {
-                            result = (command.Data[0] & (byte)CommandType.SystemCommand) == 1 ? (ICommandReply)
+                            result = command.Data[0].IsSystemCommand() ? (ICommandReply)
                                     new SystemCommandReply(rawResponseData) :
                                     new DirectCommandReply(rawResponseData);
 
@@ -754,7 +755,7 @@ namespace Mindstorms.Core.EV3
                                 hasError = true;
                                 throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
                             }
-                            if (result.TypeOfMessage == CommandType.SystemCommandReplyWithError || result.TypeOfMessage == CommandType.DirectCommandReplyWithError)
+                            if (result.TypeOfMessage.IsError())
                             {
                                 return null;
                                 hasError = true;

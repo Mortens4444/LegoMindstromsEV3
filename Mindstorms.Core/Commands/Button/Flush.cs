@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.Button
 {
@@ -8,7 +9,7 @@ namespace Mindstorms.Core.Commands.Button
 
         public Flush()
         {
-            data = new byte[]
+            data = new List<byte>
             {
                 (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
                 1,

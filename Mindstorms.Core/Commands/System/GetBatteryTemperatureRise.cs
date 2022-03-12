@@ -7,16 +7,13 @@ namespace Mindstorms.Core.Commands.System
 #warning This command must be tested.
         public GetBatteryTemperatureRise()
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(4);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                4,
-                0,
-
                 (byte)OpCode.UIRead,
                 (byte)SystemInfoSubCommand.GetBatteryTemperatureRise,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

@@ -6,15 +6,9 @@ namespace Mindstorms.Core.Commands.LCD
     {
         public Update()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.Update
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.Update);
         }
     }
 }

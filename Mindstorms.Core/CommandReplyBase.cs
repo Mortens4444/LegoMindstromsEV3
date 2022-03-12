@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 using System;
 
 namespace Mindstorms.Core
@@ -27,7 +28,7 @@ namespace Mindstorms.Core
 
         public override string ToString()
         {
-            var details = (TypeOfMessage == CommandType.DirectCommandReplyWithError || TypeOfMessage == CommandType.SystemCommandReplyWithError) &&
+            var details = (TypeOfMessage.IsError()) &&
                 CommandReplyStatus == CommandReplyStatus.Success ? TypeOfMessage.ToString() : $"{TypeOfMessage} {CommandReplyStatus}";
 
             return $"#{MessageCounter} {details} Raw data: ({String.Join(", ", RawResponseData)})";

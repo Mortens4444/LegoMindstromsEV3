@@ -6,12 +6,9 @@ namespace Mindstorms.Core.Commands.Button
     {
         public GetButtonStates()
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(7);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                7,
-                0,
-
                 (byte)OpCode.Button,
                 (byte)ButtonEvent.Pressed,
                 (byte)ButtonType.Up,
@@ -46,7 +43,7 @@ namespace Mindstorms.Core.Commands.Button
                 (byte)ButtonEvent.Pressed,
                 (byte)ButtonType.Any,
                 6 | (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

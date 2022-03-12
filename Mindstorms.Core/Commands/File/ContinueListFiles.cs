@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -13,16 +13,10 @@ namespace Mindstorms.Core.Commands.File
         /// <param name="path"></param>
         public ContinueListFiles(byte handle)
         {
-            var maxBytesInFileList = BitConverter.GetBytes(Constants.ChunkSize);
-
-            data = new byte[]
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.ContinueListFiles,
-                handle,
-                maxBytesInFileList[0],
-                maxBytesInFileList[1]
-            };
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.ContinueListFiles);
+            data.Add(handle);
+            data.Append(Constants.ChunkSize);
         }
     }
 }

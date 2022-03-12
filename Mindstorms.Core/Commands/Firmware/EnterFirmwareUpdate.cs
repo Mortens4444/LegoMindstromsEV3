@@ -7,11 +7,8 @@ namespace Mindstorms.Core.Commands.Firmware
 #warning This command must be tested.
         public EnterFirmwareUpdate()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.NotExpected,
-                (byte)SystemCommand.EnterFirmwareUpdate
-            };
+            data = SystemCommandNoReply;
+            data.Add((byte)SystemCommand.EnterFirmwareUpdate);
         }
     }
 }

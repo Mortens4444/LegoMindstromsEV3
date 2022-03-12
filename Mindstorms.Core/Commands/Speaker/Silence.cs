@@ -6,14 +6,9 @@ namespace Mindstorms.Core.Commands.Speaker
     {
         public Silence()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-                (byte)OpCode.Sound,
-                (byte)SoundSubCode.Break
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.Sound);
+            data.Add((byte)SoundSubCode.Break);
         }
     }
 }

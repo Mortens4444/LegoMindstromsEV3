@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ByteExtensions.cs" />
+    <Compile Include="Extensions\CommandTypeExtensions.cs" />
+    <Compile Include="Extensions\ByteListExtensions.cs" />
     <Compile Include="Commands\Button\Flush.cs" />
     <Compile Include="Commands\Button\PressButton.cs" />
     <Compile Include="Commands\Button\ReleaseButton.cs" />

@@ -6,14 +6,9 @@ namespace Mindstorms.Core.Commands.Speaker
     {
         public SpeakerIsBusy()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                1,
-                0,
-                (byte)OpCode.SoundTest,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            data = GetDirectCommandWithReply(1);
+            data.Add((byte)OpCode.SoundTest);
+            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
         }
     }
 }

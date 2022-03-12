@@ -7,11 +7,8 @@ namespace Mindstorms.Core.Commands.File
 #warning This command must be tested.
         public ListOpenHandles()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.ListOpenHandles
-            };
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.ListOpenHandles);
         }
     }
 }

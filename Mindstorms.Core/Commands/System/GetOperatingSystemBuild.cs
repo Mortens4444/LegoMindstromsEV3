@@ -6,17 +6,14 @@ namespace Mindstorms.Core.Commands.System
     {
         public GetOperatingSystemBuild()
         {
-            data = new byte[]
+            data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                Constants.DefaultResponseLength,
-                0,
-
                 (byte)OpCode.UIRead,
                 (byte)SystemInfoSubCommand.GetOperatingSystemBuild,
                 Constants.DefaultResponseLength,
                 (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            });
         }
     }
 }

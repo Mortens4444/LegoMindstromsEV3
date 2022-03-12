@@ -1,7 +1,6 @@
 New features / Bugfixes
 -----------------------
 - IR remote control
-- Daisy chain
 - Mailbox
 - Gyro sensor
 - Line follower algorithm

@@ -36,6 +36,8 @@
             this.cbSensorMode = new System.Windows.Forms.ComboBox();
             this.lblSensorPort = new System.Windows.Forms.Label();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbLightSensor.SuspendLayout();
             this.SuspendLayout();
@@ -46,11 +48,13 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(334, 91);
+            this.pMain.Size = new System.Drawing.Size(334, 111);
             this.pMain.TabIndex = 0;
             // 
             // gbLightSensor
             // 
+            this.gbLightSensor.Controls.Add(this.lblDaisyChainLayer);
+            this.gbLightSensor.Controls.Add(this.cbDaisyChainLayer);
             this.gbLightSensor.Controls.Add(this.lblResult);
             this.gbLightSensor.Controls.Add(this.btnStartStopRead);
             this.gbLightSensor.Controls.Add(this.lblSensorMode);
@@ -60,7 +64,7 @@
             this.gbLightSensor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbLightSensor.Location = new System.Drawing.Point(0, 0);
             this.gbLightSensor.Name = "gbLightSensor";
-            this.gbLightSensor.Size = new System.Drawing.Size(334, 91);
+            this.gbLightSensor.Size = new System.Drawing.Size(334, 111);
             this.gbLightSensor.TabIndex = 0;
             this.gbLightSensor.TabStop = false;
             // 
@@ -118,15 +122,32 @@
             this.cbSensorPort.Size = new System.Drawing.Size(75, 21);
             this.cbSensorPort.TabIndex = 6;
             // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(12, 89);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 19;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            // 
+            // cbDaisyChainLayer
+            // 
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(105, 84);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 18;
+            // 
             // GyroSensorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 91);
+            this.ClientSize = new System.Drawing.Size(334, 111);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(350, 130);
-            this.MinimumSize = new System.Drawing.Size(350, 130);
+            this.MaximumSize = new System.Drawing.Size(350, 150);
+            this.MinimumSize = new System.Drawing.Size(350, 150);
             this.Name = "GyroSensorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gyro sensor";
@@ -148,5 +169,7 @@
         private System.Windows.Forms.ComboBox cbSensorMode;
         private System.Windows.Forms.Label lblSensorPort;
         private System.Windows.Forms.ComboBox cbSensorPort;
+        private System.Windows.Forms.Label lblDaisyChainLayer;
+        private System.Windows.Forms.ComboBox cbDaisyChainLayer;
     }
 }

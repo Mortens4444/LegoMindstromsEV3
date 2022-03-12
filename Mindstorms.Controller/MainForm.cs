@@ -54,6 +54,7 @@ namespace Mindstorms.Controller
             tscbLeftMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.B.GetIndex());
             tscbRightMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.C.GetIndex());
             cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());
+            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
         }
 
         ~MainForm()
@@ -125,17 +126,17 @@ namespace Mindstorms.Controller
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            StopMotors();
+            StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
         }
 
-        private void StopMotors()
+        private void StopMotors(DaisyChainLayer daisyChainLayer)
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+            brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.Motors, 0));
         }
 
         private void BtnNorthWest_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, 100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, 100));
         }
 
         private void BtnNorth_MouseDown(object sender, MouseEventArgs e)
@@ -145,17 +146,17 @@ namespace Mindstorms.Controller
 
         private void MoveNorth()
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, 100));
         }
 
         private void BtnNorthEast_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, 0));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, 0));
         }
 
         private void TurnEast()
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, -100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, 100), new SetMotorSpeedParams(brick.RightMotor, -100));
         }
 
         private void BtnWest_MouseDown(object sender, MouseEventArgs e)
@@ -165,7 +166,7 @@ namespace Mindstorms.Controller
 
         private void TurnWest()
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 100));
         }
 
         private void BtnEast_MouseDown(object sender, MouseEventArgs e)
@@ -175,7 +176,7 @@ namespace Mindstorms.Controller
 
         private void BtnSouthWest_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, -100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, 0), new SetMotorSpeedParams(brick.RightMotor, -100));
         }
 
         private void BtnSouth_MouseDown(object sender, MouseEventArgs e)
@@ -185,12 +186,12 @@ namespace Mindstorms.Controller
 
         private void MoveSouth()
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, -100));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, -100));
         }
 
         private void BtnSouthEast_MouseDown(object sender, MouseEventArgs e)
         {
-            brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 0));
+            brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, -100), new SetMotorSpeedParams(brick.RightMotor, 0));
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -214,7 +215,7 @@ namespace Mindstorms.Controller
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
-            StopMotors();
+            StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
         }
 
         private void ChkVoiceControl_CheckedChanged(object sender, EventArgs e)
@@ -229,7 +230,7 @@ namespace Mindstorms.Controller
                     new VoiceCommand("Ok Lego, go backward", () => { MoveSouth(); }),
                     new VoiceCommand("Ok Lego, turn left", () => { TurnWest(); }),
                     new VoiceCommand("Ok Lego, turn right", () => { TurnEast(); }),
-                    new VoiceCommand("Ok Lego, stop", () => { StopMotors(); }),
+                    new VoiceCommand("Ok Lego, stop", () => { StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem); }),
                     new VoiceCommand("Ok Lego, play some music", () => { brick?.PlayMusic(new KisKeceLányom()); }),
                 };
 
@@ -269,11 +270,11 @@ namespace Mindstorms.Controller
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, 0));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, 0));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.Motors, (short)deltaY));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, (short)deltaY));
                     },
                     (int deltaX, int deltaY) =>
                     {
@@ -286,7 +287,7 @@ namespace Mindstorms.Controller
                             ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
@@ -297,28 +298,28 @@ namespace Mindstorms.Controller
                             ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)deltaY;
                         var rightMotorSpeed = (short)(deltaY + deltaX);
                         Console.WriteLine($"Backward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)(deltaY - deltaX);
                         var rightMotorSpeed = (short)deltaY;
                         Console.WriteLine($"Backward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
                         var leftMotorSpeed = (short)deltaX;
                         var rightMotorSpeed = (short)-deltaX;
                         Console.WriteLine($"Turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        brick?.SetLargeMotorSpeed(new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     () =>
                     {
@@ -367,7 +368,7 @@ namespace Mindstorms.Controller
 
         private void BtnMouseUp(object sender, MouseEventArgs e)
         {
-            StopMotors();
+            StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
         }
 
         private void TsmiMotors_Click(object sender, EventArgs e)

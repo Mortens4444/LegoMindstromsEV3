@@ -1,17 +1,25 @@
-﻿namespace Mindstorms.Core.Commands
+﻿using Mindstorms.Core.Enums;
+using System.Collections.Generic;
+
+namespace Mindstorms.Core.Commands
 {
     public abstract class Command
 	{
-        protected byte[] data;
+        protected List<byte> data;
 
         public byte[] Data
 		{
-            get { return data; }
+            get { return data.ToArray(); }
         }
 
-        public int Length
-		{
-            get { return data.Length; }
-        }
+        protected readonly List<byte> SystemCommandNoReply = new List<byte> { (byte)CommandType.SystemCommand | (byte)Response.NotExpected };
+
+        protected readonly List<byte> SystemCommandWithReply = new List<byte> { (byte)CommandType.SystemCommand | (byte)Response.Required };
+
+        protected readonly List<byte> DirectCommandNoReply = new List<byte> { (byte)CommandType.DirectCommand | (byte)Response.NotExpected, 0, 0 };
+
+        protected readonly byte DirectCommandWithReply = (byte)CommandType.DirectCommand | (byte)Response.Required;
+
+        protected List<byte> GetDirectCommandWithReply(byte numberOfExpectedBytes, byte localBytes = 0) => new List<byte> { DirectCommandWithReply, numberOfExpectedBytes, (byte)(localBytes << 2) };
     }
 }

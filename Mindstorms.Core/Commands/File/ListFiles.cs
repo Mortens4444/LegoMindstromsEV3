@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
-using System.Collections.Generic;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -14,19 +13,10 @@ namespace Mindstorms.Core.Commands.File
         /// <param name="path"></param>
         public ListFiles(string path)
         {
-            var maxBytesInFileList = BitConverter.GetBytes(Constants.ChunkSize);
-
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.ListFiles,
-                maxBytesInFileList[0],
-                maxBytesInFileList[1]
-            };
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(path));
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.ListFiles);
+            data.Append(Constants.ChunkSize);
+            data.Append(path);
         }
     }
 }

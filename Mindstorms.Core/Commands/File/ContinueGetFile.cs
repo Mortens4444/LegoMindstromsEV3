@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -8,16 +8,10 @@ namespace Mindstorms.Core.Commands.File
 #warning This command must be tested.
         public ContinueGetFile(byte fileHandle)
         {
-            var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
-
-            data = new byte[]
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.ContinueGetFile,
-                fileHandle,
-                maxBytesInReply[0],
-                maxBytesInReply[1]
-            };
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.ContinueGetFile);
+            data.Add(fileHandle);
+            data.Append(Constants.ChunkSize);
         }
     }
 }

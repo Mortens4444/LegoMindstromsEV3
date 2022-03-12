@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -6,29 +7,14 @@ namespace Mindstorms.Core.Commands.LCD
     {
         public DrawRectangle(byte x, byte y, byte width, byte height, LCDColor color, bool fill)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)(fill ? DrawSubCode.FillRectangle : DrawSubCode.Rectangle),
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                x,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                y,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                width,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                height,
-                0
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)(fill ? DrawSubCode.FillRectangle : DrawSubCode.Rectangle));
+            data.AppendOneBytesParameter((byte)color);
+            data.AppendTwoBytesParameter(x);
+            data.AppendTwoBytesParameter(y);
+            data.AppendTwoBytesParameter(width);
+            data.AppendTwoBytesParameter(height);
         }
     }
 }

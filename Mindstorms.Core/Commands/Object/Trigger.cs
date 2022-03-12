@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.Object
 {
@@ -11,19 +11,9 @@ namespace Mindstorms.Core.Commands.Object
 #warning This command must be tested.
         public Trigger(ushort objectId)
         {
-            var objectIdBytes = BitConverter.GetBytes(objectId);
-
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.ObjectTrigger,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                objectIdBytes[0],
-                objectIdBytes[1]
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.ObjectTrigger);
+            data.AppendTwoBytesParameter(objectId);
         }
     }
 }

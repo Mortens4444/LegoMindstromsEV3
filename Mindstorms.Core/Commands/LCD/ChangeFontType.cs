@@ -8,16 +8,10 @@ namespace Mindstorms.Core.Commands.LCD
 
         public ChangeFontType(FontType fontType)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.SelectFont,
-                (byte)fontType
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.SelectFont);
+            data.Add((byte)fontType);
         }
     }
 }

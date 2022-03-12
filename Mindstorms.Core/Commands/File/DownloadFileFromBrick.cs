@@ -1,6 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 using System;
-using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -8,20 +8,12 @@ namespace Mindstorms.Core.Commands.File
     {
         public DownloadFileFromBrick(string filePath, int fileSize)
         {
-            var bytesToRead = Math.Min(fileSize, Constants.ChunkSize);
-            var maxBytesInReply = BitConverter.GetBytes(bytesToRead);
+            var bytesToRead = (ushort)Math.Min(fileSize, Constants.ChunkSize);
 
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.BeginFileUpload,
-                maxBytesInReply[0],
-                maxBytesInReply[1]
-            };
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(filePath));
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.BeginFileUpload);
+            data.Append(bytesToRead);
+            data.Append(filePath);
         }
     }
 }

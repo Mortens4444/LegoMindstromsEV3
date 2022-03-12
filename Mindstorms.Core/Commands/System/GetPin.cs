@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System.Collections.Generic;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.System
 {
@@ -10,25 +10,17 @@ namespace Mindstorms.Core.Commands.System
     {
         public GetPin(CommunicationInterface communicationInterface, string brickName)
         {
-            var dataList = new List<byte>
+            data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                Constants.DefaultResponseLength,
-                0,
-
                 (byte)OpCode.ComGet,
                 (byte)ComGetSubCommand.GetPin,
-                (byte)communicationInterface,
+                (byte)communicationInterface
+            });
+            data.AppendStringParameter(brickName);
 
-                (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
-            };
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(brickName));
-            dataList.Add(0);
-
-            dataList.Add(Constants.DefaultResponseLength);
-            dataList.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
-
-            data = dataList.ToArray();
+            data.Add(Constants.DefaultResponseLength);
+            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
         }
     }
 }

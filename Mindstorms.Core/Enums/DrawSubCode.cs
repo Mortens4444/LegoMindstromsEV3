@@ -15,6 +15,7 @@
         InverseRectangle = 16,
         SelectFont = 17,
         TopLine = 18,
+        FillWindow = 0x13,
         
         FillCircle = 24,
         Restore = 0x1A,

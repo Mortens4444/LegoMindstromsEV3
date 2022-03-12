@@ -70,6 +70,7 @@ namespace Mindstorms.Controller
             this.tsmiBehaveLikeADog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiImageConverter = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSoundRecorder = new System.Windows.Forms.ToolStripMenuItem();
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMorse = new System.Windows.Forms.GroupBox();
             this.tbRobotPartner = new System.Windows.Forms.TextBox();
@@ -89,7 +90,8 @@ namespace Mindstorms.Controller
             this.btnNorthWest = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiSoundRecorder = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.pMain.SuspendLayout();
@@ -377,7 +379,7 @@ namespace Mindstorms.Controller
             // 
             this.tsmiSnake.Enabled = false;
             this.tsmiSnake.Name = "tsmiSnake";
-            this.tsmiSnake.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSnake.Size = new System.Drawing.Size(120, 22);
             this.tsmiSnake.Text = "Snake";
             this.tsmiSnake.Click += new System.EventHandler(this.TsmiSnake_Click);
             // 
@@ -385,20 +387,20 @@ namespace Mindstorms.Controller
             // 
             this.tsmiCircles.Enabled = false;
             this.tsmiCircles.Name = "tsmiCircles";
-            this.tsmiCircles.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCircles.Size = new System.Drawing.Size(120, 22);
             this.tsmiCircles.Text = "Circles";
             this.tsmiCircles.Click += new System.EventHandler(this.TsmiCircles_Click);
             // 
             // separator3
             // 
             this.separator3.Name = "separator3";
-            this.separator3.Size = new System.Drawing.Size(177, 6);
+            this.separator3.Size = new System.Drawing.Size(117, 6);
             // 
             // tsmiBehaveLikeADog
             // 
             this.tsmiBehaveLikeADog.Enabled = false;
             this.tsmiBehaveLikeADog.Name = "tsmiBehaveLikeADog";
-            this.tsmiBehaveLikeADog.Size = new System.Drawing.Size(180, 22);
+            this.tsmiBehaveLikeADog.Size = new System.Drawing.Size(120, 22);
             this.tsmiBehaveLikeADog.Text = "Be a dog";
             this.tsmiBehaveLikeADog.Click += new System.EventHandler(this.TsmiBehaveLikeADog_Click);
             // 
@@ -414,12 +416,21 @@ namespace Mindstorms.Controller
             // tsmiImageConverter
             // 
             this.tsmiImageConverter.Name = "tsmiImageConverter";
-            this.tsmiImageConverter.Size = new System.Drawing.Size(180, 22);
+            this.tsmiImageConverter.Size = new System.Drawing.Size(160, 22);
             this.tsmiImageConverter.Text = "Image converter";
             this.tsmiImageConverter.Click += new System.EventHandler(this.TsmiImageConverter_Click);
             // 
+            // tsmiSoundRecorder
+            // 
+            this.tsmiSoundRecorder.Name = "tsmiSoundRecorder";
+            this.tsmiSoundRecorder.Size = new System.Drawing.Size(160, 22);
+            this.tsmiSoundRecorder.Text = "Sound recorder";
+            this.tsmiSoundRecorder.Click += new System.EventHandler(this.TsmiSoundRecorder_Click);
+            // 
             // pMain
             // 
+            this.pMain.Controls.Add(this.lblDaisyChainLayer);
+            this.pMain.Controls.Add(this.cbDaisyChainLayer);
             this.pMain.Controls.Add(this.gbMorse);
             this.pMain.Controls.Add(this.gbJoystick);
             this.pMain.Controls.Add(this.gbControl);
@@ -624,12 +635,22 @@ namespace Mindstorms.Controller
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
-            // tsmiSoundRecorder
+            // cbDaisyChainLayer
             // 
-            this.tsmiSoundRecorder.Name = "tsmiSoundRecorder";
-            this.tsmiSoundRecorder.Size = new System.Drawing.Size(180, 22);
-            this.tsmiSoundRecorder.Text = "Sound recorder";
-            this.tsmiSoundRecorder.Click += new System.EventHandler(this.TsmiSoundRecorder_Click);
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(448, 30);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 14;
+            // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(448, 14);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 15;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
             // 
             // MainForm
             // 
@@ -653,6 +674,7 @@ namespace Mindstorms.Controller
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.pMain.ResumeLayout(false);
+            this.pMain.PerformLayout();
             this.gbMorse.ResumeLayout(false);
             this.gbMorse.PerformLayout();
             this.gbJoystick.ResumeLayout(false);
@@ -725,6 +747,8 @@ namespace Mindstorms.Controller
         private System.Windows.Forms.ToolStripSeparator separator3;
         private System.Windows.Forms.ToolStripMenuItem tsmiBehaveLikeADog;
         private System.Windows.Forms.ToolStripMenuItem tsmiSoundRecorder;
+        private System.Windows.Forms.Label lblDaisyChainLayer;
+        private System.Windows.Forms.ComboBox cbDaisyChainLayer;
     }
 }
 

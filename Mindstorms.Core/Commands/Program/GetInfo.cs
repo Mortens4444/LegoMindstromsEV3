@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.Program
 {
@@ -8,22 +8,10 @@ namespace Mindstorms.Core.Commands.Program
     {
         public GetInfo(ushort programSlotId)
         {
-            var programSlotIdBytes = BitConverter.GetBytes(programSlotId);
-
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.Required,
-                1,
-                0,
-
-                (byte)OpCode.ProgramInfo,
-                //(byte)ProgramSlot.User,
-
-                programSlotIdBytes[0],
-                programSlotIdBytes[1],
-
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
-            };
+            data = GetDirectCommandWithReply(1);
+            data.Add((byte)OpCode.ProgramInfo);
+            data.Append(programSlotId);
+            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
         }
     }
 }

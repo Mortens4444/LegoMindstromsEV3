@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System.Collections.Generic;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LCD
 {
@@ -7,31 +7,16 @@ namespace Mindstorms.Core.Commands.LCD
     {
         public DrawString(byte x, byte y, string text, LCDColor color = LCDColor.Black, FontType fontType = FontType.Normal)
         {
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.SelectFont,
-                (byte)fontType,
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.Text,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                (byte)color,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                x,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
-                y,
-                0,
-                (byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2
-            };
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(text));
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.SelectFont);
+            data.Add((byte)fontType);
+            data.Add((byte)OpCode.DrawUI);
+            data.Add((byte)DrawSubCode.Text);
+            data.AppendOneBytesParameter((byte)color);
+            data.AppendTwoBytesParameter(x);
+            data.AppendTwoBytesParameter(y);
+            data.AppendStringParameter(text);
         }
     }
 }

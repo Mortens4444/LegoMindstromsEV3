@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.LED
 {
@@ -6,17 +7,10 @@ namespace Mindstorms.Core.Commands.LED
     {
         public ChangeLedsState(LedPattern ledPattern)
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.UIWrite,
-                (byte)UIWriteSubCommand.Led,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
-                (byte)ledPattern
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.UIWrite);
+            data.Add((byte)UIWriteSubCommand.Led);
+            data.AppendOneBytesParameter((byte)ledPattern);
         }
     }
 }

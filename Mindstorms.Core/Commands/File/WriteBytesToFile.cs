@@ -1,6 +1,4 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
-using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -9,24 +7,17 @@ namespace Mindstorms.Core.Commands.File
     {
         public WriteBytesToFile(byte handle, byte[] bytes)
         {
-            //var maxBytesInReply = BitConverter.GetBytes(Constants.ChunkSize);
-
-            var dataList = new List<byte>
+            data = DirectCommandNoReply;
+            data.AddRange(new byte[]
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
                 (byte)OpCode.File,
                 (byte)FileSubCode.WriteBytes,
                 handle,
-                (byte)bytes.Length,
-
-            };
-            dataList.AddRange(bytes);
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+                (byte)bytes.Length
+            });
+            //data.AppendTwoBytesParameter(Constants.ChunkSize);
+            data.AddRange(bytes);
+            data.Add(0);
         }
     }
 }

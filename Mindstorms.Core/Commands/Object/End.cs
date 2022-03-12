@@ -10,14 +10,8 @@ namespace Mindstorms.Core.Commands.Object
 #warning This command must be tested.
         public End()
         {
-            data = new byte[]
-            {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
-                0,
-                0,
-
-                (byte)OpCode.ObjectEnd
-            };
+            data = DirectCommandNoReply;
+            data.Add((byte)OpCode.ObjectEnd);
         }
     }
 }

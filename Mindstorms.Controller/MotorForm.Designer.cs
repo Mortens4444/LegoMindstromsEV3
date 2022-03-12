@@ -48,6 +48,8 @@
             this.chkTimeout = new System.Windows.Forms.CheckBox();
             this.nudTimeout = new System.Windows.Forms.NumericUpDown();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbMotor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeverSpeed)).BeginInit();
@@ -63,11 +65,13 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(361, 149);
+            this.pMain.Size = new System.Drawing.Size(488, 149);
             this.pMain.TabIndex = 0;
             // 
             // gbMotor
             // 
+            this.gbMotor.Controls.Add(this.lblDaisyChainLayer);
+            this.gbMotor.Controls.Add(this.cbDaisyChainLayer);
             this.gbMotor.Controls.Add(this.btnRefreshPositions);
             this.gbMotor.Controls.Add(this.lblLeverMotorPosition);
             this.gbMotor.Controls.Add(this.lblRightMotorPosition);
@@ -86,7 +90,7 @@
             this.gbMotor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMotor.Location = new System.Drawing.Point(0, 0);
             this.gbMotor.Name = "gbMotor";
-            this.gbMotor.Size = new System.Drawing.Size(361, 149);
+            this.gbMotor.Size = new System.Drawing.Size(488, 149);
             this.gbMotor.TabIndex = 7;
             this.gbMotor.TabStop = false;
             // 
@@ -252,11 +256,28 @@
             0,
             0});
             // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(320, 104);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 33;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            // 
+            // cbDaisyChainLayer
+            // 
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(320, 120);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 32;
+            // 
             // MotorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 149);
+            this.ClientSize = new System.Drawing.Size(488, 149);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MotorForm";
@@ -294,5 +315,7 @@
         private System.Windows.Forms.Label lblRightMotorPosition;
         private System.Windows.Forms.Label lblLeftMotorPosition;
         private System.Windows.Forms.Button btnRefreshPositions;
+        private System.Windows.Forms.Label lblDaisyChainLayer;
+        private System.Windows.Forms.ComboBox cbDaisyChainLayer;
     }
 }

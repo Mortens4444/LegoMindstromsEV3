@@ -1,5 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
-using System.Collections.Generic;
+using Mindstorms.Core.Extensions;
 
 namespace Mindstorms.Core.Commands.File
 {
@@ -7,16 +7,9 @@ namespace Mindstorms.Core.Commands.File
     {
         public DeleteFile(string fullPathFileName)
         {
-            var dataList = new List<byte>
-            {
-                (byte)CommandType.SystemCommand | (byte)Response.Required,
-                (byte)SystemCommand.DeleteFile
-            };
-
-            dataList.AddRange(Constants.DefaultEncoding.GetBytes(fullPathFileName));
-            dataList.Add(0);
-
-            data = dataList.ToArray();
+            data = SystemCommandWithReply;
+            data.Add((byte)SystemCommand.DeleteFile);
+            data.Append(fullPathFileName);
         }
     }
 }

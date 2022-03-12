@@ -30,21 +30,23 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbLightSensor = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnLong = new System.Windows.Forms.Button();
+            this.btnBlueLower = new System.Windows.Forms.Button();
+            this.btnBlueUpper = new System.Windows.Forms.Button();
+            this.btnRedLower = new System.Windows.Forms.Button();
+            this.btnRedUpper = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
             this.btnStartStopRead = new System.Windows.Forms.Button();
             this.lblSensorMode = new System.Windows.Forms.Label();
             this.cbSensorMode = new System.Windows.Forms.ComboBox();
             this.lblSensorPort = new System.Windows.Forms.Label();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
-            this.btnRedUpper = new System.Windows.Forms.Button();
-            this.btnRedLower = new System.Windows.Forms.Button();
-            this.btnBlueUpper = new System.Windows.Forms.Button();
-            this.btnBlueLower = new System.Windows.Forms.Button();
-            this.btnLong = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbLightSensor.SuspendLayout();
             this.SuspendLayout();
@@ -55,11 +57,13 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(334, 205);
+            this.pMain.Size = new System.Drawing.Size(334, 238);
             this.pMain.TabIndex = 0;
             // 
             // gbLightSensor
             // 
+            this.gbLightSensor.Controls.Add(this.lblDaisyChainLayer);
+            this.gbLightSensor.Controls.Add(this.cbDaisyChainLayer);
             this.gbLightSensor.Controls.Add(this.label4);
             this.gbLightSensor.Controls.Add(this.label3);
             this.gbLightSensor.Controls.Add(this.label2);
@@ -78,9 +82,85 @@
             this.gbLightSensor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbLightSensor.Location = new System.Drawing.Point(0, 0);
             this.gbLightSensor.Name = "gbLightSensor";
-            this.gbLightSensor.Size = new System.Drawing.Size(334, 205);
+            this.gbLightSensor.Size = new System.Drawing.Size(334, 238);
             this.gbLightSensor.TabIndex = 0;
             this.gbLightSensor.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "label1";
+            // 
+            // btnLong
+            // 
+            this.btnLong.Location = new System.Drawing.Point(208, 100);
+            this.btnLong.Name = "btnLong";
+            this.btnLong.Size = new System.Drawing.Size(52, 23);
+            this.btnLong.TabIndex = 16;
+            this.btnLong.UseVisualStyleBackColor = true;
+            // 
+            // btnBlueLower
+            // 
+            this.btnBlueLower.Location = new System.Drawing.Point(237, 158);
+            this.btnBlueLower.Name = "btnBlueLower";
+            this.btnBlueLower.Size = new System.Drawing.Size(23, 23);
+            this.btnBlueLower.TabIndex = 15;
+            this.btnBlueLower.UseVisualStyleBackColor = true;
+            // 
+            // btnBlueUpper
+            // 
+            this.btnBlueUpper.Location = new System.Drawing.Point(237, 129);
+            this.btnBlueUpper.Name = "btnBlueUpper";
+            this.btnBlueUpper.Size = new System.Drawing.Size(23, 23);
+            this.btnBlueUpper.TabIndex = 14;
+            this.btnBlueUpper.UseVisualStyleBackColor = true;
+            // 
+            // btnRedLower
+            // 
+            this.btnRedLower.Location = new System.Drawing.Point(208, 158);
+            this.btnRedLower.Name = "btnRedLower";
+            this.btnRedLower.Size = new System.Drawing.Size(23, 23);
+            this.btnRedLower.TabIndex = 13;
+            this.btnRedLower.UseVisualStyleBackColor = true;
+            // 
+            // btnRedUpper
+            // 
+            this.btnRedUpper.Location = new System.Drawing.Point(208, 129);
+            this.btnRedUpper.Name = "btnRedUpper";
+            this.btnRedUpper.Size = new System.Drawing.Size(23, 23);
+            this.btnRedUpper.TabIndex = 12;
+            this.btnRedUpper.UseVisualStyleBackColor = true;
             // 
             // lblResult
             // 
@@ -136,87 +216,28 @@
             this.cbSensorPort.Size = new System.Drawing.Size(75, 21);
             this.cbSensorPort.TabIndex = 6;
             // 
-            // btnRedUpper
+            // lblDaisyChainLayer
             // 
-            this.btnRedUpper.Location = new System.Drawing.Point(208, 129);
-            this.btnRedUpper.Name = "btnRedUpper";
-            this.btnRedUpper.Size = new System.Drawing.Size(23, 23);
-            this.btnRedUpper.TabIndex = 12;
-            this.btnRedUpper.UseVisualStyleBackColor = true;
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(12, 216);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 22;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
             // 
-            // btnRedLower
+            // cbDaisyChainLayer
             // 
-            this.btnRedLower.Location = new System.Drawing.Point(208, 158);
-            this.btnRedLower.Name = "btnRedLower";
-            this.btnRedLower.Size = new System.Drawing.Size(23, 23);
-            this.btnRedLower.TabIndex = 13;
-            this.btnRedLower.UseVisualStyleBackColor = true;
-            // 
-            // btnBlueUpper
-            // 
-            this.btnBlueUpper.Location = new System.Drawing.Point(237, 129);
-            this.btnBlueUpper.Name = "btnBlueUpper";
-            this.btnBlueUpper.Size = new System.Drawing.Size(23, 23);
-            this.btnBlueUpper.TabIndex = 14;
-            this.btnBlueUpper.UseVisualStyleBackColor = true;
-            // 
-            // btnBlueLower
-            // 
-            this.btnBlueLower.Location = new System.Drawing.Point(237, 158);
-            this.btnBlueLower.Name = "btnBlueLower";
-            this.btnBlueLower.Size = new System.Drawing.Size(23, 23);
-            this.btnBlueLower.TabIndex = 15;
-            this.btnBlueLower.UseVisualStyleBackColor = true;
-            // 
-            // btnLong
-            // 
-            this.btnLong.Location = new System.Drawing.Point(208, 100);
-            this.btnLong.Name = "btnLong";
-            this.btnLong.Size = new System.Drawing.Size(52, 23);
-            this.btnLong.TabIndex = 16;
-            this.btnLong.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 100);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "label4";
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(105, 211);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 21;
             // 
             // InfraredSensorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 205);
+            this.ClientSize = new System.Drawing.Size(334, 238);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InfraredSensorForm";
@@ -249,5 +270,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDaisyChainLayer;
+        private System.Windows.Forms.ComboBox cbDaisyChainLayer;
     }
 }
