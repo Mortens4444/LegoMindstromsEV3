@@ -72,6 +72,8 @@ namespace Mindstorms.Controller
             this.tsmiImageConverter = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSoundRecorder = new System.Windows.Forms.ToolStripMenuItem();
             this.pMain = new System.Windows.Forms.Panel();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.gbMorse = new System.Windows.Forms.GroupBox();
             this.tbRobotPartner = new System.Windows.Forms.TextBox();
             this.rtbMorse = new System.Windows.Forms.RichTextBox();
@@ -90,8 +92,6 @@ namespace Mindstorms.Controller
             this.btnNorthWest = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
-            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.pMain.SuspendLayout();
@@ -440,6 +440,24 @@ namespace Mindstorms.Controller
             this.pMain.Size = new System.Drawing.Size(619, 137);
             this.pMain.TabIndex = 6;
             // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(448, 14);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 15;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            // 
+            // cbDaisyChainLayer
+            // 
+            this.cbDaisyChainLayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(448, 30);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 14;
+            // 
             // gbMorse
             // 
             this.gbMorse.Controls.Add(this.tbRobotPartner);
@@ -634,23 +652,6 @@ namespace Mindstorms.Controller
             this.toolTip.SetToolTip(this.btnStop, "Stop moving");
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
-            // 
-            // cbDaisyChainLayer
-            // 
-            this.cbDaisyChainLayer.FormattingEnabled = true;
-            this.cbDaisyChainLayer.Location = new System.Drawing.Point(448, 30);
-            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
-            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
-            this.cbDaisyChainLayer.TabIndex = 14;
-            // 
-            // lblDaisyChainLayer
-            // 
-            this.lblDaisyChainLayer.AutoSize = true;
-            this.lblDaisyChainLayer.Location = new System.Drawing.Point(448, 14);
-            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
-            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
-            this.lblDaisyChainLayer.TabIndex = 15;
-            this.lblDaisyChainLayer.Text = "Daisy chain layer";
             // 
             // MainForm
             // 

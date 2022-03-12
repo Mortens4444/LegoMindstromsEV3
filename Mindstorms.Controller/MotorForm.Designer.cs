@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotorForm));
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMotor = new System.Windows.Forms.GroupBox();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.btnRefreshPositions = new System.Windows.Forms.Button();
             this.lblLeverMotorPosition = new System.Windows.Forms.Label();
             this.lblRightMotorPosition = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.chkTimeout = new System.Windows.Forms.CheckBox();
             this.nudTimeout = new System.Windows.Forms.NumericUpDown();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
-            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbMotor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeverSpeed)).BeginInit();
@@ -93,6 +93,24 @@
             this.gbMotor.Size = new System.Drawing.Size(488, 149);
             this.gbMotor.TabIndex = 7;
             this.gbMotor.TabStop = false;
+            // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(320, 104);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 33;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            // 
+            // cbDaisyChainLayer
+            // 
+            this.cbDaisyChainLayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(320, 120);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 32;
             // 
             // btnRefreshPositions
             // 
@@ -255,23 +273,6 @@
             0,
             0,
             0});
-            // 
-            // lblDaisyChainLayer
-            // 
-            this.lblDaisyChainLayer.AutoSize = true;
-            this.lblDaisyChainLayer.Location = new System.Drawing.Point(320, 104);
-            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
-            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
-            this.lblDaisyChainLayer.TabIndex = 33;
-            this.lblDaisyChainLayer.Text = "Daisy chain layer";
-            // 
-            // cbDaisyChainLayer
-            // 
-            this.cbDaisyChainLayer.FormattingEnabled = true;
-            this.cbDaisyChainLayer.Location = new System.Drawing.Point(320, 120);
-            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
-            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
-            this.cbDaisyChainLayer.TabIndex = 32;
             // 
             // MotorForm
             // 

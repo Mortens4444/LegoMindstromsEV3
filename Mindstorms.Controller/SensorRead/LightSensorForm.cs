@@ -19,6 +19,7 @@ namespace Mindstorms.Controller.SensorRead
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
+            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
             var sensorPort = brick.GetSensor(SensorType.NXTLight, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
             cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)sensorPort);
             cbSensorMode.FillAndSelect(Enum.GetValues(typeof(LightSensorMode)), (byte)LightSensorMode.MeasuringColors);

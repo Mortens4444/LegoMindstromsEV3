@@ -18,6 +18,7 @@ namespace Mindstorms.Controller.SensorRead
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
+            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
             cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)SensorPort.In4);
             cbSensorMode.FillAndSelect(Enum.GetValues(typeof(InfraredSensorMode)), (byte)InfraredSensorMode.InfraredRemoteMode);
         }

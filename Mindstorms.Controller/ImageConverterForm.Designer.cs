@@ -153,14 +153,14 @@
             this.tbFilePathToConvert.Size = new System.Drawing.Size(440, 20);
             this.tbFilePathToConvert.TabIndex = 0;
             // 
-            // ImageConverter
+            // ImageConverterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 180);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "ImageConverter";
+            this.Name = "ImageConverterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image converter";
             this.pMain.ResumeLayout(false);

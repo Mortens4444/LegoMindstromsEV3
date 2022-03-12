@@ -30,6 +30,8 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbLightSensor = new System.Windows.Forms.GroupBox();
+            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
+            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,8 +47,6 @@
             this.cbSensorMode = new System.Windows.Forms.ComboBox();
             this.lblSensorPort = new System.Windows.Forms.Label();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
-            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
-            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbLightSensor.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,24 @@
             this.gbLightSensor.Size = new System.Drawing.Size(334, 238);
             this.gbLightSensor.TabIndex = 0;
             this.gbLightSensor.TabStop = false;
+            // 
+            // lblDaisyChainLayer
+            // 
+            this.lblDaisyChainLayer.AutoSize = true;
+            this.lblDaisyChainLayer.Location = new System.Drawing.Point(12, 216);
+            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
+            this.lblDaisyChainLayer.TabIndex = 22;
+            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            // 
+            // cbDaisyChainLayer
+            // 
+            this.cbDaisyChainLayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDaisyChainLayer.FormattingEnabled = true;
+            this.cbDaisyChainLayer.Location = new System.Drawing.Point(105, 211);
+            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
+            this.cbDaisyChainLayer.TabIndex = 21;
             // 
             // label4
             // 
@@ -215,23 +233,6 @@
             this.cbSensorPort.Name = "cbSensorPort";
             this.cbSensorPort.Size = new System.Drawing.Size(75, 21);
             this.cbSensorPort.TabIndex = 6;
-            // 
-            // lblDaisyChainLayer
-            // 
-            this.lblDaisyChainLayer.AutoSize = true;
-            this.lblDaisyChainLayer.Location = new System.Drawing.Point(12, 216);
-            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
-            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
-            this.lblDaisyChainLayer.TabIndex = 22;
-            this.lblDaisyChainLayer.Text = "Daisy chain layer";
-            // 
-            // cbDaisyChainLayer
-            // 
-            this.cbDaisyChainLayer.FormattingEnabled = true;
-            this.cbDaisyChainLayer.Location = new System.Drawing.Point(105, 211);
-            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
-            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
-            this.cbDaisyChainLayer.TabIndex = 21;
             // 
             // InfraredSensorForm
             // 
