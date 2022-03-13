@@ -8,6 +8,8 @@ namespace Mindstorms.Core
 
         public const byte DefaultResponseLength = 32;
 
+        public const byte DefaultStringLength = 63;
+
         public const byte DefaultVolume = 20;
         
         public const ushort DefaultNoteDurationMs = 500;

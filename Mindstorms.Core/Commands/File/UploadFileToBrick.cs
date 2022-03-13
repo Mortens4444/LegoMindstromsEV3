@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
         public UploadFileToBrick(string destinationFilePath, int fileSize)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.BeginFileDownload);
+            data.Add(SystemCommand.BeginFileDownload);
             data.Append(fileSize);
             data.Append(destinationFilePath);
         }

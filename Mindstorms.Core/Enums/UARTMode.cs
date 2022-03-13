@@ -1,14 +1,29 @@
 ﻿namespace Mindstorms.Core.Enums
 {
-    public enum UARTMode
+    public class UARTMode : EnumLikeObject<UARTMode>
 	{
-		Mode0 = 0,
-		Mode1 = 1,
-		Mode2 = 2,
-		Mode3 = 3,
-		Mode4 = 4,
-		Mode5 = 5,
-		Mode6 = 6,
-		Mode7 = 7
+		public static readonly UARTMode Mode0 = new UARTMode(0x00, nameof(Mode0));
+		public static readonly UARTMode Mode1 = new UARTMode(0x01, nameof(Mode1));
+		public static readonly UARTMode Mode2 = new UARTMode(0x02, nameof(Mode2));
+		public static readonly UARTMode Mode3 = new UARTMode(0x03, nameof(Mode3));
+		public static readonly UARTMode Mode4 = new UARTMode(0x04, nameof(Mode4));
+		public static readonly UARTMode Mode5 = new UARTMode(0x05, nameof(Mode5));
+		public static readonly UARTMode Mode6 = new UARTMode(0x06, nameof(Mode6));
+		public static readonly UARTMode Mode7 = new UARTMode(0x07, nameof(Mode7));
+
+		private UARTMode(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
+
+		public static implicit operator UARTMode(byte value)
+		{
+			return Values[value];
+		}
+
+		public static implicit operator byte(UARTMode value)
+		{
+			return value.Value;
+		}
 	}
 }

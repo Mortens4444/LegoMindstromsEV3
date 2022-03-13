@@ -7,8 +7,8 @@ namespace Mindstorms.Core.Commands.LCD
         public Update()
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.Update);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.Update);
         }
     }
 }

@@ -14,11 +14,19 @@ namespace Mindstorms.Core.Drawing
 
         public FontType FontType { get; }
 
-        public EV3Text(EV3Point point, string text, FontType fontType = FontType.Normal)
+        public EV3Text(EV3Point point, string text)
+            : this(point.X, point.Y, text, FontType.Normal)
+        { }
+
+        public EV3Text(EV3Point point, string text, FontType fontType)
             : this(point.X, point.Y, text, fontType)
         { }
 
-        public EV3Text(byte x, byte y, string text, FontType fontType = FontType.Normal)
+        public EV3Text(byte x, byte y, string text)
+            : this(x, y, text, FontType.Normal)
+        { }
+
+        public EV3Text(byte x, byte y, string text, FontType fontType)
         {
             X = x;
             Y = y;
@@ -28,12 +36,12 @@ namespace Mindstorms.Core.Drawing
 
         public void DrawOnGraphics(Graphics graphics)
         {
-            DrawOnGraphics(graphics, System.Drawing.Color.Black);
+            DrawOnGraphics(graphics, Color.Black);
         }
 
-        public void DrawOnGraphics(Graphics graphics, System.Drawing.Color color)
+        public void DrawOnGraphics(Graphics graphics, Color color)
         {
-            var fontSize = (float)(Math.Pow(2, (int)FontType) * 5);
+            var fontSize = (float)(Math.Pow(2, FontType) * 5);
             graphics.DrawString(Text, new Font(FontFamily.GenericSerif, fontSize), new SolidBrush(color), X, Y);
         }
     }

@@ -1,27 +1,39 @@
 ﻿namespace Mindstorms.Core.Enums
 {
-    public enum LightSensorMode : byte
+    public class LightSensorMode : EnumLikeObject<LightSensorMode>
 	{
-		/// <summary>
-		/// The output from the sensor within light sensor mode is a value between 0 – 100 where 0 equal no reflected light measured and 100 equals full light reflection.
-		/// </summary>
-		MeasuringReflectedLight = UARTMode.Mode0,
+        /// <summary>
+        /// The output from the sensor within light sensor mode is a value between 0 – 100 where 0 equal no reflected light measured and 100 equals full light reflection.
+        /// </summary>
+        public static readonly LightSensorMode MeasuringReflectedLight = new LightSensorMode(UARTMode.Mode0, nameof(MeasuringReflectedLight));
 
 		/// <summary>
 		/// The output from the sensor within ambient sensor mode is a value between 0 – 100 where 0 equal darkness while 100 equals directly pointing towards sun-light.
 		/// </summary>
-		MeasuringAmbientLight = UARTMode.Mode1,
+		public static readonly LightSensorMode MeasuringAmbientLight = new LightSensorMode(UARTMode.Mode1, nameof(MeasuringAmbientLight));
 
 		/// <summary>
 		/// The sensor is able to determine between 7 different colors.
 		/// </summary>
-		MeasuringColors = UARTMode.Mode2,
+		public static readonly LightSensorMode MeasuringColors = new LightSensorMode(UARTMode.Mode2, nameof(MeasuringColors));
 
-		MeasuringReflectedLightRaw = UARTMode.Mode3,
+		public static readonly LightSensorMode MeasuringReflectedLightRaw = new LightSensorMode(UARTMode.Mode3, nameof(MeasuringReflectedLightRaw));
+		public static readonly LightSensorMode RGBRaw = new LightSensorMode(UARTMode.Mode4, nameof(RGBRaw));
+		public static readonly LightSensorMode Calibration = new LightSensorMode(UARTMode.Mode5, nameof(Calibration));
 
-		RGBRaw = UARTMode.Mode4,
+		private LightSensorMode(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
 
-		Calibration = UARTMode.Mode5
+		public static implicit operator LightSensorMode(byte value)
+		{
+			return Values[value];
+		}
 
+		public static implicit operator byte(LightSensorMode value)
+		{
+			return value.Value;
+		}
 	};
 }

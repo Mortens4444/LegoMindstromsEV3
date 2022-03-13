@@ -11,12 +11,12 @@ namespace Mindstorms.Core.Commands.Button
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Press,
-                (byte)button,
+                OpCode.Button,
+                ButtonEvent.Press,
+                button,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.WaitForPress
+                OpCode.Button,
+                ButtonEvent.WaitForPress
             });
         }
     }

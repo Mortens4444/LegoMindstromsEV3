@@ -13,10 +13,10 @@ namespace Mindstorms.Core.Commands.System
             data = GetDirectCommandWithReply(64);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.ComGet,
-                (byte)ComGetSubCommand.GetOnOff,
-                (byte)communicationInterface,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                OpCode.ComGet,
+                ComGetSubCommand.GetOnOff,
+                communicationInterface,
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

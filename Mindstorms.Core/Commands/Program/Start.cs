@@ -14,25 +14,25 @@ namespace Mindstorms.Core.Commands.Program
         {
             data = new List<byte>
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
+                CommandType.DirectCommand | Response.NotExpected,
                 8,
                 0,
 
-                (byte)OpCode.File,
-                (byte)FileSubCode.LoadImage
+                OpCode.File,
+                FileSubCode.LoadImage
             };
 
-            data.AppendTwoBytesParameter((byte)ProgramSlot.User);
+            data.AppendTwoBytesParameter(ProgramSlot.User);
             data.AppendStringParameter(command);
             data.AddRange(new byte[]
             {
-                (byte)ParameterType.Variable | (byte)VariableScope.Global, // Return Image Size at Global Var offset 0. Offset encoded as single byte.
-                4 | (byte)ParameterType.Variable | (byte)VariableScope.Global, // Return Address of image at Global Var offset 4. Offset encoded as single byte.
-                (byte)OpCode.ProgramStart,
-                (byte)ProgramSlot.User,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global,
-                4 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
-                (byte)ProgramMode.Normal
+                ParameterType.Variable | VariableScope.Global, // Return Image Size at Global Var offset 0. Offset encoded as single byte.
+                4 | ParameterType.Variable | VariableScope.Global, // Return Address of image at Global Var offset 4. Offset encoded as single byte.
+                OpCode.ProgramStart,
+                ProgramSlot.User,
+                ParameterType.Variable | VariableScope.Global,
+                4 | ParameterType.Variable | VariableScope.Global,
+                ProgramMode.Normal
             });
         }
     }

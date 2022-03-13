@@ -12,10 +12,10 @@ namespace Mindstorms.Core.Commands.System
             data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.ComGet,
-                (byte)ComGetSubCommand.GetBrickName,
+                OpCode.ComGet,
+                ComGetSubCommand.GetBrickName,
                 Constants.DefaultResponseLength,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

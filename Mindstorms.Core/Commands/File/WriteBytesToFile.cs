@@ -10,8 +10,8 @@ namespace Mindstorms.Core.Commands.File
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.File,
-                (byte)FileSubCode.WriteBytes,
+                OpCode.File,
+                FileSubCode.WriteBytes,
                 handle,
                 (byte)bytes.Length
             });

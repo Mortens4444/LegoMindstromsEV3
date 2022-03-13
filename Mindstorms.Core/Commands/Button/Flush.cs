@@ -11,12 +11,12 @@ namespace Mindstorms.Core.Commands.Button
         {
             data = new List<byte>
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
+                CommandType.DirectCommand | Response.NotExpected,
                 1,
                 0,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Flush
+                OpCode.Button,
+                ButtonEvent.Flush
             };
         }
     }

@@ -9,7 +9,7 @@ namespace Mindstorms.Core.Commands.MailBox
         public SendMail(string name, string message)
         {
             data = SystemCommandNoReply;
-            data.Add((byte)SystemCommand.WriteMailbox);
+            data.Add(SystemCommand.WriteMailbox);
             data.Add((byte)name.Length);
             data.Append(name);
             data.Append((ushort)message.Length);

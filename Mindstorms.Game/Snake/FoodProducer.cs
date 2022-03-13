@@ -1,5 +1,6 @@
 ﻿using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Drawing;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using System;
 
@@ -17,7 +18,7 @@ namespace Mindstorms.Game.Snake
 
         public void DrawFood(Brick brick)
         {
-            brick.DrawCircle(circle);
+            brick.DrawCircle(circle, LCDColor.Black);
         }
 
         public EV3Circle GetFoodLocation()

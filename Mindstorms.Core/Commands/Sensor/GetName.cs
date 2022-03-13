@@ -6,15 +6,15 @@ namespace Mindstorms.Core.Commands.Sensor
     {
         public GetName(byte sensorPort, DaisyChainLayer daisyChainLayer)
         {
-            data = GetDirectCommandWithReply(0x3F);
+            data = GetDirectCommandWithReply(Constants.DefaultStringLength);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.InputDevice,
-                (byte)InputSubCode.GetName,
-                (byte)daisyChainLayer,
+                OpCode.InputDevice,
+                InputSubCode.GetName,
+                daisyChainLayer,
                 sensorPort,
-                0x3F,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                Constants.DefaultStringLength,
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

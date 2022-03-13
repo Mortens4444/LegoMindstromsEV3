@@ -7,7 +7,7 @@ namespace Mindstorms.Core.Extensions
     {
         public static bool IsSystemCommand(this byte value)
         {
-            return value.IsBitSet((byte)CommandType.SystemCommand);
+            return value.IsBitSet(CommandType.SystemCommand);
         }
     }
 }

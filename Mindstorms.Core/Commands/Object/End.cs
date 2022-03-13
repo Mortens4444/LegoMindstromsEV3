@@ -11,7 +11,7 @@ namespace Mindstorms.Core.Commands.Object
         public End()
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ObjectEnd);
+            data.Add(OpCode.ObjectEnd);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Mindstorms.Core.Commands.Object
         public Wait(ushort objectId)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ObjectWait);
+            data.Add(OpCode.ObjectWait);
             data.AppendTwoBytesParameter(objectId);
         }
     }

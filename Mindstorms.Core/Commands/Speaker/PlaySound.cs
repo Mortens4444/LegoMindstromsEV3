@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.Extensions;
-using System.IO;
 
 namespace Mindstorms.Core.Commands.Speaker
 {
@@ -18,8 +17,8 @@ namespace Mindstorms.Core.Commands.Speaker
         public PlaySound(byte volume, string filePath)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.Sound);
-            data.Add((byte)SoundSubCode.Play);
+            data.Add(OpCode.Sound);
+            data.Add(SoundSubCode.Play);
             data.AppendOneBytesParameter(volume);
             data.AppendStringParameter(RemoveExtension(filePath));
         }

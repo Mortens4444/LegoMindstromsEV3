@@ -8,8 +8,8 @@ namespace Mindstorms.Core.Commands.LCD
         {
             var block = (byte)(set ? 1 : 0);
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.UIWrite);
-            data.Add((byte)UIWriteSubCommand.ScreenBlock);
+            data.Add(OpCode.UIWrite);
+            data.Add(UIWriteSubCommand.ScreenBlock);
             data.Add(block);
         }
     }

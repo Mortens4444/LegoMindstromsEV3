@@ -7,7 +7,7 @@ namespace Mindstorms.Core.Commands.Motor
     {
         public ReadUltrasonicSensor(SensorPort sensorPort, UltrasonicSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            data = GetData((byte)sensorPort, (byte)SensorType.Ultrasonic, (byte)sensorMode, InputSubCode.ReadySI, daisyChainLayer);
+            data = GetData(sensorPort, SensorType.Ultrasonic, sensorMode, InputSubCode.ReadySI, daisyChainLayer);
         }
     }
 }

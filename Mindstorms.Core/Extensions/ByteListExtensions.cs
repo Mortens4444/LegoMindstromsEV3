@@ -30,26 +30,26 @@ namespace Mindstorms.Core.Extensions
 
         public static void AppendOneBytesParameter(this List<byte> bytes, byte value)
         {
-            bytes.Add((byte)ParameterFormat.Long | (byte)FollowType.OneByte);
+            bytes.Add(ParameterFormat.Long | FollowType.OneByte);
             bytes.Add(value);
         }
 
         public static void AppendTwoBytesParameter(this List<byte> bytes, byte value1, byte value2 = 0)
         {
-            bytes.Add((byte)ParameterFormat.Long | (byte)FollowType.TwoBytes);
+            bytes.Add(ParameterFormat.Long | FollowType.TwoBytes);
             bytes.Add(value1);
             bytes.Add(value2);
         }
 
         public static void AppendTwoBytesParameter(this List<byte> bytes, ushort value)
         {
-            bytes.Add((byte)ParameterFormat.Long | (byte)FollowType.TwoBytes);
+            bytes.Add(ParameterFormat.Long | FollowType.TwoBytes);
             bytes.Append(value);
         }
 
         public static void AppendStringParameter(this List<byte> bytes, string value)
         {
-            bytes.Add((byte)ParameterFormat.Long | (byte)FollowType.TerminatedString2);
+            bytes.Add(ParameterFormat.Long | FollowType.TerminatedString2);
             bytes.Append(value);
         }
     }

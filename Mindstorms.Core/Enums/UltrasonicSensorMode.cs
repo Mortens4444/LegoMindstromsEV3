@@ -1,19 +1,28 @@
 ﻿namespace Mindstorms.Core.Enums
 {
-    public enum UltrasonicSensorMode : byte
+    public class UltrasonicSensorMode : EnumLikeObject<UltrasonicSensorMode>
 	{
-		Cm = UARTMode.Mode0,
+		public static readonly UltrasonicSensorMode Cm = new UltrasonicSensorMode(UARTMode.Mode0, nameof(Cm));
+		public static readonly UltrasonicSensorMode Inch = new UltrasonicSensorMode(UARTMode.Mode1, nameof(Inch));
+		public static readonly UltrasonicSensorMode Listen = new UltrasonicSensorMode(UARTMode.Mode2, nameof(Listen));
+		public static readonly UltrasonicSensorMode SI_Cm = new UltrasonicSensorMode(UARTMode.Mode3, nameof(SI_Cm));
+		public static readonly UltrasonicSensorMode SI_Inch = new UltrasonicSensorMode(UARTMode.Mode4, nameof(SI_Inch));
+		public static readonly UltrasonicSensorMode DC_Cm = new UltrasonicSensorMode(UARTMode.Mode5, nameof(DC_Cm));
+		public static readonly UltrasonicSensorMode DC_Inch = new UltrasonicSensorMode(UARTMode.Mode6, nameof(DC_Inch));
 
-		Inch = UARTMode.Mode1,
+		private UltrasonicSensorMode(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
 
-		Listen = UARTMode.Mode2,
+		public static implicit operator UltrasonicSensorMode(byte value)
+		{
+			return Values[value];
+		}
 
-		SI_Cm = UARTMode.Mode3,
-
-		SI_Inch = UARTMode.Mode4,
-
-		DC_Cm = UARTMode.Mode5,
-
-		DC_Inch = UARTMode.Mode6
+		public static implicit operator byte(UltrasonicSensorMode value)
+		{
+			return value.Value;
+		}
 	};
 }

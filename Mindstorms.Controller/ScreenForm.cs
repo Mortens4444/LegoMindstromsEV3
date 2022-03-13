@@ -19,7 +19,7 @@ namespace Mindstorms.Controller
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
-            cbLedPattern.ComboBox.FillAndSelect(Enum.GetValues(typeof(LedPattern)), (byte)LedPattern.Off);
+            cbLedPattern.ComboBox.FillAndSelect(LedPattern.GetValues(), LedPattern.Off);
             cbEmbeddedImages.FillAndSelectFirst(Enum.GetValues(typeof(EmbeddedImage)));
         }
 
@@ -57,7 +57,7 @@ namespace Mindstorms.Controller
             if (rbPixel.Checked)
             {
                 objectsToDraw.Add(point);
-                brick.PutPixel(point);
+                brick.PutPixel(point, LCDColor.Black);
             }
             else if (rbText.Checked)
             {

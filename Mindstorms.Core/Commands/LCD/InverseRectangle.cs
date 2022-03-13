@@ -8,8 +8,8 @@ namespace Mindstorms.Core.Commands.LCD
         public InverseRectangle(byte x, byte y, byte width, byte height)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.InverseRectangle);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.InverseRectangle);
             data.AppendOneBytesParameter(x);
             data.AppendOneBytesParameter(y);
             data.AppendOneBytesParameter(width);

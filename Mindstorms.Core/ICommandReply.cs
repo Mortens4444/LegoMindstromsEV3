@@ -6,7 +6,7 @@ namespace Mindstorms.Core
     {
         ushort MessageCounter { get; }
 
-        CommandType TypeOfMessage { get; }
+        CommandType CommandType { get; }
 
         CommandReplyStatus CommandReplyStatus { get; }
 

@@ -8,7 +8,7 @@ namespace Mindstorms.Core
     {
         public ushort MessageCounter { get; }
 
-        public CommandType TypeOfMessage { get; }
+        public CommandType CommandType { get; }
 
         public CommandReplyStatus CommandReplyStatus { get; }
 
@@ -20,7 +20,7 @@ namespace Mindstorms.Core
             if (RawResponseData.Length > 0)
             {
                 MessageCounter = BitConverter.ToUInt16(rawResponseData, 0);
-                TypeOfMessage = (CommandType)rawResponseData[2];
+                CommandType = rawResponseData[2];
 
                 CommandReplyStatus = rawResponseData.Length > 4 ? (CommandReplyStatus)(rawResponseData[4]) : CommandReplyStatus.NoErrorFlagIsPresent;
             }
@@ -28,8 +28,8 @@ namespace Mindstorms.Core
 
         public override string ToString()
         {
-            var details = (TypeOfMessage.IsError()) &&
-                CommandReplyStatus == CommandReplyStatus.Success ? TypeOfMessage.ToString() : $"{TypeOfMessage} {CommandReplyStatus}";
+            var details = CommandType.IsError() && CommandReplyStatus == CommandReplyStatus.Success ?
+                CommandType.ToString() : $"{CommandType} {CommandReplyStatus}";
 
             return $"#{MessageCounter} {details} Raw data: ({String.Join(", ", RawResponseData)})";
         }

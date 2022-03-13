@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -24,7 +26,8 @@ namespace Utils
 
         public static void FillWithTypesInNamespace(this ComboBox comboBox, Assembly assembly, string @namespace)
         {
-            comboBox.DataSource = assembly.GetTypesInNamespace(@namespace);
+            var types = assembly.GetTypesInNamespace(@namespace);
+            comboBox.DataSource = types.Select(type => new ComboBoxItem(Activator.CreateInstance(type))).ToList();
             SafeSelect(comboBox, 0);
         }
 

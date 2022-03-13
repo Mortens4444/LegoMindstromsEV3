@@ -7,8 +7,8 @@ namespace Mindstorms.Core.Commands.Program
         public StopBase(ProgramSlot programslot)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ProgramStop);
-            data.Add(unchecked((byte)programslot));
+            data.Add(OpCode.ProgramStop);
+            data.Add(programslot);
         }
     }
 }

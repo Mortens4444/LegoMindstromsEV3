@@ -14,7 +14,7 @@ namespace Mindstorms.Core.Commands.File
         public SetBluetoothPin(string macOfPC, string pin)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.BluetoothPin);
+            data.Add(SystemCommand.BluetoothPin);
             data.Add((byte)macOfPC.Length);
 
             //data.AppendStringParameter(macOfPC)

@@ -7,9 +7,9 @@ namespace Mindstorms.Core.Commands.LCD
         public ChangeTopLine(State state)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.TopLine);
-            data.Add((byte)state);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.TopLine);
+            data.Add(state);
         }
     }
 }

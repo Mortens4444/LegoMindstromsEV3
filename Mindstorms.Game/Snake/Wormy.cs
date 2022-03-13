@@ -1,5 +1,6 @@
 ﻿using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Drawing;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Game.General;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Mindstorms.Game.Snake
         {
             for (int i = 0; i < bodyParts.Count; i++)
             {
-                brick.Draw(bodyParts[i]);
+                brick.Draw(bodyParts[i], LCDColor.Black);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using MessageBoxes;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Resources;
 using System;
@@ -48,7 +49,7 @@ namespace Mindstorms.Controller
                 }
                 else if (selectedFilenameFullPath.EndsWith(Core.Constants.GraphicsFileExtension))
                 {
-                    brick.ShowImage(0, 0, selectedFilenameFullPath);
+                    brick.ShowImage(0, 0, selectedFilenameFullPath, LCDColor.Black);
                 }
                 else if (selectedFilenameFullPath.EndsWith(Core.Constants.BinaryFileExtension))
                 {

@@ -1,5 +1,6 @@
 ﻿using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Drawing;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Responses;
 using Mindstorms.Game.Circles;
@@ -57,7 +58,7 @@ namespace Mindstorms.Game.Snake
                         var currentEnemy = enemies[enemyIndex];
                         currentEnemy.ChangeMoving();
                         currentEnemy.Move();
-                        brick.Draw(currentEnemy);
+                        brick.Draw(currentEnemy, LCDColor.Black);
                     }
                 }
                 else
@@ -65,7 +66,7 @@ namespace Mindstorms.Game.Snake
                     if (player.Radius >= enemy.Radius)
                     {
                         enemies.Remove(enemy);
-                        brick.Draw(player);
+                        brick.Draw(player, LCDColor.Black);
                         player.IncrementRadius((byte)(enemy.Radius / 4));
                         if (enemies.Count == 0)
                         {
@@ -77,14 +78,14 @@ namespace Mindstorms.Game.Snake
                     {
                         message = "Game over!";
                         drawPlayer = false;
-                        brick.Draw(enemy);
+                        brick.Draw(enemy, LCDColor.Black);
                         inGame = false;
                     }
                 }
 
                 if (drawPlayer)
                 {
-                    brick.Draw(player);
+                    brick.Draw(player, LCDColor.Black);
                 }
             }
 

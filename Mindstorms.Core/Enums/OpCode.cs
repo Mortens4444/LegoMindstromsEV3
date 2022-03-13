@@ -1,181 +1,188 @@
 ﻿namespace Mindstorms.Core.Enums
 {
-    public enum OpCode : byte
+    public class OpCode : EnumLikeObject<OpCode>
 	{
-		Error = 0x00,
-		Nop = 0x01,
 
-		// VM
-		ProgramStop = 0x02,
-		ProgramStart = 0x03,
+		public static readonly OpCode Error = new OpCode(0x00, nameof(Error));
+		public static readonly OpCode Nop = new OpCode(0x01, nameof(Nop));
 
-		ObjectStop = 0x04,
-		ObjectStart = 0x05,
-		ObjectTrigger = 0x06,
-		ObjectWait = 0x07,
+		public static readonly OpCode ProgramStop = new OpCode(0x02, nameof(ProgramStop));
+		public static readonly OpCode ProgramStart = new OpCode(0x03, nameof(ProgramStart));
 
-		Return = 0x08,
-		Call = 0x09,
-		ObjectEnd = 0x0A,
-		Sleep = 0x0B,
+		public static readonly OpCode ObjectStop = new OpCode(0x04, nameof(ObjectStop));
+		public static readonly OpCode ObjectStart = new OpCode(0x05, nameof(ObjectStart));
+		public static readonly OpCode ObjectTrigger = new OpCode(0x06, nameof(ObjectTrigger));
+		public static readonly OpCode ObjectWait = new OpCode(0x07, nameof(ObjectWait));
 
-		ProgramInfo = 0x0C,
+		public static readonly OpCode Return = new OpCode(0x08, nameof(Return));
+		public static readonly OpCode Call = new OpCode(0x09, nameof(Call));
+		public static readonly OpCode ObjectEnd = new OpCode(0x0A, nameof(ObjectEnd));
+		public static readonly OpCode Sleep = new OpCode(0x0B, nameof(Sleep));
 
-		Label = 0x0D,
-		Probe = 0x0E,
-		Do = 0x0F,
+		public static readonly OpCode ProgramInfo = new OpCode(0x0C, nameof(ProgramInfo));
+		
+		public static readonly OpCode Label = new OpCode(0x0D, nameof(Label));
+		public static readonly OpCode Probe = new OpCode(0x0E, nameof(Probe));
+		public static readonly OpCode Do = new OpCode(0x0F, nameof(Do));
 
-		Add8 = 0x10,
-		Add16 = 0x11,
-		Add32 = 0x12,
-		AddFloat = 0x13,
+		public static readonly OpCode Add8 = new OpCode(0x10, nameof(Add8));
+		public static readonly OpCode Add16 = new OpCode(0x11, nameof(Add16));
+		public static readonly OpCode Add32 = new OpCode(0x12, nameof(Add32));
+		public static readonly OpCode AddFloat = new OpCode(0x13, nameof(AddFloat));
 
-		Sub8 = 0x14,
-		Sub16 = 0x15,
-		Sub32 = 0x16,
-		SubFloat = 0x17,
+		public static readonly OpCode Sub8 = new OpCode(0x14, nameof(Sub8));
+		public static readonly OpCode Sub16 = new OpCode(0x15, nameof(Sub16));
+		public static readonly OpCode Sub32 = new OpCode(0x16, nameof(Sub32));
+		public static readonly OpCode SubFloat = new OpCode(0x17, nameof(SubFloat));
 
-		Mul8 = 0x18,
-		Mul16 = 0x19,
-		Mul32 = 0x1A,
-		MulFloat = 0x1B,
+		public static readonly OpCode Mul8 = new OpCode(0x18, nameof(Mul8));
+		public static readonly OpCode Mul16 = new OpCode(0x19, nameof(Mul16));
+		public static readonly OpCode Mul32 = new OpCode(0x1A, nameof(Mul32));
+		public static readonly OpCode MulFloat = new OpCode(0x1B, nameof(MulFloat));
 
-		Div8 = 0x1C,
-		Div16 = 0x1D,
-		Div32 = 0x1E,
-		DivFloat = 0x1F,
+		public static readonly OpCode Div8 = new OpCode(0x1C, nameof(Div8));
+		public static readonly OpCode Div16 = new OpCode(0x1D, nameof(Div16));
+		public static readonly OpCode Div32 = new OpCode(0x1E, nameof(Div32));
+		public static readonly OpCode DivFloat = new OpCode(0x1F, nameof(DivFloat));
 
-		Or8 = 0x20,
-		Or16 = 0x21,
-		Or32 = 0x22,
+		public static readonly OpCode Or8 = new OpCode(0x20, nameof(Or8));
+		public static readonly OpCode Or16 = new OpCode(0x21, nameof(Or16));
+		public static readonly OpCode Or32 = new OpCode(0x22, nameof(Or32));
 
-		And8 = 0x24,
-		And16 = 0x25,
-		And32 = 0x26,
+		public static readonly OpCode And8 = new OpCode(0x24, nameof(And8));
+		public static readonly OpCode And16 = new OpCode(0x25, nameof(And16));
+		public static readonly OpCode And32 = new OpCode(0x26, nameof(And32));
 
-		Xor8 = 0x28,
-		Xor16 = 0x29,
-		Xor32 = 0x2A,
+		public static readonly OpCode Xor8 = new OpCode(0x28, nameof(Xor8));
+		public static readonly OpCode Xor16 = new OpCode(0x29, nameof(Xor16));
+		public static readonly OpCode Xor32 = new OpCode(0x2A, nameof(Xor32));
 
-		Rotate8 = 0x2C,
-		Rotate16 = 0x2D,
-		Rotate32 = 0x2E,
+		public static readonly OpCode Rotate8 = new OpCode(0x2C, nameof(Rotate8));
+		public static readonly OpCode Rotate16 = new OpCode(0x2D, nameof(Rotate16));
+		public static readonly OpCode Rotate32 = new OpCode(0x2E, nameof(Rotate32));
 
-		// Move
-		InitBytes = 0x2F,
+		public static readonly OpCode InitBytes = new OpCode(0x2F, nameof(InitBytes));
 
-		Move8_8 = 0x30,
-		Move8_16 = 0x31,
-		Move8_32 = 0x32,
-		Move8_F = 0x33,
+		public static readonly OpCode Move8_8 = new OpCode(0x30, nameof(Move8_8));
+		public static readonly OpCode Move8_16 = new OpCode(0x31, nameof(Move8_16));
+		public static readonly OpCode Move8_32 = new OpCode(0x32, nameof(Move8_32));
+		public static readonly OpCode Move8_F = new OpCode(0x33, nameof(Move8_F));
 
-		Move16_8 = 0x34,
-		Move16_16 = 0x35,
-		Move16_32 = 0x36,
-		Move16_F = 0x37,
+		public static readonly OpCode Move16_8 = new OpCode(0x34, nameof(Move16_8));
+		public static readonly OpCode Move16_16 = new OpCode(0x35, nameof(Move16_16));
+		public static readonly OpCode Move16_32 = new OpCode(0x36, nameof(Move16_32));
+		public static readonly OpCode Move16_F = new OpCode(0x37, nameof(Move16_F));
 
-		Move32_8 = 0x38,
-		Move32_16 = 0x39,
-		Move32_32 = 0x3A,
-		Move32_F = 0x3B,
+		public static readonly OpCode Move32_8 = new OpCode(0x38, nameof(Move32_8));
+		public static readonly OpCode Move32_16 = new OpCode(0x39, nameof(Move32_16));
+		public static readonly OpCode Move32_32 = new OpCode(0x3A, nameof(Move32_32));
+		public static readonly OpCode Move32_F = new OpCode(0x3B, nameof(Move32_F));
 
-		MoveF_8 = 0x3C,
-		MoveF_16 = 0x3D,
-		MoveF_32 = 0x3E,
-		MoveF_F = 0x3F,
+		public static readonly OpCode MoveF_8 = new OpCode(0x3C, nameof(MoveF_8));
+		public static readonly OpCode MoveF_16 = new OpCode(0x3D, nameof(MoveF_16));
+		public static readonly OpCode MoveF_32 = new OpCode(0x3E, nameof(MoveF_32));
+		public static readonly OpCode MoveF_F = new OpCode(0x3F, nameof(MoveF_F));
 
-		System = 0x60,
-		PortConvOutput = 0x61,
-		PortConvInput = 0x62,
-		NoteToFrequency = 0x63,
+		public static readonly OpCode System = new OpCode(0x60, nameof(System));
+		public static readonly OpCode PortConvOutput = new OpCode(0x61, nameof(PortConvOutput));
+		public static readonly OpCode PortConvInput = new OpCode(0x62, nameof(PortConvInput));
+		public static readonly OpCode NoteToFrequency = new OpCode(0x63, nameof(NoteToFrequency));
 
-		// VM
-		Info = 0x7C,
-		String = 0x7D,
-		MemoryWrite = 0x7E,
-		MemoryRead = 0x7F,
+		public static readonly OpCode Info = new OpCode(0x7C, nameof(Info));
+		public static readonly OpCode String = new OpCode(0x7D, nameof(String));
+		public static readonly OpCode MemoryWrite = new OpCode(0x7E, nameof(MemoryWrite));
+		public static readonly OpCode MemoryRead = new OpCode(0x7F, nameof(MemoryRead));
 
-		// UI
-		UIRead = 0x81,
-		UIWrite = 0x82,
-		Button = 0x83,
-		DrawUI = 0x84,
-		BP0 = 0x88,
-		BP1 = 0x89,
-		BP2 = 0x8A,
-		BP3 = 0x8B,
-		PBSet = 0x8C,
-		Math = 0x8D,
-		Random = 0x8E,
+		public static readonly OpCode UIRead = new OpCode(0x81, nameof(UIRead));
+		public static readonly OpCode UIWrite = new OpCode(0x82, nameof(UIWrite));
+		public static readonly OpCode Button = new OpCode(0x83, nameof(Button));
+		public static readonly OpCode DrawUI = new OpCode(0x84, nameof(DrawUI));
+		public static readonly OpCode BP0 = new OpCode(0x88, nameof(BP0));
+		public static readonly OpCode BP1 = new OpCode(0x89, nameof(BP1));
+		public static readonly OpCode BP2 = new OpCode(0x8A, nameof(BP2));
+		public static readonly OpCode BP3 = new OpCode(0x8B, nameof(BP3));
+		public static readonly OpCode PBSet = new OpCode(0x8C, nameof(PBSet));
+		public static readonly OpCode Math = new OpCode(0x8D, nameof(Math));
+		public static readonly OpCode Random = new OpCode(0x8E, nameof(Random));
 
-		KeepAlive = 0x90,
+		public static readonly OpCode KeepAlive = new OpCode(0x90, nameof(KeepAlive));
 
-		// Sound
-		Sound = 0x94,
-		SoundTest = 0x95,
-		SoundReady = 0x96,
+		public static readonly OpCode Sound = new OpCode(0x94, nameof(Sound));
+		public static readonly OpCode SoundTest = new OpCode(0x95, nameof(SoundTest));
+		public static readonly OpCode SoundReady = new OpCode(0x96, nameof(SoundReady));
 
-		// Input
-		InputSample = 0x97,
-		InputDeviceList = 0x98,
-		InputDevice = 0x99,
-		InputRead = 0x9A,
-		InputTest = 0x9B,
-		InputReady = 0x9C,
-		InputReadSI = 0x9D,
-		InputReadExt = 0x9E,
-		InputWrite = 0x9F,
+		public static readonly OpCode InputSample = new OpCode(0x97, nameof(InputSample));
+		public static readonly OpCode InputDeviceList = new OpCode(0x98, nameof(InputDeviceList));
+		public static readonly OpCode InputDevice = new OpCode(0x99, nameof(InputDevice));
+		public static readonly OpCode InputRead = new OpCode(0x9A, nameof(InputRead));
+		public static readonly OpCode InputTest = new OpCode(0x9B, nameof(InputTest));
+		public static readonly OpCode InputReady = new OpCode(0x9C, nameof(InputReady));
+		public static readonly OpCode InputReadSI = new OpCode(0x9D, nameof(InputReadSI));
+		public static readonly OpCode InputReadExt = new OpCode(0x9E, nameof(InputReadExt));
+		public static readonly OpCode InputWrite = new OpCode(0x9F, nameof(InputWrite));
 
-		// Output
-		OutputGetType = 0xA0,
-		OutputSetType = 0xA1,
-		OutputReset = 0xA2,
-		OutputStop = 0xA3,
-		OutputPower = 0xA4,
-		OutputSpeed = 0xA5,
-		OutputStart = 0xA6,
-		OutputPolarity = 0xA7,
-		OutputRead = 0xA8,
-		OutputTest = 0xA9,
-		OutputReady = 0xAA,
-		OutputPosition = 0xAB,
-		OutputStepPower = 0xAC,
-		OutputTimePower = 0xAD,
-		OutputStepSpeed = 0xAE,
-		OutputTimeSpeed = 0xAF,
-		OutputStepSync = 0xB0,
-		OutputTimeSync = 0xB1,
-		OutputClrCount = 0xB2,
-		OutputGetCount = 0xB3,
+		public static readonly OpCode OutputGetType = new OpCode(0xA0, nameof(OutputGetType));
+		public static readonly OpCode OutputSetType = new OpCode(0xA1, nameof(OutputSetType));
+		public static readonly OpCode OutputReset = new OpCode(0xA2, nameof(OutputReset));
+		public static readonly OpCode OutputStop = new OpCode(0xA3, nameof(OutputStop));
+		public static readonly OpCode OutputPower = new OpCode(0xA4, nameof(OutputPower));
+		public static readonly OpCode OutputSpeed = new OpCode(0xA5, nameof(OutputSpeed));
+		public static readonly OpCode OutputStart = new OpCode(0xA6, nameof(OutputStart));
+		public static readonly OpCode OutputPolarity = new OpCode(0xA7, nameof(OutputPolarity));
+		public static readonly OpCode OutputRead = new OpCode(0xA8, nameof(OutputRead));
+		public static readonly OpCode OutputTest = new OpCode(0xA9, nameof(OutputTest));
+		public static readonly OpCode OutputReady = new OpCode(0xAA, nameof(OutputReady));
+		public static readonly OpCode OutputPosition = new OpCode(0xAB, nameof(OutputPosition));
+		public static readonly OpCode OutputStepPower = new OpCode(0xAC, nameof(OutputStepPower));
+		public static readonly OpCode OutputTimePower = new OpCode(0xAD, nameof(OutputTimePower));
+		public static readonly OpCode OutputStepSpeed = new OpCode(0xAE, nameof(OutputStepSpeed));
+		public static readonly OpCode OutputTimeSpeed = new OpCode(0xAF, nameof(OutputTimeSpeed));
+		public static readonly OpCode OutputStepSync = new OpCode(0xB0, nameof(OutputStepSync));
+		public static readonly OpCode OutputTimeSync = new OpCode(0xB1, nameof(OutputTimeSync));
+		public static readonly OpCode OutputClrCount = new OpCode(0xB2, nameof(OutputClrCount));
+		public static readonly OpCode OutputGetCount = new OpCode(0xB3, nameof(OutputGetCount));
 
-		// Memory
-		File = 0xC0,
-		Array = 0xC1,
-		ArrayWrite = 0xC2,
-		ArrayRead = 0xC3,
-		ArrayAppend = 0xC4,
-		MemoryUsage = 0xC5,
-		FileName = 0xC6,
+		public static readonly OpCode File = new OpCode(0xC0, nameof(File));
+		public static readonly OpCode Array = new OpCode(0xC1, nameof(Array));
+		public static readonly OpCode ArrayWrite = new OpCode(0xC2, nameof(ArrayWrite));
+		public static readonly OpCode ArrayRead = new OpCode(0xC3, nameof(ArrayRead));
+		public static readonly OpCode ArrayAppend = new OpCode(0xC4, nameof(ArrayAppend));
+		public static readonly OpCode MemoryUsage = new OpCode(0xC5, nameof(MemoryUsage));
+		public static readonly OpCode FileName = new OpCode(0xC6, nameof(FileName));
 
-		Read8 = 0xC8,
-		Read16 = 0xC9,
-		Read32 = 0xCA,
-		ReadF = 0xCB,
+		public static readonly OpCode Read8 = new OpCode(0xC8, nameof(Read8));
+		public static readonly OpCode Read16 = new OpCode(0xC9, nameof(Read16));
+		public static readonly OpCode Read32 = new OpCode(0xCA, nameof(Read32));
+		public static readonly OpCode ReadF = new OpCode(0xCB, nameof(ReadF));
 
-		Write8 = 0xCC,
-		Write16 = 0xCD,
-		Write32 = 0xCE,
-		WriteF = 0xCF,
+		public static readonly OpCode Write8 = new OpCode(0xCC, nameof(Write8));
+		public static readonly OpCode Write16 = new OpCode(0xCD, nameof(Write16));
+		public static readonly OpCode Write32 = new OpCode(0xCE, nameof(Write32));
+		public static readonly OpCode WriteF = new OpCode(0xCF, nameof(WriteF));
 
-		ComGet = 0xD3,
-		ComSet = 0xD4,
+		public static readonly OpCode ComGet = new OpCode(0xD3, nameof(ComGet));
+		public static readonly OpCode ComSet = new OpCode(0xD4, nameof(ComSet));
 
-		// Mailbox
-		MailboxOpen = 0xD8,
-		MailboxWrite = 0xD9,
-		MailboxRead = 0xDA,
-		MailboxTest = 0xDB,
-		MailboxReady = 0xDC,
-		MailboxClose = 0xDD
+		public static readonly OpCode MailboxOpen = new OpCode(0xD8, nameof(MailboxOpen));
+		public static readonly OpCode MailboxWrite = new OpCode(0xD9, nameof(MailboxWrite));
+		public static readonly OpCode MailboxRead = new OpCode(0xDA, nameof(MailboxRead));
+		public static readonly OpCode MailboxTest = new OpCode(0xDB, nameof(MailboxTest));
+		public static readonly OpCode MailboxReady = new OpCode(0xDC, nameof(MailboxReady));
+		public static readonly OpCode MailboxClose = new OpCode(0xDD, nameof(MailboxClose));
+
+		private OpCode(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
+
+		public static implicit operator OpCode(byte value)
+		{
+			return Values[value];
+		}
+
+		public static implicit operator byte(OpCode value)
+		{
+			return value.Value;
+		}
 	}
 }

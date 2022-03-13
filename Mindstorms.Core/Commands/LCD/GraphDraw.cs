@@ -9,8 +9,8 @@ namespace Mindstorms.Core.Commands.LCD
         public GraphDraw(byte view)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.GraphDraw);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.GraphDraw);
             data.AppendOneBytesParameter(view);
         }
     }

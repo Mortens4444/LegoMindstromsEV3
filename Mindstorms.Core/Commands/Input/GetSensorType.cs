@@ -9,12 +9,12 @@ namespace Mindstorms.Core.Commands.Input
             data = GetDirectCommandWithReply(2);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.InputDevice,
-                (byte)InputSubCode.GetTypeMode,
-                (byte)daisyChainLayer,
-                (byte)sensorPort,
+                OpCode.InputDevice,
+                InputSubCode.GetTypeMode,
+                daisyChainLayer,
+                sensorPort,
                 2,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

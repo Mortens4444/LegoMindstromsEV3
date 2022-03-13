@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
         public ContinueDownloadFileFromBrick(byte fileHandle)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.ContinueFileUpload);
+            data.Add(SystemCommand.ContinueFileUpload);
             data.Add(fileHandle);
             data.Append(Constants.ChunkSize);
         }

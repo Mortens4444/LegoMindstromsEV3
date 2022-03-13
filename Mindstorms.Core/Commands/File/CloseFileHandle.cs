@@ -9,7 +9,7 @@ namespace Mindstorms.Core.Commands.File
         public CloseFileHandle(byte fileHandle, string hash)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.CloseFileHandle);
+            data.Add(SystemCommand.CloseFileHandle);
             data.Add(fileHandle);
             data.Append(hash);
         }

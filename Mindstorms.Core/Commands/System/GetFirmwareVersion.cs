@@ -9,10 +9,10 @@ namespace Mindstorms.Core.Commands.System
             data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.UIRead,
-                (byte)SystemInfoSubCommand.GetFirmwareVersion,
+                OpCode.UIRead,
+                SystemInfoSubCommand.GetFirmwareVersion,
                 Constants.DefaultResponseLength,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

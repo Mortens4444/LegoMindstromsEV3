@@ -4,7 +4,7 @@ using Mindstorms.Core.Extensions;
 namespace Mindstorms.Core.Commands.System
 {
     /// <summary>
-    /// Get the name of the brick.
+    /// Get the pin code of the brick.
     /// </summary>
     public class GetPin : Command
     {
@@ -13,14 +13,14 @@ namespace Mindstorms.Core.Commands.System
             data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.ComGet,
-                (byte)ComGetSubCommand.GetPin,
-                (byte)communicationInterface
+                OpCode.ComGet,
+                ComGetSubCommand.GetPin,
+                communicationInterface
             });
             data.AppendStringParameter(brickName);
 
             data.Add(Constants.DefaultResponseLength);
-            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
+            data.Add(ParameterType.Variable | VariableScope.Global);
         }
     }
 }

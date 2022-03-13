@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
         public DeleteFile(string fullPathFileName)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.DeleteFile);
+            data.Add(SystemCommand.DeleteFile);
             data.Append(fullPathFileName);
         }
     }

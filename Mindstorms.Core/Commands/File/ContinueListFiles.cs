@@ -14,7 +14,7 @@ namespace Mindstorms.Core.Commands.File
         public ContinueListFiles(byte handle)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.ContinueListFiles);
+            data.Add(SystemCommand.ContinueListFiles);
             data.Add(handle);
             data.Append(Constants.ChunkSize);
         }

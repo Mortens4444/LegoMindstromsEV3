@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
         public ListOpenHandles()
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.ListOpenHandles);
+            data.Add(SystemCommand.ListOpenHandles);
         }
     }
 }

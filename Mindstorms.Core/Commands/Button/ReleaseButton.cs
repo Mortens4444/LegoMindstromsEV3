@@ -11,9 +11,9 @@ namespace Mindstorms.Core.Commands.Button
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Release,
-                (byte)button
+                OpCode.Button,
+                ButtonEvent.Release,
+                button
             });
         }
     }

@@ -12,7 +12,7 @@ namespace Mindstorms.Core.Commands.Object
         public Start(ushort objectId)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ObjectStart);
+            data.Add(OpCode.ObjectStart);
             data.AppendTwoBytesParameter(objectId);
         }
     }

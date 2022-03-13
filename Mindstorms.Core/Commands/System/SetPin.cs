@@ -11,14 +11,14 @@ namespace Mindstorms.Core.Commands.System
         {
             data = new List<byte>
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
+                CommandType.DirectCommand | Response.NotExpected,
                 0,
                 0x0C,
 
-                (byte)OpCode.ComSet,
-                (byte)ComSetSubCommand.SetPin,
+                OpCode.ComSet,
+                ComSetSubCommand.SetPin,
 
-                (byte)communicationInterface
+                communicationInterface
             };
             //data.AppendOneBytesParameter((byte)communicationInterface);
             data.AppendStringParameter(brickName);

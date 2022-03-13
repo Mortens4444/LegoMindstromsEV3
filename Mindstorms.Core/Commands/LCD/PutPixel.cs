@@ -10,9 +10,9 @@ namespace Mindstorms.Core.Commands.LCD
             ValidatePixel(x, y);
 
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.Pixel);
-            data.AppendOneBytesParameter((byte)color);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.Pixel);
+            data.AppendOneBytesParameter(color);
             data.AppendOneBytesParameter(x);
             data.AppendOneBytesParameter(y);
         }

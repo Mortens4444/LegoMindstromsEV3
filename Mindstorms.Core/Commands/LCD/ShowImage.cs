@@ -12,25 +12,25 @@ namespace Mindstorms.Core.Commands.LCD
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.TopLine,
+                OpCode.DrawUI,
+                DrawSubCode.TopLine,
                 0x00, // Disable
 
-                (byte)OpCode.DrawUI,
-                (byte)DrawSubCode.FillWindow,
+                OpCode.DrawUI,
+                DrawSubCode.FillWindow,
                 color == LCDColor.White ? (byte)LCDColor.Black : (byte)LCDColor.White, // BackgroundColor
             });
 
             data.AppendOneBytesParameter(0); // Start y
             data.AppendOneBytesParameter(0); // End y
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.BmpFile);
-            data.Add((byte)color);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.BmpFile);
+            data.Add(color);
             data.AppendOneBytesParameter(x);
             data.AppendOneBytesParameter(y);
             data.AppendStringParameter(filePath);
-            data.Add((byte)OpCode.DrawUI);
-            data.Add((byte)DrawSubCode.Update);
+            data.Add(OpCode.DrawUI);
+            data.Add(DrawSubCode.Update);
         }
     }
 }

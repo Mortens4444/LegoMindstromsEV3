@@ -18,9 +18,9 @@ namespace Mindstorms.Controller.SensorRead
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
-            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
-            cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)SensorPort.In3);
-            cbSensorMode.FillAndSelect(Enum.GetValues(typeof(GyroSensorMode)), (byte)GyroSensorMode.Angle);
+            cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
+            cbSensorPort.FillAndSelect(SensorPort.GetValues(), SensorPort.In3);
+            cbSensorMode.FillAndSelect(GyroSensorMode.GetValues(), GyroSensorMode.Angle);
         }
 
         private void BtnStartStopRead_Click(object sender, EventArgs e)

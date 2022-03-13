@@ -10,8 +10,8 @@ namespace Mindstorms.Core.Commands.PowerControl
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.KeepAlive,
-                (byte)ParameterFormat.Long | (byte)FollowType.OneByte,
+                OpCode.KeepAlive,
+                ParameterFormat.Long | FollowType.OneByte,
                 minutes
             });
         }

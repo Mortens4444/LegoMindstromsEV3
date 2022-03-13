@@ -14,7 +14,7 @@ namespace Mindstorms.Core.Commands.File
         public ListFiles(string path)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.ListFiles);
+            data.Add(SystemCommand.ListFiles);
             data.Append(Constants.ChunkSize);
             data.Append(path);
         }

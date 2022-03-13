@@ -7,7 +7,7 @@ namespace Mindstorms.Core.Extensions
     {
         public static int GetIndex(this OutputPort outputPort)
         {
-            return (int)Math.Log((byte)outputPort, 2);
+            return (int)Math.Log(outputPort, 2);
         }
     }
 }

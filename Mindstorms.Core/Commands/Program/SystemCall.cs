@@ -9,12 +9,12 @@ namespace Mindstorms.Core.Commands.Program
         public SystemCall(string command)
         {
             data = GetDirectCommandWithReply(1, 4);
-            data.Add((byte)OpCode.System);
+            data.Add(OpCode.System);
             data.AppendStringParameter(command);
-            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Local);
-            data.Add((byte)OpCode.Move8_8);
-            data.Add(1 | (byte)ParameterType.Variable | (byte)VariableScope.Local);
-            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
+            data.Add(ParameterType.Variable | VariableScope.Local);
+            data.Add(OpCode.Move8_8);
+            data.Add(1 | ParameterType.Variable | VariableScope.Local);
+            data.Add(ParameterType.Variable | VariableScope.Global);
         }
     }
 }

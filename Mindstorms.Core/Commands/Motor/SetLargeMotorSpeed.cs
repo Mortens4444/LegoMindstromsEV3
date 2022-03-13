@@ -12,21 +12,21 @@ namespace Mindstorms.Core.Commands.Motor
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.OutputSetType,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort,
-                (byte)MotorType.Large,
+                OpCode.OutputSetType,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort,
+                MotorType.Large,
 
-                (byte)OpCode.OutputSpeed,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
+                OpCode.OutputSpeed,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort,
+                ParameterFormat.Long | FollowType.TwoBytes,
                 speedBytes[0],
                 speedBytes[1],
 
-                (byte)OpCode.OutputStart,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort
+                OpCode.OutputStart,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort
             });
         }
     }

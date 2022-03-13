@@ -16,7 +16,7 @@ namespace Mindstorms.Controller
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
             int selectedIndex = 2;// 0;
-            var comInterfaces = Enum.GetValues(typeof(CommunicationInterface));
+            var comInterfaces = CommunicationInterface.GetValues();
             //for (int i = 1; i <= comInterfaces.Length; i++)
             //{
             //    if (brick.IsActive((CommunicationInterface)i))

@@ -11,6 +11,5 @@
         public const string Move = nameof(Move);
         public const string Number = nameof(Number);
         public const string System = nameof(System);
-
     }
 }

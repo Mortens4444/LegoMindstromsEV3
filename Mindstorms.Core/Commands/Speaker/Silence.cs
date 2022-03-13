@@ -7,8 +7,8 @@ namespace Mindstorms.Core.Commands.Speaker
         public Silence()
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.Sound);
-            data.Add((byte)SoundSubCode.Break);
+            data.Add(OpCode.Sound);
+            data.Add(SoundSubCode.Break);
         }
     }
 }

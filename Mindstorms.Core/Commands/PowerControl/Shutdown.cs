@@ -9,23 +9,23 @@ namespace Mindstorms.Core.Commands.PowerControl
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Press,
-                (byte)ButtonType.Back,
+                OpCode.Button,
+                ButtonEvent.Press,
+                ButtonType.Back,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.WaitForPress,
+                OpCode.Button,
+                ButtonEvent.WaitForPress,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Press,
-                (byte)ButtonType.Right,
+                OpCode.Button,
+                ButtonEvent.Press,
+                ButtonType.Right,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.WaitForPress,
+                OpCode.Button,
+                ButtonEvent.WaitForPress,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Press,
-                (byte)ButtonType.Center
+                OpCode.Button,
+                ButtonEvent.Press,
+                ButtonType.Center
             });
         }
     }

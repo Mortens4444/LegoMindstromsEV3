@@ -22,8 +22,8 @@ namespace Mindstorms.Core.Commands.Speaker
             : base(durationMs)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.Sound);
-            data.Add((byte)SoundSubCode.Tone);
+            data.Add(OpCode.Sound);
+            data.Add(SoundSubCode.Tone);
             data.AppendOneBytesParameter(volume);
             data.AppendTwoBytesParameter(frequency);
             data.AppendTwoBytesParameter(durationMs);

@@ -18,10 +18,10 @@ namespace Mindstorms.Controller.SensorRead
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
-            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
+            cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
             var sensorPort = brick.GetSensor(SensorType.NXTTouch, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
-            cbSensorPort.FillAndSelect(Enum.GetValues(typeof(SensorPort)), (byte)sensorPort);
-            cbSensorMode.FillAndSelect(Enum.GetValues(typeof(TouchSensorMode)), (byte)TouchSensorMode.Touch);
+            cbSensorPort.FillAndSelect(SensorPort.GetValues(), sensorPort);
+            cbSensorMode.FillAndSelect(TouchSensorMode.GetValues(), TouchSensorMode.Touch);
         }
 
         private void BtnStartStopRead_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Mindstorms.Controller.SensorRead
                 {
                     while (readSensor)
                     {
-                        var result = brick.ReadTouchSensor(sensorPort, sensorMode);
+                        var result = brick.ReadTouchSensor(sensorPort, sensorMode, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
                         if (!this.IsDisposingOrDisposed())
                         {
                             Invoke(new Action(() =>

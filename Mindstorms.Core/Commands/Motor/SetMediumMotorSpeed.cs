@@ -1,6 +1,5 @@
 ﻿using Mindstorms.Core.Enums;
 using System;
-using System.Collections.Generic;
 
 namespace Mindstorms.Core.Commands.Motor
 {
@@ -13,21 +12,21 @@ namespace Mindstorms.Core.Commands.Motor
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
-                (byte)OpCode.OutputSetType,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort,
-                (byte)MotorType.Medium,
+                OpCode.OutputSetType,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort,
+                MotorType.Medium,
 
-                (byte)OpCode.OutputSpeed,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort,
-                (byte)ParameterFormat.Long | (byte)FollowType.TwoBytes,
+                OpCode.OutputSpeed,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort,
+                ParameterFormat.Long | FollowType.TwoBytes,
                 speedBytes[0],
                 speedBytes[1],
 
-                (byte)OpCode.OutputStart,
-                (byte)daisyChainLayer,
-                (byte)motorSpeedChange.OutputPort
+                OpCode.OutputStart,
+                daisyChainLayer,
+                motorSpeedChange.OutputPort
             });
         }
     }

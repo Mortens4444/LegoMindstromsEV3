@@ -18,7 +18,7 @@ namespace Mindstorms.Controller
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
-            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
+            cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
 
             RefreshPositions();
         }

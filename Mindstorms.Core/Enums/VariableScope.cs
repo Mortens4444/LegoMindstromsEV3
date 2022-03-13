@@ -1,11 +1,26 @@
-﻿using System;
-
-namespace Mindstorms.Core.Enums
+﻿namespace Mindstorms.Core.Enums
 {
-    [Flags]
-	public enum VariableScope : byte
+	public class VariableScope : EnumLikeObject<VariableScope>
 	{
-		Local = 0x00,
-		Global = 0x20
+		public static readonly VariableScope Local = new VariableScope(0x00, nameof(Local));
+		public static readonly VariableScope Global = new VariableScope(0x20, nameof(Global));
+
+		private VariableScope(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
+
+		public static implicit operator VariableScope(byte value)
+		{
+			return Values[value];
+		}
+
+		public static implicit operator byte(VariableScope value)
+		{
+			return value.Value;
+		}
+
+		public static byte operator |(byte value, VariableScope variableScope) => (byte)(value | variableScope.Value);
+
 	}
 }

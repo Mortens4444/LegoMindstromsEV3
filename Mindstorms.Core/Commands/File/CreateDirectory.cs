@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.File
         public CreateDirectory(string fullPathDirectoryName)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.CreateDir);
+            data.Add(SystemCommand.CreateDir);
             data.Append(fullPathDirectoryName);
         }
     }

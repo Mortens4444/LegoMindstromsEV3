@@ -26,18 +26,18 @@ namespace Mindstorms.Core.Commands.Speaker
         {
             data = new List<byte>
             {
-                (byte)CommandType.DirectCommand | (byte)Response.NotExpected,
+                CommandType.DirectCommand | Response.NotExpected,
                 0,
                 8,
-                (byte)OpCode.NoteToFrequency,
+                OpCode.NoteToFrequency,
             };
             data.AppendStringParameter(note);
             data.AddRange(new byte[] {
-                (byte)ParameterType.Variable | (byte)VariableScope.Local,
-                (byte)OpCode.Sound,
-                (byte)SoundSubCode.Tone,
+                ParameterType.Variable | VariableScope.Local,
+                OpCode.Sound,
+                SoundSubCode.Tone,
                 volume,
-                (byte)ParameterType.Variable | (byte)VariableScope.Local
+                ParameterType.Variable | VariableScope.Local
             });
             data.AppendTwoBytesParameter(durationMs);
         }

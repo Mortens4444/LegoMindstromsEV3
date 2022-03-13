@@ -8,8 +8,8 @@ namespace Mindstorms.Core.Commands.System
         public SetBrickName(string brickName)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ComSet);
-            data.Add((byte)ComSetSubCommand.SetBrickName);
+            data.Add(OpCode.ComSet);
+            data.Add(ComSetSubCommand.SetBrickName);
             data.AppendStringParameter(brickName);
         }
     }

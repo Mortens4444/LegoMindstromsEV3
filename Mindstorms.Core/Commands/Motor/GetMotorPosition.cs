@@ -11,14 +11,14 @@ namespace Mindstorms.Core.Commands.Motor
             data = GetDirectCommandWithReply(4);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.InputDevice,
-                (byte)InputSubCode.ReadyRaw,
-                (byte)daisyChainLayer,
-                (byte)outputPort,
-                (byte)motorType,
-                (byte)MotorMode.Degree,
+                OpCode.InputDevice,
+                InputSubCode.ReadyRaw,
+                daisyChainLayer,
+                outputPort,
+                motorType,
+                MotorMode.Degree,
                 1,
-                (byte)ParameterType.Variable | (byte)VariableScope.Global
+                ParameterType.Variable | VariableScope.Global
             });
         }
     }

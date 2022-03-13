@@ -7,8 +7,8 @@ namespace Mindstorms.Core.Commands.Speaker
         public SpeakerIsBusy()
         {
             data = GetDirectCommandWithReply(1);
-            data.Add((byte)OpCode.SoundTest);
-            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
+            data.Add(OpCode.SoundTest);
+            data.Add(ParameterType.Variable | VariableScope.Global);
         }
     }
 }

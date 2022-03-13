@@ -1,29 +1,44 @@
 ﻿namespace Mindstorms.Core.Enums
 {
-    public enum InputSubCode : sbyte
+    public class InputSubCode : EnumLikeObject<InputSubCode>
 	{
-		GetFormat = 0x02,
-		CalMinMax = 0x03,
-		CalDefault = 0x04,
-		GetTypeMode = 0x05,
-		GetSymbol = 0x06,
-		CalMin = 0x07,
-		CalMax = 0x08,
-		Setup = 0x09,
-		ClearAll = 0x0A,
-		GetRaw = 0x0B,
-		GetConnection = 0x0C,
-		StopAll = 0x0D,
-		GetName = 0x15,
-		GetModeName = 0x16,
-		SetRaw = 0x17,
-		GetFigures = 0x18,
-		GetChanges = 0x19,
-		ClrChanges = 0x1A,
-		ReadyPCT = 0x1B,
-		ReadyRaw = 0x1C,
-		ReadySI = 0x1D,
-		GetMinMax = 0x1E,
-		GetBumps = 0x1F
+		public static readonly InputSubCode GetFormat = new InputSubCode(0x02, nameof(GetFormat));
+		public static readonly InputSubCode CalMinMax = new InputSubCode(0x03, nameof(CalMinMax));
+		public static readonly InputSubCode CalDefault = new InputSubCode(0x04, nameof(CalDefault));
+		public static readonly InputSubCode GetTypeMode = new InputSubCode(0x05, nameof(GetTypeMode));
+		public static readonly InputSubCode GetSymbol = new InputSubCode(0x06, nameof(GetSymbol));
+		public static readonly InputSubCode CalMin = new InputSubCode(0x07, nameof(CalMin));
+		public static readonly InputSubCode CalMax = new InputSubCode(0x08, nameof(CalMax));
+		public static readonly InputSubCode Setup = new InputSubCode(0x09, nameof(Setup));
+		public static readonly InputSubCode ClearAll = new InputSubCode(0x0A, nameof(ClearAll));
+		public static readonly InputSubCode GetRaw = new InputSubCode(0x0B, nameof(GetRaw));
+		public static readonly InputSubCode GetConnection = new InputSubCode(0x0C, nameof(GetConnection));
+		public static readonly InputSubCode StopAll = new InputSubCode(0x0D, nameof(StopAll));
+		public static readonly InputSubCode GetName = new InputSubCode(0x15, nameof(GetName));
+		public static readonly InputSubCode GetModeName = new InputSubCode(0x16, nameof(GetModeName));
+		public static readonly InputSubCode SetRaw = new InputSubCode(0x17, nameof(SetRaw));
+		public static readonly InputSubCode GetFigures = new InputSubCode(0x18, nameof(GetFigures));
+		public static readonly InputSubCode GetChanges = new InputSubCode(0x19, nameof(GetChanges));
+		public static readonly InputSubCode ClrChanges = new InputSubCode(0x1A, nameof(ClrChanges));
+		public static readonly InputSubCode ReadyPCT = new InputSubCode(0x1B, nameof(ReadyPCT));
+		public static readonly InputSubCode ReadyRaw = new InputSubCode(0x1C, nameof(ReadyRaw));
+		public static readonly InputSubCode ReadySI = new InputSubCode(0x1D, nameof(ReadySI));
+		public static readonly InputSubCode GetMinMax = new InputSubCode(0x1E, nameof(GetMinMax));
+		public static readonly InputSubCode GetBumps = new InputSubCode(0x1F, nameof(GetBumps));
+
+		private InputSubCode(byte value, string name) : base(value, name)
+		{
+			Values.Add(value, this);
+		}
+
+		public static implicit operator InputSubCode(byte value)
+		{
+			return Values[value];
+		}
+
+		public static implicit operator byte(InputSubCode value)
+		{
+			return value.Value;
+		}
 	}
 }

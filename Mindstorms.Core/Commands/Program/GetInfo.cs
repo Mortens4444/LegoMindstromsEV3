@@ -9,9 +9,9 @@ namespace Mindstorms.Core.Commands.Program
         public GetInfo(ushort programSlotId)
         {
             data = GetDirectCommandWithReply(1);
-            data.Add((byte)OpCode.ProgramInfo);
+            data.Add(OpCode.ProgramInfo);
             data.Append(programSlotId);
-            data.Add((byte)ParameterType.Variable | (byte)VariableScope.Global);
+            data.Add(ParameterType.Variable | VariableScope.Global);
         }
     }
 }

@@ -9,40 +9,40 @@ namespace Mindstorms.Core.Commands.Button
             data = GetDirectCommandWithReply(7);
             data.AddRange(new byte[]
             {
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Up,
-                0 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Up,
+                0 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Center,
-                1 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Center,
+                1 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Down,
-                2 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Down,
+                2 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Right,
-                3 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Right,
+                3 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Left,
-                4 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Left,
+                4 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Back,
-                5 | (byte)ParameterType.Variable | (byte)VariableScope.Global,
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Back,
+                5 | ParameterType.Variable | VariableScope.Global,
 
-                (byte)OpCode.Button,
-                (byte)ButtonEvent.Pressed,
-                (byte)ButtonType.Any,
-                6 | (byte)ParameterType.Variable | (byte)VariableScope.Global
+                OpCode.Button,
+                ButtonEvent.Pressed,
+                ButtonType.Any,
+                6 | ParameterType.Variable | VariableScope.Global
             });
         }
     }

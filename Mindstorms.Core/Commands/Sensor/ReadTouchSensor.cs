@@ -5,9 +5,9 @@ namespace Mindstorms.Core.Commands.Motor
 {
     public class ReadTouchSensor : SensorRead
     {
-        public ReadTouchSensor(SensorPort sensorPort, TouchSensorMode sensorMode, DaisyChainLayer daisyChainLayer = DaisyChainLayer.EV3)
+        public ReadTouchSensor(SensorPort sensorPort, TouchSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            data = GetData((byte)sensorPort, (byte)SensorType.Touch, (byte)sensorMode, InputSubCode.ReadySI, daisyChainLayer);
+            data = GetData(sensorPort, SensorType.Touch, sensorMode, InputSubCode.ReadySI, daisyChainLayer);
         }
     }
 }

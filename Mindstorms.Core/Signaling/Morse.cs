@@ -13,7 +13,7 @@ namespace Mindstorms.Core.Signaling
 
         private const char Space = ' ';
         private const int MorseFrequency = 3000;
-        private const LedPattern ledPattern = LedPattern.Green;
+        private static readonly LedPattern LedPattern = LedPattern.Green;
 
         public Morse(Brick brick, ushort shortMorseUnit = 50)
         {
@@ -77,7 +77,7 @@ namespace Mindstorms.Core.Signaling
 
         private void Signal(ushort duration)
         {
-            brick.ChangeLedsState(ledPattern);
+            brick.ChangeLedsState(LedPattern);
             brick.BeepAndWait(Beep.DefaultVolume, MorseFrequency, duration);
             brick.ChangeLedsState(LedPattern.Off);
         }

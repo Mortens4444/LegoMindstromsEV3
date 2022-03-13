@@ -9,7 +9,7 @@ namespace Mindstorms.Core.Commands.File
         public GetFile(string filePath)
         {
             data = SystemCommandWithReply;
-            data.Add((byte)SystemCommand.BeginGetFile);
+            data.Add(SystemCommand.BeginGetFile);
             data.Append(Constants.ChunkSize);
             data.Append(filePath);
         }

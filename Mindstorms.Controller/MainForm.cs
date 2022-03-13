@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 #endif
 using System.IO.Ports;
+using System.Linq;
 #if USE_SPEECH_RECOGNITION
 using System.Speech.Recognition;
 #endif
@@ -38,6 +39,7 @@ namespace Mindstorms.Controller
     public partial class MainForm : Form
     {
         private Brick brick;
+        private const string EnumsNamespace = "Mindstorms.Core.Enums";
 
 #if USE_SPEECH_RECOGNITION
         private SpeechRecognitionEngine speechRecognitionEngine;
@@ -48,13 +50,15 @@ namespace Mindstorms.Controller
 
         public MainForm()
         {
-            InitializeComponent();
+            var assembly = typeof(ButtonEvent).Assembly;
+            assembly.InitializeStaticObjects(EnumsNamespace);
 
-            tscbLeverMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.D.GetIndex());
-            tscbLeftMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.B.GetIndex());
-            tscbRightMotor.ComboBox.FillAndSelect(Enum.GetValues(typeof(OutputPort)), OutputPort.C.GetIndex());
+            InitializeComponent();
+            tscbLeverMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.D.GetIndex());
+            tscbLeftMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.B.GetIndex());
+            tscbRightMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.C.GetIndex());
             cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());
-            cbDaisyChainLayer.FillAndSelectFirst(Enum.GetValues(typeof(DaisyChainLayer)));
+            cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
         }
 
         ~MainForm()

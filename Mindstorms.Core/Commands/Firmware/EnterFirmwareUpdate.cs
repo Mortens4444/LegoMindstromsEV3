@@ -8,7 +8,7 @@ namespace Mindstorms.Core.Commands.Firmware
         public EnterFirmwareUpdate()
         {
             data = SystemCommandNoReply;
-            data.Add((byte)SystemCommand.EnterFirmwareUpdate);
+            data.Add(SystemCommand.EnterFirmwareUpdate);
         }
     }
 }

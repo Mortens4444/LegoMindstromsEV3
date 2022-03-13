@@ -8,9 +8,9 @@ namespace Mindstorms.Core.Commands.LED
         public ChangeLedsState(LedPattern ledPattern)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.UIWrite);
-            data.Add((byte)UIWriteSubCommand.Led);
-            data.AppendOneBytesParameter((byte)ledPattern);
+            data.Add(OpCode.UIWrite);
+            data.Add(UIWriteSubCommand.Led);
+            data.AppendOneBytesParameter(ledPattern);
         }
     }
 }

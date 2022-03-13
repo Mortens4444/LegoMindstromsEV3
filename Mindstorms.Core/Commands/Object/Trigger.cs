@@ -12,7 +12,7 @@ namespace Mindstorms.Core.Commands.Object
         public Trigger(ushort objectId)
         {
             data = DirectCommandNoReply;
-            data.Add((byte)OpCode.ObjectTrigger);
+            data.Add(OpCode.ObjectTrigger);
             data.AppendTwoBytesParameter(objectId);
         }
     }
