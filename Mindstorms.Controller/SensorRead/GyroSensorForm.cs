@@ -26,18 +26,20 @@ namespace Mindstorms.Controller.SensorRead
         private void BtnStartStopRead_Click(object sender, EventArgs e)
         {
             cbSensorMode.Enabled = readSensor;
+            cbDaisyChainLayer.Enabled = readSensor;
             readSensor = !readSensor;
             if (readSensor)
             {
                 var sensorPort = (SensorPort)cbSensorPort.SelectedItem;
                 var sensorMode = (GyroSensorMode)cbSensorMode.SelectedItem;
+                var daisyChainLayer = (DaisyChainLayer)cbDaisyChainLayer.SelectedItem;
                 btnStartStopRead.Text = "Stop";
 
                 Task.Factory.StartNew(() =>
                 {
                     while (readSensor)
                     {
-                        var result = brick.ReadGyroSensor(sensorPort, sensorMode, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem);
+                        var result = brick.ReadGyroSensor(sensorPort, sensorMode, daisyChainLayer);
                         if (!this.IsDisposingOrDisposed())
                         {
                             Invoke(new Action(() =>

@@ -70,10 +70,12 @@ namespace Mindstorms.Controller
         {
             if (chkTimeout.Checked)
             {
+                var timeout = (double)nudTimeout.Value;
+                var daisyChainLayer = (DaisyChainLayer)cbDaisyChainLayer.SelectedItem;
                 Task.Run(async delegate
                 {
-                    await Task.Delay(TimeSpan.FromMilliseconds((double)nudTimeout.Value));
-                    brick.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, 0));
+                    await Task.Delay(TimeSpan.FromMilliseconds(timeout));
+                    brick.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.Motors, 0));
                 });
             }
         }

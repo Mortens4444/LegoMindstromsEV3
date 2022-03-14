@@ -1,5 +1,6 @@
 ﻿using Mindstorms.Core.Enums;
 using System.Collections.Generic;
+using Utils;
 
 namespace Mindstorms.Core.Commands
 {
@@ -10,6 +11,11 @@ namespace Mindstorms.Core.Commands
         public byte[] Data
 		{
             get { return data.ToArray(); }
+        }
+
+        public bool IsResponseRequired()
+        {
+            return !Data[0].IsBitSet(0x80);
         }
 
         protected readonly List<byte> SystemCommandNoReply = new List<byte> { CommandType.SystemCommand | Response.NotExpected };

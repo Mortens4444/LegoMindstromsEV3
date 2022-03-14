@@ -725,7 +725,6 @@ namespace Mindstorms.Core.EV3
         public ICommandReply Execute(Command command)
         {
             ICommandReply result = null;
-            var hasError = false;
             try
             {
                 if (Interlocked.Exchange(ref sendingData, 1) == 0)
@@ -738,30 +737,24 @@ namespace Mindstorms.Core.EV3
                     comPort.Write(command.Data, 0, command.Data.Length);
                     sendingData = 0;
 
-                    if ((command.Data[0] & Response.NotExpected) == 0)
+                    if (command.IsResponseRequired())
                     {
-                        Read:
-                        var rawResponseData = Receive();
-
-                        if (rawResponseData != null && rawResponseData.Length > 0)
+                        do
                         {
-                            result = command.Data[0].IsSystemCommand() ? (ICommandReply)
-                                    new SystemCommandReply(rawResponseData) :
-                                    new DirectCommandReply(rawResponseData);
+                            var rawResponseData = Receive();
 
-                            if (result.MessageCounter != messageCounter)
+                            if (rawResponseData != null && rawResponseData.Length > 0)
                             {
-                                goto Read;
-                                hasError = true;
-                                throw new Exception($"Expected message: #{messageCounter}, arrived message: {result}");
+                                result = command.Data[0].IsSystemCommand() ? (ICommandReply)
+                                        new SystemCommandReply(rawResponseData) :
+                                        new DirectCommandReply(rawResponseData);
+
+                                if (result.CommandType.IsError())
+                                {
+                                    throw new Exception($"Error occurred: {result}");
+                                }
                             }
-                            if (result.CommandType.IsError())
-                            {
-                                return null;
-                                hasError = true;
-                                throw new Exception($"Error occurred: {result}");
-                            }
-                        }
+                        } while (result.MessageCounter != messageCounter);
                     }
                     messageCounter++;
                 }
@@ -769,10 +762,6 @@ namespace Mindstorms.Core.EV3
             finally
             {
                 sendingData = 0;
-                if (hasError)
-                {
-                    Dispose();
-                }
             }
             return result;
         }
