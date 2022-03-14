@@ -3,7 +3,7 @@
 This application uses [Microsoft.DirectX.SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812) however can be disabled by editing the **Joystick** and **MindstromController** project properties or changing the configuration to ReleaseWithoutJoystick.
 Just remove the Conditional Compilation Symbol **USE_JOYSTICK** on the Build tab.
 
-For those who want to contribute, please read the *Todo.txt* in the **MindstormCore** project.
+For those who want to contribute, please read the *CONTRIBUTING.md* in the root folder of the solution.
 
 Using the code in another solution shouldn't be hard. Just reference the **MindstormCore** project and use the following code snippet.
 

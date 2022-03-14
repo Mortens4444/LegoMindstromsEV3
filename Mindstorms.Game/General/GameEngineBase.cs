@@ -11,6 +11,8 @@ namespace Mindstorms.Game.General
         protected bool inGame;
         protected string message;
 
+        protected const string GameOver = "Game over!";
+
         public GameEngineBase(Brick brick)
         {
             this.brick = brick;
@@ -34,6 +36,8 @@ namespace Mindstorms.Game.General
                 if (!inGame)
                 {
                     brick.ShowOnMiddleOfScreen(message, FontType.Normal, 0);
+                    var sound = message == GameOver ? EmbeddedSound.GameOver : EmbeddedSound.GoodJob;
+                    brick.PlaySound(sound, PlayType.PlayOnce);
                 }
 
                 brick.UpdateScreen();

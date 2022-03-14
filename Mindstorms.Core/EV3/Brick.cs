@@ -326,9 +326,9 @@ namespace Mindstorms.Core.EV3
             return response.RawResponseData[response.RawResponseData.Length - 1] != 0;
         }
 
-        public void PlaySound(string soundFilePath, byte volume = Constants.DefaultVolume)
+        public void PlaySound(string soundFilePath, byte volume = Constants.DefaultVolume, bool repeat = false)
         {
-            Execute(new PlaySound(volume, soundFilePath));
+            Execute(new PlaySound(volume, soundFilePath, repeat));
         }
 
         public void PlayNote(string note, byte volume = Constants.DefaultVolume, ushort durationMs = Constants.DefaultNoteDurationMs)
@@ -392,12 +392,13 @@ namespace Mindstorms.Core.EV3
             }, musicPlayerCancellationTokenSource.Token);
         }
 
-        public void PlaySound(EmbeddedSound embeddedSound, bool waitForSound = false, byte volume = Constants.DefaultVolume)
+        public void PlaySound(EmbeddedSound embeddedSound, PlayType playType, byte volume = Constants.DefaultVolume)
         {
             var description = embeddedSound.GetDescription();
             var file = ResourceUploader.UploadSound(this, $"{description}{Constants.SoundFileExtension}");
-            Execute(new PlaySound(volume, file));
-            if (waitForSound)
+            var repeat = playType == PlayType.Repeat;
+            Execute(new PlaySound(volume, file, repeat));
+            if (playType == PlayType.WaitForCompletion)
             {
                 while (SpeakerIsBusy())
                 {

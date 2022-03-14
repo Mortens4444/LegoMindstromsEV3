@@ -9,6 +9,10 @@ New features / Bugfixes
 - Get a nice solution for the dirty hack in SnakeGameEngine (GameFrame.cs should be deleted and a DirectCommand should create the underlying application)
 - Implement USB, WiFi commnunication
 - Convert sound files (etc. wav, mp3) to rsf
+- Create Web interface
+- Create WPF interface
+- Create command-line interface
+- Create NuGet package from Mindstorms.Core
 
 Other EV3 projects
 ------------------

@@ -43,6 +43,8 @@
             this.lblVolume = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
             this.nudDuration = new System.Windows.Forms.NumericUpDown();
+            this.cbPlayType = new System.Windows.Forms.ComboBox();
+            this.lblPlayType = new System.Windows.Forms.Label();
             this.pMain.SuspendLayout();
             this.gbBeep.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -62,6 +64,8 @@
             // 
             // gbBeep
             // 
+            this.gbBeep.Controls.Add(this.lblPlayType);
+            this.gbBeep.Controls.Add(this.cbPlayType);
             this.gbBeep.Controls.Add(this.toolStrip);
             this.gbBeep.Controls.Add(this.tbVolume);
             this.gbBeep.Controls.Add(this.btnSilence);
@@ -228,6 +232,24 @@
             0,
             0});
             // 
+            // cbPlayType
+            // 
+            this.cbPlayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPlayType.FormattingEnabled = true;
+            this.cbPlayType.Location = new System.Drawing.Point(220, 41);
+            this.cbPlayType.Name = "cbPlayType";
+            this.cbPlayType.Size = new System.Drawing.Size(127, 21);
+            this.cbPlayType.TabIndex = 14;
+            // 
+            // lblPlayType
+            // 
+            this.lblPlayType.AutoSize = true;
+            this.lblPlayType.Location = new System.Drawing.Point(220, 19);
+            this.lblPlayType.Name = "lblPlayType";
+            this.lblPlayType.Size = new System.Drawing.Size(50, 13);
+            this.lblPlayType.TabIndex = 15;
+            this.lblPlayType.Text = "Play type";
+            // 
             // SpeakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,5 +289,7 @@
         private System.Windows.Forms.ToolStripComboBox cbMelodies;
         private System.Windows.Forms.ToolStripComboBox cbSounds;
         private System.Windows.Forms.ToolStripButton tsbPlaySound;
+        private System.Windows.Forms.Label lblPlayType;
+        private System.Windows.Forms.ComboBox cbPlayType;
     }
 }

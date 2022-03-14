@@ -22,7 +22,7 @@ namespace Mindstorms.Game.Snake
             foodProducer = new FoodProducer();
             scoreCounter = new ScoreCounter();
             inGame = true;
-            message = "Game over!";
+            message = GameOver;
         }
 
         protected override ButtonStates GameMoment()

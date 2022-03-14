@@ -22,6 +22,7 @@ namespace Mindstorms.Controller
             var assembly = Assembly.GetAssembly(typeof(BociBoci));
             cbSounds.ComboBox.FillAndSelect(Enum.GetValues(typeof(EmbeddedSound)), (int)EmbeddedSound.EV3);
             cbMelodies.ComboBox.FillWithTypesInNamespace(assembly, MelodiesNamespace);
+            cbPlayType.FillAndSelectFirst(PlayType.GetValues());
         }
 
         private void BtnBeep_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace Mindstorms.Controller
 
         private void BtnPlaySound_Click(object sender, EventArgs e)
         {
-            brick.PlaySound((EmbeddedSound)cbSounds.SelectedItem, false, (byte)tbVolume.Value);
+            brick.PlaySound((EmbeddedSound)cbSounds.SelectedItem, (PlayType)cbPlayType.SelectedItem, (byte)tbVolume.Value);
         }
     }
 }

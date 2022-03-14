@@ -27,6 +27,7 @@ using System.Speech.Recognition;
 #endif
 #if USE_JOYSTICK
 using System.Threading;
+using System.Threading.Tasks;
 #endif
 using System.Windows.Forms;
 using Utils;
@@ -473,16 +474,20 @@ namespace Mindstorms.Controller
         {
             var volume = Byte.MaxValue;
             brick?.ShowImage(EmbeddedImage.Neutral);
-            brick?.PlaySound(EmbeddedSound.DogSniff, true, volume);
+            brick?.PlaySound(EmbeddedSound.DogSniff, PlayType.WaitForCompletion, volume);
             brick?.ShowImage(EmbeddedImage.Angry);
-            brick?.PlaySound(EmbeddedSound.DogGrowl, true, volume);
-            brick?.PlaySound(EmbeddedSound.DogBark1, false, volume);
+            brick?.PlaySound(EmbeddedSound.DogGrowl, PlayType.WaitForCompletion, volume);
+            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce, volume);
+
             for (int i = 0; i < 3; i++)
             {
                 brick?.ShowImage(EmbeddedImage.Mouth2Open);
+                Thread.Sleep(300);
                 brick?.ShowImage(EmbeddedImage.Mouth2Shut);
+                Thread.Sleep(300);
             }
-            brick?.PlaySound(EmbeddedSound.DogBark2, true, volume);
+
+            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce, volume);
             brick?.ShowImage(EmbeddedImage.Evil);
         }
 

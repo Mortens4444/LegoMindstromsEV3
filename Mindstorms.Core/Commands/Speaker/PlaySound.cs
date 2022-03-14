@@ -6,7 +6,7 @@ namespace Mindstorms.Core.Commands.Speaker
     public class PlaySound : Command
     {
         public PlaySound(string filePath)
-            : this(Constants.DefaultVolume, filePath)
+            : this(Constants.DefaultVolume, filePath, false)
         { }
 
         /// <summary>
@@ -14,11 +14,12 @@ namespace Mindstorms.Core.Commands.Speaker
         /// </summary>
         /// <param name="volume">Volume to be used.</param>
         /// <param name="filePath">Full file path without the .rsf extension.</param>
-        public PlaySound(byte volume, string filePath)
+        /// <param name="repeat">0.</param>
+        public PlaySound(byte volume, string filePath, bool repeat)
         {
             data = DirectCommandNoReply;
             data.Add(OpCode.Sound);
-            data.Add(SoundSubCode.Play);
+            data.Add(repeat ? SoundSubCode.Repeat : SoundSubCode.Play);
             data.AppendOneBytesParameter(volume);
             data.AppendStringParameter(RemoveExtension(filePath));
         }

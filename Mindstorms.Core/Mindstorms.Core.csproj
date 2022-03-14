@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\EnumLikeObject.cs" />
+    <Compile Include="Enums\PlayType.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\CommandTypeExtensions.cs" />
     <Compile Include="Extensions\ByteListExtensions.cs" />

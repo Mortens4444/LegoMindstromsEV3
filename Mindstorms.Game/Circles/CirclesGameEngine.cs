@@ -26,7 +26,6 @@ namespace Mindstorms.Game.Snake
         protected override void StartNewGame()
         {
             inGame = true;
-            message = "Game over!";
             player = new CircleEater(LCDCommand.HorizontalCenter, LCDCommand.VerticalCenter, 4);
             movingHandler = new MovingHandler(player);
             enemies = new List<CircleEater>();
@@ -76,7 +75,7 @@ namespace Mindstorms.Game.Snake
                     }
                     else
                     {
-                        message = "Game over!";
+                        message = GameOver;
                         drawPlayer = false;
                         brick.Draw(enemy, LCDColor.Black);
                         inGame = false;
