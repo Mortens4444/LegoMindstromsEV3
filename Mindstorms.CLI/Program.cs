@@ -5,9 +5,9 @@ namespace Mindstorms.CLI
 {
     internal class Program
     {
-        private static CommandExecutor commandExecutor = new CommandExecutor();
+        private static readonly CommandExecutor commandExecutor = new CommandExecutor();
 
-        static void Main(string[] args)
+        static void Main()
         {
             var processCommand = true;
             Console.WriteLine("Type 'help' for more information.");

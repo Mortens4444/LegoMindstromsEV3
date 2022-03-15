@@ -615,7 +615,7 @@ namespace Mindstorms.Core.EV3
         {
             foreach (var motorSpeedChange in motorSpeedChanges)
             {
-                Execute(new SetMediumMotorSpeed(motorSpeedChange, daisyChainLayer));
+                Execute(new SetMotorSpeed(motorSpeedChange, daisyChainLayer, MotorType.Medium));
             }
         }
 
@@ -623,8 +623,13 @@ namespace Mindstorms.Core.EV3
         {
             foreach (var motorSpeedChange in motorSpeedChanges)
             {
-                Execute(new SetLargeMotorSpeed(motorSpeedChange, daisyChainLayer));
+                Execute(new SetMotorSpeed(motorSpeedChange, daisyChainLayer, MotorType.Large));
             }
+        }
+
+        public void StopMotor(DaisyChainLayer daisyChainLayer, OutputPort outputPort, BreakType breakType)
+        {
+            Execute(new StopMotor(daisyChainLayer, outputPort, breakType));
         }
 
         #endregion

@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Motor\StopMotor.cs" />
     <Compile Include="Enums\EnumLikeObject.cs" />
+    <Compile Include="Enums\BreakType.cs" />
     <Compile Include="Enums\PlayType.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\CommandTypeExtensions.cs" />
@@ -110,7 +112,7 @@
     <Compile Include="Commands\Button\PressAndReleaseButton.cs" />
     <Compile Include="Commands\Button\GetButtonStates.cs" />
     <Compile Include="Commands\Input\GetSensorType.cs" />
-    <Compile Include="Commands\Motor\SetLargeMotorSpeed.cs" />
+    <Compile Include="Commands\Motor\SetMotorSpeed.cs" />
     <Compile Include="Commands\Sensor\SensorRead.cs" />
     <Compile Include="Commands\LCD\LCDCommand.cs" />
     <Compile Include="Commands\File\ListOpenHandles.cs" />
@@ -147,7 +149,6 @@
     <Compile Include="Commands\LCD\ShowImage.cs" />
     <Compile Include="Commands\File\DownloadFileFromBrick.cs" />
     <Compile Include="Commands\File\ListFiles.cs" />
-    <Compile Include="Commands\Motor\SetMediumMotorSpeed.cs" />
     <Compile Include="Commands\Speaker\Beep.cs" />
     <Compile Include="Drawing\EV3Circle.cs" />
     <Compile Include="Drawing\EV3InverseRectangle.cs" />

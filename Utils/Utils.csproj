@@ -64,6 +64,7 @@
     <Compile Include="ListViewItemExtensions.cs" />
     <Compile Include="ListViewExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SByteUtils.cs" />
     <Compile Include="ShortUtils.cs" />
     <Compile Include="Sound\SoundRecorder.cs" />
   </ItemGroup>

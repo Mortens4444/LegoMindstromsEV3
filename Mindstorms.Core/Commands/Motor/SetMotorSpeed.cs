@@ -1,29 +1,28 @@
 ﻿using Mindstorms.Core.Enums;
-using System;
+using Mindstorms.Core.Extensions;
+//using System;
 
 namespace Mindstorms.Core.Commands.Motor
 {
-    public class SetLargeMotorSpeed : Command
+    public class SetMotorSpeed : Command
     {
-        public SetLargeMotorSpeed(SetMotorSpeedParams motorSpeedChange, DaisyChainLayer daisyChainLayer)
+        public SetMotorSpeed(SetMotorSpeedParams motorSpeedChange, DaisyChainLayer daisyChainLayer, MotorType motorType)
         {
-            var speedBytes = BitConverter.GetBytes(motorSpeedChange.Speed);
-
             data = DirectCommandNoReply;
             data.AddRange(new byte[]
             {
                 OpCode.OutputSetType,
                 daisyChainLayer,
                 motorSpeedChange.OutputPort,
-                MotorType.Large,
+                motorType,
 
                 OpCode.OutputSpeed,
                 daisyChainLayer,
-                motorSpeedChange.OutputPort,
-                ParameterFormat.Long | FollowType.TwoBytes,
-                speedBytes[0],
-                speedBytes[1],
-
+                motorSpeedChange.OutputPort
+            });
+            data.AppendTwoBytesParameter((ushort)motorSpeedChange.Speed);
+            data.AddRange(new byte[]
+            {
                 OpCode.OutputStart,
                 daisyChainLayer,
                 motorSpeedChange.OutputPort

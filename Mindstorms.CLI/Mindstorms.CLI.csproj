@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExecutor.cs" />
+    <Compile Include="Commands\Exit.cs" />
     <Compile Include="Commands\Help.cs" />
+    <Compile Include="Commands\LCD.cs" />
+    <Compile Include="Commands\Motor.cs" />
     <Compile Include="Commands\Led.cs" />
     <Compile Include="Commands\Beep.cs" />
     <Compile Include="Commands\Disconnect.cs" />

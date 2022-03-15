@@ -23,7 +23,7 @@ namespace Mindstorms.Controller
             RefreshPositions();
         }
 
-        private void SetMotorSpeed(short acceleration, params SetMotorSpeedParams[] motorSpeedChanges)
+        private void SetMotorSpeed(sbyte acceleration, params SetMotorSpeedParams[] motorSpeedChanges)
         {
             foreach (var motorSpeedChange in motorSpeedChanges)
             {
@@ -53,17 +53,17 @@ namespace Mindstorms.Controller
 
         private void BtnSetLeftMotorSpeed_Click(object sender, EventArgs e)
         {
-            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value));
+            SetMotorSpeed(chkAccelerate.Checked ? (sbyte)tbAccelerate.Value : (sbyte)0, new SetMotorSpeedParams(brick.LeftMotor, (sbyte)tbLeftSpeed.Value));
         }
 
         private void BtnSetRightMotorSpeed_Click(object sender, EventArgs e)
         {
-            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
+            SetMotorSpeed(chkAccelerate.Checked ? (sbyte)tbAccelerate.Value : (sbyte)0, new SetMotorSpeedParams(brick.RightMotor, (sbyte)tbRightSpeed.Value));
         }
 
         private void BtnSetBothMotorSpeed_Click(object sender, EventArgs e)
         {
-            SetMotorSpeed(chkAccelerate.Checked ? (short)tbAccelerate.Value : (short)0, new SetMotorSpeedParams(brick.LeftMotor, (short)tbLeftSpeed.Value), new SetMotorSpeedParams(brick.RightMotor, (short)tbRightSpeed.Value));
+            SetMotorSpeed(chkAccelerate.Checked ? (sbyte)tbAccelerate.Value : (sbyte)0, new SetMotorSpeedParams(brick.LeftMotor, (sbyte)tbLeftSpeed.Value), new SetMotorSpeedParams(brick.RightMotor, (sbyte)tbRightSpeed.Value));
         }
 
         private void StopMotorsWithDelay()
@@ -82,7 +82,7 @@ namespace Mindstorms.Controller
 
         private void BtnSetLeverMotorSpeed_Click(object sender, EventArgs e)
         {
-            brick.SetMediumMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeverMotor, (short)tbLeverSpeed.Value));
+            brick.SetMediumMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeverMotor, (sbyte)tbLeverSpeed.Value));
         }
 
         private void BtnRefreshPositions_Click(object sender, EventArgs e)

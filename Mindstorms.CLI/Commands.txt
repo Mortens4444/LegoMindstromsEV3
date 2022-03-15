@@ -1,15 +1,55 @@
 ﻿connect port
-	- Connect to EV3 device on port.
+	- Connect to EV3 device on port. This is the first command which must be called.
 	- Ex.: connect COM4
 
 disconnect
-	- Disconnect from EV3 device.
+	- Disconnect from EV3 device. This is the last command which must be called.
 	- Ex.: disconnect
+
+exit
+	- Exit from ev3-cli.
+	- Ex.: exit
 
 beep volume frequency durationMs
 	- Play tone with given volume, frequency and duration.
 	- Ex.: beep 10 440 300
 
 led state
-	- Change the leds state on the brick.
+	- Change the LEDs state on the brick.
 	- Ex.: led greenflashing
+
+lcd clean
+	- Cleans the screen. This should be the very first UI command to execute.
+	- Ex.: lcd clean
+
+lcd pixel x y color
+	- Put a pixel to the x, y coordinates of the screen with the given color.
+	- Ex.: lcd pixel 10 10 black
+
+lcd line x1 y2 x2 y2 color
+	- Draws a line from x1, y1 coordinates to x2, y2 coordinates with the given color.
+	- Ex.: lcd line 10 10 30 30 black
+
+lcd circle x y radius color fill
+	- Draws a circle to the x, y coordinates of the screen with the given radius, color and fill.
+	- Ex.: lcd circle 10 10 30 black true
+
+lcd rectangle x y width height color fill
+	- Draws a rectangle to the x, y coordinates of the screen with the given width, height, color and fill.
+	- Ex.: lcd rectangle 10 10 30 30 black true
+
+lcd string x y color fontType text
+	- Draws a rectangle to the x, y coordinates of the screen with the given width, height, color and fill.
+	- Ex.: lcd string 10 10 black normal Hello World!
+
+motor start port speed [daisyChainLayer]
+	- Start motor on given output port with the given speed.
+	- Ex.: motor start B 100 EV3
+
+motor stop port breaktype [daisyChainLayer]
+	- Stop motor on given output port.
+	- Ex.: motor stop B float first
+
+lcd update
+	- Updates the screen. This should be the very last UI command to execute.
+	- Ex.: lcd update

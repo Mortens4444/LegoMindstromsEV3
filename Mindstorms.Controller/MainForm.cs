@@ -280,50 +280,48 @@ namespace Mindstorms.Controller
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, (short)deltaY));
+                        brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.Motors, (sbyte)deltaY));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        var leftMotorSpeed = (short)Math.Abs(deltaY + deltaX);
-                        var rightMotorSpeed = (short)deltaY;
+                        var leftMotorSpeed = (sbyte)Math.Abs(deltaY + deltaX);
+                        var rightMotorSpeed = (sbyte)deltaY;
                         if (leftMotorSpeed > rightMotorSpeed)
                         {
-                            
-                            
-                            ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
+                            SByteUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        var leftMotorSpeed = (short)deltaY;
-                        var rightMotorSpeed = (short)Math.Abs(deltaY - deltaX);
+                        var leftMotorSpeed = (sbyte)deltaY;
+                        var rightMotorSpeed = (sbyte)Math.Abs(deltaY - deltaX);
                         if (rightMotorSpeed > leftMotorSpeed)
                         {
-                            ShortUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
+                            SByteUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                         }
                         Console.WriteLine($"Forward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        var leftMotorSpeed = (short)deltaY;
-                        var rightMotorSpeed = (short)(deltaY + deltaX);
+                        var leftMotorSpeed = (sbyte)deltaY;
+                        var rightMotorSpeed = (sbyte)(deltaY + deltaX);
                         Console.WriteLine($"Backward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        var leftMotorSpeed = (short)(deltaY - deltaX);
-                        var rightMotorSpeed = (short)deltaY;
+                        var leftMotorSpeed = (sbyte)(deltaY - deltaX);
+                        var rightMotorSpeed = (sbyte)deltaY;
                         Console.WriteLine($"Backward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
                     {
-                        var leftMotorSpeed = (short)deltaX;
-                        var rightMotorSpeed = (short)-deltaX;
+                        var leftMotorSpeed = (sbyte)deltaX;
+                        var rightMotorSpeed = (sbyte)-deltaX;
                         Console.WriteLine($"Turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },

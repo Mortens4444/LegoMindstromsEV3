@@ -1,4 +1,5 @@
 ﻿using Mindstorms.Core.EV3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace Mindstorms.CLI.Commands
         {
             brick = new Brick(arguments.First());
             brick.Connect();
+            Console.WriteLine("Succesfully connected.");
         }
     }
 }
