@@ -28,5 +28,11 @@ namespace Mindstorms.Core.Enums
         {
             return Values.Values.ToList();
         }
+
+        public static T Parse(string name)
+        {
+            var fieldInfo = typeof(T).GetFields().Single(field => String.Equals(field.Name, name, StringComparison.OrdinalIgnoreCase));
+            return (T)fieldInfo.GetValue(null);
+        }
     }
 }

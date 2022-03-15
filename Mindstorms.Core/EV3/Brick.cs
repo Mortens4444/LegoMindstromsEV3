@@ -45,11 +45,11 @@ namespace Mindstorms.Core.EV3
 
         public bool IsConnected { get; private set; }
 
-        public OutputPort LeftMotor { get; }
+        public OutputPort LeftMotor { get; private set; }
 
-        public OutputPort RightMotor { get; }
+        public OutputPort RightMotor { get; private set; }
 
-        public OutputPort LeverMotor { get; }
+        public OutputPort LeverMotor { get; private set; }
 
         public OutputPort Motors
         {
@@ -65,7 +65,7 @@ namespace Mindstorms.Core.EV3
 
         #region Constructor
 
-        public Brick(string port, OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
+        public Brick(string port)
         {
             comPort = new SerialPort(port, 115200)
             {
@@ -73,6 +73,10 @@ namespace Mindstorms.Core.EV3
                 ReadTimeout = ReadWriteTimeout
             };
             comPort.ErrorReceived += ComPort_ErrorReceived;
+        }
+
+        public void SetMotors(OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
+        {
             LeftMotor = leftMotor;
             RightMotor = rightMotor;
             LeverMotor = leverMotor;

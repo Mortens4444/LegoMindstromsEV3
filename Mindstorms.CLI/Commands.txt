@@ -1,0 +1,15 @@
+﻿connect port
+	- Connect to EV3 device on port.
+	- Ex.: connect COM4
+
+disconnect
+	- Disconnect from EV3 device.
+	- Ex.: disconnect
+
+beep volume frequency durationMs
+	- Play tone with given volume, frequency and duration.
+	- Ex.: beep 10 440 300
+
+led state
+	- Change the leds state on the brick.
+	- Ex.: led greenflashing

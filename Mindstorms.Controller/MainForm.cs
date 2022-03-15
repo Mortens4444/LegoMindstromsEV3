@@ -25,8 +25,8 @@ using System.Linq;
 #if USE_SPEECH_RECOGNITION
 using System.Speech.Recognition;
 #endif
-#if USE_JOYSTICK
 using System.Threading;
+#if USE_JOYSTICK
 using System.Threading.Tasks;
 #endif
 using System.Windows.Forms;
@@ -87,7 +87,8 @@ namespace Mindstorms.Controller
                 return;
             }
 
-            brick = new Brick((string)cbPort.SelectedItem, (OutputPort)tscbLeftMotor.SelectedItem, (OutputPort)tscbRightMotor.SelectedItem, (OutputPort)tscbLeverMotor.SelectedItem);
+            brick = new Brick((string)cbPort.SelectedItem);
+            brick.SetMotors((OutputPort)tscbLeftMotor.SelectedItem, (OutputPort)tscbRightMotor.SelectedItem, (OutputPort)tscbLeverMotor.SelectedItem);
             brick.Connect();
 
             btnConnectOrDisconnect.Image = Properties.Resources.disconnect;

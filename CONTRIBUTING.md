@@ -4,7 +4,7 @@ New features / Bugfixes
 - Mailbox
 - Gyro sensor
 - Line follower algorithm
-- Recognize sensors (TouchSensor already working sometimes...)
+- Recognize sensors (TouchSensor already works sometimes...)
 - Games (Skiing, Car race, Space invader, Flipper, Tetris, etc...)
 - Get a nice solution for the dirty hack in SnakeGameEngine (GameFrame.cs should be deleted and a DirectCommand should create the underlying application)
 - Implement USB, WiFi commnunication
