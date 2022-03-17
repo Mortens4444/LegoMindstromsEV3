@@ -128,7 +128,7 @@ namespace Mindstorms.Controller
             this.tscbLeverMotor});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(619, 25);
+            this.toolStrip.Size = new System.Drawing.Size(619, 27);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -136,7 +136,7 @@ namespace Mindstorms.Controller
             // 
             this.cbPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPort.Name = "cbPort";
-            this.cbPort.Size = new System.Drawing.Size(121, 25);
+            this.cbPort.Size = new System.Drawing.Size(121, 27);
             // 
             // btnConnectOrDisconnect
             // 
@@ -144,60 +144,60 @@ namespace Mindstorms.Controller
             this.btnConnectOrDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnConnectOrDisconnect.Image")));
             this.btnConnectOrDisconnect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConnectOrDisconnect.Name = "btnConnectOrDisconnect";
-            this.btnConnectOrDisconnect.Size = new System.Drawing.Size(23, 22);
+            this.btnConnectOrDisconnect.Size = new System.Drawing.Size(23, 24);
             this.btnConnectOrDisconnect.ToolTipText = "Connect/Disconnect";
             this.btnConnectOrDisconnect.Click += new System.EventHandler(this.BtnConnectOrDisconnect_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // tslLeftMotor
             // 
             this.tslLeftMotor.Name = "tslLeftMotor";
-            this.tslLeftMotor.Size = new System.Drawing.Size(63, 22);
+            this.tslLeftMotor.Size = new System.Drawing.Size(63, 24);
             this.tslLeftMotor.Text = "Left motor";
             // 
             // tscbLeftMotor
             // 
             this.tscbLeftMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbLeftMotor.Name = "tscbLeftMotor";
-            this.tscbLeftMotor.Size = new System.Drawing.Size(75, 25);
+            this.tscbLeftMotor.Size = new System.Drawing.Size(75, 27);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // tslRightMotor
             // 
             this.tslRightMotor.Name = "tslRightMotor";
-            this.tslRightMotor.Size = new System.Drawing.Size(71, 22);
+            this.tslRightMotor.Size = new System.Drawing.Size(71, 24);
             this.tslRightMotor.Text = "Right motor";
             // 
             // tscbRightMotor
             // 
             this.tscbRightMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbRightMotor.Name = "tscbRightMotor";
-            this.tscbRightMotor.Size = new System.Drawing.Size(75, 25);
+            this.tscbRightMotor.Size = new System.Drawing.Size(75, 27);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // tslLeverMotor
             // 
             this.tslLeverMotor.Name = "tslLeverMotor";
-            this.tslLeverMotor.Size = new System.Drawing.Size(71, 22);
+            this.tslLeverMotor.Size = new System.Drawing.Size(71, 24);
             this.tslLeverMotor.Text = "Lever motor";
             // 
             // tscbLeverMotor
             // 
             this.tscbLeverMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbLeverMotor.Name = "tscbLeverMotor";
-            this.tscbLeverMotor.Size = new System.Drawing.Size(75, 25);
+            this.tscbLeverMotor.Size = new System.Drawing.Size(75, 23);
             // 
             // menuStrip
             // 
@@ -435,9 +435,9 @@ namespace Mindstorms.Controller
             this.pMain.Controls.Add(this.gbJoystick);
             this.pMain.Controls.Add(this.gbControl);
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 49);
+            this.pMain.Location = new System.Drawing.Point(0, 51);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(619, 137);
+            this.pMain.Size = new System.Drawing.Size(619, 135);
             this.pMain.TabIndex = 6;
             // 
             // lblDaisyChainLayer

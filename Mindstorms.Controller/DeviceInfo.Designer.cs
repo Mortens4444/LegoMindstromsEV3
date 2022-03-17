@@ -30,6 +30,15 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.lblHardwareVersion = new System.Windows.Forms.Label();
+            this.lblFirmwareBuild = new System.Windows.Forms.Label();
+            this.lblFirmwareVersion = new System.Windows.Forms.Label();
+            this.lblOperatingSystemBuild = new System.Windows.Forms.Label();
+            this.lblOperatingSystemVersion = new System.Windows.Forms.Label();
+            this.lblBatteryTemperatureRise = new System.Windows.Forms.Label();
+            this.lblBatteryVoltage = new System.Windows.Forms.Label();
+            this.lblBatteryCurrent = new System.Windows.Forms.Label();
+            this.lblBatteryLevel = new System.Windows.Forms.Label();
             this.btnChangePin = new System.Windows.Forms.Button();
             this.tbPin = new System.Windows.Forms.TextBox();
             this.lblPin = new System.Windows.Forms.Label();
@@ -38,15 +47,7 @@
             this.btnChangeName = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblBatteryLevel = new System.Windows.Forms.Label();
-            this.lblBatteryCurrent = new System.Windows.Forms.Label();
-            this.lblBatteryVoltage = new System.Windows.Forms.Label();
-            this.lblBatteryTemperatureRise = new System.Windows.Forms.Label();
-            this.lblFirmwareBuild = new System.Windows.Forms.Label();
-            this.lblFirmwareVersion = new System.Windows.Forms.Label();
-            this.lblOperatingSystemBuild = new System.Windows.Forms.Label();
-            this.lblOperatingSystemVersion = new System.Windows.Forms.Label();
-            this.lblHardwareVersion = new System.Windows.Forms.Label();
+            this.btnGetLastError = new System.Windows.Forms.Button();
             this.pMain.SuspendLayout();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.btnGetLastError);
             this.gbMain.Controls.Add(this.lblHardwareVersion);
             this.gbMain.Controls.Add(this.lblFirmwareBuild);
             this.gbMain.Controls.Add(this.lblFirmwareVersion);
@@ -85,6 +87,87 @@
             this.gbMain.Size = new System.Drawing.Size(605, 217);
             this.gbMain.TabIndex = 0;
             this.gbMain.TabStop = false;
+            // 
+            // lblHardwareVersion
+            // 
+            this.lblHardwareVersion.AutoSize = true;
+            this.lblHardwareVersion.Location = new System.Drawing.Point(273, 184);
+            this.lblHardwareVersion.Name = "lblHardwareVersion";
+            this.lblHardwareVersion.Size = new System.Drawing.Size(90, 13);
+            this.lblHardwareVersion.TabIndex = 16;
+            this.lblHardwareVersion.Text = "Hardware version";
+            // 
+            // lblFirmwareBuild
+            // 
+            this.lblFirmwareBuild.AutoSize = true;
+            this.lblFirmwareBuild.Location = new System.Drawing.Point(273, 165);
+            this.lblFirmwareBuild.Name = "lblFirmwareBuild";
+            this.lblFirmwareBuild.Size = new System.Drawing.Size(74, 13);
+            this.lblFirmwareBuild.TabIndex = 15;
+            this.lblFirmwareBuild.Text = "Firmware build";
+            // 
+            // lblFirmwareVersion
+            // 
+            this.lblFirmwareVersion.AutoSize = true;
+            this.lblFirmwareVersion.Location = new System.Drawing.Point(273, 146);
+            this.lblFirmwareVersion.Name = "lblFirmwareVersion";
+            this.lblFirmwareVersion.Size = new System.Drawing.Size(86, 13);
+            this.lblFirmwareVersion.TabIndex = 14;
+            this.lblFirmwareVersion.Text = "Firmware version";
+            // 
+            // lblOperatingSystemBuild
+            // 
+            this.lblOperatingSystemBuild.AutoSize = true;
+            this.lblOperatingSystemBuild.Location = new System.Drawing.Point(273, 127);
+            this.lblOperatingSystemBuild.Name = "lblOperatingSystemBuild";
+            this.lblOperatingSystemBuild.Size = new System.Drawing.Size(113, 13);
+            this.lblOperatingSystemBuild.TabIndex = 13;
+            this.lblOperatingSystemBuild.Text = "Operating system build";
+            // 
+            // lblOperatingSystemVersion
+            // 
+            this.lblOperatingSystemVersion.AutoSize = true;
+            this.lblOperatingSystemVersion.Location = new System.Drawing.Point(273, 108);
+            this.lblOperatingSystemVersion.Name = "lblOperatingSystemVersion";
+            this.lblOperatingSystemVersion.Size = new System.Drawing.Size(125, 13);
+            this.lblOperatingSystemVersion.TabIndex = 12;
+            this.lblOperatingSystemVersion.Text = "Operating system version";
+            // 
+            // lblBatteryTemperatureRise
+            // 
+            this.lblBatteryTemperatureRise.AutoSize = true;
+            this.lblBatteryTemperatureRise.Location = new System.Drawing.Point(273, 73);
+            this.lblBatteryTemperatureRise.Name = "lblBatteryTemperatureRise";
+            this.lblBatteryTemperatureRise.Size = new System.Drawing.Size(118, 13);
+            this.lblBatteryTemperatureRise.TabIndex = 11;
+            this.lblBatteryTemperatureRise.Text = "Battery temperature rise";
+            // 
+            // lblBatteryVoltage
+            // 
+            this.lblBatteryVoltage.AutoSize = true;
+            this.lblBatteryVoltage.Location = new System.Drawing.Point(273, 54);
+            this.lblBatteryVoltage.Name = "lblBatteryVoltage";
+            this.lblBatteryVoltage.Size = new System.Drawing.Size(78, 13);
+            this.lblBatteryVoltage.TabIndex = 10;
+            this.lblBatteryVoltage.Text = "Battery voltage";
+            // 
+            // lblBatteryCurrent
+            // 
+            this.lblBatteryCurrent.AutoSize = true;
+            this.lblBatteryCurrent.Location = new System.Drawing.Point(273, 35);
+            this.lblBatteryCurrent.Name = "lblBatteryCurrent";
+            this.lblBatteryCurrent.Size = new System.Drawing.Size(76, 13);
+            this.lblBatteryCurrent.TabIndex = 9;
+            this.lblBatteryCurrent.Text = "Battery current";
+            // 
+            // lblBatteryLevel
+            // 
+            this.lblBatteryLevel.AutoSize = true;
+            this.lblBatteryLevel.Location = new System.Drawing.Point(273, 16);
+            this.lblBatteryLevel.Name = "lblBatteryLevel";
+            this.lblBatteryLevel.Size = new System.Drawing.Size(65, 13);
+            this.lblBatteryLevel.TabIndex = 8;
+            this.lblBatteryLevel.Text = "Battery level";
             // 
             // btnChangePin
             // 
@@ -157,86 +240,15 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name";
             // 
-            // lblBatteryLevel
+            // btnGetLastError
             // 
-            this.lblBatteryLevel.AutoSize = true;
-            this.lblBatteryLevel.Location = new System.Drawing.Point(273, 16);
-            this.lblBatteryLevel.Name = "lblBatteryLevel";
-            this.lblBatteryLevel.Size = new System.Drawing.Size(65, 13);
-            this.lblBatteryLevel.TabIndex = 8;
-            this.lblBatteryLevel.Text = "Battery level";
-            // 
-            // lblBatteryCurrent
-            // 
-            this.lblBatteryCurrent.AutoSize = true;
-            this.lblBatteryCurrent.Location = new System.Drawing.Point(273, 35);
-            this.lblBatteryCurrent.Name = "lblBatteryCurrent";
-            this.lblBatteryCurrent.Size = new System.Drawing.Size(76, 13);
-            this.lblBatteryCurrent.TabIndex = 9;
-            this.lblBatteryCurrent.Text = "Battery current";
-            // 
-            // lblBatteryVoltage
-            // 
-            this.lblBatteryVoltage.AutoSize = true;
-            this.lblBatteryVoltage.Location = new System.Drawing.Point(273, 54);
-            this.lblBatteryVoltage.Name = "lblBatteryVoltage";
-            this.lblBatteryVoltage.Size = new System.Drawing.Size(78, 13);
-            this.lblBatteryVoltage.TabIndex = 10;
-            this.lblBatteryVoltage.Text = "Battery voltage";
-            // 
-            // lblBatteryTemperatureRise
-            // 
-            this.lblBatteryTemperatureRise.AutoSize = true;
-            this.lblBatteryTemperatureRise.Location = new System.Drawing.Point(273, 73);
-            this.lblBatteryTemperatureRise.Name = "lblBatteryTemperatureRise";
-            this.lblBatteryTemperatureRise.Size = new System.Drawing.Size(118, 13);
-            this.lblBatteryTemperatureRise.TabIndex = 11;
-            this.lblBatteryTemperatureRise.Text = "Battery temperature rise";
-            // 
-            // lblFirmwareBuild
-            // 
-            this.lblFirmwareBuild.AutoSize = true;
-            this.lblFirmwareBuild.Location = new System.Drawing.Point(273, 165);
-            this.lblFirmwareBuild.Name = "lblFirmwareBuild";
-            this.lblFirmwareBuild.Size = new System.Drawing.Size(74, 13);
-            this.lblFirmwareBuild.TabIndex = 15;
-            this.lblFirmwareBuild.Text = "Firmware build";
-            // 
-            // lblFirmwareVersion
-            // 
-            this.lblFirmwareVersion.AutoSize = true;
-            this.lblFirmwareVersion.Location = new System.Drawing.Point(273, 146);
-            this.lblFirmwareVersion.Name = "lblFirmwareVersion";
-            this.lblFirmwareVersion.Size = new System.Drawing.Size(86, 13);
-            this.lblFirmwareVersion.TabIndex = 14;
-            this.lblFirmwareVersion.Text = "Firmware version";
-            // 
-            // lblOperatingSystemBuild
-            // 
-            this.lblOperatingSystemBuild.AutoSize = true;
-            this.lblOperatingSystemBuild.Location = new System.Drawing.Point(273, 127);
-            this.lblOperatingSystemBuild.Name = "lblOperatingSystemBuild";
-            this.lblOperatingSystemBuild.Size = new System.Drawing.Size(113, 13);
-            this.lblOperatingSystemBuild.TabIndex = 13;
-            this.lblOperatingSystemBuild.Text = "Operating system build";
-            // 
-            // lblOperatingSystemVersion
-            // 
-            this.lblOperatingSystemVersion.AutoSize = true;
-            this.lblOperatingSystemVersion.Location = new System.Drawing.Point(273, 108);
-            this.lblOperatingSystemVersion.Name = "lblOperatingSystemVersion";
-            this.lblOperatingSystemVersion.Size = new System.Drawing.Size(125, 13);
-            this.lblOperatingSystemVersion.TabIndex = 12;
-            this.lblOperatingSystemVersion.Text = "Operating system version";
-            // 
-            // lblHardwareVersion
-            // 
-            this.lblHardwareVersion.AutoSize = true;
-            this.lblHardwareVersion.Location = new System.Drawing.Point(273, 184);
-            this.lblHardwareVersion.Name = "lblHardwareVersion";
-            this.lblHardwareVersion.Size = new System.Drawing.Size(90, 13);
-            this.lblHardwareVersion.TabIndex = 16;
-            this.lblHardwareVersion.Text = "Hardware version";
+            this.btnGetLastError.Location = new System.Drawing.Point(9, 160);
+            this.btnGetLastError.Name = "btnGetLastError";
+            this.btnGetLastError.Size = new System.Drawing.Size(75, 23);
+            this.btnGetLastError.TabIndex = 17;
+            this.btnGetLastError.Text = "Get last error";
+            this.btnGetLastError.UseVisualStyleBackColor = true;
+            this.btnGetLastError.Click += new System.EventHandler(this.BtnGetLastError_Click);
             // 
             // DeviceInfo
             // 
@@ -277,5 +289,6 @@
         private System.Windows.Forms.Label lblOperatingSystemBuild;
         private System.Windows.Forms.Label lblOperatingSystemVersion;
         private System.Windows.Forms.Label lblHardwareVersion;
+        private System.Windows.Forms.Button btnGetLastError;
     }
 }

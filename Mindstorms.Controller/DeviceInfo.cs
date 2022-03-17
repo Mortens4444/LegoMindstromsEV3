@@ -1,4 +1,5 @@
-﻿using Mindstorms.Core.Enums;
+﻿using MessageBoxes;
+using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using System;
 using System.Windows.Forms;
@@ -56,6 +57,19 @@ namespace Mindstorms.Controller
         private void BtnChangePin_Click(object sender, EventArgs e)
         {
             brick.SetPin((CommunicationInterface)cbCommunicationInterface.SelectedItem, tbName.Text, tbPin.Text);
+        }
+
+        private void BtnGetLastError_Click(object sender, EventArgs e)
+        {
+            var message = brick.GetLastError();
+            if (message.StartsWith("0: "))
+            {
+                InfoBox.Show("Success", message);
+            }
+            else
+            {
+                ErrorBox.Show("Error", message);
+            }
         }
     }
 }

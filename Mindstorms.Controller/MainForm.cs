@@ -21,7 +21,6 @@ using System;
 using System.Collections.Generic;
 #endif
 using System.IO.Ports;
-using System.Linq;
 #if USE_SPEECH_RECOGNITION
 using System.Speech.Recognition;
 #endif

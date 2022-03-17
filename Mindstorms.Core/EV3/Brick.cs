@@ -1,9 +1,11 @@
 ﻿using Mindstorms.Core.Commands;
 using Mindstorms.Core.Commands.Button;
+using Mindstorms.Core.Commands.Error;
 using Mindstorms.Core.Commands.File;
 using Mindstorms.Core.Commands.Input;
 using Mindstorms.Core.Commands.LCD;
 using Mindstorms.Core.Commands.LED;
+using Mindstorms.Core.Commands.Mathematics.Arithmetic;
 using Mindstorms.Core.Commands.Motor;
 using Mindstorms.Core.Commands.PowerControl;
 using Mindstorms.Core.Commands.Program;
@@ -206,6 +208,19 @@ namespace Mindstorms.Core.EV3
         {
             var response = Execute(new GetFirmwareBuild());
             return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+        }
+
+        public string GetLastError()
+        {
+            var reply = Execute(new GetError());
+            var errorCode = reply.RawResponseData[3];
+            reply = Execute(new GetErrorMessage(errorCode));
+            var message = Constants.DefaultEncoding.GetString(reply.RawResponseData, 3, Constants.DefaultResponseLength);
+            if (String.IsNullOrEmpty(message))
+            {
+                message = "N/A";
+            }
+            return $"{errorCode}: {message}";
         }
 
         #endregion
@@ -726,6 +741,34 @@ namespace Mindstorms.Core.EV3
         {
             var result = Execute(new DeleteFile(fullPathFileName));
             return result?.CommandReplyStatus == CommandReplyStatus.Success;
+        }
+
+        #endregion
+
+        #region Mathematics
+
+        public float Add(float value1, float value2)
+        {
+            var response = Execute(new Add(value1, value2));
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+
+        public float Subtract(float value1, float value2)
+        {
+            var response = Execute(new Subtract(value1, value2));
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+
+        public float Multiply(float value1, float value2)
+        {
+            var response = Execute(new Multiply(value1, value2));
+            return BitConverter.ToSingle(response.RawResponseData, 3);
+        }
+
+        public float Divide(float value1, float value2)
+        {
+            var response = Execute(new Divide(value1, value2));
+            return BitConverter.ToSingle(response.RawResponseData, 3);
         }
 
         #endregion
