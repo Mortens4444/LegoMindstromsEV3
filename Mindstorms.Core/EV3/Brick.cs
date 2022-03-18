@@ -610,10 +610,10 @@ namespace Mindstorms.Core.EV3
         /// </summary>
         /// <param name="command">The command to be executed.</param>
         /// <returns>Return code of the command.</returns>
-        public byte SystemCall(string command)
+        public int SystemCall(string command)
         {
             var response = Execute(new SystemCall(command));
-            return response.RawResponseData[3];
+            return BitConverter.ToInt32(response.RawResponseData, 3);
         }
 
         #endregion
