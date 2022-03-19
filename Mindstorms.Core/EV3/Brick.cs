@@ -135,9 +135,9 @@ namespace Mindstorms.Core.EV3
             return response.GetResponseAsString();
         }
 
-        public bool IsActive(CommunicationInterface communicationInterface, string deviceName)
+        public bool IsActive(CommunicationInterface communicationInterface)
         {
-            var response = Execute(new IsActive(communicationInterface, deviceName));
+            var response = Execute(new IsActive(communicationInterface));
             return Convert.ToBoolean(response.RawResponseData[3]);
         }
 

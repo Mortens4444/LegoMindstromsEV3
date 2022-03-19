@@ -73,7 +73,7 @@
             this.Controls.Add(this.pMain);
             this.Name = "FileReaderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "View file content";
+            this.Text = "File viewer";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileReaderForm_KeyDown);
             this.pMain.ResumeLayout(false);
             this.gbMain.ResumeLayout(false);
