@@ -216,7 +216,12 @@
     <Compile Include="Enums\LightSensorMode.cs" />
     <Compile Include="Enums\UARTMode.cs" />
     <Compile Include="Enums\UIWriteSubCommand.cs" />
+    <Compile Include="Extensions\ListViewExtensions.cs" />
+    <Compile Include="Extensions\ListViewItemExtensions.cs" />
     <Compile Include="Extensions\OutputPortExtensions.cs" />
+    <Compile Include="FileWriter\FileStreamWriter.cs" />
+    <Compile Include="FileWriter\IWriter.cs" />
+    <Compile Include="FileWriter\StringWriter.cs" />
     <Compile Include="ICommandReply.cs" />
     <Compile Include="ImageConverter\BmpToRgfConverter.cs" />
     <Compile Include="Resources\ResourceUploader.cs" />

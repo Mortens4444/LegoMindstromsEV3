@@ -14,6 +14,7 @@ using Mindstorms.Core.Commands.System;
 using Mindstorms.Core.Drawing;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.Extensions;
+using Mindstorms.Core.FileWriter;
 using Mindstorms.Core.Music;
 using Mindstorms.Core.Resources;
 using Mindstorms.Core.Responses;
@@ -131,12 +132,12 @@ namespace Mindstorms.Core.EV3
         public string GetBrickName()
         {
             var response = Execute(new GetBrickName());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
-        public bool IsActive(CommunicationInterface communicationInterface)
+        public bool IsActive(CommunicationInterface communicationInterface, string deviceName)
         {
-            var response = Execute(new IsActive(communicationInterface));
+            var response = Execute(new IsActive(communicationInterface, deviceName));
             return Convert.ToBoolean(response.RawResponseData[3]);
         }
 
@@ -148,7 +149,7 @@ namespace Mindstorms.Core.EV3
         public string GetPin(CommunicationInterface communicationInterface, string brickName)
         {
             var response = Execute(new GetPin(communicationInterface, brickName));
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public void SetPin(CommunicationInterface communicationInterface, string brickName, string pinCode)
@@ -183,31 +184,31 @@ namespace Mindstorms.Core.EV3
         public string GetOperatingSystemVersion()
         {
             var response = Execute(new GetOperatingSystemVersion());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public string GetOperatingSystemBuild()
         {
             var response = Execute(new GetOperatingSystemBuild());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public string GetHardwareVersion()
         {
             var response = Execute(new GetHardwareVersion());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public string GetFirmwareVersion()
         {
             var response = Execute(new GetFirmwareVersion());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public string GetFirmwareBuild()
         {
             var response = Execute(new GetFirmwareBuild());
-            return Constants.DefaultEncoding.GetString(response.RawResponseData, 3, Constants.DefaultResponseLength);
+            return response.GetResponseAsString();
         }
 
         public string GetLastError()
@@ -697,30 +698,27 @@ namespace Mindstorms.Core.EV3
             }
         }
 
-        public bool CopyFileFromBrick(string sourceFilePath, string destinationFilePath, int fileSize)
+        public bool CopyFileFromBrick(string sourceFilePath, int fileSize, IWriter writer)
         {
             int chunkSize = 0;
             byte fileHandle = 0;
             SystemCommandReply reply;
 
-            using (var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
+            while ((fileSize -= chunkSize) > 0)
             {
-                while ((fileSize -= chunkSize) > 0)
+                var notFirstChunk = chunkSize != 0;
+                if (notFirstChunk)
                 {
-                    var notFirstChunk = chunkSize != 0;
-                    if (notFirstChunk)
-                    {
-                        reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
-                    }
-                    else
-                    {
-                        reply = Execute(new DownloadFileFromBrick(sourceFilePath, fileSize)) as SystemCommandReply;
-                        fileHandle = reply.Handle;
-                    }
-
-                    chunkSize = GetChunkSize(fileSize, reply.RawResponseData.Length, notFirstChunk);
-                    fileStream.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
+                    reply = Execute(new ContinueDownloadFileFromBrick(fileHandle)) as SystemCommandReply;
                 }
+                else
+                {
+                    reply = Execute(new DownloadFileFromBrick(sourceFilePath, fileSize)) as SystemCommandReply;
+                    fileHandle = reply.Handle;
+                }
+
+                chunkSize = GetChunkSize(fileSize, reply.RawResponseData.Length, notFirstChunk);
+                writer.Write(reply.RawResponseData, SystemCommandReply.ContinueSystemCommandResponseHeaderLength, chunkSize);
             }
 
             return true;

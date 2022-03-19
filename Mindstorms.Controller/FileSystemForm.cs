@@ -1,12 +1,14 @@
 ﻿using MessageBoxes;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
+using Mindstorms.Core.Extensions;
+using Mindstorms.Core.FileWriter;
 using Mindstorms.Core.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using Utils;
+using StringWriter = Mindstorms.Core.FileWriter.StringWriter;
 
 namespace Mindstorms.Controller
 {
@@ -39,7 +41,7 @@ namespace Mindstorms.Controller
             {
                 var selectedFilenameFullPath = $"{lblWorkingDirectory.Text}/{lvDirectoryContent.SelectedItems[0].Text}";
 
-                if (lvDirectoryContent.SelectedItems[0].SubItems[1].Text == ListViewExtensions.Directory)
+                if (lvDirectoryContent.SelectedItems[0].IsDirectory())
                 {
                     ListFolder(lvDirectoryContent.SelectedItems[0].ChangeWorkingDirectory(lblWorkingDirectory.Text));
                 }
@@ -69,15 +71,18 @@ namespace Mindstorms.Controller
                     for (int i = 0; i < lvDirectoryContent.SelectedItems.Count; i++)
                     {
                         var item = lvDirectoryContent.SelectedItems[i];
-                        if (item.SubItems[1].Text != ListViewExtensions.Directory)
+                        if (!item.IsDirectory())
                         {
-                            var fileSize = Convert.ToInt32(item.SubItems[2].Text);
+                            var fileSize = item.GetFileSize();
                             var sourceFilenameFullPath = $"{lblWorkingDirectory.Text}/{item.Text}";
                             var destination = $"{folderBrowserDialog.SelectedPath}/{item.Text}";
-                            if (brick.CopyFileFromBrick(sourceFilenameFullPath, destination, fileSize))
+                            using (var fileStreamWriter = new FileStreamWriter(destination))
                             {
-                                numberOfDownloadedFiles++;
-                                indices.Add(item.Index);
+                                if (brick.CopyFileFromBrick(sourceFilenameFullPath, fileSize, fileStreamWriter))
+                                {
+                                    numberOfDownloadedFiles++;
+                                    indices.Add(item.Index);
+                                }
                             }
                         }
                     }
@@ -143,6 +148,23 @@ namespace Mindstorms.Controller
         private void BtnProjects_Click(object sender, EventArgs e)
         {
             ListFolder(ResourceUploader.BaseDirectory);
+        }
+
+        private void TsmiViewFileContent_Click(object sender, EventArgs e)
+        {
+            var sourceFilenameFullPath = $"{lblWorkingDirectory.Text}/{lvDirectoryContent.SelectedItems[0].Text}";
+            int fileSize = lvDirectoryContent.SelectedItems[0].GetFileSize();
+            var stringWriter = new StringWriter(fileSize);
+            if (brick.CopyFileFromBrick(sourceFilenameFullPath, fileSize, stringWriter))
+            {
+                var fileReaderForm = new FileReaderForm(sourceFilenameFullPath, stringWriter.GetContent());
+                fileReaderForm.ShowDialog();
+            }
+        }
+
+        private void CmdFolderContent_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            tsmiViewFileContent.Enabled = lvDirectoryContent.SelectedItems.Count == 1 && !lvDirectoryContent.SelectedItems[0].IsDirectory();
         }
     }
 }

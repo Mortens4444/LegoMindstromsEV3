@@ -61,8 +61,6 @@
     <Compile Include="FormExtensions.cs" />
     <Compile Include="ImageConvertion\Converter\BlackAndWhiteImageConverter.cs" />
     <Compile Include="ImageConvertion\Converter\PixelFormatConverter.cs" />
-    <Compile Include="ListViewItemExtensions.cs" />
-    <Compile Include="ListViewExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SByteUtils.cs" />
     <Compile Include="ShortUtils.cs" />

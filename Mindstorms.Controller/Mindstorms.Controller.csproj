@@ -89,6 +89,12 @@
     <Compile Include="DeviceInfo.Designer.cs">
       <DependentUpon>DeviceInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileReaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileReaderForm.Designer.cs">
+      <DependentUpon>FileReaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceInfo.resx">
       <DependentUpon>DeviceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileReaderForm.resx">
+      <DependentUpon>FileReaderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileSystemForm.resx">
       <DependentUpon>FileSystemForm.cs</DependentUpon>

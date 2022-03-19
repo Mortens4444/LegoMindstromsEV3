@@ -160,6 +160,7 @@
 		public static readonly OpCode Write32 = new OpCode(0xCE, nameof(Write32));
 		public static readonly OpCode WriteF = new OpCode(0xCF, nameof(WriteF));
 
+		public static readonly OpCode ComTest = new OpCode(0xD1, nameof(ComTest));
 		public static readonly OpCode ComGet = new OpCode(0xD3, nameof(ComGet));
 		public static readonly OpCode ComSet = new OpCode(0xD4, nameof(ComSet));
 

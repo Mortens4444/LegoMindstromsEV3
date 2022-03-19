@@ -33,5 +33,10 @@ namespace Mindstorms.Core
 
             return $"#{MessageCounter} {details} Raw data: ({String.Join(", ", RawResponseData)})";
         }
+
+        public string GetResponseAsString()
+        {
+            return Constants.DefaultEncoding.GetString(RawResponseData, 3, RawResponseData.Length - 3);
+        }
     }
 }

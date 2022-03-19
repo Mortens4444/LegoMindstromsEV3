@@ -40,9 +40,11 @@
             this.chSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chHash = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdFolderContent = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiViewFileContent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDownloadFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUploadFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.separator = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiUploadFile = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -149,32 +151,48 @@
             // cmdFolderContent
             // 
             this.cmdFolderContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiViewFileContent,
             this.tsmiDownloadFiles,
-            this.tsmiUploadFile,
-            this.tsmiDeleteFiles});
+            this.tsmiDeleteFiles,
+            this.separator,
+            this.tsmiUploadFile});
             this.cmdFolderContent.Name = "cmdFolderContent";
-            this.cmdFolderContent.Size = new System.Drawing.Size(161, 70);
+            this.cmdFolderContent.Size = new System.Drawing.Size(182, 98);
+            this.cmdFolderContent.Opening += new System.ComponentModel.CancelEventHandler(this.CmdFolderContent_Opening);
+            // 
+            // tsmiViewFileContent
+            // 
+            this.tsmiViewFileContent.Name = "tsmiViewFileContent";
+            this.tsmiViewFileContent.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.tsmiViewFileContent.Size = new System.Drawing.Size(181, 22);
+            this.tsmiViewFileContent.Text = "View file content";
+            this.tsmiViewFileContent.Click += new System.EventHandler(this.TsmiViewFileContent_Click);
             // 
             // tsmiDownloadFiles
             // 
             this.tsmiDownloadFiles.Name = "tsmiDownloadFiles";
-            this.tsmiDownloadFiles.Size = new System.Drawing.Size(160, 22);
+            this.tsmiDownloadFiles.Size = new System.Drawing.Size(181, 22);
             this.tsmiDownloadFiles.Text = "Download file(s)";
             this.tsmiDownloadFiles.Click += new System.EventHandler(this.TsmiDownloadFile_Click);
-            // 
-            // tsmiUploadFile
-            // 
-            this.tsmiUploadFile.Name = "tsmiUploadFile";
-            this.tsmiUploadFile.Size = new System.Drawing.Size(160, 22);
-            this.tsmiUploadFile.Text = "Upload file";
-            this.tsmiUploadFile.Click += new System.EventHandler(this.TsmiUploadFile_Click);
             // 
             // tsmiDeleteFiles
             // 
             this.tsmiDeleteFiles.Name = "tsmiDeleteFiles";
-            this.tsmiDeleteFiles.Size = new System.Drawing.Size(160, 22);
+            this.tsmiDeleteFiles.Size = new System.Drawing.Size(181, 22);
             this.tsmiDeleteFiles.Text = "Delete file(s)";
             this.tsmiDeleteFiles.Click += new System.EventHandler(this.TsmiDeleteFiles_Click);
+            // 
+            // separator
+            // 
+            this.separator.Name = "separator";
+            this.separator.Size = new System.Drawing.Size(178, 6);
+            // 
+            // tsmiUploadFile
+            // 
+            this.tsmiUploadFile.Name = "tsmiUploadFile";
+            this.tsmiUploadFile.Size = new System.Drawing.Size(181, 22);
+            this.tsmiUploadFile.Text = "Upload file";
+            this.tsmiUploadFile.Click += new System.EventHandler(this.TsmiUploadFile_Click);
             // 
             // statusStrip
             // 
@@ -231,5 +249,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUploadFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnProjects;
+        private System.Windows.Forms.ToolStripMenuItem tsmiViewFileContent;
+        private System.Windows.Forms.ToolStripSeparator separator;
     }
 }

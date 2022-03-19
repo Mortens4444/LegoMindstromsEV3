@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Utils
+namespace Mindstorms.Core.Extensions
 {
     public static class ListViewExtensions
     {

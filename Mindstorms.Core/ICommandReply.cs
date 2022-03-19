@@ -11,5 +11,7 @@ namespace Mindstorms.Core
         CommandReplyStatus CommandReplyStatus { get; }
 
         byte[] RawResponseData { get; }
+
+        string GetResponseAsString();
     }
 }
