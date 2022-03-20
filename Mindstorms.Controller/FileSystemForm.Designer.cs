@@ -49,6 +49,8 @@
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnCreateFolder = new System.Windows.Forms.Button();
+            this.tbFolder = new System.Windows.Forms.TextBox();
             this.pMain.SuspendLayout();
             this.gbFilesystem.SuspendLayout();
             this.cmdFolderContent.SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // gbFilesystem
             // 
+            this.gbFilesystem.Controls.Add(this.tbFolder);
+            this.gbFilesystem.Controls.Add(this.btnCreateFolder);
             this.gbFilesystem.Controls.Add(this.btnProjects);
             this.gbFilesystem.Controls.Add(this.btnStopProgram);
             this.gbFilesystem.Controls.Add(this.lblWorkingDirectory);
@@ -209,6 +213,25 @@
             this.tsslStatus.Name = "tsslStatus";
             this.tsslStatus.Size = new System.Drawing.Size(0, 17);
             // 
+            // btnCreateFolder
+            // 
+            this.btnCreateFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateFolder.Location = new System.Drawing.Point(617, 11);
+            this.btnCreateFolder.Name = "btnCreateFolder";
+            this.btnCreateFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateFolder.TabIndex = 7;
+            this.btnCreateFolder.Text = "Create folder";
+            this.btnCreateFolder.UseVisualStyleBackColor = true;
+            this.btnCreateFolder.Click += new System.EventHandler(this.BtnCreateFolder_Click);
+            // 
+            // tbFolder
+            // 
+            this.tbFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFolder.Location = new System.Drawing.Point(451, 12);
+            this.tbFolder.Name = "tbFolder";
+            this.tbFolder.Size = new System.Drawing.Size(160, 20);
+            this.tbFolder.TabIndex = 8;
+            // 
             // FileSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,5 +274,7 @@
         private System.Windows.Forms.Button btnProjects;
         private System.Windows.Forms.ToolStripMenuItem tsmiViewFileContent;
         private System.Windows.Forms.ToolStripSeparator separator;
+        private System.Windows.Forms.TextBox tbFolder;
+        private System.Windows.Forms.Button btnCreateFolder;
     }
 }

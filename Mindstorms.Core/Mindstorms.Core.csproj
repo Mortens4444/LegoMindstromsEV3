@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Commands\Error\GetErrorMessage.cs" />
     <Compile Include="Commands\Error\GetError.cs" />
+    <Compile Include="Commands\File\IsExists.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\ATan.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\Tan.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\ACos.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Commands\Mathematics\Arithmetic\Subtract.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\Add.cs" />
     <Compile Include="Commands\Motor\StopMotor.cs" />
+    <Compile Include="Enums\FilenameSubCode.cs" />
     <Compile Include="Enums\MathSubCode.cs" />
     <Compile Include="Enums\InfoSubCode.cs" />
     <Compile Include="Enums\EnumLikeObject.cs" />
@@ -218,7 +220,6 @@
     <Compile Include="Enums\UIWriteSubCommand.cs" />
     <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\ListViewItemExtensions.cs" />
-    <Compile Include="Extensions\OutputPortExtensions.cs" />
     <Compile Include="FileWriter\FileStreamWriter.cs" />
     <Compile Include="FileWriter\IWriter.cs" />
     <Compile Include="FileWriter\StringWriter.cs" />

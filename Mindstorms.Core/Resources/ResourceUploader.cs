@@ -33,7 +33,7 @@ namespace Mindstorms.Core.Resources
             var destinationFolderName = destinationFolder.Substring(lastSlashIndex + 1) + '/';
             if (parent != null)
             {
-                if (!brick.HasFile(parent, destinationFolderName) || !brick.HasFile(destinationFolder, filename))
+                if (!brick.IsExists($"{parent}/{destinationFolderName}") || !brick.IsExists(destination))
                 {
                     UploadFile(brick, filename, subDirectory, destination);
                 }

@@ -1,6 +1,8 @@
 ﻿using MessageBoxes;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
+using Mindstorms.Core.FileWriter;
+using Mindstorms.Core.Resources;
 using System;
 using System.Windows.Forms;
 using Utils;
@@ -15,12 +17,16 @@ namespace Mindstorms.Controller
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
+        }
 
-            int selectedIndex = 2;// 0;
+        private void SelectUsedCommunicationInterface(Brick brick, string deviceName)
+        {
+            int selectedIndex = 2;
+            //int selectedIndex = 0;
             var comInterfaces = CommunicationInterface.GetValues();
-            //for (int i = 1; i <= comInterfaces.Length; i++)
+            //for (int i = 1; i <= comInterfaces.Count; i++)
             //{
-            //    if (brick.IsActive((CommunicationInterface)i))
+            //    if (brick.IsActive((CommunicationInterface)i, deviceName))
             //    {
             //        selectedIndex = i;
             //        break;
@@ -33,6 +39,7 @@ namespace Mindstorms.Controller
         private void DeviceInfo_Shown(object sender, EventArgs e)
         {
             tbName.Text = brick.GetBrickName();
+            SelectUsedCommunicationInterface(brick, tbName.Text);
             if (tbName.Text == String.Empty)
             {
                 throw new Exception("Unable to retrieve device name");
@@ -69,6 +76,18 @@ namespace Mindstorms.Controller
             else
             {
                 ErrorBox.Show("Error", message);
+            }
+        }
+
+        private void BtnExecute_Click(object sender, EventArgs e)
+        {
+            var destinationFile = $"{ResourceUploader.BaseDirectory}/output.rtf";
+            brick.SystemCall(String.Concat(tbCommand.Text, $" > {destinationFile}"));
+            int fileSize = brick.GetSize(destinationFile);
+            var stringWriter = new StringWriter(fileSize);
+            if (brick.CopyFileFromBrick(destinationFile, fileSize, stringWriter))
+            {
+                rtbCommandResult.Text = stringWriter.GetContent();
             }
         }
     }

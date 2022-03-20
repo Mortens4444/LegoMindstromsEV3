@@ -20,6 +20,7 @@ using Mindstorms.Core.Resources;
 using Mindstorms.Core.Responses;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -668,14 +669,27 @@ namespace Mindstorms.Core.EV3
             return folderContentString.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        public bool HasFile(string folder, string file)
+        public int GetSize(string filePath)
         {
+            var folder = filePath.Substring(0, filePath.LastIndexOf('/'));
+            var fileName = Path.GetFileName(filePath);
             var folderContent = GetFolderContent(folder);
-            if (file[file.Length - 1] == '/')
+            foreach (var item in folderContent)
             {
-                return folderContent.Any(c => c == file);
+                var properties = item.Split(' ');
+                if ((properties.Length > 2) && (fileName == String.Join(" ", properties.Skip(2))))
+                {
+                    return Int32.Parse(properties[1], NumberStyles.HexNumber);
+                }
             }
-            return folderContent.Any(c => c.EndsWith($" {file}"));
+
+            throw new Exception("Can't find file");
+        }
+
+        public bool IsExists(string filePath)
+        {
+            var result = Execute(new IsExists(filePath));
+            return Convert.ToBoolean(result.RawResponseData[3]);
         }
 
         public void CopyFileToBrick(string sourceFilePath, string destinationFilePath)

@@ -1,5 +1,6 @@
 New features / Bugfixes
 -----------------------
+- Remove DefaultVolume by getting the volume from the brick
 - IR remote control
 - Mailbox
 - Gyro sensor
@@ -13,9 +14,11 @@ New features / Bugfixes
 - Create WPF interface
 - Create NuGet package from Mindstorms.Core
 - Extend command-line interface with more commands
+- Kernel update on EV3 devices (https://github.com/ev3dev/ev3-kernel)
 
 Other EV3 projects
 ------------------
+https://github.com/ev3dev
 https://github.com/c0pperdragon/EV3Basic
 https://github.com/AndersSoborg/MonoBrick-Communication-Software/blob/master/MonoBrick/EV3/Commands.cs
 https://github.com/henkmollema/MindstormR/blob/master/src/MindstormR.MonoBrick/EV3/Commands.cs

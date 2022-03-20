@@ -30,6 +30,11 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.rtbCommandResult = new System.Windows.Forms.RichTextBox();
+            this.btnExecute = new System.Windows.Forms.Button();
+            this.lblCommand = new System.Windows.Forms.Label();
+            this.tbCommand = new System.Windows.Forms.TextBox();
+            this.btnGetLastError = new System.Windows.Forms.Button();
             this.lblHardwareVersion = new System.Windows.Forms.Label();
             this.lblFirmwareBuild = new System.Windows.Forms.Label();
             this.lblFirmwareVersion = new System.Windows.Forms.Label();
@@ -47,7 +52,6 @@
             this.btnChangeName = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.btnGetLastError = new System.Windows.Forms.Button();
             this.pMain.SuspendLayout();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
@@ -58,11 +62,15 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(605, 217);
+            this.pMain.Size = new System.Drawing.Size(659, 297);
             this.pMain.TabIndex = 0;
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.rtbCommandResult);
+            this.gbMain.Controls.Add(this.btnExecute);
+            this.gbMain.Controls.Add(this.lblCommand);
+            this.gbMain.Controls.Add(this.tbCommand);
             this.gbMain.Controls.Add(this.btnGetLastError);
             this.gbMain.Controls.Add(this.lblHardwareVersion);
             this.gbMain.Controls.Add(this.lblFirmwareBuild);
@@ -84,14 +92,62 @@
             this.gbMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMain.Location = new System.Drawing.Point(0, 0);
             this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(605, 217);
+            this.gbMain.Size = new System.Drawing.Size(659, 297);
             this.gbMain.TabIndex = 0;
             this.gbMain.TabStop = false;
+            // 
+            // rtbCommandResult
+            // 
+            this.rtbCommandResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbCommandResult.Location = new System.Drawing.Point(9, 203);
+            this.rtbCommandResult.Name = "rtbCommandResult";
+            this.rtbCommandResult.Size = new System.Drawing.Size(638, 88);
+            this.rtbCommandResult.TabIndex = 21;
+            this.rtbCommandResult.Text = "";
+            // 
+            // btnExecute
+            // 
+            this.btnExecute.Location = new System.Drawing.Point(572, 175);
+            this.btnExecute.Name = "btnExecute";
+            this.btnExecute.Size = new System.Drawing.Size(75, 23);
+            this.btnExecute.TabIndex = 20;
+            this.btnExecute.Text = "Execute";
+            this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.Click += new System.EventHandler(this.BtnExecute_Click);
+            // 
+            // lblCommand
+            // 
+            this.lblCommand.AutoSize = true;
+            this.lblCommand.Location = new System.Drawing.Point(6, 161);
+            this.lblCommand.Name = "lblCommand";
+            this.lblCommand.Size = new System.Drawing.Size(54, 13);
+            this.lblCommand.TabIndex = 19;
+            this.lblCommand.Text = "Command";
+            // 
+            // tbCommand
+            // 
+            this.tbCommand.Location = new System.Drawing.Point(9, 177);
+            this.tbCommand.Name = "tbCommand";
+            this.tbCommand.Size = new System.Drawing.Size(557, 20);
+            this.tbCommand.TabIndex = 18;
+            this.tbCommand.Text = "df -h";
+            // 
+            // btnGetLastError
+            // 
+            this.btnGetLastError.Location = new System.Drawing.Point(572, 145);
+            this.btnGetLastError.Name = "btnGetLastError";
+            this.btnGetLastError.Size = new System.Drawing.Size(75, 23);
+            this.btnGetLastError.TabIndex = 17;
+            this.btnGetLastError.Text = "Get last error";
+            this.btnGetLastError.UseVisualStyleBackColor = true;
+            this.btnGetLastError.Click += new System.EventHandler(this.BtnGetLastError_Click);
             // 
             // lblHardwareVersion
             // 
             this.lblHardwareVersion.AutoSize = true;
-            this.lblHardwareVersion.Location = new System.Drawing.Point(273, 184);
+            this.lblHardwareVersion.Location = new System.Drawing.Point(437, 92);
             this.lblHardwareVersion.Name = "lblHardwareVersion";
             this.lblHardwareVersion.Size = new System.Drawing.Size(90, 13);
             this.lblHardwareVersion.TabIndex = 16;
@@ -100,7 +156,7 @@
             // lblFirmwareBuild
             // 
             this.lblFirmwareBuild.AutoSize = true;
-            this.lblFirmwareBuild.Location = new System.Drawing.Point(273, 165);
+            this.lblFirmwareBuild.Location = new System.Drawing.Point(437, 73);
             this.lblFirmwareBuild.Name = "lblFirmwareBuild";
             this.lblFirmwareBuild.Size = new System.Drawing.Size(74, 13);
             this.lblFirmwareBuild.TabIndex = 15;
@@ -109,7 +165,7 @@
             // lblFirmwareVersion
             // 
             this.lblFirmwareVersion.AutoSize = true;
-            this.lblFirmwareVersion.Location = new System.Drawing.Point(273, 146);
+            this.lblFirmwareVersion.Location = new System.Drawing.Point(437, 54);
             this.lblFirmwareVersion.Name = "lblFirmwareVersion";
             this.lblFirmwareVersion.Size = new System.Drawing.Size(86, 13);
             this.lblFirmwareVersion.TabIndex = 14;
@@ -118,7 +174,7 @@
             // lblOperatingSystemBuild
             // 
             this.lblOperatingSystemBuild.AutoSize = true;
-            this.lblOperatingSystemBuild.Location = new System.Drawing.Point(273, 127);
+            this.lblOperatingSystemBuild.Location = new System.Drawing.Point(437, 35);
             this.lblOperatingSystemBuild.Name = "lblOperatingSystemBuild";
             this.lblOperatingSystemBuild.Size = new System.Drawing.Size(113, 13);
             this.lblOperatingSystemBuild.TabIndex = 13;
@@ -127,7 +183,7 @@
             // lblOperatingSystemVersion
             // 
             this.lblOperatingSystemVersion.AutoSize = true;
-            this.lblOperatingSystemVersion.Location = new System.Drawing.Point(273, 108);
+            this.lblOperatingSystemVersion.Location = new System.Drawing.Point(437, 16);
             this.lblOperatingSystemVersion.Name = "lblOperatingSystemVersion";
             this.lblOperatingSystemVersion.Size = new System.Drawing.Size(125, 13);
             this.lblOperatingSystemVersion.TabIndex = 12;
@@ -240,23 +296,13 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name";
             // 
-            // btnGetLastError
-            // 
-            this.btnGetLastError.Location = new System.Drawing.Point(9, 160);
-            this.btnGetLastError.Name = "btnGetLastError";
-            this.btnGetLastError.Size = new System.Drawing.Size(75, 23);
-            this.btnGetLastError.TabIndex = 17;
-            this.btnGetLastError.Text = "Get last error";
-            this.btnGetLastError.UseVisualStyleBackColor = true;
-            this.btnGetLastError.Click += new System.EventHandler(this.BtnGetLastError_Click);
-            // 
             // DeviceInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 217);
+            this.ClientSize = new System.Drawing.Size(659, 297);
             this.Controls.Add(this.pMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "DeviceInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Device info";
@@ -290,5 +336,9 @@
         private System.Windows.Forms.Label lblOperatingSystemVersion;
         private System.Windows.Forms.Label lblHardwareVersion;
         private System.Windows.Forms.Button btnGetLastError;
+        private System.Windows.Forms.Button btnExecute;
+        private System.Windows.Forms.Label lblCommand;
+        private System.Windows.Forms.TextBox tbCommand;
+        private System.Windows.Forms.RichTextBox rtbCommandResult;
     }
 }

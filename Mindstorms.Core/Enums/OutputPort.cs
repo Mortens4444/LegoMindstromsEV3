@@ -1,4 +1,6 @@
-﻿namespace Mindstorms.Core.Enums
+﻿using System;
+
+namespace Mindstorms.Core.Enums
 {
 	public class OutputPort : EnumLikeObject<OutputPort>
 	{
@@ -10,6 +12,11 @@
 		private OutputPort(byte value, string name) : base(value, name)
 		{
 			Values.Add(value, this);
+		}
+
+		public int GetIndex()
+		{
+			return (int)Math.Log(Value, 2);
 		}
 
 		public static implicit operator OutputPort(byte value)

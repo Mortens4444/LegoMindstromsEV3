@@ -166,5 +166,12 @@ namespace Mindstorms.Controller
         {
             tsmiViewFileContent.Enabled = lvDirectoryContent.SelectedItems.Count == 1 && !lvDirectoryContent.SelectedItems[0].IsDirectory();
         }
+
+        private void BtnCreateFolder_Click(object sender, EventArgs e)
+        {
+            brick.CreateDirectory($"{lblWorkingDirectory.Text}/{tbFolder.Text}");
+            tbFolder.Text = String.Empty;
+            ListFolder(lblWorkingDirectory.Text);
+        }
     }
 }
