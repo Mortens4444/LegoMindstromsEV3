@@ -78,7 +78,7 @@ namespace Mindstorms.Core.Signaling
         private void Signal(ushort duration)
         {
             brick.ChangeLedsState(LedPattern);
-            brick.BeepAndWait(Beep.DefaultVolume, MorseFrequency, duration);
+            brick.BeepAndWait(MorseFrequency, duration);
             brick.ChangeLedsState(LedPattern.Off);
         }
 

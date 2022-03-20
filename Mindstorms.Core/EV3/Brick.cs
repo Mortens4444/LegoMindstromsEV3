@@ -47,6 +47,8 @@ namespace Mindstorms.Core.EV3
 
         #region Properties
 
+        public byte Volume { get; set; }
+
         public bool IsConnected { get; private set; }
 
         public OutputPort LeftMotor { get; private set; }
@@ -109,6 +111,9 @@ namespace Mindstorms.Core.EV3
                     comPort.Open();
                 }
                 IsConnected = true;
+
+                var reply = Execute(new GetVolume());
+                Volume = reply.RawResponseData[3];
             }
         }
 
@@ -322,14 +327,14 @@ namespace Mindstorms.Core.EV3
 
         #region Sound
 
-        public void Beep(byte volume, ushort frequency, ushort duration)
+        public void Beep(ushort frequency, ushort duration)
         {
-            Execute(new Beep(volume, frequency, duration));
+            Execute(new Beep(Volume, frequency, duration));
         }
 
-        public void BeepAndWait(byte volume, ushort frequency, ushort duration)
+        public void BeepAndWait(ushort frequency, ushort duration)
         {
-            ExecuteAndWait(new Beep(volume, frequency, duration));
+            ExecuteAndWait(new Beep(Volume, frequency, duration));
         }
 
         public void Silence()
@@ -347,17 +352,17 @@ namespace Mindstorms.Core.EV3
             return response.RawResponseData[response.RawResponseData.Length - 1] != 0;
         }
 
-        public void PlaySound(string soundFilePath, byte volume = Constants.DefaultVolume, bool repeat = false)
+        public void PlaySound(string soundFilePath, bool repeat = false)
         {
-            Execute(new PlaySound(volume, soundFilePath, repeat));
+            Execute(new PlaySound(Volume, soundFilePath, repeat));
         }
 
-        public void PlayNote(string note, byte volume = Constants.DefaultVolume, ushort durationMs = Constants.DefaultNoteDurationMs)
+        public void PlayNote(string note, ushort durationMs = Constants.DefaultNoteDurationMs)
         {
-            Execute(new PlayNote(volume, note, durationMs));
+            Execute(new PlayNote(Volume, note, durationMs));
         }
 
-        public void PlayMusic(Melody melody, byte volume = Constants.DefaultVolume)
+        public void PlayMusic(Melody melody)
         {
             if (CurrentlyPlayedMelody != null)
             {
@@ -382,7 +387,7 @@ namespace Mindstorms.Core.EV3
 
                             ClearScreen();
                             ShowOnMiddleOfScreen(note, FontType.Big, 0);
-                            ExecuteAndWait(new PlayNote(volume, note));
+                            ExecuteAndWait(new PlayNote(Volume, note));
                         }
                     }
                     else
@@ -403,7 +408,7 @@ namespace Mindstorms.Core.EV3
                             {
                                 ClearScreen();
                                 ShowOnMiddleOfScreen(note.Name, FontType.Big, 0);
-                                ExecuteAndWait(new Beep(volume, note, duration));
+                                ExecuteAndWait(new Beep(Volume, note, duration));
                             }
                         }
                     }
@@ -413,12 +418,12 @@ namespace Mindstorms.Core.EV3
             }, musicPlayerCancellationTokenSource.Token);
         }
 
-        public void PlaySound(EmbeddedSound embeddedSound, PlayType playType, byte volume = Constants.DefaultVolume)
+        public void PlaySound(EmbeddedSound embeddedSound, PlayType playType)
         {
             var description = embeddedSound.GetDescription();
             var file = ResourceUploader.UploadSound(this, $"{description}{Constants.SoundFileExtension}");
             var repeat = playType == PlayType.Repeat;
-            Execute(new PlaySound(volume, file, repeat));
+            Execute(new PlaySound(Volume, file, repeat));
             if (playType == PlayType.WaitForCompletion)
             {
                 while (SpeakerIsBusy())

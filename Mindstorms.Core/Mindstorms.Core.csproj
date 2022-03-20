@@ -74,6 +74,8 @@
     <Compile Include="Commands\Mathematics\Arithmetic\Subtract.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\Add.cs" />
     <Compile Include="Commands\Motor\StopMotor.cs" />
+    <Compile Include="Commands\System\GetVolume.cs" />
+    <Compile Include="Commands\System\SetVolume.cs" />
     <Compile Include="Enums\FilenameSubCode.cs" />
     <Compile Include="Enums\MathSubCode.cs" />
     <Compile Include="Enums\InfoSubCode.cs" />

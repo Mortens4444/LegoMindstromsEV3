@@ -30,6 +30,8 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.gbBeep = new System.Windows.Forms.GroupBox();
+            this.lblPlayType = new System.Windows.Forms.Label();
+            this.cbPlayType = new System.Windows.Forms.ComboBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbPlayMusic = new System.Windows.Forms.ToolStripButton();
             this.cbMelodies = new System.Windows.Forms.ToolStripComboBox();
@@ -43,8 +45,6 @@
             this.lblVolume = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
             this.nudDuration = new System.Windows.Forms.NumericUpDown();
-            this.cbPlayType = new System.Windows.Forms.ComboBox();
-            this.lblPlayType = new System.Windows.Forms.Label();
             this.pMain.SuspendLayout();
             this.gbBeep.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -59,7 +59,7 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(359, 111);
+            this.pMain.Size = new System.Drawing.Size(372, 111);
             this.pMain.TabIndex = 0;
             // 
             // gbBeep
@@ -78,9 +78,27 @@
             this.gbBeep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbBeep.Location = new System.Drawing.Point(0, 0);
             this.gbBeep.Name = "gbBeep";
-            this.gbBeep.Size = new System.Drawing.Size(359, 111);
+            this.gbBeep.Size = new System.Drawing.Size(372, 111);
             this.gbBeep.TabIndex = 5;
             this.gbBeep.TabStop = false;
+            // 
+            // lblPlayType
+            // 
+            this.lblPlayType.AutoSize = true;
+            this.lblPlayType.Location = new System.Drawing.Point(236, 19);
+            this.lblPlayType.Name = "lblPlayType";
+            this.lblPlayType.Size = new System.Drawing.Size(50, 13);
+            this.lblPlayType.TabIndex = 15;
+            this.lblPlayType.Text = "Play type";
+            // 
+            // cbPlayType
+            // 
+            this.cbPlayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPlayType.FormattingEnabled = true;
+            this.cbPlayType.Location = new System.Drawing.Point(236, 41);
+            this.cbPlayType.Name = "cbPlayType";
+            this.cbPlayType.Size = new System.Drawing.Size(127, 21);
+            this.cbPlayType.TabIndex = 14;
             // 
             // toolStrip
             // 
@@ -92,7 +110,7 @@
             this.tsbPlaySound});
             this.toolStrip.Location = new System.Drawing.Point(3, 83);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(353, 25);
+            this.toolStrip.Size = new System.Drawing.Size(366, 25);
             this.toolStrip.TabIndex = 13;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -144,7 +162,7 @@
             // btnSilence
             // 
             this.btnSilence.Image = global::Mindstorms.Controller.Properties.Resources.mute;
-            this.btnSilence.Location = new System.Drawing.Point(191, 39);
+            this.btnSilence.Location = new System.Drawing.Point(207, 39);
             this.btnSilence.Name = "btnSilence";
             this.btnSilence.Size = new System.Drawing.Size(23, 23);
             this.btnSilence.TabIndex = 12;
@@ -154,7 +172,7 @@
             // lblFrequecncy
             // 
             this.lblFrequecncy.AutoSize = true;
-            this.lblFrequecncy.Location = new System.Drawing.Point(61, 47);
+            this.lblFrequecncy.Location = new System.Drawing.Point(77, 47);
             this.lblFrequecncy.Name = "lblFrequecncy";
             this.lblFrequecncy.Size = new System.Drawing.Size(63, 13);
             this.lblFrequecncy.TabIndex = 6;
@@ -162,7 +180,7 @@
             // 
             // nudFrequecncy
             // 
-            this.nudFrequecncy.Location = new System.Drawing.Point(130, 42);
+            this.nudFrequecncy.Location = new System.Drawing.Point(146, 42);
             this.nudFrequecncy.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -185,7 +203,7 @@
             // btnBeep
             // 
             this.btnBeep.Image = global::Mindstorms.Controller.Properties.Resources.volume;
-            this.btnBeep.Location = new System.Drawing.Point(191, 14);
+            this.btnBeep.Location = new System.Drawing.Point(207, 14);
             this.btnBeep.Name = "btnBeep";
             this.btnBeep.Size = new System.Drawing.Size(23, 23);
             this.btnBeep.TabIndex = 4;
@@ -204,7 +222,7 @@
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(61, 16);
+            this.lblDuration.Location = new System.Drawing.Point(77, 16);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(69, 13);
             this.lblDuration.TabIndex = 3;
@@ -212,7 +230,7 @@
             // 
             // nudDuration
             // 
-            this.nudDuration.Location = new System.Drawing.Point(130, 14);
+            this.nudDuration.Location = new System.Drawing.Point(146, 14);
             this.nudDuration.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -232,29 +250,11 @@
             0,
             0});
             // 
-            // cbPlayType
-            // 
-            this.cbPlayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPlayType.FormattingEnabled = true;
-            this.cbPlayType.Location = new System.Drawing.Point(220, 41);
-            this.cbPlayType.Name = "cbPlayType";
-            this.cbPlayType.Size = new System.Drawing.Size(127, 21);
-            this.cbPlayType.TabIndex = 14;
-            // 
-            // lblPlayType
-            // 
-            this.lblPlayType.AutoSize = true;
-            this.lblPlayType.Location = new System.Drawing.Point(220, 19);
-            this.lblPlayType.Name = "lblPlayType";
-            this.lblPlayType.Size = new System.Drawing.Size(50, 13);
-            this.lblPlayType.TabIndex = 15;
-            this.lblPlayType.Text = "Play type";
-            // 
             // SpeakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 111);
+            this.ClientSize = new System.Drawing.Size(372, 111);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SpeakerForm";

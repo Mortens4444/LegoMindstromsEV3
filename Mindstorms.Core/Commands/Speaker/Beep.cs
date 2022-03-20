@@ -6,16 +6,14 @@ namespace Mindstorms.Core.Commands.Speaker
 {
     public class Beep : AwaitableCommand
     {
-        public static byte DefaultVolume = 10;
-
         public static ushort DefaultNoteDurationMs = 500;
 
-        public Beep(Note note)
-            : this(DefaultVolume, note, DefaultNoteDurationMs)
+        public Beep(Note note, byte volume)
+            : this(volume, note, DefaultNoteDurationMs)
         { }
 
-        public Beep(Note note, ushort durationMs)
-            : this(DefaultVolume, note, durationMs)
+        public Beep(Note note, ushort durationMs, byte volume)
+            : this(volume, note, durationMs)
         { }
 
         public Beep(byte volume, ushort frequency, ushort durationMs)

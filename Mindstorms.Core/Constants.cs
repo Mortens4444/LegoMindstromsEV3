@@ -10,8 +10,6 @@ namespace Mindstorms.Core
 
         public const byte DefaultStringLength = 63;
 
-        public const byte DefaultVolume = 20;
-        
         public const ushort DefaultNoteDurationMs = 500;
 
         public static readonly Encoding DefaultEncoding = Encoding.ASCII;

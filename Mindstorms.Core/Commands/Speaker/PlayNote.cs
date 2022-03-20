@@ -9,12 +9,12 @@ namespace Mindstorms.Core.Commands.Speaker
     /// </summary>
     public class PlayNote : AwaitableCommand
     {
-        public PlayNote(string note)
-            : this(Constants.DefaultVolume, note, Constants.DefaultNoteDurationMs)
+        public PlayNote(string note, byte volume)
+            : this(volume, note, Constants.DefaultNoteDurationMs)
         { }
 
-        public PlayNote(string note, ushort durationMs)
-            : this(Constants.DefaultVolume, note, durationMs)
+        public PlayNote(string note, ushort durationMs, byte volume)
+            : this(volume, note, durationMs)
         { }
 
         public PlayNote(byte volume, string note)

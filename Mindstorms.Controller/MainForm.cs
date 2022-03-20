@@ -470,12 +470,11 @@ namespace Mindstorms.Controller
 
         private void TsmiBehaveLikeADog_Click(object sender, EventArgs e)
         {
-            var volume = Byte.MaxValue;
             brick?.ShowImage(EmbeddedImage.Neutral);
-            brick?.PlaySound(EmbeddedSound.DogSniff, PlayType.WaitForCompletion, volume);
+            brick?.PlaySound(EmbeddedSound.DogSniff, PlayType.WaitForCompletion);
             brick?.ShowImage(EmbeddedImage.Angry);
-            brick?.PlaySound(EmbeddedSound.DogGrowl, PlayType.WaitForCompletion, volume);
-            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce, volume);
+            brick?.PlaySound(EmbeddedSound.DogGrowl, PlayType.WaitForCompletion);
+            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce);
 
             for (int i = 0; i < 3; i++)
             {
@@ -485,7 +484,7 @@ namespace Mindstorms.Controller
                 Thread.Sleep(300);
             }
 
-            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce, volume);
+            brick?.PlaySound(EmbeddedSound.DogBark1, PlayType.PlayOnce);
             brick?.ShowImage(EmbeddedImage.Evil);
         }
 

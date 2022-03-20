@@ -1,6 +1,5 @@
 New features / Bugfixes
 -----------------------
-- Remove DefaultVolume by getting the volume from the brick
 - IR remote control
 - Mailbox
 - Gyro sensor

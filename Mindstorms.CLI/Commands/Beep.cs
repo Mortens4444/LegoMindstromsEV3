@@ -11,10 +11,9 @@ namespace Mindstorms.CLI.Commands
 
         public void Action(ref Brick brick, IEnumerable<string> arguments)
         {
-            var volume = Convert.ToByte(arguments.ElementAt(0));
-            var frequency = Convert.ToUInt16(arguments.ElementAt(1));
-            var durationMs = Convert.ToUInt16(arguments.ElementAt(2));
-            brick.Beep(volume, frequency, durationMs);
+            var frequency = Convert.ToUInt16(arguments.ElementAt(0));
+            var durationMs = Convert.ToUInt16(arguments.ElementAt(1));
+            brick.Beep(frequency, durationMs);
         }
     }
 }
