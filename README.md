@@ -17,7 +17,7 @@ Play a melody
 `brick.PlayMusic(new KisKeceLányom());`
 
 Turn on the speaker
-`brick.Beep(volume, frequecncy, durationInMs);`
+`brick.Beep(frequecncy, durationInMs);`
 
 Turn off the speaker
 `brick.Silence();`

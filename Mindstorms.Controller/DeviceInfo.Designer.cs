@@ -132,7 +132,7 @@
             this.tbCommand.Name = "tbCommand";
             this.tbCommand.Size = new System.Drawing.Size(557, 20);
             this.tbCommand.TabIndex = 18;
-            this.tbCommand.Text = "df -h";
+            this.tbCommand.Text = "dmesg";
             // 
             // btnGetLastError
             // 

@@ -1,5 +1,6 @@
 New features / Bugfixes
 -----------------------
+- Use motors with degree
 - IR remote control
 - Mailbox
 - Gyro sensor
