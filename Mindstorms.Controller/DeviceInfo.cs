@@ -54,6 +54,7 @@ namespace Mindstorms.Controller
             lblFirmwareVersion.Text = $"Firmware version: {brick.GetFirmwareVersion()}";
             lblFirmwareBuild.Text = $"Firmware build: {brick.GetFirmwareBuild()}";
             lblHardwareVersion.Text = $"Hardware version: {brick.GetHardwareVersion()}";
+            cbCommand.SelectedIndex = 0;
         }
 
         private void BtnChangeName_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace Mindstorms.Controller
         private void BtnExecute_Click(object sender, EventArgs e)
         {
             var destinationFile = $"{ResourceUploader.BaseDirectory}/output.rtf";
-            brick.SystemCall(String.Concat(tbCommand.Text, $" > {destinationFile}"));
+            brick.SystemCall(String.Concat(cbCommand.Text, $" > {destinationFile} 2>&1"));
             int fileSize = brick.GetSize(destinationFile);
             var stringWriter = new StringWriter(fileSize);
             if (brick.CopyFileFromBrick(destinationFile, fileSize, stringWriter))

@@ -73,7 +73,18 @@
     <Compile Include="Commands\Mathematics\Arithmetic\Multiply.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\Subtract.cs" />
     <Compile Include="Commands\Mathematics\Arithmetic\Add.cs" />
+    <Compile Include="Commands\Motor\GetTachoCount.cs" />
+    <Compile Include="Commands\Motor\OutputStart.cs" />
+    <Compile Include="Commands\Motor\ResetMotor.cs" />
+    <Compile Include="Commands\Motor\ChangeMotorPolarity.cs" />
+    <Compile Include="Commands\Motor\GetSpeedAndTachoCountLevel.cs" />
+    <Compile Include="Commands\Motor\MotorIsBusy.cs" />
+    <Compile Include="Commands\Motor\ProgramStop.cs" />
+    <Compile Include="Commands\Motor\ClearTachoCount.cs" />
+    <Compile Include="Commands\Motor\OutputPower.cs" />
+    <Compile Include="Commands\Motor\WaitForFinish.cs" />
     <Compile Include="Commands\Motor\StopMotor.cs" />
+    <Compile Include="Commands\Sensor\InputRead.cs" />
     <Compile Include="Commands\System\GetVolume.cs" />
     <Compile Include="Commands\System\SetVolume.cs" />
     <Compile Include="Enums\FilenameSubCode.cs" />
@@ -82,6 +93,7 @@
     <Compile Include="Enums\EnumLikeObject.cs" />
     <Compile Include="Enums\BreakType.cs" />
     <Compile Include="Enums\PlayType.cs" />
+    <Compile Include="Enums\Polarity.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\CommandTypeExtensions.cs" />
     <Compile Include="Extensions\ByteListExtensions.cs" />

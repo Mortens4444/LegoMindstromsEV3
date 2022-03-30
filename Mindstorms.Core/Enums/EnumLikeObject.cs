@@ -29,6 +29,16 @@ namespace Mindstorms.Core.Enums
             return Values.Values.ToList();
         }
 
+        public static IList GetNotCombinedValues()
+        {
+            var powersOfTwo = new List<byte>();
+            for (int i = 0; i < 8; i++)
+            {
+                powersOfTwo.Add((byte)Math.Pow(2, i));
+            }
+            return Values.Where(kvp => powersOfTwo.Contains(kvp.Key)).Select(kvp => kvp.Value).ToList();
+        }
+
         public static T Parse(string name)
         {
             var fieldInfo = typeof(T).GetFields().Single(field => String.Equals(field.Name, name, StringComparison.OrdinalIgnoreCase));

@@ -1,4 +1,6 @@
-﻿using Mindstorms.Core;
+﻿using MessageBoxes;
+using Mindstorms.Core;
+using Mindstorms.Core.Commands.Motor;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using System;
@@ -19,6 +21,8 @@ namespace Mindstorms.Controller
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
 
             cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
+            cbPolarity.FillAndSelectFirst(Polarity.GetValues());
+            cbMotor.FillAndSelectFirst(OutputPort.GetNotCombinedValues());
 
             RefreshPositions();
         }
@@ -95,6 +99,48 @@ namespace Mindstorms.Controller
             lblLeftMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeftMotor, MotorType.Large, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem));
             lblRightMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.RightMotor, MotorType.Large, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem));
             lblLeverMotorPosition.Text = String.Join(", ", brick.GetMotorPosition(brick.LeverMotor, MotorType.Medium, (DaisyChainLayer)cbDaisyChainLayer.SelectedItem));
+        }
+
+        private void BtnSet_Click(object sender, EventArgs e)
+        {
+            brick.ChangeMotorPolarity((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, brick.Motors, (Polarity)cbPolarity.SelectedItem);
+        }
+
+        private void BtnClrTacho_Click(object sender, EventArgs e)
+        {
+            brick.Execute(new ClearTachoCount((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, brick.Motors));
+        }
+
+        private void BtnGetTacho_Click(object sender, EventArgs e)
+        {
+            var reply = brick.Execute(new GetTachoCount((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, brick.LeftMotor));
+            var tachoCount = BitConverter.ToInt32(reply.RawResponseData, 3);
+            lblLeftMotorPosition.Text = tachoCount.ToString();
+
+            reply = brick.Execute(new GetTachoCount((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, brick.RightMotor));
+            tachoCount = BitConverter.ToInt32(reply.RawResponseData, 3);
+            lblRightMotorPosition.Text = tachoCount.ToString();
+        }
+
+        private void TbSpeed_ValueChanged(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip((TrackBar)sender, $"{((TrackBar)sender).Value}%");
+        }
+
+        private void BtnCheckBusyness_Click(object sender, EventArgs e)
+        {
+            var busy = brick.MotorIsBusy((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, (OutputPort)cbMotor.SelectedItem);
+            InfoBox.Show("Is motor busy", busy ? "The selected motor is busy" : "The selected motor is not busy");
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            brick.ResetMotor((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, (OutputPort)cbMotor.SelectedItem);
+        }
+
+        private void BtnWaitForFinish_Click(object sender, EventArgs e)
+        {
+            brick.Execute(new WaitForFinish((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, (OutputPort)cbMotor.SelectedItem));
         }
     }
 }

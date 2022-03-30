@@ -9,6 +9,7 @@ using Mindstorms.Core.Commands.Mathematics.Arithmetic;
 using Mindstorms.Core.Commands.Motor;
 using Mindstorms.Core.Commands.PowerControl;
 using Mindstorms.Core.Commands.Program;
+using Mindstorms.Core.Commands.Sensor;
 using Mindstorms.Core.Commands.Speaker;
 using Mindstorms.Core.Commands.System;
 using Mindstorms.Core.Drawing;
@@ -234,6 +235,31 @@ namespace Mindstorms.Core.EV3
 
         #region Sensor
 
+        public void FollowLine(DaisyChainLayer daisyChainLayer, SensorPort sensorPort)
+        {
+            var result = Execute(new InputRead(daisyChainLayer, sensorPort));
+            var lv0 = result.RawResponseData.Last();
+            lv0 /= 2;
+            lv0 += 15;
+
+            byte lv1;
+            while (true)
+            {
+                result = Execute(new InputRead(daisyChainLayer, sensorPort));
+                lv1 = result.RawResponseData.Last();
+
+                lv1 -= lv0;
+                lv1 /= 2;
+
+                var lv2 = (byte)(40 + lv1);
+                var lv3 = (byte)(40 - lv1);
+
+                Execute(new OutputPower(daisyChainLayer, LeftMotor, lv3));
+                Execute(new OutputPower(daisyChainLayer, RightMotor, lv2));
+                Execute(new OutputStart(daisyChainLayer, Motors));
+            }
+        }
+
         public byte[] GetSensorType(SensorPort sensorPort, DaisyChainLayer daisyChainLayer)
         {
             var result = Execute(new GetSensorType(sensorPort, daisyChainLayer));
@@ -349,7 +375,7 @@ namespace Mindstorms.Core.EV3
         public bool SpeakerIsBusy()
         {
             var response = Execute(new SpeakerIsBusy());
-            return response.RawResponseData[response.RawResponseData.Length - 1] != 0;
+            return response.RawResponseData.Last() != 0;
         }
 
         public void PlaySound(string soundFilePath, bool repeat = false)
@@ -652,6 +678,30 @@ namespace Mindstorms.Core.EV3
         public void StopMotor(DaisyChainLayer daisyChainLayer, OutputPort outputPort, BreakType breakType)
         {
             Execute(new StopMotor(daisyChainLayer, outputPort, breakType));
+        }
+
+        public void ChangeMotorPolarity(DaisyChainLayer daisyChainLayer, OutputPort outputPort, Polarity polarity)
+        {
+            Execute(new ChangeMotorPolarity(daisyChainLayer, outputPort, polarity));
+        }
+
+        public void ResetMotor(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
+        {
+            Execute(new ResetMotor(daisyChainLayer, outputPort));
+        }
+
+        public bool MotorIsBusy(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
+        {
+            var response = Execute(new MotorIsBusy(daisyChainLayer, outputPort));
+            return response.RawResponseData.Last() != 0;
+        }
+
+        public (byte Speed, int TachoCountLevel) GetSpeedAndTachoCountLevel(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
+        {
+            var response = Execute(new GetSpeedAndTachoCountLevel(daisyChainLayer, outputPort));
+            var speed = response.RawResponseData[3];
+            var tachoCountLevel = BitConverter.ToInt32(response.RawResponseData, 4);
+            return (speed, tachoCountLevel);
         }
 
         #endregion

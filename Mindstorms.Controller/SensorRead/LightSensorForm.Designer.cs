@@ -38,6 +38,7 @@
             this.cbSensorMode = new System.Windows.Forms.ComboBox();
             this.lblSensorPort = new System.Windows.Forms.Label();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
+            this.btnFollowLine = new System.Windows.Forms.Button();
             this.pMain.SuspendLayout();
             this.gbLightSensor.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // 
             // gbLightSensor
             // 
+            this.gbLightSensor.Controls.Add(this.btnFollowLine);
             this.gbLightSensor.Controls.Add(this.lblDaisyChainLayer);
             this.gbLightSensor.Controls.Add(this.cbDaisyChainLayer);
             this.gbLightSensor.Controls.Add(this.lblResult);
@@ -140,6 +142,16 @@
             this.cbSensorPort.Size = new System.Drawing.Size(75, 21);
             this.cbSensorPort.TabIndex = 6;
             // 
+            // btnFollowLine
+            // 
+            this.btnFollowLine.Location = new System.Drawing.Point(265, 83);
+            this.btnFollowLine.Name = "btnFollowLine";
+            this.btnFollowLine.Size = new System.Drawing.Size(65, 23);
+            this.btnFollowLine.TabIndex = 20;
+            this.btnFollowLine.Text = "Follow line";
+            this.btnFollowLine.UseVisualStyleBackColor = true;
+            this.btnFollowLine.Click += new System.EventHandler(this.BtnFollowLine_Click);
+            // 
             // LightSensorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.ComboBox cbSensorPort;
         private System.Windows.Forms.Label lblDaisyChainLayer;
         private System.Windows.Forms.ComboBox cbDaisyChainLayer;
+        private System.Windows.Forms.Button btnFollowLine;
     }
 }

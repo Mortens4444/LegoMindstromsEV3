@@ -23,7 +23,6 @@ namespace Mindstorms.Core.Enums
 
 		public static readonly OutputPort ABCD = new OutputPort(A | B | C | D, nameof(ABCD));
 
-
 		private OutputPort(byte value, string name) : base(value, name)
 		{
 			Values.Add(value, this);
@@ -44,6 +43,6 @@ namespace Mindstorms.Core.Enums
 			return value.Value;
 		}
 
-        public static byte operator |(OutputPort outputPort1, OutputPort outputPort2) => (byte)(outputPort1.Value | outputPort2.Value);
-    };
+		public static byte operator |(OutputPort outputPort1, OutputPort outputPort2) => (byte)(outputPort1.Value | outputPort2.Value);
+	};
 }

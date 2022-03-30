@@ -5,6 +5,7 @@ using MessageBoxes;
 using Mindstorms.Controller.SensorRead;
 using Mindstorms.Core;
 using Mindstorms.Core.Commands.MailBox;
+using Mindstorms.Core.Commands.Motor;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
 using Mindstorms.Core.Extensions;
@@ -367,6 +368,7 @@ namespace Mindstorms.Controller
 #if USE_JOYSTICK
             StickHandler.StopJoystick(joystickPollCancellationTokenSource);
 #endif
+            brick?.Execute(new ProgramStop());
         }
 
         private void BtnMouseUp(object sender, MouseEventArgs e)

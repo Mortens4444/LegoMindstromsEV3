@@ -83,6 +83,8 @@
 		public static readonly OpCode MoveF_32 = new OpCode(0x3E, nameof(MoveF_32));
 		public static readonly OpCode MoveF_F = new OpCode(0x3F, nameof(MoveF_F));
 
+		public static readonly OpCode Jr = new OpCode(0x40, nameof(Jr));
+
 		public static readonly OpCode System = new OpCode(0x60, nameof(System));
 		public static readonly OpCode PortConvOutput = new OpCode(0x61, nameof(PortConvOutput));
 		public static readonly OpCode PortConvInput = new OpCode(0x62, nameof(PortConvInput));
@@ -141,6 +143,7 @@
 		public static readonly OpCode OutputTimeSync = new OpCode(0xB1, nameof(OutputTimeSync));
 		public static readonly OpCode OutputClrCount = new OpCode(0xB2, nameof(OutputClrCount));
 		public static readonly OpCode OutputGetCount = new OpCode(0xB3, nameof(OutputGetCount));
+		public static readonly OpCode OutputPrgStop = new OpCode(0xB4, nameof(OutputPrgStop));
 
 		public static readonly OpCode File = new OpCode(0xC0, nameof(File));
 		public static readonly OpCode Array = new OpCode(0xC1, nameof(Array));

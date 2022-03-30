@@ -66,5 +66,10 @@ namespace Mindstorms.Controller.SensorRead
         {
             readSensor = false;
         }
+
+        private void BtnFollowLine_Click(object sender, EventArgs e)
+        {
+            brick.FollowLine((DaisyChainLayer)cbDaisyChainLayer.SelectedItem, (SensorPort)cbSensorPort.SelectedItem);
+        }
     }
 }

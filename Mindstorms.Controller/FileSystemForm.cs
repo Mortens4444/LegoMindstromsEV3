@@ -29,10 +29,10 @@ namespace Mindstorms.Controller
 
         private void ListFolder(string currentDirectory)
         {
-            lblWorkingDirectory.Text = currentDirectory;
             var folderContent = brick.GetFolderContent(currentDirectory);
             lvDirectoryContent.PopulateWithLegoMindstormEV3FolderContent(folderContent, currentDirectory != "/");
             tsslStatus.Text = $"{lvDirectoryContent.Items.Count} item(s)";
+            lblWorkingDirectory.Text = currentDirectory;
         }
 
         private void LvDirectoryContent_DoubleClick(object sender, EventArgs e)

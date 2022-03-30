@@ -33,7 +33,6 @@
             this.rtbCommandResult = new System.Windows.Forms.RichTextBox();
             this.btnExecute = new System.Windows.Forms.Button();
             this.lblCommand = new System.Windows.Forms.Label();
-            this.tbCommand = new System.Windows.Forms.TextBox();
             this.btnGetLastError = new System.Windows.Forms.Button();
             this.lblHardwareVersion = new System.Windows.Forms.Label();
             this.lblFirmwareBuild = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.btnChangeName = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.cbCommand = new System.Windows.Forms.ComboBox();
             this.pMain.SuspendLayout();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
@@ -67,10 +67,10 @@
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.cbCommand);
             this.gbMain.Controls.Add(this.rtbCommandResult);
             this.gbMain.Controls.Add(this.btnExecute);
             this.gbMain.Controls.Add(this.lblCommand);
-            this.gbMain.Controls.Add(this.tbCommand);
             this.gbMain.Controls.Add(this.btnGetLastError);
             this.gbMain.Controls.Add(this.lblHardwareVersion);
             this.gbMain.Controls.Add(this.lblFirmwareBuild);
@@ -125,14 +125,6 @@
             this.lblCommand.Size = new System.Drawing.Size(54, 13);
             this.lblCommand.TabIndex = 19;
             this.lblCommand.Text = "Command";
-            // 
-            // tbCommand
-            // 
-            this.tbCommand.Location = new System.Drawing.Point(9, 177);
-            this.tbCommand.Name = "tbCommand";
-            this.tbCommand.Size = new System.Drawing.Size(557, 20);
-            this.tbCommand.TabIndex = 18;
-            this.tbCommand.Text = "dmesg";
             // 
             // btnGetLastError
             // 
@@ -296,6 +288,28 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name";
             // 
+            // cbCommand
+            // 
+            this.cbCommand.FormattingEnabled = true;
+            this.cbCommand.Items.AddRange(new object[] {
+            "dmesg",
+            "mount",
+            "ps",
+            "pwd",
+            "ls -la /",
+            "df -h",
+            "reboot",
+            "find / -name output.rtf",
+            "ifconfig -a",
+            "uname -a",
+            "lsusb -v",
+            "lsmod",
+            "modprobe -l"});
+            this.cbCommand.Location = new System.Drawing.Point(9, 177);
+            this.cbCommand.Name = "cbCommand";
+            this.cbCommand.Size = new System.Drawing.Size(557, 21);
+            this.cbCommand.TabIndex = 22;
+            // 
             // DeviceInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,7 +352,7 @@
         private System.Windows.Forms.Button btnGetLastError;
         private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.Label lblCommand;
-        private System.Windows.Forms.TextBox tbCommand;
         private System.Windows.Forms.RichTextBox rtbCommandResult;
+        private System.Windows.Forms.ComboBox cbCommand;
     }
 }

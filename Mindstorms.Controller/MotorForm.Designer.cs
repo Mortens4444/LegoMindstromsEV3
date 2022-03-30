@@ -32,6 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotorForm));
             this.pMain = new System.Windows.Forms.Panel();
             this.gbMotor = new System.Windows.Forms.GroupBox();
+            this.btnWaitForFinish = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnIsBusy = new System.Windows.Forms.Button();
+            this.lblMotor = new System.Windows.Forms.Label();
+            this.lblPolarity = new System.Windows.Forms.Label();
+            this.cbMotor = new System.Windows.Forms.ComboBox();
+            this.btnGetTacho = new System.Windows.Forms.Button();
+            this.btnClrTacho = new System.Windows.Forms.Button();
+            this.btnSet = new System.Windows.Forms.Button();
+            this.cbPolarity = new System.Windows.Forms.ComboBox();
             this.lblDaisyChainLayer = new System.Windows.Forms.Label();
             this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
             this.btnRefreshPositions = new System.Windows.Forms.Button();
@@ -65,11 +75,21 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(488, 149);
+            this.pMain.Size = new System.Drawing.Size(794, 161);
             this.pMain.TabIndex = 0;
             // 
             // gbMotor
             // 
+            this.gbMotor.Controls.Add(this.btnWaitForFinish);
+            this.gbMotor.Controls.Add(this.btnReset);
+            this.gbMotor.Controls.Add(this.btnIsBusy);
+            this.gbMotor.Controls.Add(this.lblMotor);
+            this.gbMotor.Controls.Add(this.lblPolarity);
+            this.gbMotor.Controls.Add(this.cbMotor);
+            this.gbMotor.Controls.Add(this.btnGetTacho);
+            this.gbMotor.Controls.Add(this.btnClrTacho);
+            this.gbMotor.Controls.Add(this.btnSet);
+            this.gbMotor.Controls.Add(this.cbPolarity);
             this.gbMotor.Controls.Add(this.lblDaisyChainLayer);
             this.gbMotor.Controls.Add(this.cbDaisyChainLayer);
             this.gbMotor.Controls.Add(this.btnRefreshPositions);
@@ -90,9 +110,105 @@
             this.gbMotor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMotor.Location = new System.Drawing.Point(0, 0);
             this.gbMotor.Name = "gbMotor";
-            this.gbMotor.Size = new System.Drawing.Size(488, 149);
+            this.gbMotor.Size = new System.Drawing.Size(794, 161);
             this.gbMotor.TabIndex = 7;
             this.gbMotor.TabStop = false;
+            // 
+            // btnWaitForFinish
+            // 
+            this.btnWaitForFinish.Location = new System.Drawing.Point(641, 63);
+            this.btnWaitForFinish.Name = "btnWaitForFinish";
+            this.btnWaitForFinish.Size = new System.Drawing.Size(75, 23);
+            this.btnWaitForFinish.TabIndex = 43;
+            this.btnWaitForFinish.Text = "Wait";
+            this.btnWaitForFinish.UseVisualStyleBackColor = true;
+            this.btnWaitForFinish.Click += new System.EventHandler(this.BtnWaitForFinish_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(719, 34);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 42;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
+            // 
+            // btnIsBusy
+            // 
+            this.btnIsBusy.Location = new System.Drawing.Point(641, 34);
+            this.btnIsBusy.Name = "btnIsBusy";
+            this.btnIsBusy.Size = new System.Drawing.Size(75, 23);
+            this.btnIsBusy.TabIndex = 41;
+            this.btnIsBusy.Text = "Is busy";
+            this.btnIsBusy.UseVisualStyleBackColor = true;
+            this.btnIsBusy.Click += new System.EventHandler(this.BtnCheckBusyness_Click);
+            // 
+            // lblMotor
+            // 
+            this.lblMotor.AutoSize = true;
+            this.lblMotor.Location = new System.Drawing.Point(511, 16);
+            this.lblMotor.Name = "lblMotor";
+            this.lblMotor.Size = new System.Drawing.Size(40, 13);
+            this.lblMotor.TabIndex = 40;
+            this.lblMotor.Text = "Is busy";
+            // 
+            // lblPolarity
+            // 
+            this.lblPolarity.AutoSize = true;
+            this.lblPolarity.Location = new System.Drawing.Point(311, 18);
+            this.lblPolarity.Name = "lblPolarity";
+            this.lblPolarity.Size = new System.Drawing.Size(41, 13);
+            this.lblPolarity.TabIndex = 39;
+            this.lblPolarity.Text = "Polarity";
+            // 
+            // cbMotor
+            // 
+            this.cbMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMotor.FormattingEnabled = true;
+            this.cbMotor.Location = new System.Drawing.Point(514, 34);
+            this.cbMotor.Name = "cbMotor";
+            this.cbMotor.Size = new System.Drawing.Size(121, 21);
+            this.cbMotor.TabIndex = 38;
+            // 
+            // btnGetTacho
+            // 
+            this.btnGetTacho.Location = new System.Drawing.Point(395, 63);
+            this.btnGetTacho.Name = "btnGetTacho";
+            this.btnGetTacho.Size = new System.Drawing.Size(75, 23);
+            this.btnGetTacho.TabIndex = 37;
+            this.btnGetTacho.Text = "Get Tacho";
+            this.btnGetTacho.UseVisualStyleBackColor = true;
+            this.btnGetTacho.Click += new System.EventHandler(this.BtnGetTacho_Click);
+            // 
+            // btnClrTacho
+            // 
+            this.btnClrTacho.Location = new System.Drawing.Point(314, 63);
+            this.btnClrTacho.Name = "btnClrTacho";
+            this.btnClrTacho.Size = new System.Drawing.Size(75, 23);
+            this.btnClrTacho.TabIndex = 36;
+            this.btnClrTacho.Text = "Clr Tacho";
+            this.btnClrTacho.UseVisualStyleBackColor = true;
+            this.btnClrTacho.Click += new System.EventHandler(this.BtnClrTacho_Click);
+            // 
+            // btnSet
+            // 
+            this.btnSet.Location = new System.Drawing.Point(441, 32);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(37, 23);
+            this.btnSet.TabIndex = 35;
+            this.btnSet.Text = "Set";
+            this.btnSet.UseVisualStyleBackColor = true;
+            this.btnSet.Click += new System.EventHandler(this.BtnSet_Click);
+            // 
+            // cbPolarity
+            // 
+            this.cbPolarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPolarity.FormattingEnabled = true;
+            this.cbPolarity.Location = new System.Drawing.Point(314, 34);
+            this.cbPolarity.Name = "cbPolarity";
+            this.cbPolarity.Size = new System.Drawing.Size(121, 21);
+            this.cbPolarity.TabIndex = 34;
             // 
             // lblDaisyChainLayer
             // 
@@ -166,6 +282,7 @@
             this.tbLeverSpeed.Size = new System.Drawing.Size(74, 45);
             this.tbLeverSpeed.TabIndex = 26;
             this.tbLeverSpeed.Value = 100;
+            this.tbLeverSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
             // 
             // tbAccelerate
             // 
@@ -176,6 +293,7 @@
             this.tbAccelerate.Size = new System.Drawing.Size(74, 45);
             this.tbAccelerate.TabIndex = 24;
             this.tbAccelerate.Value = 1;
+            this.tbAccelerate.Scroll += new System.EventHandler(this.TbSpeed_ValueChanged);
             // 
             // chkAccelerate
             // 
@@ -229,6 +347,7 @@
             this.tbRightSpeed.Size = new System.Drawing.Size(74, 45);
             this.tbRightSpeed.TabIndex = 21;
             this.tbRightSpeed.Value = 100;
+            this.tbRightSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
             // 
             // tbLeftSpeed
             // 
@@ -239,6 +358,7 @@
             this.tbLeftSpeed.Size = new System.Drawing.Size(74, 45);
             this.tbLeftSpeed.TabIndex = 20;
             this.tbLeftSpeed.Value = 100;
+            this.tbLeftSpeed.ValueChanged += new System.EventHandler(this.TbSpeed_ValueChanged);
             // 
             // chkTimeout
             // 
@@ -278,7 +398,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 149);
+            this.ClientSize = new System.Drawing.Size(794, 161);
             this.Controls.Add(this.pMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MotorForm";
@@ -318,5 +438,15 @@
         private System.Windows.Forms.Button btnRefreshPositions;
         private System.Windows.Forms.Label lblDaisyChainLayer;
         private System.Windows.Forms.ComboBox cbDaisyChainLayer;
+        private System.Windows.Forms.ComboBox cbPolarity;
+        private System.Windows.Forms.Button btnSet;
+        private System.Windows.Forms.Button btnClrTacho;
+        private System.Windows.Forms.Button btnGetTacho;
+        private System.Windows.Forms.Button btnIsBusy;
+        private System.Windows.Forms.Label lblMotor;
+        private System.Windows.Forms.Label lblPolarity;
+        private System.Windows.Forms.ComboBox cbMotor;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnWaitForFinish;
     }
 }
