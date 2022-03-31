@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Lego.Mindstroms.EV3</id>
+    <version>1.0.0</version>
+    <title>Lego Mindstroms EV3</title>
+    <authors>Mortens</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/Mortens4444/LegoMindstromsEV3</projectUrl>
+    <description>Lego Mindstroms EV3 (Firmware: V1.09H)</description>
+    <releaseNotes>First release of the Lego Mindstorms EV3 nuget package.</releaseNotes>
+    <copyright>Copyright © 2022</copyright>
+    <tags>Lego Mindstroms EV3 Mortens</tags>
+	<repository type="git" url="https://github.com/Mortens4444/LegoMindstromsEV3.git" branch="main" />
+  </metadata>
+  <files>
+    <file src="C:\Work\LegoMindstromsEV3\Mindstorms.Core\bin\Release\**" target="lib" />	
+  </files>
+</package>
