@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+
+		<?define SourceFolder = "..\Mindstorms.Controller\bin\Release\" ?>
+		<?define ImagesSourceFolder = "$(var.SourceFolder)Resources\Images\" ?>
+		<?define SoundsSourceFolder = "$(var.SourceFolder)Resources\Sounds\" ?>
+		
+	    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component>
+                <File Id="fil0x.NHDJWxdYhdthZ763dbvF06YQ" KeyPath="yes" Source="$(var.SourceFolder)Enums.dll" />
+            </Component>
+			<Component>
+                <File Id="filZX.aH2xT4mMR3trfmdkwrWy9HTw" KeyPath="yes" Source="$(var.SourceFolder)Enums.pdb" />
+            </Component>
+			<Component>
+                <File Id="filt_R1qkzS2VoEhY.npSVW3WqPS_8" KeyPath="yes" Source="$(var.SourceFolder)Joystick.dll" />
+            </Component>
+			<Component>
+                <File Id="filGZm.AXFFwpsOgy1qiKFl2vySdII" KeyPath="yes" Source="$(var.SourceFolder)Joystick.pdb" />
+            </Component>
+			<Component>
+                <File Id="filkpcbE0gnxWFTql0x715NrWrvAQw" KeyPath="yes" Source="$(var.SourceFolder)MessageBoxes.dll" />
+            </Component>
+			<Component>
+                <File Id="filGCWWfuYeggfhjAEak4qQ5zYxiPA" KeyPath="yes" Source="$(var.SourceFolder)MessageBoxes.pdb" />
+            </Component>
+			<Component>
+                <File Id="filyp5Ji8t8LPjRFoBYh14psX90zw8" KeyPath="yes" Source="$(var.SourceFolder)Microsoft.DirectX.DirectInput.dll" />
+            </Component>
+			<Component>
+                <File Id="filVnC.KN6vglxBn0Sx.ZgI6NzmsJM" KeyPath="yes" Source="$(var.SourceFolder)Microsoft.DirectX.DirectInput.xml" />
+            </Component>
+			<Component>
+                <File Id="filQuIM47qNQgZ7jIcP6NA7wqQuiTc" KeyPath="yes" Source="$(var.SourceFolder)Microsoft.DirectX.dll" />
+            </Component>
+			<Component>
+                <File Id="filAoNN4djxwIfmxcZVLb6cMirEYpw" KeyPath="yes" Source="$(var.SourceFolder)Microsoft.DirectX.xml" />
+            </Component>
+			<Component>
+                <File Id="fillK3q8n3xZYiWyLJGR2Wgp8EsYXU" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Controller.exe">
+					<Shortcut Id="Mindstorms.EV3.Shortcut"
+						Name="Mindstorms EV3"
+						Description="LEGO Mindstorms EV3"
+						Directory="DesktopFolder"
+						WorkingDirectory="INSTALLFOLDER"
+						Advertise="yes">
+					</Shortcut>
+				</File>
+            </Component>
+			<Component>
+                <File Id="filn0mE2HSj44VbcpzF93c0eelnhtw" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Controller.exe.config" />
+            </Component>
+			<Component>
+                <File Id="filvSc75s7rb2TPDsRXXTBOaOM6qRw" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Controller.pdb" />
+            </Component>
+			<Component>
+                <File Id="fil0X7n_3opTqopKhasOR8u2VZwbLo" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Core.dll" />
+            </Component>
+			<Component>
+                <File Id="fil._eQyFspiAbKgzSTPDPX8Qzyfvo" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Core.pdb" />
+            </Component>
+			<Component>
+                <File Id="filsUV4EZ60ZPqQypD0mJe35uTMS.o" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Game.dll" />
+            </Component>
+			<Component>
+                <File Id="filpzewmBDrvFkbAG.fjlYuqEAtk68" KeyPath="yes" Source="$(var.SourceFolder)Mindstorms.Game.pdb" />
+            </Component>
+			<Component>
+                <File Id="filFhqR5YKO5HGJj_d98Jsh8V_knaw" KeyPath="yes" Source="$(var.SourceFolder)SourceInfo.dll" />
+            </Component>
+			<Component>
+                <File Id="filSKq5HbSt.2YdxYHe_oxSzlAGhR4" KeyPath="yes" Source="$(var.SourceFolder)SourceInfo.pdb" />
+            </Component>
+			<Component>
+                <File Id="filcVHyio8ZAqnG7ZFkUiRPglOhhZ4" KeyPath="yes" Source="$(var.SourceFolder)SpeechRecognition.dll" />
+            </Component>
+			<Component>
+                <File Id="filVUiw44f0XSgZMDwNoJaO8hAJNT8" KeyPath="yes" Source="$(var.SourceFolder)SpeechRecognition.pdb" />
+            </Component>
+			<Component>
+                <File Id="fil3_lRppVIkSMgyCKZM5mt4PqPbic" KeyPath="yes" Source="$(var.SourceFolder)Utils.dll" />
+            </Component>
+			<Component>
+                <File Id="filhr.TtVKsopjebBZDTZHHHoemRNM" KeyPath="yes" Source="$(var.SourceFolder)Utils.pdb" />
+            </Component>
+		</ComponentGroup>
+
+		<ComponentGroup Id="Application" Directory="Application">
+			<Component>
+                <File Id="filOhd5sSiHahwla3s31bLKuOUiKFU" KeyPath="yes" Source="$(var.SourceFolder)Resources\Application\GameFrame.rbf" />
+            </Component>
+		</ComponentGroup>
+
+		<ComponentGroup Id="Images" Directory="Images">
+			<Component>
+				<File Id="filZz7FXsqpaFwycXJGfU7BvADmyNI" KeyPath="yes" Source="$(var.ImagesSourceFolder)3Gens.rgf" />
+			</Component>
+			<Component>
+				<File Id="filcib.0z9tRj9GeKPzJ.2uj9MwYQA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Accept 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil1zyR.tGy9kk3TKAsTwEkAfM3jMY" KeyPath="yes" Source="$(var.ImagesSourceFolder)Accept 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil50vHLYCEcT33xig1BsHJVpCqqo4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Accept.rgf" />
+			</Component>
+			<Component>
+				<File Id="filWCFlpxEMYChZO_9XLEDS0qM93uw" KeyPath="yes" Source="$(var.ImagesSourceFolder)Alert.rgf" />
+			</Component>
+			<Component>
+				<File Id="filkJXzGELUckJ1sydMGJGzSx74QLo" KeyPath="yes" Source="$(var.ImagesSourceFolder)Angry.rgf" />
+			</Component>
+			<Component>
+				<File Id="filFdHk5pdshOEzhlfuf.0_rSDgU4Y" KeyPath="yes" Source="$(var.ImagesSourceFolder)Awake.rgf" />
+			</Component>
+			<Component>
+				<File Id="filpWHNxkoXb8MIy57ze7lDgPhG4A4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Backward.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvm4_yLlQ8.uCb9whcOTuG8w_KTA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bar 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filUUCS0C9st1hex5Ky.UnA2ouh7os" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bar 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil0035iTjaJI2_gPqU2jhcOjPzrdo" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bar 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="filoQZyhcxF8uhmA3Y_2WgDrfi3NTI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bar 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filcBjXRXyzCSFGmMrpoKznqrCIkSc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bar 4.rgf" />
+			</Component>
+			<Component>
+				<File Id="filVQVtToiaCty3o_yOMOmpAjG4tBo" KeyPath="yes" Source="$(var.ImagesSourceFolder)Big smile.rgf" />
+			</Component>
+			<Component>
+				<File Id="fila_NFJ.DZ_LkVG.Hvx.opl440Rik" KeyPath="yes" Source="$(var.ImagesSourceFolder)Black eye.rgf" />
+			</Component>
+			<Component>
+				<File Id="filiIxaqpoQtmd3VxvxsZoDZfZlJJw" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bomb.rgf" />
+			</Component>
+			<Component>
+				<File Id="filswvT1TlNF4sYIdRyD6GABU5ssuI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Boom.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil38s.mCnRwCziV1PLwbiQpnPH_xM" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bottom left.rgf" />
+			</Component>
+			<Component>
+				<File Id="filHW1TEAFIuvIP0LDPQ4S3GNWPIDM" KeyPath="yes" Source="$(var.ImagesSourceFolder)Bottom right.rgf" />
+			</Component>
+			<Component>
+				<File Id="filo0pIwEjSbe.oqsVafZg4OFjOT2w" KeyPath="yes" Source="$(var.ImagesSourceFolder)Box.rgf" />
+			</Component>
+			<Component>
+				<File Id="fillbwdwaKjAODNM4Mais6eIJu24kU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Busy 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filCu9weDTFQNPwaFRF.f5uGMx.BBU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Busy 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filkHn_tDxrnibtvMIP8tLTeUq9kbM" KeyPath="yes" Source="$(var.ImagesSourceFolder)Color sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filsPWlP7MBBDLQGGSW0QqnYxOX83A" KeyPath="yes" Source="$(var.ImagesSourceFolder)Crazy 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filyHHrDvqK3B1jDqB.BtWq.1FwkrU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Crazy 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fild0tRqfll08avrCfRAkdLigoQaqs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Decline 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filfrMAw8XakUusrKTIs7iq9jvINAo" KeyPath="yes" Source="$(var.ImagesSourceFolder)Decline 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil1p4jkO4r8jndbz.ybumw4Nuo5aQ" KeyPath="yes" Source="$(var.ImagesSourceFolder)Decline.rgf" />
+			</Component>
+			<Component>
+				<File Id="filP8kJLGapSLYsuOHcnRhWHjYy3ow" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dial 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filxUJYfuoSwLMx27IFu1XGFDgyIVw" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dial 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filKH2ewQfO.UMmruSb3N.Esrky0Qc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dial 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil.6otpkyagaXBV5j8G8z3Uzj_aeg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dial 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filoe8KsXCqrmuZ4.nSBwdNmuI5Pn4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dial 4.rgf" />
+			</Component>
+			<Component>
+				<File Id="filJtn.7SO.ONdjz27D5YdHmkfx2vs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Disappointed.rgf" />
+			</Component>
+			<Component>
+				<File Id="fileFjyuttKwIQPlGIzsek1SSVBdsg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dizzy.rgf" />
+			</Component>
+			<Component>
+				<File Id="filkKuBdjxgIfC5I0nYxMusIGFJTgg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dot empty.rgf" />
+			</Component>
+			<Component>
+				<File Id="filv.zv8bAkWkWQ.MnkabBb43150Jg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dot full.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil1Su9RU6D4LSvltT4nHd6VLkbgZE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dots 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filHnI_zZPEyaA2KEqhOH4BwtZiHlE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dots 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filIv38n5VdqU2LJ5RplKHjcha9MZ4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dots 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil89hW_OGw8vz_t9NZa.w8FD.uo7g" KeyPath="yes" Source="$(var.ImagesSourceFolder)Dots 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filg_YjpH_IzmxqDoTvxNxN.h0HJlQ" KeyPath="yes" Source="$(var.ImagesSourceFolder)Down.rgf" />
+			</Component>
+			<Component>
+				<File Id="filID1wMpSUHS3KbNSyWU0xhzxpHZM" KeyPath="yes" Source="$(var.ImagesSourceFolder)EV3 icon.rgf" />
+			</Component>
+			<Component>
+				<File Id="filHRu4cXYoxdr.sysygd1WZL4DGS4" KeyPath="yes" Source="$(var.ImagesSourceFolder)EV3 small.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil05xB2Ne6KBGQ8PpeTRxTAEUjJgo" KeyPath="yes" Source="$(var.ImagesSourceFolder)EV3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filobJws3VCBmjAK4RnmgNxJLQKN70" KeyPath="yes" Source="$(var.ImagesSourceFolder)Evil.rgf" />
+			</Component>
+			<Component>
+				<File Id="filtuzo7OrK3l1HPgnCHiA4F.m7cxk" KeyPath="yes" Source="$(var.ImagesSourceFolder)Fire.rgf" />
+			</Component>
+			<Component>
+				<File Id="filyDBuOgl2Sj1w6gZswAJeJZqjikM" KeyPath="yes" Source="$(var.ImagesSourceFolder)Flowers.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvLYC6X7dThssdS9Yze0_ej3TRi4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Forest.rgf" />
+			</Component>
+			<Component>
+				<File Id="filHZMiTH0zED4EGlkpeWhAO8TSgC4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Forward.rgf" />
+			</Component>
+			<Component>
+				<File Id="filjbWbv4d4lv8IeeKCk2JHeoEGUW8" KeyPath="yes" Source="$(var.ImagesSourceFolder)Gyro sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filUN0wVD83UFUxdCdOEoZ8UFn03Dg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Heart large.rgf" />
+			</Component>
+			<Component>
+				<File Id="filPM3OvtkCvFhpHqwRdgLC3_mft1Y" KeyPath="yes" Source="$(var.ImagesSourceFolder)Heart small.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil1cJeAtqOt6PCKxL58yhfNvy8kW8" KeyPath="yes" Source="$(var.ImagesSourceFolder)Hourglass 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filXf03pe5uhur_VWSG8iyRICGsVRA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Hourglass 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filJexitI_zMeQASCFWu_lc2irMgMA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Hourglass 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="filWWo3Ri.QLcUvNY_V1_2Y1g9P8fU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Hurt.rgf" />
+			</Component>
+			<Component>
+				<File Id="filVYWFSKEstw_SpwqrtzFaak4MGPI" KeyPath="yes" Source="$(var.ImagesSourceFolder)IR beacon.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil9A8SRp8x2.VyK7eG6RTyEOF1VbE" KeyPath="yes" Source="$(var.ImagesSourceFolder)IR sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil6Kt8yRHuSZtHZxZywZGGQcjeRqs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Knocked out.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil0wPErXNY0wOx0q1zOa8ae3rH7AQ" KeyPath="yes" Source="$(var.ImagesSourceFolder)Large motor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filpF7p5WqTpRPAE1QRn9w5phJwJaI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Left.rgf" />
+			</Component>
+			<Component>
+				<File Id="filaCFxNOyemCehtcU9KPfExX1vQTc" KeyPath="yes" Source="$(var.ImagesSourceFolder)LEGO.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvAuTVg03xM7FkQyClKqSTpg8GkE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Light off.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil3sHK6zzbvj6wLIwOiLZeFwNtDks" KeyPath="yes" Source="$(var.ImagesSourceFolder)Light on.rgf" />
+			</Component>
+			<Component>
+				<File Id="filb_XFr_7sDafx2D6RP6oF2.Fu.9U" KeyPath="yes" Source="$(var.ImagesSourceFolder)Lightning.rgf" />
+			</Component>
+			<Component>
+				<File Id="filuKKitbqQjC8nDJF.ctFLti5bYiA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Love.rgf" />
+			</Component>
+			<Component>
+				<File Id="filKDJa1CKyshLQ9MG4VbaEGaiKiUk" KeyPath="yes" Source="$(var.ImagesSourceFolder)Medium motor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvsI0z4p7FkEA7FpVWu3GSJyeYeA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Middle left.rgf" />
+			</Component>
+			<Component>
+				<File Id="filxfReAc2gQCKTht002xWjadfBvXU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Middle right.rgf" />
+			</Component>
+			<Component>
+				<File Id="filQmTVKInh1gEPsZYN479g0.ohDv8" KeyPath="yes" Source="$(var.ImagesSourceFolder)MINDSTORMS.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil6e0Z5Pip4R7.b88lWZJRQVONU0I" KeyPath="yes" Source="$(var.ImagesSourceFolder)Mouth 1 open.rgf" />
+			</Component>
+			<Component>
+				<File Id="filG1hg839e038zXYh9U2Td2LnGXs4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Mouth 1 shut.rgf" />
+			</Component>
+			<Component>
+				<File Id="filFrbF4O_EWTUcOpqImNMTBq15vtA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Mouth 2 open.rgf" />
+			</Component>
+			<Component>
+				<File Id="filWV4kvtwjgSDYPIcSxxzR1vlIVq8" KeyPath="yes" Source="$(var.ImagesSourceFolder)Mouth 2 shut.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil3WejTcya.l0NLZY78PXfIC.4FrY" KeyPath="yes" Source="$(var.ImagesSourceFolder)Neutral.rgf" />
+			</Component>
+			<Component>
+				<File Id="filoAmPD6mJKTGHwMwlclhA7O8vyOA" KeyPath="yes" Source="$(var.ImagesSourceFolder)Night.rgf" />
+			</Component>
+			<Component>
+				<File Id="filZqD5sN6V_ICFcF0y0hWsI.MsKCQ" KeyPath="yes" Source="$(var.ImagesSourceFolder)No go.rgf" />
+			</Component>
+			<Component>
+				<File Id="filE60xWhRbI8xJWOmOpSlqht7qGuY" KeyPath="yes" Source="$(var.ImagesSourceFolder)Nuclear.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil6LHfgS2uVu7xHvwGo5TYNLUWjeg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Pinch left.rgf" />
+			</Component>
+			<Component>
+				<File Id="filobLeDAukpJTmLs.q41D.dUzuDSI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Pinch middle.rgf" />
+			</Component>
+			<Component>
+				<File Id="filQsc85vNXtWv.1k3.8GSInDeHSis" KeyPath="yes" Source="$(var.ImagesSourceFolder)Pinch right.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil3NmX_q1uGNbLJX6SuB1KvsmbOdY" KeyPath="yes" Source="$(var.ImagesSourceFolder)Pirate.rgf" />
+			</Component>
+			<Component>
+				<File Id="filuZ5yAM59RQK0tPtrBNbF5LyC0IU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Play.rgf" />
+			</Component>
+			<Component>
+				<File Id="filqXE1u0sL053r1cy.7vp0Qu6TYh4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Question mark.rgf" />
+			</Component>
+			<Component>
+				<File Id="filJpQd3IfqeNOW.I7IhN.GzHAFg2Q" KeyPath="yes" Source="$(var.ImagesSourceFolder)Right.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil1CUkCrhMZWym863o_sNl8AIYg9A" KeyPath="yes" Source="$(var.ImagesSourceFolder)Sad.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvJKKyWD8LVuegWki0Dw6nq2unfs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Sick.rgf" />
+			</Component>
+			<Component>
+				<File Id="filsP2iclA_I2526TtBwnoJzeqmHNs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Sleeping.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil2McsLYFWif_RZ3TOhSWjRSqXJZ4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil2ol5tyR3shjkfPe30Ft3R33W_nE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filA6NBB6eqv9JtgkZqY.60hDwjAJU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="filk2mgG2zVQE6w_3OmmCNYDeB0wIE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil8OZSWtkqbfQ54.ldE9li6mp7O.Q" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 4.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil86friHHrJYOnCoME0tdZf7S1164" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 5.rgf" />
+			</Component>
+			<Component>
+				<File Id="filGl18ImiGpp8v0mNMw.zCqAV25DY" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 6.rgf" />
+			</Component>
+			<Component>
+				<File Id="filfRm2A0by.M.2izXcUILLrBxXXRc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 7.rgf" />
+			</Component>
+			<Component>
+				<File Id="filq8GTpF1ncmgSH0FIqCTeqvoGm2o" KeyPath="yes" Source="$(var.ImagesSourceFolder)Slider 8.rgf" />
+			</Component>
+			<Component>
+				<File Id="filQIPOoDM0F0bRamjjqyk9DFqX0F4" KeyPath="yes" Source="$(var.ImagesSourceFolder)Smile.rgf" />
+			</Component>
+			<Component>
+				<File Id="filcd48urzMmu90C.MkIuxyasYfLRs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Snow.rgf" />
+			</Component>
+			<Component>
+				<File Id="filFZkc3G04.N51QsytAZDvSL_D4jk" KeyPath="yes" Source="$(var.ImagesSourceFolder)Sound sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filG49LKVwmzDcf1s0CdMRmb7XCZl0" KeyPath="yes" Source="$(var.ImagesSourceFolder)Stop 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil05YjZv5NmSR7YXF0aR.d8u4LefI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Stop 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="filPPgkLqLbHM8lmbA7rASedPI3ujI" KeyPath="yes" Source="$(var.ImagesSourceFolder)Swearing.rgf" />
+			</Component>
+			<Component>
+				<File Id="filIh63T9MEFhsB0ycSfVca1SpzOro" KeyPath="yes" Source="$(var.ImagesSourceFolder)Talking.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil.o91Cz7H6Md6_wy.Cah_vcssrU0" KeyPath="yes" Source="$(var.ImagesSourceFolder)Target.rgf" />
+			</Component>
+			<Component>
+				<File Id="filVRcIPKA7y35h0Bx.Q1zurFB5XUU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Tear.rgf" />
+			</Component>
+			<Component>
+				<File Id="filcBdgtOSVdlRrMwh0y9Y2J_WbqMs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Temp sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filOWj2k.tWk28zZUrgw5o6Cn_Uz4Q" KeyPath="yes" Source="$(var.ImagesSourceFolder)Thumbs down.rgf" />
+			</Component>
+			<Component>
+				<File Id="filL3nmUxsBSOx.HMKoCvuCUVOdbLs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Thumbs up.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil2orcd0MnpoTWrQG.R2PBS5B6mRE" KeyPath="yes" Source="$(var.ImagesSourceFolder)Timer 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filSTT.rOa4D5FrzX4d5CTWbH06AIc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Timer 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="filsTc12HWemo9kYd.b90AWMtlvZ04" KeyPath="yes" Source="$(var.ImagesSourceFolder)Timer 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="filF.bR8mI5Xifq_0yzDDL_CE9slqw" KeyPath="yes" Source="$(var.ImagesSourceFolder)Timer 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filvDdg2FQ5BrtTcCGk49f63bo2jZg" KeyPath="yes" Source="$(var.ImagesSourceFolder)Timer 4.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil_bEOfE2A_0eaHq0nhRxGELePjqc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Tired left.rgf" />
+			</Component>
+			<Component>
+				<File Id="fildKmvqjNuKt3tqbcMJsr8iwVCfd8" KeyPath="yes" Source="$(var.ImagesSourceFolder)Tired middle.rgf" />
+			</Component>
+			<Component>
+				<File Id="filctum_Y88Mx48jde8bEdlJYxg55Q" KeyPath="yes" Source="$(var.ImagesSourceFolder)Tired right.rgf" />
+			</Component>
+			<Component>
+				<File Id="filhtIzWMrGrAq34LDnQwE5rnWbXgM" KeyPath="yes" Source="$(var.ImagesSourceFolder)Touch sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="filhPvlTdH5WQU.DgKZ51tQT7xjQ68" KeyPath="yes" Source="$(var.ImagesSourceFolder)Toxic.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil.ykPEZOcXTwt_ck50C_tQTcQm00" KeyPath="yes" Source="$(var.ImagesSourceFolder)Up.rgf" />
+			</Component>
+			<Component>
+				<File Id="filjfzoAUrBJZAfWFPbctkP1LwJIqo" KeyPath="yes" Source="$(var.ImagesSourceFolder)US sensor.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil_Q2Ba6ci58Fv8ZkVURbcRZOXb_s" KeyPath="yes" Source="$(var.ImagesSourceFolder)Warning.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil.NnOVEh.bhR4RjGH9DrYEyqloP0" KeyPath="yes" Source="$(var.ImagesSourceFolder)Water level 0.rgf" />
+			</Component>
+			<Component>
+				<File Id="filmem6xrSkpLsU2zl.C4VEJQs_nXs" KeyPath="yes" Source="$(var.ImagesSourceFolder)Water level 1.rgf" />
+			</Component>
+			<Component>
+				<File Id="fila1eYHZiKugMrIaXcvVFMPVRzyek" KeyPath="yes" Source="$(var.ImagesSourceFolder)Water level 2.rgf" />
+			</Component>
+			<Component>
+				<File Id="fil4cS_0cdXbsv0TGqdqM0w37jD7mU" KeyPath="yes" Source="$(var.ImagesSourceFolder)Water level 3.rgf" />
+			</Component>
+			<Component>
+				<File Id="filof3y8OjShsLsiU_0Bwk1Aq3vvWc" KeyPath="yes" Source="$(var.ImagesSourceFolder)Wink.rgf" />
+			</Component>
+			<Component>
+				<File Id="filWhugADK5HZi92MXg0j4e073Yx00" KeyPath="yes" Source="$(var.ImagesSourceFolder)Winking.rgf" />
+			</Component>
+			<Component>
+				<File Id="filmxYCL.VjMmVYw9r52LgUxpwN7UM" KeyPath="yes" Source="$(var.ImagesSourceFolder)ZZZ.rgf" />
+			</Component>
+		</ComponentGroup>
+
+		<ComponentGroup Id="Sounds" Directory="Sounds">
+			<Component>
+				<File Id="filSO8HLc74ryo3RllZm0bdS_ZOOI4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Activate.rsf" />
+			</Component>
+			<Component>
+				<File Id="filweMtRbH1Zcq5RpPADZMo_e87NMU" KeyPath="yes" Source="$(var.SoundsSourceFolder)Air release.rsf" />
+			</Component>
+			<Component>
+				<File Id="filJS.yl8aVP3ks71zRwCPje.O0o08" KeyPath="yes" Source="$(var.SoundsSourceFolder)Airbrake.rsf" />
+			</Component>
+			<Component>
+				<File Id="filHErTOsRhUA6FA.26VXI_cVmNdQc" KeyPath="yes" Source="$(var.SoundsSourceFolder)Analyze.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil67DBZ_yNaJaAf57WJXlvFRIznvI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Arm 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filruDCbX74SLSm7Vc_OPf1QC82xxA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Arm 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="filrht_ZGzi9vkSTiDmlA_rVKwXNVc" KeyPath="yes" Source="$(var.SoundsSourceFolder)Arm 3.rsf" />
+			</Component>
+			<Component>
+				<File Id="filhUkVBlskUWn7p7i4OX.qg2wN8Bs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Arm 4.rsf" />
+			</Component>
+			<Component>
+				<File Id="filGOtRGKqEgNFaZyBg3_KOsID0K74" KeyPath="yes" Source="$(var.SoundsSourceFolder)Backing alert.rsf" />
+			</Component>
+			<Component>
+				<File Id="filuYGbJ1JxcMb.wYazDldUuWBnBWQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Backwards.rsf" />
+			</Component>
+			<Component>
+				<File Id="filK3DOQEFI1aLrXbC5skXOIqUo17A" KeyPath="yes" Source="$(var.SoundsSourceFolder)Black.rsf" />
+			</Component>
+			<Component>
+				<File Id="filn_D1K4f8sZRiRJx5M.2UWHGS5A0" KeyPath="yes" Source="$(var.SoundsSourceFolder)Blip 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filEeBLCUD_OPHxYAJvaqfqAVhtsK4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Blip 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="filn10vgHyqyGMkPVF3AnpU5.nL.7c" KeyPath="yes" Source="$(var.SoundsSourceFolder)Blip 3.rsf" />
+			</Component>
+			<Component>
+				<File Id="filFc0moYAcQTFqrZwiRZvl02CHVgQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Blip 4.rsf" />
+			</Component>
+			<Component>
+				<File Id="filldz8Ckdg1u9h_nJH12OWY2uDdZA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Blue.rsf" />
+			</Component>
+			<Component>
+				<File Id="filom1oxbiv9yWo2FjgCpLpDzsZAkY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Boing.rsf" />
+			</Component>
+			<Component>
+				<File Id="fileOrpcQZkJ3Ycy5zHroNwxMRYZvA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Boo.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil9mT2rzlwQq.5R1qURM4OFl3zExI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Bravo.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil78lqjKi6jyDnLz_LXPMUtru3Sks" KeyPath="yes" Source="$(var.SoundsSourceFolder)Brown.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil1q62Wpb.IXe8PABqUbrAjq.VR5o" KeyPath="yes" Source="$(var.SoundsSourceFolder)Cat purr.rsf" />
+			</Component>
+			<Component>
+				<File Id="filEDARBHtUr36F13KcUJ2rVyMuYCk" KeyPath="yes" Source="$(var.SoundsSourceFolder)Cheering.rsf" />
+			</Component>
+			<Component>
+				<File Id="filZ5OoMDr8EcVDUVr5DIfVWcwfjEs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Click.rsf" />
+			</Component>
+			<Component>
+				<File Id="filo6_bBtKUjOaIhVNS.MUNvtyZDpo" KeyPath="yes" Source="$(var.SoundsSourceFolder)Color.rsf" />
+			</Component>
+			<Component>
+				<File Id="filS2QInBEQnhDT4jQz35HUoYD0mrA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Confirm.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil4aBregOPwlWBgXtkx8v3HwuqFW8" KeyPath="yes" Source="$(var.SoundsSourceFolder)Connect.rsf" />
+			</Component>
+			<Component>
+				<File Id="filKZsJ7U2t5sNdtrJ.yU6.tv6hgLQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Crunching.rsf" />
+			</Component>
+			<Component>
+				<File Id="fililQfvVLaehSFj7uZBOIFc3LY5sQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Crying.rsf" />
+			</Component>
+			<Component>
+				<File Id="filC4VwLhsdtkgcTk962CACmPCfhdM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Detected.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil7GDBpb.78sxPU6Ey5M01o0Nt67w" KeyPath="yes" Source="$(var.SoundsSourceFolder)Dog bark 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filLAEeD.SIgQYu4hqlJ9XkcDooZjs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Dog bark 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="filLmmHDDPcTMnjc1GAX5m2OuQbE7s" KeyPath="yes" Source="$(var.SoundsSourceFolder)Dog growl.rsf" />
+			</Component>
+			<Component>
+				<File Id="filGOwtX0hgbNQekDjXxdh9uUw.07Q" KeyPath="yes" Source="$(var.SoundsSourceFolder)Dog sniff.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil1gYDaxZL2VcioJ488pvrpXrzzCE" KeyPath="yes" Source="$(var.SoundsSourceFolder)Dog whine.rsf" />
+			</Component>
+			<Component>
+				<File Id="fils1aZAZXodwVZzPoyX3U3218AWIA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Down.rsf" />
+			</Component>
+			<Component>
+				<File Id="filT8wZodjnJhvDzbrJfhClwvyxi8M" KeyPath="yes" Source="$(var.SoundsSourceFolder)Download.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil5HWynDfhd2Jchk76sWANtfjxMi0" KeyPath="yes" Source="$(var.SoundsSourceFolder)Drop load.rsf" />
+			</Component>
+			<Component>
+				<File Id="filK2ZQ49J0scUyf96R3wNE14f5VqE" KeyPath="yes" Source="$(var.SoundsSourceFolder)Eight.rsf" />
+			</Component>
+			<Component>
+				<File Id="fileHLAWdJMOye81IV4i_o2XNa12VM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Elephant call.rsf" />
+			</Component>
+			<Component>
+				<File Id="filELs7pKQF0NVZgVOpPG1j.8l5x0I" KeyPath="yes" Source="$(var.SoundsSourceFolder)Error alarm.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil8JF5ewSCIZ2.Q1VpK.MpfS9yIIs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Error.rsf" />
+			</Component>
+			<Component>
+				<File Id="filcZs3.5o0wnS4MqupndWr8e5Dy6A" KeyPath="yes" Source="$(var.SoundsSourceFolder)EV3.rsf" />
+			</Component>
+			<Component>
+				<File Id="filWmZq.R4JpPIlfDF0BqOc7dF8FMM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Fanfare.rsf" />
+			</Component>
+			<Component>
+				<File Id="filWX0kdWLk5eRov8RxdZdpttYCQlY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Fantastic.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil2sU1eOaS92RjcNtD87m2fPHRrho" KeyPath="yes" Source="$(var.SoundsSourceFolder)Five.rsf" />
+			</Component>
+			<Component>
+				<File Id="filVliXZ9gAnVCKBwk9q0xPl.PQyoI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Flashing.rsf" />
+			</Component>
+			<Component>
+				<File Id="filVgesP9WB6nLKaaiDTfbQ8EQOJ7M" KeyPath="yes" Source="$(var.SoundsSourceFolder)Forward.rsf" />
+			</Component>
+			<Component>
+				<File Id="filbQan9aB_vJv30jrEpZdvyi4Arp4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Four.rsf" />
+			</Component>
+			<Component>
+				<File Id="filq_kxX7436ygyPG1g07NuWq2Jiww" KeyPath="yes" Source="$(var.SoundsSourceFolder)Game over.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil2FTVfETd14dOlx1q3LWRNT.6oc0" KeyPath="yes" Source="$(var.SoundsSourceFolder)General alert.rsf" />
+			</Component>
+			<Component>
+				<File Id="filvBAG0iJOyoKnP_Ahyoy88eEGChU" KeyPath="yes" Source="$(var.SoundsSourceFolder)Go.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil7vFh9u6F4csMqaBQZRhe7nvfBTY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Good job.rsf" />
+			</Component>
+			<Component>
+				<File Id="filfmmPEprtj5e.G_WgGoq.RPjU984" KeyPath="yes" Source="$(var.SoundsSourceFolder)Good.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil3AyoO4vcaLeO3oZ7MQpCqEAf.eE" KeyPath="yes" Source="$(var.SoundsSourceFolder)Goodbye.rsf" />
+			</Component>
+			<Component>
+				<File Id="filaW5DXmhqFOm_sgjp9tTlLOi3bTg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Green.rsf" />
+			</Component>
+			<Component>
+				<File Id="filR3do66X.8hSPHcCt2bgPdfTcnmc" KeyPath="yes" Source="$(var.SoundsSourceFolder)Hello.rsf" />
+			</Component>
+			<Component>
+				<File Id="filV2f1cacytDCN1IAWHnRsjteFjkg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Hi.rsf" />
+			</Component>
+			<Component>
+				<File Id="filot2YqptjKJUBun_qDr32RRHtM0U" KeyPath="yes" Source="$(var.SoundsSourceFolder)Horn 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filXZfMuYwYkdS4gHiU9hJyV67DReo" KeyPath="yes" Source="$(var.SoundsSourceFolder)Horn 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil.DYwdCvrzk3in2Z6oY.Gq4zyavg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Insect buzz 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filRU.pJZbWhxCSP3aqyUM01SCgpoY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Insect buzz 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="fils4zmb11lN.e9xeMR3BObfNg4DCM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Insect chirp.rsf" />
+			</Component>
+			<Component>
+				<File Id="filXYU1XcZqebKSqud49q6jzNUlgA4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Kung fu.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil3RZy9XO2nXaUfzYQCLERjjJrrFc" KeyPath="yes" Source="$(var.SoundsSourceFolder)Laser.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil_Jaa_Rstb7V1G4Xb6nwkyQ_9RrA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Laughing 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filmIwnSKAr9DUfQPmXtOJiAdpsVpI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Laughing 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="fillsUbr8884Byrpz_Ha9wpJFiu6W4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Left.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil2mHFWD0ByG2TSM2eN1tnLcrUsME" KeyPath="yes" Source="$(var.SoundsSourceFolder)LEGO.rsf" />
+			</Component>
+			<Component>
+				<File Id="filvEmLqHNv7WwgPrrVpKvycJHUBLg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Lift load.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil.5hWpMlVqxCh9xEhPaqA09J0KDE" KeyPath="yes" Source="$(var.SoundsSourceFolder)Magic wand.rsf" />
+			</Component>
+			<Component>
+				<File Id="filP.2Kcb14ttqnOeyzhRVwi90dyNU" KeyPath="yes" Source="$(var.SoundsSourceFolder)MINDSTORMS.rsf" />
+			</Component>
+			<Component>
+				<File Id="fildd6WdyIYlfI8sT5LEwwHfdvuQlo" KeyPath="yes" Source="$(var.SoundsSourceFolder)Morning.rsf" />
+			</Component>
+			<Component>
+				<File Id="filCZOayrQbvsQKAO6pQJO0XrdnAQk" KeyPath="yes" Source="$(var.SoundsSourceFolder)Motor idle.rsf" />
+			</Component>
+			<Component>
+				<File Id="filyaGh.chmzFRz6oIIJiHM7I47m_4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Motor start.rsf" />
+			</Component>
+			<Component>
+				<File Id="filFqLtN2I2MaSKvhSMN8OiM7bhklg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Motor stop.rsf" />
+			</Component>
+			<Component>
+				<File Id="filpKa4YOfGpxLoI9LFEuRNhqZ0mvA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Neutral.rgf" />
+			</Component>
+			<Component>
+				<File Id="filone.XeE8AffKJc8A0VFRTFtwGvQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Nine.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil0FE9XJ5VYCk5iptVRUF1Z.YB7lM" KeyPath="yes" Source="$(var.SoundsSourceFolder)No.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil04he.WPj4xybxSemBoYkzDSNYQI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Object.rsf" />
+			</Component>
+			<Component>
+				<File Id="filWNZ1PT8G27CQGcl8nBgaTOhB8.A" KeyPath="yes" Source="$(var.SoundsSourceFolder)Okay.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil0hZCMRBjqGp1h5zMc9lVPy215z8" KeyPath="yes" Source="$(var.SoundsSourceFolder)Okey-dokey.rsf" />
+			</Component>
+			<Component>
+				<File Id="filItD_f8bUK4d5yMUkyFM8snk4nks" KeyPath="yes" Source="$(var.SoundsSourceFolder)One.rsf" />
+			</Component>
+			<Component>
+				<File Id="filb9O.63SYWCHsuTgVzrUmUwih.HQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Ouch.rsf" />
+			</Component>
+			<Component>
+				<File Id="fildp5UW4XekTFK9b7crCwhxmoC_eU" KeyPath="yes" Source="$(var.SoundsSourceFolder)Overpower.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil6519MwlQN4O2PfTaOZnLg5KUe_A" KeyPath="yes" Source="$(var.SoundsSourceFolder)Power down.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil0VYiCdOcpbDXHb_U2NCQ8GbkX2w" KeyPath="yes" Source="$(var.SoundsSourceFolder)Project 2.rbf" />
+			</Component>
+			<Component>
+				<File Id="fileY0akoNPy3uY6at_in1HkRCPR2Q" KeyPath="yes" Source="$(var.SoundsSourceFolder)Ratchet.rsf" />
+			</Component>
+			<Component>
+				<File Id="filbNf5r3fVEEfejiVy3wtVyUHaVI0" KeyPath="yes" Source="$(var.SoundsSourceFolder)Ready.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil1AlCGH_t0NTtQ5FOkR20vh93KM8" KeyPath="yes" Source="$(var.SoundsSourceFolder)Red.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil9mZ4TP32tNBziEUcdO3_a95SxBA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Right.rsf" />
+			</Component>
+			<Component>
+				<File Id="filRQu1qPMFRGcjsqXlxHDtBHuHocg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Searching.rsf" />
+			</Component>
+			<Component>
+				<File Id="filCwaEknoxS8nnPYNcxcU6sWeS5KM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Servo 1.rsf" />
+			</Component>
+			<Component>
+				<File Id="filSNaRPphmMheCVrmxmqGQ6g1meuQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Servo 2.rsf" />
+			</Component>
+			<Component>
+				<File Id="filaqa2Is7q5VOBmWuIfXsJfHf2qaY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Servo 3.rsf" />
+			</Component>
+			<Component>
+				<File Id="filBnXnM40q2mZSpjOZMfv.hLNrMyI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Servo 4.rsf" />
+			</Component>
+			<Component>
+				<File Id="filcm7cLBQakxjrHdQwxlLXN8dcb_0" KeyPath="yes" Source="$(var.SoundsSourceFolder)Seven.rsf" />
+			</Component>
+			<Component>
+				<File Id="filnHsaTNzVzqjzrHG.lNuPurinPts" KeyPath="yes" Source="$(var.SoundsSourceFolder)Shouting.rsf" />
+			</Component>
+			<Component>
+				<File Id="filFU_g3Y27ei7Es5tHu6E9oyQi.1g" KeyPath="yes" Source="$(var.SoundsSourceFolder)Six.rsf" />
+			</Component>
+			<Component>
+				<File Id="filPi7D7DTAFjPqY6iSInX_8OXla9Y" KeyPath="yes" Source="$(var.SoundsSourceFolder)Slide load.rsf" />
+			</Component>
+			<Component>
+				<File Id="filRGp9IFk2r52PFkHz5egxhSk5IgA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Smack.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil6B5.IAJk0BTiGAcyHaI23EDKh6c" KeyPath="yes" Source="$(var.SoundsSourceFolder)Snake hiss.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil4nGy9cGl.gFmTMhAD8X5l9ICXNY" KeyPath="yes" Source="$(var.SoundsSourceFolder)Snake rattle.rsf" />
+			</Component>
+			<Component>
+				<File Id="filH3HS63P21UZaDBG04m03Uhgwjj4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Snap.rsf" />
+			</Component>
+			<Component>
+				<File Id="filG9JDi5naUthbbQz1lcZ1CC1UBaQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Sneezing.rsf" />
+			</Component>
+			<Component>
+				<File Id="filU.J4Bg9A2t1BgbNPG7O.uwKyqvk" KeyPath="yes" Source="$(var.SoundsSourceFolder)Snoring.rsf" />
+			</Component>
+			<Component>
+				<File Id="filxz7Ub0LkzFO8PzJKV_lgIrpcJJ4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Sonar.rsf" />
+			</Component>
+			<Component>
+				<File Id="filZaTYjRabv.7tvSLVWPCy7m8n8MM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Sorry.rsf" />
+			</Component>
+			<Component>
+				<File Id="filufF3ew6S3uLok5wFndMoQO0vpoA" KeyPath="yes" Source="$(var.SoundsSourceFolder)Speed down.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil.5VD3gY.vUgQa1kvrpmJEK5bXaQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Speed idle.rsf" />
+			</Component>
+			<Component>
+				<File Id="filJa.qx_xeXuMeCrgiarbrZck.uhs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Speed up.rsf" />
+			</Component>
+			<Component>
+				<File Id="filv2cKdtkZH3FWaDiDbaaCzm3W2Ys" KeyPath="yes" Source="$(var.SoundsSourceFolder)Speeding.rsf" />
+			</Component>
+			<Component>
+				<File Id="filbX8zTGQsQ_jgdOngj9glOrflwJ4" KeyPath="yes" Source="$(var.SoundsSourceFolder)Start up.rsf" />
+			</Component>
+			<Component>
+				<File Id="filJgrshSZUSqj4DvFqANI3ikreAwo" KeyPath="yes" Source="$(var.SoundsSourceFolder)Start.rsf" />
+			</Component>
+			<Component>
+				<File Id="filvlv6EQXNwa37Ipxp7FrSutMXrZM" KeyPath="yes" Source="$(var.SoundsSourceFolder)Stop.rsf" />
+			</Component>
+			<Component>
+				<File Id="filmRp.FDup8DTxgwzUDe9DHwNiP80" KeyPath="yes" Source="$(var.SoundsSourceFolder)T-rex roar.rsf" />
+			</Component>
+			<Component>
+				<File Id="filz1QgIYTOEdg.Ob0parDPmXvCew8" KeyPath="yes" Source="$(var.SoundsSourceFolder)Ten.rsf" />
+			</Component>
+			<Component>
+				<File Id="filWafSejeQfSCVJpqAgCaP8d3gwvI" KeyPath="yes" Source="$(var.SoundsSourceFolder)Thank you.rsf" />
+			</Component>
+			<Component>
+				<File Id="filQ8P5PbvaeDEghAJVN_Knnweyq5k" KeyPath="yes" Source="$(var.SoundsSourceFolder)Three.rsf" />
+			</Component>
+			<Component>
+				<File Id="filOGOCHtVDXubHVhclEiJpHzIHL1E" KeyPath="yes" Source="$(var.SoundsSourceFolder)Tick tack.rsf" />
+			</Component>
+			<Component>
+				<File Id="filqB0K4ksUtlqHCCIxARPqltFAGHU" KeyPath="yes" Source="$(var.SoundsSourceFolder)Touch.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil.y0Blx_pCiJVl9enBJIJWCajLHs" KeyPath="yes" Source="$(var.SoundsSourceFolder)Turn.rsf" />
+			</Component>
+			<Component>
+				<File Id="filV7pr4tSP.5HlPeMq2kJGPTmqeaw" KeyPath="yes" Source="$(var.SoundsSourceFolder)Two.rsf" />
+			</Component>
+			<Component>
+				<File Id="filIkriicT1s4Em0P1JCd0jt1uDZzE" KeyPath="yes" Source="$(var.SoundsSourceFolder)Uh-oh.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil8vjSOcz07FSG4VFr01HKVrzXfNg" KeyPath="yes" Source="$(var.SoundsSourceFolder)Up.rsf" />
+			</Component>
+			<Component>
+				<File Id="filhO_AraGaEVm_QcUIMmJhHcSpxGc" KeyPath="yes" Source="$(var.SoundsSourceFolder)Walk.rsf" />
+			</Component>
+			<Component>
+				<File Id="filiFbTaKU4DeOFgHHMHLeG4t77Lvk" KeyPath="yes" Source="$(var.SoundsSourceFolder)White.rsf" />
+			</Component>
+			<Component>
+				<File Id="filKh8B9t_S6tj.e6lJxczRctoZLaU" KeyPath="yes" Source="$(var.SoundsSourceFolder)Yellow.rsf" />
+			</Component>
+			<Component>
+				<File Id="fil59kUEAsAqnsIdiL2fbstJ7nbOCQ" KeyPath="yes" Source="$(var.SoundsSourceFolder)Yes.rsf" />
+			</Component>
+			<Component>
+				<File Id="file8mFrRhaDVZpTY8LXe5nZA81rRw" KeyPath="yes" Source="$(var.SoundsSourceFolder)Zero.rsf" />
+			</Component>
+		</ComponentGroup>
+    </Fragment>
+</Wix>

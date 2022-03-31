@@ -3,3 +3,5 @@
 .vs/
 packages/
 **/*.bak
+Mindstorms.Core/nuget.config
+Mindstorms.Core/publish.bat

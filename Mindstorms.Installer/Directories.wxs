@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<Directory Id="TARGETDIR"
+				   Name="SourceDir">
+			
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Mindstorms EV3">
+					<Directory Id="Resources" Name="Resources">
+						<Directory Id="Application" Name="Application" />
+						<Directory Id="Images" Name="Images" />
+						<Directory Id="Sounds" Name="Sounds" />
+					</Directory>
+				</Directory>
+				
+			</Directory>
+			
+			<Directory Id="DesktopFolder" SourceName="Desktop" />
+			
+		</Directory>
+	</Fragment>
+</Wix>

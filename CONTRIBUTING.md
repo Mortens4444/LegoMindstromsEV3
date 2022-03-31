@@ -12,7 +12,6 @@ New features / Bugfixes
 - Convert sound files (etc. wav, mp3) to rsf
 - Create Web interface
 - Create WPF interface
-- Create NuGet package from Mindstorms.Core
 - Extend command-line interface with more commands
 - Kernel update on EV3 devices (https://github.com/ev3dev/ev3-kernel)
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package >
+<package>
   <metadata>
     <id>Mindstorms.EV3</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Lego Mindstorms EV3</title>
     <authors>Mortens</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*"
+			 Name="Mindstorms EV3"
+			 Language="1033"
+			 Version="1.0.0.0"
+			 Manufacturer="Mortens"
+			 UpgradeCode="71068e10-ad56-4ab2-817b-a8e9042476bb">
+		
+		<Package InstallerVersion="200"
+				 Compressed="yes"
+				 InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature"
+				 Title="Mindstorms EV3"
+				 Level="1">
+
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="Application" />
+			<ComponentGroupRef Id="Images" />
+			<ComponentGroupRef Id="Sounds" />
+			
+		</Feature>
+	</Product>
+</Wix>
