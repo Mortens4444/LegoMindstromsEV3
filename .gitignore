@@ -5,3 +5,6 @@ packages/
 **/*.bak
 Mindstorms.Core/nuget.config
 Mindstorms.Core/publish.bat
+*.zip
+*.exe
+*.user
