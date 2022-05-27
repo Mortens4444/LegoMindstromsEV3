@@ -55,7 +55,7 @@ or
 brick.StopMotor(DaisyChainLayer.EV3, brick.Motors, BreakType.Break);
 ```
 
-##Using the screen
+## Using the screen
 
 Clear the screen
 ```
