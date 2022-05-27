@@ -1,4 +1,4 @@
-#Lego Mindstorms EV3 (Firmware: V1.09H)
+# Lego Mindstorms EV3 (Firmware: V1.09H)
 
 This application uses [Microsoft.DirectX.SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812) however can be disabled by editing the **Joystick** and **MindstromController** project properties or changing the configuration to ReleaseWithoutJoystick.
 Just remove the Conditional Compilation Symbol **USE_JOYSTICK** on the Build tab.
@@ -7,13 +7,13 @@ For those who want to contribute, please read the *CONTRIBUTING.md* in the root 
 
 Using the code in another solution shouldn't be hard. Just reference the **MindstormCore** project and use the following code snippet.
 
-##Connect to brick
+## Connect to brick
 ```
 var brick = new Brick("COM1"); // Note that you need to find the correct COM port to connect.
 brick.Connect();
 ```
 
-##Using the speaker
+## Using the speaker
 Play a melody
 ```
 brick.PlayMusic(new KisKeceLányom());
@@ -34,7 +34,7 @@ Play embedded sounds
 brick.PlaySound(EmbeddedSound.ElephantCall, PlayType.PlayOnce);
 ```
 
-##Using the motors
+## Using the motors
 
 Set motors
 ```
@@ -56,6 +56,7 @@ brick.StopMotor(DaisyChainLayer.EV3, brick.Motors, BreakType.Break);
 ```
 
 ##Using the screen
+
 Clear the screen
 ```
 brick.ClearScreen();
