@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Mindstorms.EV3</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Lego Mindstorms EV3</title>
     <authors>Mortens</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,12 +10,16 @@
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/Mortens4444/LegoMindstromsEV3</projectUrl>
     <description>Lego Mindstorms EV3 (Firmware: V1.09H)</description>
-    <releaseNotes>First release of the Lego Mindstorms EV3 nuget package.</releaseNotes>
+    <releaseNotes>Lego Mindstorms EV3 NuGet package.
+		1.0.2: NuGet package extended with Mindstorms.Game assembly and Utils depenedency assembly.
+		1.0.1: Wrong package - DO NOT USE IT!
+		1.0.0: Contains only Mindstorms.Core assembly.
+	</releaseNotes>
     <copyright>Copyright © 2022</copyright>
     <tags>Lego Mindstorms EV3 Mortens</tags>
 	<repository type="git" url="https://github.com/Mortens4444/LegoMindstromsEV3.git" branch="main" />
   </metadata>
   <files>
-    <file src="C:\Work\LegoMindstromsEV3\Mindstorms.Core\bin\Release\**" target="lib" />	
+	<file src="C:\Work\LegoMindstromsEV3\Mindstorms.Game\bin\Release\**" target="lib" />
   </files>
 </package>

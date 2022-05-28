@@ -1,10 +1,11 @@
 **/obj/
 **/bin/
+**/*.bak
+**/*.zip
+**/*.exe
+**/*.user
+**/*.nupkg
+**/nuget.config
+**/publish.bat
 .vs/
 packages/
-**/*.bak
-Mindstorms.Core/nuget.config
-Mindstorms.Core/publish.bat
-*.zip
-*.exe
-*.user

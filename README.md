@@ -98,3 +98,12 @@ Draw an *IEV3DrawingElement* on the screen
 ```
 brick.Draw(element, LCDColor.Black);
 ```
+
+Start a game
+```
+var snakeGameEngine = new SnakeGameEngine(brick);
+snakeGameEngine.GameLoop();
+or
+var circlesGameEngine = new CirclesGameEngine(brick);
+circlesGameEngine.GameLoop();
+```
