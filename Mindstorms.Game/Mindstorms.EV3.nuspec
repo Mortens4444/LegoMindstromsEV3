@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Mindstorms.EV3</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>Lego Mindstorms EV3</title>
     <authors>Mortens</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -11,6 +11,7 @@
     <projectUrl>https://github.com/Mortens4444/LegoMindstromsEV3</projectUrl>
     <description>Lego Mindstorms EV3 (Firmware: V1.09H)</description>
     <releaseNotes>Lego Mindstorms EV3 NuGet package.
+		1.0.3: Copy Resources content into consuming project bin folder.
 		1.0.2: NuGet package extended with Mindstorms.Game assembly and Utils depenedency assembly.
 		1.0.1: Wrong package - DO NOT USE IT!
 		1.0.0: Contains only Mindstorms.Core assembly.
@@ -18,8 +19,15 @@
     <copyright>Copyright © 2022</copyright>
     <tags>Lego Mindstorms EV3 Mortens</tags>
 	<repository type="git" url="https://github.com/Mortens4444/LegoMindstromsEV3.git" branch="main" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8" />
+    </dependencies>
+    <contentFiles>
+      <files include="bin\Release\Resources\**" buildAction="None" copyToOutput="true" />
+    </contentFiles>
   </metadata>
   <files>
-	<file src="C:\Work\LegoMindstromsEV3\Mindstorms.Game\bin\Release\**" target="lib" />
+	<file src="bin\Release\*" target="lib\net48" />
+	<file src="bin\Release\Resources\**" target="content\Resources" />
   </files>
 </package>
