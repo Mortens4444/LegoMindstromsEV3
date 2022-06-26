@@ -107,3 +107,5 @@ or
 var circlesGameEngine = new CirclesGameEngine(brick);
 circlesGameEngine.GameLoop();
 ```
+
+Note that if something goes wrong, press the Back, Left, and Center buttons on your EV3 device to restart it.
