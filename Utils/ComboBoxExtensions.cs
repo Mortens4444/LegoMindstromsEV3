@@ -38,5 +38,20 @@ namespace Utils
                 comboBox.SelectedIndex = selectedIndex;
             }
         }
+
+        public static object GetSelectedItemThreadSafe(this ComboBox comboBox)
+        {
+            try
+            {
+                return comboBox.Invoke((Func<object>)delegate
+                {
+                    return comboBox.SelectedItem;
+                });
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
