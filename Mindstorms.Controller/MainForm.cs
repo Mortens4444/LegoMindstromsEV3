@@ -309,9 +309,6 @@ namespace Mindstorms.Controller
                         var leftMotorSpeed = (sbyte)deltaY;
                         var rightMotorSpeed = (sbyte)(deltaY + deltaX);
                         Console.WriteLine($"Backward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
-                        
-                        
-
                         brick?.SetLargeMotorSpeed((DaisyChainLayer)cbDaisyChainLayer.GetSelectedItemThreadSafe(), new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                     },
                     (int deltaX, int deltaY) =>
