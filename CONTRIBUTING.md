@@ -1,5 +1,6 @@
 New features / Bugfixes
 -----------------------
+- Mobile application to control EV3
 - Use motors with degree
 - IR remote control
 - Mailbox
@@ -8,7 +9,7 @@ New features / Bugfixes
 - Recognize sensors (TouchSensor already works sometimes...)
 - Games (Skiing, Car race, Space invader, Flipper, Tetris, etc...)
 - Get a nice solution for the dirty hack in SnakeGameEngine (GameFrame.cs should be deleted and a DirectCommand should create the underlying application)
-- Implement USB, WiFi commnunication
+- Implement USB, WiFi communication
 - Convert sound files (etc. wav, mp3) to rsf
 - Create Web interface
 - Create WPF interface
