@@ -64,7 +64,8 @@ jobs:
 
     - run: |
         nuget restore
-        msbuild -property:Configuration=ReleaseWithoutJoystick
+        dotnet build /p:Configuration=ReleaseWithoutJoystick
+    #   msbuild -property:Configuration=ReleaseWithoutJoystick
     #   make bootstrap
     #   make release
 
