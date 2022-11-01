@@ -63,8 +63,9 @@ jobs:
     #    uses a compiled language
 
     - run: |
-        nuget restore
-        msbuild -property:Configuration=ReleaseWithoutJoystick
+        nuget restore /home/runner/work/LegoMindstromsEV3/LegoMindstromsEV3/LegoMindstromsEV3.sln -DisableParallelProcessing
+        msbuild /home/runner/work/LegoMindstromsEV3/LegoMindstromsEV3/LegoMindstromsEV3.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:Configuration="ReleaseWithoutJoystick" /p:MvcBuildViews=true
+    #   dotnet build /p:Configuration=ReleaseWithoutJoystick
     #   make bootstrap
     #   make release
 
