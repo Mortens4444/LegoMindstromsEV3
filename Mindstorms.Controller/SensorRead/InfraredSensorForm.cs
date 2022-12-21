@@ -44,16 +44,29 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                var distance = BitConverter.ToSingle(result, result.Length - 4);
-                                label1.Text = ((InfraredBeaconButtonsCombination)result[3]).ToString();
-                                label2.Text = ((InfraredBeaconButtonsCombination)result[4]).ToString();
-                                label3.Text = ((InfraredBeaconButtonsCombination)result[5]).ToString();
-                                label4.Text = ((InfraredBeaconButtonsCombination)result[6]).ToString();
+                                lblResult3.Text = result[3].ToString();
+                                lblResult4.Text = result[4].ToString();
+                                lblResult5.Text = result[5].ToString();
+                                lblResult6.Text = result[6].ToString();
 
-                                lblResult.Text = $"Distance: {distance}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                if (sensorMode == InfraredSensorMode.ProximityMode)
+                                {
+                                    var disctanceInCm = 0.7 * result[3];
+                                    lblResult.Text = $"Distance (cm): {disctanceInCm}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                }
+                                else if (sensorMode == InfraredSensorMode.InfraredSeekerMode)
+                                {
+                                    var disctanceInCm = 2 * result[3];
+                                    int direction = result[4]; // (-25) - 25
+                                    lblResult.Text = $"Distance (cm): {disctanceInCm}{Environment.NewLine}Direction: {direction}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                }
+                                else
+                                {
+                                    lblResult.Text = $"Raw data: {String.Join(" ", result)}";
+                                }                                
                             }));
                         }
-                        Thread.Sleep(100);
+                        Thread.Sleep(300);
                     }
                 });
             }

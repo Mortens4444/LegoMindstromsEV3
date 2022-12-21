@@ -368,7 +368,10 @@ namespace Mindstorms.Controller
 #if USE_JOYSTICK
             StickHandler.StopJoystick(joystickPollCancellationTokenSource);
 #endif
-            brick?.Execute(new ProgramStop());
+            if (brick?.IsConnected ?? false)
+            {
+                brick.Execute(new ProgramStop());
+            }
         }
 
         private void BtnMouseUp(object sender, MouseEventArgs e)
