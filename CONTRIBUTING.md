@@ -15,6 +15,7 @@ New features / Bugfixes
 - Create WPF interface
 - Extend command-line interface with more commands
 - Kernel update on EV3 devices (https://github.com/ev3dev/ev3-kernel)
+- Use docker host machine serial ports in  docker container
 
 Other EV3 projects
 ------------------

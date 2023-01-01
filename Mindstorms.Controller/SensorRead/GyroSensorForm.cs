@@ -44,8 +44,7 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                var value = BitConverter.ToSingle(result, result.Length - 4);
-                                lblResult.Text = $"{sensorMode}: {value}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                lblResult.Text = $"{sensorMode}: {result}";
                             }));
                         }
                         Thread.Sleep(100);

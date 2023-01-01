@@ -45,9 +45,8 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                var value = BitConverter.ToSingle(result, result.Length - 4);
-                                var text = sensorMode == LightSensorMode.MeasuringColors ? ((SensorColor)value).ToString() : value.ToString();
-                                lblResult.Text = $"{sensorMode}: {text}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                var text = sensorMode == LightSensorMode.MeasuringColors ? ((SensorColor)result).ToString() : result.ToString();
+                                lblResult.Text = $"{sensorMode}: {text}";
                             }));
                         }
                         Thread.Sleep(100);

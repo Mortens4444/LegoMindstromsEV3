@@ -45,17 +45,15 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                var value = BitConverter.ToSingle(result, result.Length - 4);
                                 if (sensorMode == TouchSensorMode.Touch)
                                 {
-                                    var pressed = value != 0;
+                                    var pressed = result != 0;
                                     lblResult.Text = pressed ? "Pressed" : "Released";
                                 }
                                 else
                                 {
-                                    lblResult.Text = $"Bump count: {value}";
+                                    lblResult.Text = $"Bump count: {result}";
                                 }
-                                lblResult.Text += $"{Environment.NewLine}Raw data: {String.Join(" ", result)}";
                             }));
                         }
                         Thread.Sleep(100);

@@ -1,0 +1,5 @@
+FROM --platform=windows/x86-64 mcr.microsoft.com/dotnet/framework/runtime:4.8.1-windowsservercore-ltsc2022
+WORKDIR /ev3-cli
+
+COPY ./bin/Release ./
+ENTRYPOINT ["ev3-cli.exe"]

@@ -32,10 +32,7 @@
             this.gbLightSensor = new System.Windows.Forms.GroupBox();
             this.lblDaisyChainLayer = new System.Windows.Forms.Label();
             this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
-            this.lblResult6 = new System.Windows.Forms.Label();
-            this.lblResult5 = new System.Windows.Forms.Label();
-            this.lblResult4 = new System.Windows.Forms.Label();
-            this.lblResult3 = new System.Windows.Forms.Label();
+            this.lblRawResult = new System.Windows.Forms.Label();
             this.btnLong = new System.Windows.Forms.Button();
             this.btnBlueLower = new System.Windows.Forms.Button();
             this.btnBlueUpper = new System.Windows.Forms.Button();
@@ -64,10 +61,7 @@
             // 
             this.gbLightSensor.Controls.Add(this.lblDaisyChainLayer);
             this.gbLightSensor.Controls.Add(this.cbDaisyChainLayer);
-            this.gbLightSensor.Controls.Add(this.lblResult6);
-            this.gbLightSensor.Controls.Add(this.lblResult5);
-            this.gbLightSensor.Controls.Add(this.lblResult4);
-            this.gbLightSensor.Controls.Add(this.lblResult3);
+            this.gbLightSensor.Controls.Add(this.lblRawResult);
             this.gbLightSensor.Controls.Add(this.btnLong);
             this.gbLightSensor.Controls.Add(this.btnBlueLower);
             this.gbLightSensor.Controls.Add(this.btnBlueUpper);
@@ -104,41 +98,14 @@
             this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
             this.cbDaisyChainLayer.TabIndex = 21;
             // 
-            // lblResult6
+            // lblRawResult
             // 
-            this.lblResult6.AutoSize = true;
-            this.lblResult6.Location = new System.Drawing.Point(12, 189);
-            this.lblResult6.Name = "lblResult6";
-            this.lblResult6.Size = new System.Drawing.Size(49, 13);
-            this.lblResult6.TabIndex = 20;
-            this.lblResult6.Text = "Result[6]";
-            // 
-            // lblResult5
-            // 
-            this.lblResult5.AutoSize = true;
-            this.lblResult5.Location = new System.Drawing.Point(12, 158);
-            this.lblResult5.Name = "lblResult5";
-            this.lblResult5.Size = new System.Drawing.Size(49, 13);
-            this.lblResult5.TabIndex = 19;
-            this.lblResult5.Text = "Result[5]";
-            // 
-            // lblResult4
-            // 
-            this.lblResult4.AutoSize = true;
-            this.lblResult4.Location = new System.Drawing.Point(12, 129);
-            this.lblResult4.Name = "lblResult4";
-            this.lblResult4.Size = new System.Drawing.Size(49, 13);
-            this.lblResult4.TabIndex = 18;
-            this.lblResult4.Text = "Result[4]";
-            // 
-            // lblResult3
-            // 
-            this.lblResult3.AutoSize = true;
-            this.lblResult3.Location = new System.Drawing.Point(12, 100);
-            this.lblResult3.Name = "lblResult3";
-            this.lblResult3.Size = new System.Drawing.Size(49, 13);
-            this.lblResult3.TabIndex = 17;
-            this.lblResult3.Text = "Result[3]";
+            this.lblRawResult.AutoSize = true;
+            this.lblRawResult.Location = new System.Drawing.Point(12, 100);
+            this.lblRawResult.Name = "lblRawResult";
+            this.lblRawResult.Size = new System.Drawing.Size(59, 13);
+            this.lblRawResult.TabIndex = 17;
+            this.lblRawResult.Text = "RawResult";
             // 
             // btnLong
             // 
@@ -267,10 +234,7 @@
         private System.Windows.Forms.Button btnRedLower;
         private System.Windows.Forms.Button btnRedUpper;
         private System.Windows.Forms.Button btnLong;
-        private System.Windows.Forms.Label lblResult6;
-        private System.Windows.Forms.Label lblResult5;
-        private System.Windows.Forms.Label lblResult4;
-        private System.Windows.Forms.Label lblResult3;
+        private System.Windows.Forms.Label lblRawResult;
         private System.Windows.Forms.Label lblDaisyChainLayer;
         private System.Windows.Forms.ComboBox cbDaisyChainLayer;
     }

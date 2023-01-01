@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExecutor.cs" />
+    <Compile Include="Commands\PortList.cs" />
     <Compile Include="Commands\Exit.cs" />
     <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\LCD.cs" />

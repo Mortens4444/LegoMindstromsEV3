@@ -44,8 +44,7 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                var distance = BitConverter.ToSingle(result, result.Length - 4);
-                                lblResult.Text = $"Distance: {distance}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
+                                lblResult.Text = $"Distance: {result}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
                             }));
                         }
                         Thread.Sleep(100);

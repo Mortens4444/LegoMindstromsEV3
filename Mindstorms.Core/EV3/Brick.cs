@@ -235,6 +235,12 @@ namespace Mindstorms.Core.EV3
 
         #region Sensor
 
+        public string GetSensorName(DaisyChainLayer daisyChainLayer, SensorPort sensorPort)
+        {
+            var response = Execute(new GetName(sensorPort, daisyChainLayer));
+            return response.GetResponseAsString();
+        }
+
         public void FollowLine(DaisyChainLayer daisyChainLayer, SensorPort sensorPort)
         {
             var result = Execute(new InputRead(daisyChainLayer, sensorPort));
@@ -284,34 +290,35 @@ namespace Mindstorms.Core.EV3
             return (SensorPort)sensorPorts[0];
         }
 
-        public byte[] ReadGyroSensor(SensorPort sensorPort, GyroSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
+        public float ReadGyroSensor(SensorPort sensorPort, GyroSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadGyroSensor(sensorPort, sensorMode, daisyChainLayer));
-            return response.RawResponseData;
+            return ExecuteSensorCommand(new ReadGyroSensor(sensorPort, sensorMode, daisyChainLayer));
         }
 
-        public byte[] ReadLightSensor(SensorPort sensorPort, LightSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
+        public float ReadLightSensor(SensorPort sensorPort, LightSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadLightSensor(sensorPort, sensorMode, daisyChainLayer));
-            return response.RawResponseData;
+            return ExecuteSensorCommand(new ReadLightSensor(sensorPort, sensorMode, daisyChainLayer));
         }
 
-        public byte[] ReadTouchSensor(SensorPort sensorPort, TouchSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
+        public float ReadTouchSensor(SensorPort sensorPort, TouchSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadTouchSensor(sensorPort, sensorMode, daisyChainLayer));
-            return response.RawResponseData;
+            return ExecuteSensorCommand(new ReadTouchSensor(sensorPort, sensorMode, daisyChainLayer));
         }
 
-        public byte[] ReadUltrasonicSensor(SensorPort sensorPort, UltrasonicSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
+        public float ReadUltrasonicSensor(SensorPort sensorPort, UltrasonicSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadUltrasonicSensor(sensorPort, sensorMode, daisyChainLayer));
-            return response.RawResponseData;
+            return ExecuteSensorCommand(new ReadUltrasonicSensor(sensorPort, sensorMode, daisyChainLayer));
         }
 
-        public byte[] ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
+        public float ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            var response = Execute(new ReadInfraredSensor(sensorPort, sensorMode, daisyChainLayer));
-            return response.RawResponseData;
+            return ExecuteSensorCommand(new ReadInfraredSensor(sensorPort, sensorMode, daisyChainLayer));
+        }
+
+        private float ExecuteSensorCommand(SensorRead sensorReadCommand)
+        {
+            var response = Execute(sensorReadCommand);
+            return sensorReadCommand.GetResult(response.RawResponseData);
         }
 
         #endregion

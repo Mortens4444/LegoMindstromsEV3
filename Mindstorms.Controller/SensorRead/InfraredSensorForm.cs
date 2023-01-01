@@ -44,20 +44,17 @@ namespace Mindstorms.Controller.SensorRead
                         {
                             Invoke(new Action(() =>
                             {
-                                lblResult3.Text = result[3].ToString();
-                                lblResult4.Text = result[4].ToString();
-                                lblResult5.Text = result[5].ToString();
-                                lblResult6.Text = result[6].ToString();
+                                lblRawResult.Text = result.ToString();
 
                                 if (sensorMode == InfraredSensorMode.ProximityMode)
                                 {
-                                    var disctanceInCm = 0.7 * result[3];
+                                    var disctanceInCm = 0.7 * result;
                                     lblResult.Text = $"Distance (cm): {disctanceInCm}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
                                 }
                                 else if (sensorMode == InfraredSensorMode.InfraredSeekerMode)
                                 {
-                                    var disctanceInCm = 2 * result[3];
-                                    int direction = result[4]; // (-25) - 25
+                                    var disctanceInCm = 2 * result;
+                                    int direction = 0; // (-25) - 25
                                     lblResult.Text = $"Distance (cm): {disctanceInCm}{Environment.NewLine}Direction: {direction}{Environment.NewLine}Raw data: {String.Join(" ", result)}";
                                 }
                                 else

@@ -14,7 +14,10 @@ namespace Mindstorms.CLI
             while (processCommand)
             {
                 var command = Console.ReadLine();
-                commandExecutor.Execute(command);
+                if (!String.IsNullOrWhiteSpace(command))
+                {
+                    commandExecutor.Execute(command);
+                }
 
                 Thread.Sleep(100);
             }

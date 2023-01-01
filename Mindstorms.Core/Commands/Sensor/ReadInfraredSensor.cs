@@ -7,7 +7,7 @@ namespace Mindstorms.Core.Commands.Motor
     {
         public ReadInfraredSensor(SensorPort sensorPort, InfraredSensorMode sensorMode, DaisyChainLayer daisyChainLayer)
         {
-            data = GetData(sensorPort, SensorType.IR, sensorMode, InputSubCode.ReadyRaw, daisyChainLayer);
+            data = GetData(sensorPort, SensorType.IR, sensorMode, InputSubCode.ReadyRaw, daisyChainLayer, 2);
         }
     }
 }

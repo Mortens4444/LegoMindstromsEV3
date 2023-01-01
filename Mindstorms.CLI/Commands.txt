@@ -1,4 +1,8 @@
-﻿connect port
+﻿portlist
+	- Get the serial port names for the current computer.
+	- Ex.: portlist
+
+connect port
 	- Connect to EV3 device on port. This is the first command which must be called.
 	- Ex.: connect COM4
 
