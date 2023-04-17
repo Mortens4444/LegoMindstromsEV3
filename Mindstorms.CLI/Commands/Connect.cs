@@ -11,7 +11,8 @@ namespace Mindstorms.CLI.Commands
 
         public void Action(ref Brick brick, IEnumerable<string> arguments)
         {
-            brick = new Brick(arguments.First());
+            var args = arguments.ToList();
+            brick = args.Count == 1 ? new Brick(args[0]) : new Brick(args[0], args[1]);
             brick.Connect();
             Console.WriteLine("Succesfully connected.");
         }

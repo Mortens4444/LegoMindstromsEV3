@@ -19,5 +19,7 @@ namespace Mindstorms.Core
         public const string SoundFileExtension = ".rsf";
 
         public const string BinaryFileExtension = ".rbf";
+
+        public const int ReadWriteTimeout = 10000;
     }
 }

@@ -23,7 +23,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -36,8 +35,8 @@ namespace Mindstorms.Core.EV3
     {
         #region Members
 
-        private readonly SerialPort comPort = null;
-        private const int ReadWriteTimeout = 10000;
+        private readonly IDeviceConnection deviceConnection;
+
         private int sendingData = 0;
         private ushort messageCounter = 1;
         private readonly object soundPlayLock = new object();
@@ -74,12 +73,12 @@ namespace Mindstorms.Core.EV3
 
         public Brick(string port)
         {
-            comPort = new SerialPort(port, 115200)
-            {
-                WriteTimeout = ReadWriteTimeout,
-                ReadTimeout = ReadWriteTimeout
-            };
-            comPort.ErrorReceived += ComPort_ErrorReceived;
+            deviceConnection = new ComDeviceConnection(port);
+        }
+
+        public Brick(string machine, string pipeName)
+        {
+            deviceConnection = new NamedPipeClientStreamDeviceConnection(machine, pipeName);
         }
 
         public void SetMotors(OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
@@ -87,11 +86,6 @@ namespace Mindstorms.Core.EV3
             LeftMotor = leftMotor;
             RightMotor = rightMotor;
             LeverMotor = leverMotor;
-        }
-
-        private void ComPort_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
-        {
-            throw new Exception($"Error Received from brick: {e.EventType}. Details: {e}");
         }
 
         #endregion
@@ -102,15 +96,7 @@ namespace Mindstorms.Core.EV3
         {
             if (!IsConnected)
             {
-                try
-                {
-                    comPort.Open();
-                }
-                catch
-                {
-                    // Sometimes the first attempt to connect fails.
-                    comPort.Open();
-                }
+                deviceConnection.Connect();
                 IsConnected = true;
 
                 var reply = Execute(new GetVolume());
@@ -122,7 +108,7 @@ namespace Mindstorms.Core.EV3
         {
             if (IsConnected)
             {
-                comPort.Close();
+                deviceConnection.Disconnect();
                 IsConnected = false;
             }
         }
@@ -859,9 +845,9 @@ namespace Mindstorms.Core.EV3
                     var messageCounterBytes = BitConverter.GetBytes(messageCounter);
                     var dataToSendLength = BitConverter.GetBytes((ushort)(command.Data.Length + messageCounterBytes.Length));
 
-                    comPort.Write(dataToSendLength, 0, dataToSendLength.Length);
-                    comPort.Write(messageCounterBytes, 0, messageCounterBytes.Length);
-                    comPort.Write(command.Data, 0, command.Data.Length);
+                    deviceConnection.Write(dataToSendLength, 0, dataToSendLength.Length);
+                    deviceConnection.Write(messageCounterBytes, 0, messageCounterBytes.Length);
+                    deviceConnection.Write(command.Data, 0, command.Data.Length);
                     sendingData = 0;
 
                     if (command.IsResponseRequired())
@@ -902,10 +888,10 @@ namespace Mindstorms.Core.EV3
         private byte[] Receive()
         {
             var data = new byte[2];
-            _ = comPort.Read(data, 0, 2);
+            _ = deviceConnection.Read(data, 0, 2);
             var expectedlength = (ushort)(0x0000 | data[0] | (data[1] << 8));
             var payload = new byte[expectedlength];
-            _ = comPort.Read(payload, 0, expectedlength);
+            _ = deviceConnection.Read(payload, 0, expectedlength);
             return payload;
         }
 
@@ -931,7 +917,7 @@ namespace Mindstorms.Core.EV3
             {
                 if (disposing)
                 {
-                    comPort.Dispose();
+                    deviceConnection.Dispose();
                 }
 
                 disposed = true;

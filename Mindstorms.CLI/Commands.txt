@@ -3,8 +3,12 @@
 	- Ex.: portlist
 
 connect port
-	- Connect to EV3 device on port. This is the first command which must be called.
-	- Ex.: connect COM4
+	- Connect to EV3 device with COM port. This is the first command which must be called.
+	- Ex.: connect COM4 
+
+connect machine port
+	- Connect to EV3 device with naned pipe. This is the first command which must be called.
+	- Ex.: connect . COM4
 
 disconnect
 	- Disconnect from EV3 device. This is the last command which must be called.
