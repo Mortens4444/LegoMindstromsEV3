@@ -10,17 +10,10 @@ internal class Help : ICliCommand
 
     public void Action(ref Brick? brick, IList<string> arguments)
     {
-        if (brick == null)
+        var lines = File.ReadAllLines("Commands.txt");
+        foreach (var line in lines)
         {
-            Console.Error.WriteLine("Use 'connect' before this command.");
-        }
-        else
-        {
-            var lines = File.ReadAllLines("Commands.txt");
-            foreach (var line in lines)
-            {
-                Console.WriteLine(line);
-            }
+            Console.WriteLine(line);
         }
     }
 }
