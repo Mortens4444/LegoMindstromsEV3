@@ -1,15 +1,12 @@
-﻿using System;
+﻿namespace Mindstorms.Core.EV3;
 
-namespace Mindstorms.Core.EV3
+public interface IDeviceConnection : IDisposable
 {
-    public interface IDeviceConnection : IDisposable
-    {
-        void Connect();
+    void Connect();
 
-        void Disconnect();
+    void Disconnect();
 
-        int Read(byte[] buffer, int offset, int count);
+    int Read(byte[] buffer, int offset, int count);
 
-        void Write(byte[] buffer, int offset, int count);
-    }
+    void Write(byte[] buffer, int offset, int count);
 }

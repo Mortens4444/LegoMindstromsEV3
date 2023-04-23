@@ -1,17 +1,23 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Mindstorms.CLI.Commands
+namespace Mindstorms.CLI.Commands;
+
+internal class Led : ICliCommand
 {
-    internal class Led : ICliCommand
-    {
-        public string Name => nameof(Led);
+    public string Name => nameof(Led);
 
-        public void Action(ref Brick brick, IEnumerable<string> arguments)
+    public List<string> Aliases => new();
+
+    public void Action(ref Brick? brick, IList<string> arguments)
+    {
+        if (brick == null)
         {
-            var ledPattern = LedPattern.Parse(arguments.ElementAt(0));
+            Console.Error.WriteLine("Use 'connect' before this command.");
+        }
+        else
+        {
+            var ledPattern = LedPattern.Parse(arguments[0]) ?? LedPattern.OrangePulse;
             brick.ChangeLedsState(ledPattern);
         }
     }

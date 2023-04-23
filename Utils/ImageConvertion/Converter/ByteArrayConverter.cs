@@ -1,14 +1,12 @@
-﻿using System.Drawing;
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 
-namespace Utils.ImageConvertion.Converter
+namespace Utils.ImageConvertion.Converter;
+
+public abstract class ByteArrayConverter
 {
-    public abstract class ByteArrayConverter
+    protected static BitmapData GetBitmapData(Bitmap bitmap)
     {
-        protected static BitmapData GetBitmapData(Bitmap bitmap)
-        {
-            var lockBitsRectangle = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
-            return bitmap.LockBits(lockBitsRectangle, ImageLockMode.ReadOnly, bitmap.PixelFormat);
-        }
+        var lockBitsRectangle = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+        return bitmap.LockBits(lockBitsRectangle, ImageLockMode.ReadOnly, bitmap.PixelFormat);
     }
 }

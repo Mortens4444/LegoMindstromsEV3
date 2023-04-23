@@ -1,12 +1,12 @@
 ﻿using Mindstorms.Core.EV3;
-using System.Collections.Generic;
 
-namespace Mindstorms.CLI.Commands
+namespace Mindstorms.CLI.Commands;
+
+internal interface ICliCommand
 {
-    internal interface ICliCommand
-    {
-        string Name { get; }
+    string Name { get; }
 
-        void Action(ref Brick brick, IEnumerable<string> arguments);
-    }
+    List<string> Aliases { get; }
+
+    void Action(ref Brick? brick, IList<string> arguments);
 }

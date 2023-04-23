@@ -1,39 +1,53 @@
-﻿using System;
+﻿namespace Mindstorms.Core.Music;
 
-namespace Mindstorms.Core.Music
+public abstract class Note
 {
-    public abstract class Note
+    /// <summary>
+    /// In air on 20°C
+    /// </summary>
+    private const double SpeedOfSoundMetersPerSecond = 343.2;
+
+    /// <summary>
+    /// Name of the note.
+    /// </summary>
+    public string Name { get; }
+
+    public NoteType NoteType { get; }
+
+    public int SemitoneDeviation { get; }
+
+    /// <summary>
+    /// Wave length in meters.
+    /// </summary>
+    public virtual double WaveLength => SpeedOfSoundMetersPerSecond / Frequency;
+
+    /// <summary>
+    /// Frequency in Hertz.
+    /// </summary>
+    public virtual double Frequency => FundamentalFrequency * (2 ^ (SemitoneDeviation / 12));
+
+    public double FundamentalFrequency { get; set; } = 440;
+
+    public Note(NoteType noteType)
     {
-        /// <summary>
-        /// Name of the note.
-        /// </summary>
-        public string Name { get; protected set; }
+        Name = "Pause";
+        NoteType = noteType;
+    }
 
-        /// <summary>
-        /// Frequency in Hertz.
-        /// </summary>
-        public double Frequency { get; protected set; }
+    public Note(NoteType noteType, int semitoneDeviation)
+    {
+        SemitoneDeviation = semitoneDeviation;
+        Name = MusicalScale.NoteNames[semitoneDeviation];
+        NoteType = noteType;
+    }
 
-        /// <summary>
-        /// Wave length in centimeters.
-        /// </summary>
-        public double WaveLength { get; protected set; }
+    public static implicit operator ushort(Note value)
+    {
+        return (ushort)Math.Round(value.Frequency);
+    }
 
-        public NoteType NoteType { get; }
-
-        public Note(NoteType noteType)
-        {
-            NoteType = noteType;
-        }
-
-        public static implicit operator ushort(Note value)
-        {
-            return (ushort)Math.Round(value.Frequency);
-        }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+    public override string ToString()
+    {
+        return Name;
     }
 }

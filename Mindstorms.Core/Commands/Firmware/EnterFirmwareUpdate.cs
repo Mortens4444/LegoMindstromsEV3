@@ -1,14 +1,13 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Firmware
+namespace Mindstorms.Core.Commands.Firmware;
+
+public class EnterFirmwareUpdate : Command
 {
-    public class EnterFirmwareUpdate : Command
-    {
 #warning This command must be tested.
-        public EnterFirmwareUpdate()
-        {
-            data = SystemCommandNoReply;
-            data.Add(SystemCommand.EnterFirmwareUpdate);
-        }
+    public EnterFirmwareUpdate()
+    {
+        data = SystemCommandNoReply;
+        data.Add(SystemCommand.EnterFirmwareUpdate);
     }
 }

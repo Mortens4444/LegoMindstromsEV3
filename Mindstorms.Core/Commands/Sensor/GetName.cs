@@ -1,21 +1,20 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Sensor
+namespace Mindstorms.Core.Commands.Sensor;
+
+public class GetName : Command
 {
-    public class GetName : Command
+    public GetName(byte sensorPort, DaisyChainLayer daisyChainLayer)
     {
-        public GetName(byte sensorPort, DaisyChainLayer daisyChainLayer)
+        data = GetDirectCommandWithReply(Constants.DefaultStringLength);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(Constants.DefaultStringLength);
-            data.AddRange(new byte[]
-            {
-                OpCode.InputDevice,
-                InputSubCode.GetName,
-                daisyChainLayer,
-                sensorPort,
-                Constants.DefaultStringLength,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.InputDevice,
+            InputSubCode.GetName,
+            daisyChainLayer,
+            sensorPort,
+            Constants.DefaultStringLength,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

@@ -1,34 +1,37 @@
 ﻿using Mindstorms.Core;
 using Mindstorms.Core.Enums;
 using Mindstorms.Core.EV3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Mindstorms.CLI.Commands
+namespace Mindstorms.CLI.Commands;
+
+internal class Motor : ICliCommand
 {
-    internal class Motor : ICliCommand
+    public string Name => nameof(Motor);
+
+    public List<string> Aliases => new() { "engine" };
+
+    public void Action(ref Brick? brick, IList<string> arguments)
     {
-        public string Name => nameof(Motor);
-
-        public void Action(ref Brick brick, IEnumerable<string> arguments)
+        if (brick == null)
         {
-            var subCommand = arguments.ElementAt(0).ToLower();
-            var ouputPort = OutputPort.Parse(arguments.ElementAt(1));
-
-            DaisyChainLayer daisyChainLayer = arguments.Count() > 3 ? DaisyChainLayer.Parse(arguments.ElementAt(3)) : DaisyChainLayer.EV3;
-            SetMotorSpeedParams setMotorSpeedParams;
+            Console.Error.WriteLine("Use 'connect' before this command.");
+        }
+        else
+        {
+            var subCommand = arguments[0].ToLower();
+            var ouputPort = OutputPort.Parse(arguments[1]) ?? OutputPort.BC;
+            var daisyChainLayer = DaisyChainLayer.Parse(arguments[3]) ?? DaisyChainLayer.EV3;
 
             switch (subCommand)
             {
                 case "start":
-                    var speed = Convert.ToSByte(arguments.ElementAt(2));
-                    setMotorSpeedParams = new SetMotorSpeedParams(ouputPort, speed);
+                    var speed = Convert.ToSByte(arguments[2]);
+                    var setMotorSpeedParams = new SetMotorSpeedParams(ouputPort, speed);
                     brick.SetLargeMotorSpeed(daisyChainLayer, setMotorSpeedParams);
                     break;
 
                 case "stop":
-                    var breakType = BreakType.Parse(arguments.ElementAt(2));
+                    var breakType = BreakType.Parse(arguments[2]) ?? BreakType.Break;
                     brick.StopMotor(daisyChainLayer, ouputPort, breakType);
                     break;
             }

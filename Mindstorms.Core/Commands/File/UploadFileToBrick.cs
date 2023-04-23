@@ -1,16 +1,15 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.Extensions;
 
-namespace Mindstorms.Core.Commands.File
+namespace Mindstorms.Core.Commands.File;
+
+public class UploadFileToBrick : Command
 {
-    public class UploadFileToBrick : Command
+    public UploadFileToBrick(string destinationFilePath, int fileSize)
     {
-        public UploadFileToBrick(string destinationFilePath, int fileSize)
-        {
-            data = SystemCommandWithReply;
-            data.Add(SystemCommand.BeginFileDownload);
-            data.Append(fileSize);
-            data.Append(destinationFilePath);
-        }
+        data = SystemCommandWithReply;
+        data.Add(SystemCommand.BeginFileDownload);
+        data.Append(fileSize);
+        data.Append(destinationFilePath);
     }
 }

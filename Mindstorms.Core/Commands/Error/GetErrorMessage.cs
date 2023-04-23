@@ -1,20 +1,19 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Error
+namespace Mindstorms.Core.Commands.Error;
+
+public class GetErrorMessage : Command
 {
-    public class GetErrorMessage : Command
+    public GetErrorMessage(byte errrorCode)
     {
-        public GetErrorMessage(byte errrorCode)
+        data = GetDirectCommandWithReply(Constants.DefaultStringLength);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(Constants.DefaultStringLength);
-            data.AddRange(new byte[]
-            {
-                OpCode.Info,
-                InfoSubCode.GetErrorText,
-                errrorCode,
-                Constants.DefaultStringLength,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.Info,
+            InfoSubCode.GetErrorText,
+            errrorCode,
+            Constants.DefaultStringLength,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

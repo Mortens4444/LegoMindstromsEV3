@@ -1,13 +1,12 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Program
+namespace Mindstorms.Core.Commands.Program;
+
+public class Stop : StopBase
 {
-    public class Stop : StopBase
-    {
-        /// <summary>
-        /// Stops all running application.
-        /// </summary>
-        public Stop() : base(ProgramSlot.User)
-        { }
-    }
+    /// <summary>
+    /// Stops all running application.
+    /// </summary>
+    public Stop() : base(ProgramSlot.User)
+    { }
 }

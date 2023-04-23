@@ -1,23 +1,22 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Button
+namespace Mindstorms.Core.Commands.Button;
+
+public class PressButton : Command
 {
-    public class PressButton : Command
-    {
 #warning This command must be tested.
 
-        public PressButton(ButtonType button)
+    public PressButton(ButtonType button)
+    {
+        data = DirectCommandNoReply;
+        data.AddRange(new byte[]
         {
-            data = DirectCommandNoReply;
-            data.AddRange(new byte[]
-            {
-                OpCode.Button,
-                ButtonEvent.Press,
-                button,
+            OpCode.Button,
+            ButtonEvent.Press,
+            button,
 
-                OpCode.Button,
-                ButtonEvent.WaitForPress
-            });
-        }
+            OpCode.Button,
+            ButtonEvent.WaitForPress
+        });
     }
 }

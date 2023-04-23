@@ -1,9 +1,8 @@
-﻿namespace Mindstorms.Game.General
-{
-    public interface IDirectable
-    {
-        Direction Direction { get; }
+﻿namespace Mindstorms.Game.General;
 
-        void ChangeDirection(Direction newDirection);
-    }
+public interface IDirectable
+{
+    Direction Direction { get; }
+
+    void ChangeDirection(Direction newDirection);
 }

@@ -1,12 +1,11 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Mathematics.Arithmetic
+namespace Mindstorms.Core.Commands.Mathematics.Arithmetic;
+
+public class Ceil : OneOperatorOperand
 {
-    public class Ceil : OneOperatorOperand
+    public Ceil(float value)
+        : base(value, MathSubCode.Ceil)
     {
-        public Ceil(float value)
-            : base(value, MathSubCode.Ceil)
-        {
-        }
     }
 }

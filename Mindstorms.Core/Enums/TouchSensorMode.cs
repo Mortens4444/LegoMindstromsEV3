@@ -1,23 +1,22 @@
-﻿namespace Mindstorms.Core.Enums
+﻿namespace Mindstorms.Core.Enums;
+
+public class TouchSensorMode : EnumLikeObject<TouchSensorMode>
 {
-    public class TouchSensorMode : EnumLikeObject<TouchSensorMode>
+	public static readonly TouchSensorMode Touch = new(UARTMode.Mode0, nameof(Touch));
+	public static readonly TouchSensorMode Bump = new(UARTMode.Mode1, nameof(Bump));
+
+	private TouchSensorMode(byte value, string name) : base(value, name)
 	{
-		public static readonly TouchSensorMode Touch = new TouchSensorMode(UARTMode.Mode0, nameof(Touch));
-		public static readonly TouchSensorMode Bump = new TouchSensorMode(UARTMode.Mode1, nameof(Bump));
+		Values.Add(value, this);
+	}
 
-		private TouchSensorMode(byte value, string name) : base(value, name)
-		{
-			Values.Add(value, this);
-		}
+	public static implicit operator TouchSensorMode(byte value)
+	{
+		return Values[value];
+	}
 
-		public static implicit operator TouchSensorMode(byte value)
-		{
-			return Values[value];
-		}
-
-		public static implicit operator byte(TouchSensorMode value)
-		{
-			return value.Value;
-		}
-	};
-}
+	public static implicit operator byte(TouchSensorMode value)
+	{
+		return value.Value;
+	}
+};

@@ -2,27 +2,26 @@
 using Mindstorms.Core.Extensions;
 using System.Collections.Generic;
 
-namespace Mindstorms.Core.Commands.System
+namespace Mindstorms.Core.Commands.System;
+
+public class SetPin : Command
 {
-    public class SetPin : Command
-    {
 #warning This command must be tested.
-        public SetPin(CommunicationInterface communicationInterface, string brickName, string pinCode)
+    public SetPin(CommunicationInterface communicationInterface, string brickName, string pinCode)
+    {
+        data = new List<byte>
         {
-            data = new List<byte>
-            {
-                CommandType.DirectCommand | Response.NotExpected,
-                0,
-                0x0C,
+            CommandType.DirectCommand | Response.NotExpected,
+            0,
+            0x0C,
 
-                OpCode.ComSet,
-                ComSetSubCommand.SetPin,
+            OpCode.ComSet,
+            ComSetSubCommand.SetPin,
 
-                communicationInterface
-            };
-            //data.AppendOneBytesParameter((byte)communicationInterface);
-            data.AppendStringParameter(brickName);
-            data.AppendStringParameter(pinCode);
-        }
+            communicationInterface
+        };
+        //data.AppendOneBytesParameter((byte)communicationInterface);
+        data.AppendStringParameter(brickName);
+        data.AppendStringParameter(pinCode);
     }
 }

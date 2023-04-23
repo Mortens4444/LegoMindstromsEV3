@@ -10,4 +10,51 @@
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="ButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DeviceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FileReaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FileSystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ImageConverterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MotorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SensorRead\GyroSensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SensorRead\InfraredSensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SensorRead\LightSensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SensorRead\TouchSensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SensorRead\UltrasonicSensorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SoundRecorderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SpeakerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

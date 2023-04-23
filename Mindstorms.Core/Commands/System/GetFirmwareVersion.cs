@@ -1,19 +1,18 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.System
+namespace Mindstorms.Core.Commands.System;
+
+public class GetFirmwareVersion : Command
 {
-    public class GetFirmwareVersion : Command
+    public GetFirmwareVersion()
     {
-        public GetFirmwareVersion()
+        data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
-            data.AddRange(new byte[]
-            {
-                OpCode.UIRead,
-                SystemInfoSubCommand.GetFirmwareVersion,
-                Constants.DefaultResponseLength,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.UIRead,
+            SystemInfoSubCommand.GetFirmwareVersion,
+            Constants.DefaultResponseLength,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

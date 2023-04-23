@@ -1,10 +1,9 @@
-﻿namespace Utils.ImageConvertion
+﻿namespace Utils.ImageConvertion;
+
+public enum ColorComponent
 {
-    public enum ColorComponent
-    {
-        Blue,
-        Green,
-        Red,
-        Alpha
-    }
+    Blue,
+    Green,
+    Red,
+    Alpha
 }

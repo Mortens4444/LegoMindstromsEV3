@@ -1,7 +1,6 @@
-﻿namespace Mindstorms.Core.FileWriter
+﻿namespace Mindstorms.Core.FileWriter;
+
+public interface IWriter
 {
-    public interface IWriter
-    {
-        void Write(byte[] buffer, int offset, int count);
-    }
+    void Write(byte[] buffer, int offset, int count);
 }

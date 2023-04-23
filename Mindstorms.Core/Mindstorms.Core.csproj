@@ -1,1929 +1,806 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E4FAD31-F6A5-4FC1-8D51-6B734E9738E3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Mindstorms.Core</RootNamespace>
-    <AssemblyName>Mindstorms.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithoutJoystick|AnyCPU'">
-    <OutputPath>bin\ReleaseWithoutJoystick\</OutputPath>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Commands\Error\GetErrorMessage.cs" />
-    <Compile Include="Commands\Error\GetError.cs" />
-    <Compile Include="Commands\File\IsExists.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\ATan.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Tan.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\ACos.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Cos.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\ASin.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Sin.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Ln.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Log.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Sqrt.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Negate.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Divide.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Abs.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Round.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Ceil.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Floor.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Exp.cs" />
-    <Compile Include="Commands\Mathematics\Logic\RotateLeft.cs" />
-    <Compile Include="Commands\Mathematics\Logic\Xor.cs" />
-    <Compile Include="Commands\Mathematics\Logic\And.cs" />
-    <Compile Include="Commands\Mathematics\Logic\Or.cs" />
-    <Compile Include="Commands\Mathematics\OneOperatorOperand.cs" />
-    <Compile Include="Commands\Mathematics\TwoOperatorOperand.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Multiply.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Subtract.cs" />
-    <Compile Include="Commands\Mathematics\Arithmetic\Add.cs" />
-    <Compile Include="Commands\Motor\GetTachoCount.cs" />
-    <Compile Include="Commands\Motor\OutputStart.cs" />
-    <Compile Include="Commands\Motor\ResetMotor.cs" />
-    <Compile Include="Commands\Motor\ChangeMotorPolarity.cs" />
-    <Compile Include="Commands\Motor\GetSpeedAndTachoCountLevel.cs" />
-    <Compile Include="Commands\Motor\MotorIsBusy.cs" />
-    <Compile Include="Commands\Motor\ProgramStop.cs" />
-    <Compile Include="Commands\Motor\ClearTachoCount.cs" />
-    <Compile Include="Commands\Motor\OutputPower.cs" />
-    <Compile Include="Commands\Motor\WaitForFinish.cs" />
-    <Compile Include="Commands\Motor\StopMotor.cs" />
-    <Compile Include="Commands\Sensor\InputRead.cs" />
-    <Compile Include="Commands\System\GetVolume.cs" />
-    <Compile Include="Commands\System\SetVolume.cs" />
-    <Compile Include="Enums\FilenameSubCode.cs" />
-    <Compile Include="Enums\MathSubCode.cs" />
-    <Compile Include="Enums\InfoSubCode.cs" />
-    <Compile Include="Enums\EnumLikeObject.cs" />
-    <Compile Include="Enums\BreakType.cs" />
-    <Compile Include="Enums\PlayType.cs" />
-    <Compile Include="Enums\Polarity.cs" />
-    <Compile Include="Extensions\ByteExtensions.cs" />
-    <Compile Include="Extensions\CommandTypeExtensions.cs" />
-    <Compile Include="Extensions\ByteListExtensions.cs" />
-    <Compile Include="Commands\Button\Flush.cs" />
-    <Compile Include="Commands\Button\PressButton.cs" />
-    <Compile Include="Commands\Button\ReleaseButton.cs" />
-    <Compile Include="Commands\File\ContinueUploadFileToBrick.cs" />
-    <Compile Include="Commands\File\WriteBytesToFile.cs" />
-    <Compile Include="Commands\File\UploadFileToBrick.cs" />
-    <Compile Include="Commands\LCD\ChangeFontType.cs" />
-    <Compile Include="Commands\LCD\ChangeTopLine.cs" />
-    <Compile Include="Commands\LCD\GraphDraw.cs" />
-    <Compile Include="Commands\LCD\Restore.cs" />
-    <Compile Include="Commands\LCD\ScreenBlock.cs" />
-    <Compile Include="Commands\Motor\GetMotorPosition.cs" />
-    <Compile Include="Commands\Object\End.cs" />
-    <Compile Include="Commands\Object\Wait.cs" />
-    <Compile Include="Commands\Object\Trigger.cs" />
-    <Compile Include="Commands\Object\Start.cs" />
-    <Compile Include="Commands\Object\Stop.cs" />
-    <Compile Include="Commands\PowerControl\Shutdown.cs" />
-    <Compile Include="Commands\Program\GetInfo.cs" />
-    <Compile Include="Commands\Program\StopBase.cs" />
-    <Compile Include="Commands\Program\StopCurrent.cs" />
-    <Compile Include="Commands\Sensor\ReadInfraredSensor.cs" />
-    <Compile Include="Commands\Sensor\GetName.cs" />
-    <Compile Include="Commands\System\GetBatteryLevel.cs" />
-    <Compile Include="Commands\System\GetBatteryTemperatureRise.cs" />
-    <Compile Include="Commands\System\GetFirmwareBuild.cs" />
-    <Compile Include="Commands\System\GetFirmwareVersion.cs" />
-    <Compile Include="Commands\System\GetHardwareVersion.cs" />
-    <Compile Include="Commands\System\GetOperatingSystemBuild.cs" />
-    <Compile Include="Commands\System\GetOperatingSystemVersion.cs" />
-    <Compile Include="Commands\System\GetBatteryCurrent.cs" />
-    <Compile Include="Commands\System\GetBatteryVoltage.cs" />
-    <Compile Include="Commands\System\GetPin.cs" />
-    <Compile Include="Commands\System\IsActive.cs" />
-    <Compile Include="Commands\System\GetBrickName.cs" />
-    <Compile Include="Commands\System\SetPin.cs" />
-    <Compile Include="Commands\System\SetBrickName.cs" />
-    <Compile Include="CommandReplyBase.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Enums\ComGetSubCommand.cs" />
-    <Compile Include="Enums\CommunicationInterface.cs" />
-    <Compile Include="Enums\ComSetSubCommand.cs" />
-    <Compile Include="Enums\EmbeddedImage.cs" />
-    <Compile Include="Enums\EmbeddedSound.cs" />
-    <Compile Include="Enums\EmbeddedImageTypes.cs" />
-    <Compile Include="Enums\EmbeddedSoundTypes.cs" />
-    <Compile Include="Enums\InfraredBeaconButtonsCombination.cs" />
-    <Compile Include="Enums\InfraredChannel.cs" />
-    <Compile Include="Enums\InfraredSensorMode.cs" />
-    <Compile Include="Enums\MotorMode.cs" />
-    <Compile Include="Enums\ProgramMode.cs" />
-    <Compile Include="Enums\State.cs" />
-    <Compile Include="Enums\SystemInfoSubCommand.cs" />
-    <Compile Include="Enums\Warning.cs" />
-    <Compile Include="EV3\Brick.cs" />
-    <Compile Include="Commands\AwaitableCommand.cs" />
-    <Compile Include="Commands\Bluetooth\SetBluetoothPin.cs" />
-    <Compile Include="Commands\Button\PressAndReleaseButton.cs" />
-    <Compile Include="Commands\Button\GetButtonStates.cs" />
-    <Compile Include="Commands\Input\GetSensorType.cs" />
-    <Compile Include="Commands\Motor\SetMotorSpeed.cs" />
-    <Compile Include="Commands\Sensor\SensorRead.cs" />
-    <Compile Include="Commands\LCD\LCDCommand.cs" />
-    <Compile Include="Commands\File\ListOpenHandles.cs" />
-    <Compile Include="Commands\File\CloseFileHandle.cs" />
-    <Compile Include="Commands\File\ContinueGetFile.cs" />
-    <Compile Include="Commands\File\ContinueDownloadFileFromBrick.cs" />
-    <Compile Include="Commands\File\ContinueListFiles.cs" />
-    <Compile Include="Commands\File\DeleteFile.cs" />
-    <Compile Include="Commands\File\CreateDirectory.cs" />
-    <Compile Include="Commands\File\GetFile.cs" />
-    <Compile Include="Commands\Firmware\EnterFirmwareUpdate.cs" />
-    <Compile Include="Commands\LCD\InverseRectangle.cs" />
-    <Compile Include="Commands\LCD\DrawRectangle.cs" />
-    <Compile Include="Commands\LCD\DrawString.cs" />
-    <Compile Include="Commands\LCD\DrawCircle.cs" />
-    <Compile Include="Commands\LCD\Update.cs" />
-    <Compile Include="Commands\LCD\DrawLine.cs" />
-    <Compile Include="Commands\LCD\Clean.cs" />
-    <Compile Include="Commands\LED\ChangeLedsState.cs" />
-    <Compile Include="Commands\MailBox\SendMail.cs" />
-    <Compile Include="Commands\PowerControl\KeepAlive.cs" />
-    <Compile Include="Commands\Program\SystemCall.cs" />
-    <Compile Include="Commands\Program\Stop.cs" />
-    <Compile Include="Commands\Program\Start.cs" />
-    <Compile Include="Commands\Sensor\ReadGyroSensor.cs" />
-    <Compile Include="Commands\Sensor\ReadTouchSensor.cs" />
-    <Compile Include="Commands\Sensor\ReadUltrasonicSensor.cs" />
-    <Compile Include="Commands\Sensor\ReadLightSensor.cs" />
-    <Compile Include="Commands\Speaker\PlayNote.cs" />
-    <Compile Include="Commands\LCD\PutPixel.cs" />
-    <Compile Include="Commands\Speaker\SpeakerIsBusy.cs" />
-    <Compile Include="Commands\Speaker\Silence.cs" />
-    <Compile Include="Commands\Speaker\PlaySound.cs" />
-    <Compile Include="Commands\LCD\ShowImage.cs" />
-    <Compile Include="Commands\File\DownloadFileFromBrick.cs" />
-    <Compile Include="Commands\File\ListFiles.cs" />
-    <Compile Include="Commands\Speaker\Beep.cs" />
-    <Compile Include="Drawing\EV3Circle.cs" />
-    <Compile Include="Drawing\EV3InverseRectangle.cs" />
-    <Compile Include="Drawing\EV3Text.cs" />
-    <Compile Include="Drawing\EV3Point.cs" />
-    <Compile Include="Drawing\EV3Line.cs" />
-    <Compile Include="Drawing\EV3Rectangle.cs" />
-    <Compile Include="Drawing\IEV3DrawingElement.cs" />
-    <Compile Include="Enums\ButtonType.cs" />
-    <Compile Include="Enums\ButtonEvent.cs" />
-    <Compile Include="Enums\LedPattern.cs" />
-    <Compile Include="Enums\GyroSensorMode.cs" />
-    <Compile Include="Enums\MotorType.cs" />
-    <Compile Include="Enums\SensorColor.cs" />
-    <Compile Include="Enums\TouchSensorMode.cs" />
-    <Compile Include="Enums\UltrasonicSensorMode.cs" />
-    <Compile Include="Enums\OpCode.cs" />
-    <Compile Include="Commands\Command.cs" />
-    <Compile Include="Enums\LCDColor.cs" />
-    <Compile Include="Enums\CommandType.cs" />
-    <Compile Include="Enums\ConstantParameterType.cs" />
-    <Compile Include="Enums\DaisyChainLayer.cs" />
-    <Compile Include="Enums\FileSubCode.cs" />
-    <Compile Include="Enums\FollowType.cs" />
-    <Compile Include="Enums\FontType.cs" />
-    <Compile Include="Enums\InputSubCode.cs" />
-    <Compile Include="Enums\MemorySubCode.cs" />
-    <Compile Include="Enums\OutputPort.cs" />
-    <Compile Include="Enums\ParameterFormat.cs" />
-    <Compile Include="Enums\ParameterType.cs" />
-    <Compile Include="Enums\DrawSubCode.cs" />
-    <Compile Include="Enums\ProgramSubCode.cs" />
-    <Compile Include="Enums\ProgramSlot.cs" />
-    <Compile Include="Enums\Response.cs" />
-    <Compile Include="Enums\CommandReplyStatus.cs" />
-    <Compile Include="Enums\LightSensorMode.cs" />
-    <Compile Include="Enums\UARTMode.cs" />
-    <Compile Include="Enums\UIWriteSubCommand.cs" />
-    <Compile Include="Extensions\ListViewExtensions.cs" />
-    <Compile Include="Extensions\ListViewItemExtensions.cs" />
-    <Compile Include="FileWriter\FileStreamWriter.cs" />
-    <Compile Include="FileWriter\IWriter.cs" />
-    <Compile Include="FileWriter\StringWriter.cs" />
-    <Compile Include="ICommandReply.cs" />
-    <Compile Include="ImageConverter\BmpToRgfConverter.cs" />
-    <Compile Include="Resources\ResourceUploader.cs" />
-    <Compile Include="Responses\ButtonStates.cs" />
-    <Compile Include="Signaling\Codes.cs" />
-    <Compile Include="Signaling\MorseCode.cs" />
-    <Compile Include="Signaling\Signal.cs" />
-    <Compile Include="Signaling\Morse.cs" />
-    <Compile Include="SetMotorSpeedParams.cs" />
-    <Compile Include="Music\432\A0.cs" />
-    <Compile Include="Music\432\A1.cs" />
-    <Compile Include="Music\432\A2.cs" />
-    <Compile Include="Music\432\A3.cs" />
-    <Compile Include="Music\432\A4.cs" />
-    <Compile Include="Music\432\A5.cs" />
-    <Compile Include="Music\432\A6.cs" />
-    <Compile Include="Music\432\A7.cs" />
-    <Compile Include="Music\432\A8.cs" />
-    <Compile Include="Music\432\Aisz0.cs" />
-    <Compile Include="Music\432\Aisz1.cs" />
-    <Compile Include="Music\432\Aisz2.cs" />
-    <Compile Include="Music\432\Aisz3.cs" />
-    <Compile Include="Music\432\Aisz4.cs" />
-    <Compile Include="Music\432\Aisz5.cs" />
-    <Compile Include="Music\432\Aisz6.cs" />
-    <Compile Include="Music\432\Aisz7.cs" />
-    <Compile Include="Music\432\Aisz8.cs" />
-    <Compile Include="Music\432\B0.cs" />
-    <Compile Include="Music\432\B1.cs" />
-    <Compile Include="Music\432\B2.cs" />
-    <Compile Include="Music\432\B3.cs" />
-    <Compile Include="Music\432\B4.cs" />
-    <Compile Include="Music\432\B5.cs" />
-    <Compile Include="Music\432\B6.cs" />
-    <Compile Include="Music\432\B7.cs" />
-    <Compile Include="Music\432\B8.cs" />
-    <Compile Include="Music\432\C0.cs" />
-    <Compile Include="Music\432\C1.cs" />
-    <Compile Include="Music\432\C2.cs" />
-    <Compile Include="Music\432\C3.cs" />
-    <Compile Include="Music\432\C4.cs" />
-    <Compile Include="Music\432\C5.cs" />
-    <Compile Include="Music\432\C6.cs" />
-    <Compile Include="Music\432\C7.cs" />
-    <Compile Include="Music\432\C8.cs" />
-    <Compile Include="Music\432\Cisz0.cs" />
-    <Compile Include="Music\432\Cisz1.cs" />
-    <Compile Include="Music\432\Cisz2.cs" />
-    <Compile Include="Music\432\Cisz3.cs" />
-    <Compile Include="Music\432\Cisz4.cs" />
-    <Compile Include="Music\432\Cisz5.cs" />
-    <Compile Include="Music\432\Cisz6.cs" />
-    <Compile Include="Music\432\Cisz7.cs" />
-    <Compile Include="Music\432\Cisz8.cs" />
-    <Compile Include="Music\432\D0.cs" />
-    <Compile Include="Music\432\D1.cs" />
-    <Compile Include="Music\432\D2.cs" />
-    <Compile Include="Music\432\D3.cs" />
-    <Compile Include="Music\432\D4.cs" />
-    <Compile Include="Music\432\D5.cs" />
-    <Compile Include="Music\432\D6.cs" />
-    <Compile Include="Music\432\D7.cs" />
-    <Compile Include="Music\432\D8.cs" />
-    <Compile Include="Music\432\Disz0.cs" />
-    <Compile Include="Music\432\Disz1.cs" />
-    <Compile Include="Music\432\Disz2.cs" />
-    <Compile Include="Music\432\Disz3.cs" />
-    <Compile Include="Music\432\Disz4.cs" />
-    <Compile Include="Music\432\Disz5.cs" />
-    <Compile Include="Music\432\Disz6.cs" />
-    <Compile Include="Music\432\Disz7.cs" />
-    <Compile Include="Music\432\Disz8.cs" />
-    <Compile Include="Music\432\E0.cs" />
-    <Compile Include="Music\432\E1.cs" />
-    <Compile Include="Music\432\E2.cs" />
-    <Compile Include="Music\432\E3.cs" />
-    <Compile Include="Music\432\E4.cs" />
-    <Compile Include="Music\432\E5.cs" />
-    <Compile Include="Music\432\E6.cs" />
-    <Compile Include="Music\432\E7.cs" />
-    <Compile Include="Music\432\E8.cs" />
-    <Compile Include="Music\432\F0.cs" />
-    <Compile Include="Music\432\F1.cs" />
-    <Compile Include="Music\432\F2.cs" />
-    <Compile Include="Music\432\F3.cs" />
-    <Compile Include="Music\432\F4.cs" />
-    <Compile Include="Music\432\F5.cs" />
-    <Compile Include="Music\432\F6.cs" />
-    <Compile Include="Music\432\F7.cs" />
-    <Compile Include="Music\432\F8.cs" />
-    <Compile Include="Music\432\Fisz0.cs" />
-    <Compile Include="Music\432\Fisz1.cs" />
-    <Compile Include="Music\432\Fisz2.cs" />
-    <Compile Include="Music\432\Fisz3.cs" />
-    <Compile Include="Music\432\Fisz4.cs" />
-    <Compile Include="Music\432\Fisz5.cs" />
-    <Compile Include="Music\432\Fisz6.cs" />
-    <Compile Include="Music\432\Fisz7.cs" />
-    <Compile Include="Music\432\Fisz8.cs" />
-    <Compile Include="Music\432\G0.cs" />
-    <Compile Include="Music\432\G1.cs" />
-    <Compile Include="Music\432\G2.cs" />
-    <Compile Include="Music\432\G3.cs" />
-    <Compile Include="Music\432\G4.cs" />
-    <Compile Include="Music\432\G5.cs" />
-    <Compile Include="Music\432\G6.cs" />
-    <Compile Include="Music\432\G7.cs" />
-    <Compile Include="Music\432\G8.cs" />
-    <Compile Include="Music\432\Gisz0.cs" />
-    <Compile Include="Music\432\Gisz1.cs" />
-    <Compile Include="Music\432\Gisz2.cs" />
-    <Compile Include="Music\432\Gisz3.cs" />
-    <Compile Include="Music\432\Gisz4.cs" />
-    <Compile Include="Music\432\Gisz5.cs" />
-    <Compile Include="Music\432\Gisz6.cs" />
-    <Compile Include="Music\432\Gisz7.cs" />
-    <Compile Include="Music\432\Gisz8.cs" />
-    <Compile Include="Music\434\A0.cs" />
-    <Compile Include="Music\434\A1.cs" />
-    <Compile Include="Music\434\A2.cs" />
-    <Compile Include="Music\434\A3.cs" />
-    <Compile Include="Music\434\A4.cs" />
-    <Compile Include="Music\434\A5.cs" />
-    <Compile Include="Music\434\A6.cs" />
-    <Compile Include="Music\434\A7.cs" />
-    <Compile Include="Music\434\A8.cs" />
-    <Compile Include="Music\434\Aisz0.cs" />
-    <Compile Include="Music\434\Aisz1.cs" />
-    <Compile Include="Music\434\Aisz2.cs" />
-    <Compile Include="Music\434\Aisz3.cs" />
-    <Compile Include="Music\434\Aisz4.cs" />
-    <Compile Include="Music\434\Aisz5.cs" />
-    <Compile Include="Music\434\Aisz6.cs" />
-    <Compile Include="Music\434\Aisz7.cs" />
-    <Compile Include="Music\434\Aisz8.cs" />
-    <Compile Include="Music\434\B0.cs" />
-    <Compile Include="Music\434\B1.cs" />
-    <Compile Include="Music\434\B2.cs" />
-    <Compile Include="Music\434\B3.cs" />
-    <Compile Include="Music\434\B4.cs" />
-    <Compile Include="Music\434\B5.cs" />
-    <Compile Include="Music\434\B6.cs" />
-    <Compile Include="Music\434\B7.cs" />
-    <Compile Include="Music\434\B8.cs" />
-    <Compile Include="Music\434\C0.cs" />
-    <Compile Include="Music\434\C1.cs" />
-    <Compile Include="Music\434\C2.cs" />
-    <Compile Include="Music\434\C3.cs" />
-    <Compile Include="Music\434\C4.cs" />
-    <Compile Include="Music\434\C5.cs" />
-    <Compile Include="Music\434\C6.cs" />
-    <Compile Include="Music\434\C7.cs" />
-    <Compile Include="Music\434\C8.cs" />
-    <Compile Include="Music\434\Cisz0.cs" />
-    <Compile Include="Music\434\Cisz1.cs" />
-    <Compile Include="Music\434\Cisz2.cs" />
-    <Compile Include="Music\434\Cisz3.cs" />
-    <Compile Include="Music\434\Cisz4.cs" />
-    <Compile Include="Music\434\Cisz5.cs" />
-    <Compile Include="Music\434\Cisz6.cs" />
-    <Compile Include="Music\434\Cisz7.cs" />
-    <Compile Include="Music\434\Cisz8.cs" />
-    <Compile Include="Music\434\D0.cs" />
-    <Compile Include="Music\434\D1.cs" />
-    <Compile Include="Music\434\D2.cs" />
-    <Compile Include="Music\434\D3.cs" />
-    <Compile Include="Music\434\D4.cs" />
-    <Compile Include="Music\434\D5.cs" />
-    <Compile Include="Music\434\D6.cs" />
-    <Compile Include="Music\434\D7.cs" />
-    <Compile Include="Music\434\D8.cs" />
-    <Compile Include="Music\434\Disz0.cs" />
-    <Compile Include="Music\434\Disz1.cs" />
-    <Compile Include="Music\434\Disz2.cs" />
-    <Compile Include="Music\434\Disz3.cs" />
-    <Compile Include="Music\434\Disz4.cs" />
-    <Compile Include="Music\434\Disz5.cs" />
-    <Compile Include="Music\434\Disz6.cs" />
-    <Compile Include="Music\434\Disz7.cs" />
-    <Compile Include="Music\434\Disz8.cs" />
-    <Compile Include="Music\434\E0.cs" />
-    <Compile Include="Music\434\E1.cs" />
-    <Compile Include="Music\434\E2.cs" />
-    <Compile Include="Music\434\E3.cs" />
-    <Compile Include="Music\434\E4.cs" />
-    <Compile Include="Music\434\E5.cs" />
-    <Compile Include="Music\434\E6.cs" />
-    <Compile Include="Music\434\E7.cs" />
-    <Compile Include="Music\434\E8.cs" />
-    <Compile Include="Music\434\F0.cs" />
-    <Compile Include="Music\434\F1.cs" />
-    <Compile Include="Music\434\F2.cs" />
-    <Compile Include="Music\434\F3.cs" />
-    <Compile Include="Music\434\F4.cs" />
-    <Compile Include="Music\434\F5.cs" />
-    <Compile Include="Music\434\F6.cs" />
-    <Compile Include="Music\434\F7.cs" />
-    <Compile Include="Music\434\F8.cs" />
-    <Compile Include="Music\434\Fisz0.cs" />
-    <Compile Include="Music\434\Fisz1.cs" />
-    <Compile Include="Music\434\Fisz2.cs" />
-    <Compile Include="Music\434\Fisz3.cs" />
-    <Compile Include="Music\434\Fisz4.cs" />
-    <Compile Include="Music\434\Fisz5.cs" />
-    <Compile Include="Music\434\Fisz6.cs" />
-    <Compile Include="Music\434\Fisz7.cs" />
-    <Compile Include="Music\434\Fisz8.cs" />
-    <Compile Include="Music\434\G0.cs" />
-    <Compile Include="Music\434\G1.cs" />
-    <Compile Include="Music\434\G2.cs" />
-    <Compile Include="Music\434\G3.cs" />
-    <Compile Include="Music\434\G4.cs" />
-    <Compile Include="Music\434\G5.cs" />
-    <Compile Include="Music\434\G6.cs" />
-    <Compile Include="Music\434\G7.cs" />
-    <Compile Include="Music\434\G8.cs" />
-    <Compile Include="Music\434\Gisz0.cs" />
-    <Compile Include="Music\434\Gisz1.cs" />
-    <Compile Include="Music\434\Gisz2.cs" />
-    <Compile Include="Music\434\Gisz3.cs" />
-    <Compile Include="Music\434\Gisz4.cs" />
-    <Compile Include="Music\434\Gisz5.cs" />
-    <Compile Include="Music\434\Gisz6.cs" />
-    <Compile Include="Music\434\Gisz7.cs" />
-    <Compile Include="Music\434\Gisz8.cs" />
-    <Compile Include="Music\436\A0.cs" />
-    <Compile Include="Music\436\A1.cs" />
-    <Compile Include="Music\436\A2.cs" />
-    <Compile Include="Music\436\A3.cs" />
-    <Compile Include="Music\436\A4.cs" />
-    <Compile Include="Music\436\A5.cs" />
-    <Compile Include="Music\436\A6.cs" />
-    <Compile Include="Music\436\A7.cs" />
-    <Compile Include="Music\436\A8.cs" />
-    <Compile Include="Music\436\Aisz0.cs" />
-    <Compile Include="Music\436\Aisz1.cs" />
-    <Compile Include="Music\436\Aisz2.cs" />
-    <Compile Include="Music\436\Aisz3.cs" />
-    <Compile Include="Music\436\Aisz4.cs" />
-    <Compile Include="Music\436\Aisz5.cs" />
-    <Compile Include="Music\436\Aisz6.cs" />
-    <Compile Include="Music\436\Aisz7.cs" />
-    <Compile Include="Music\436\Aisz8.cs" />
-    <Compile Include="Music\436\B0.cs" />
-    <Compile Include="Music\436\B1.cs" />
-    <Compile Include="Music\436\B2.cs" />
-    <Compile Include="Music\436\B3.cs" />
-    <Compile Include="Music\436\B4.cs" />
-    <Compile Include="Music\436\B5.cs" />
-    <Compile Include="Music\436\B6.cs" />
-    <Compile Include="Music\436\B7.cs" />
-    <Compile Include="Music\436\B8.cs" />
-    <Compile Include="Music\436\C0.cs" />
-    <Compile Include="Music\436\C1.cs" />
-    <Compile Include="Music\436\C2.cs" />
-    <Compile Include="Music\436\C3.cs" />
-    <Compile Include="Music\436\C4.cs" />
-    <Compile Include="Music\436\C5.cs" />
-    <Compile Include="Music\436\C6.cs" />
-    <Compile Include="Music\436\C7.cs" />
-    <Compile Include="Music\436\C8.cs" />
-    <Compile Include="Music\436\Cisz0.cs" />
-    <Compile Include="Music\436\Cisz1.cs" />
-    <Compile Include="Music\436\Cisz2.cs" />
-    <Compile Include="Music\436\Cisz3.cs" />
-    <Compile Include="Music\436\Cisz4.cs" />
-    <Compile Include="Music\436\Cisz5.cs" />
-    <Compile Include="Music\436\Cisz6.cs" />
-    <Compile Include="Music\436\Cisz7.cs" />
-    <Compile Include="Music\436\Cisz8.cs" />
-    <Compile Include="Music\436\D0.cs" />
-    <Compile Include="Music\436\D1.cs" />
-    <Compile Include="Music\436\D2.cs" />
-    <Compile Include="Music\436\D3.cs" />
-    <Compile Include="Music\436\D4.cs" />
-    <Compile Include="Music\436\D5.cs" />
-    <Compile Include="Music\436\D6.cs" />
-    <Compile Include="Music\436\D7.cs" />
-    <Compile Include="Music\436\D8.cs" />
-    <Compile Include="Music\436\Disz0.cs" />
-    <Compile Include="Music\436\Disz1.cs" />
-    <Compile Include="Music\436\Disz2.cs" />
-    <Compile Include="Music\436\Disz3.cs" />
-    <Compile Include="Music\436\Disz4.cs" />
-    <Compile Include="Music\436\Disz5.cs" />
-    <Compile Include="Music\436\Disz6.cs" />
-    <Compile Include="Music\436\Disz7.cs" />
-    <Compile Include="Music\436\Disz8.cs" />
-    <Compile Include="Music\436\E0.cs" />
-    <Compile Include="Music\436\E1.cs" />
-    <Compile Include="Music\436\E2.cs" />
-    <Compile Include="Music\436\E3.cs" />
-    <Compile Include="Music\436\E4.cs" />
-    <Compile Include="Music\436\E5.cs" />
-    <Compile Include="Music\436\E6.cs" />
-    <Compile Include="Music\436\E7.cs" />
-    <Compile Include="Music\436\E8.cs" />
-    <Compile Include="Music\436\F0.cs" />
-    <Compile Include="Music\436\F1.cs" />
-    <Compile Include="Music\436\F2.cs" />
-    <Compile Include="Music\436\F3.cs" />
-    <Compile Include="Music\436\F4.cs" />
-    <Compile Include="Music\436\F5.cs" />
-    <Compile Include="Music\436\F6.cs" />
-    <Compile Include="Music\436\F7.cs" />
-    <Compile Include="Music\436\F8.cs" />
-    <Compile Include="Music\436\Fisz0.cs" />
-    <Compile Include="Music\436\Fisz1.cs" />
-    <Compile Include="Music\436\Fisz2.cs" />
-    <Compile Include="Music\436\Fisz3.cs" />
-    <Compile Include="Music\436\Fisz4.cs" />
-    <Compile Include="Music\436\Fisz5.cs" />
-    <Compile Include="Music\436\Fisz6.cs" />
-    <Compile Include="Music\436\Fisz7.cs" />
-    <Compile Include="Music\436\Fisz8.cs" />
-    <Compile Include="Music\436\G0.cs" />
-    <Compile Include="Music\436\G1.cs" />
-    <Compile Include="Music\436\G2.cs" />
-    <Compile Include="Music\436\G3.cs" />
-    <Compile Include="Music\436\G4.cs" />
-    <Compile Include="Music\436\G5.cs" />
-    <Compile Include="Music\436\G6.cs" />
-    <Compile Include="Music\436\G7.cs" />
-    <Compile Include="Music\436\G8.cs" />
-    <Compile Include="Music\436\Gisz0.cs" />
-    <Compile Include="Music\436\Gisz1.cs" />
-    <Compile Include="Music\436\Gisz2.cs" />
-    <Compile Include="Music\436\Gisz3.cs" />
-    <Compile Include="Music\436\Gisz4.cs" />
-    <Compile Include="Music\436\Gisz5.cs" />
-    <Compile Include="Music\436\Gisz6.cs" />
-    <Compile Include="Music\436\Gisz7.cs" />
-    <Compile Include="Music\436\Gisz8.cs" />
-    <Compile Include="Music\438\A0.cs" />
-    <Compile Include="Music\438\A1.cs" />
-    <Compile Include="Music\438\A2.cs" />
-    <Compile Include="Music\438\A3.cs" />
-    <Compile Include="Music\438\A4.cs" />
-    <Compile Include="Music\438\A5.cs" />
-    <Compile Include="Music\438\A6.cs" />
-    <Compile Include="Music\438\A7.cs" />
-    <Compile Include="Music\438\A8.cs" />
-    <Compile Include="Music\438\Aisz0.cs" />
-    <Compile Include="Music\438\Aisz1.cs" />
-    <Compile Include="Music\438\Aisz2.cs" />
-    <Compile Include="Music\438\Aisz3.cs" />
-    <Compile Include="Music\438\Aisz4.cs" />
-    <Compile Include="Music\438\Aisz5.cs" />
-    <Compile Include="Music\438\Aisz6.cs" />
-    <Compile Include="Music\438\Aisz7.cs" />
-    <Compile Include="Music\438\Aisz8.cs" />
-    <Compile Include="Music\438\B0.cs" />
-    <Compile Include="Music\438\B1.cs" />
-    <Compile Include="Music\438\B2.cs" />
-    <Compile Include="Music\438\B3.cs" />
-    <Compile Include="Music\438\B4.cs" />
-    <Compile Include="Music\438\B5.cs" />
-    <Compile Include="Music\438\B6.cs" />
-    <Compile Include="Music\438\B7.cs" />
-    <Compile Include="Music\438\B8.cs" />
-    <Compile Include="Music\438\C0.cs" />
-    <Compile Include="Music\438\C1.cs" />
-    <Compile Include="Music\438\C2.cs" />
-    <Compile Include="Music\438\C3.cs" />
-    <Compile Include="Music\438\C4.cs" />
-    <Compile Include="Music\438\C5.cs" />
-    <Compile Include="Music\438\C6.cs" />
-    <Compile Include="Music\438\C7.cs" />
-    <Compile Include="Music\438\C8.cs" />
-    <Compile Include="Music\438\Cisz0.cs" />
-    <Compile Include="Music\438\Cisz1.cs" />
-    <Compile Include="Music\438\Cisz2.cs" />
-    <Compile Include="Music\438\Cisz3.cs" />
-    <Compile Include="Music\438\Cisz4.cs" />
-    <Compile Include="Music\438\Cisz5.cs" />
-    <Compile Include="Music\438\Cisz6.cs" />
-    <Compile Include="Music\438\Cisz7.cs" />
-    <Compile Include="Music\438\Cisz8.cs" />
-    <Compile Include="Music\438\D0.cs" />
-    <Compile Include="Music\438\D1.cs" />
-    <Compile Include="Music\438\D2.cs" />
-    <Compile Include="Music\438\D3.cs" />
-    <Compile Include="Music\438\D4.cs" />
-    <Compile Include="Music\438\D5.cs" />
-    <Compile Include="Music\438\D6.cs" />
-    <Compile Include="Music\438\D7.cs" />
-    <Compile Include="Music\438\D8.cs" />
-    <Compile Include="Music\438\Disz0.cs" />
-    <Compile Include="Music\438\Disz1.cs" />
-    <Compile Include="Music\438\Disz2.cs" />
-    <Compile Include="Music\438\Disz3.cs" />
-    <Compile Include="Music\438\Disz4.cs" />
-    <Compile Include="Music\438\Disz5.cs" />
-    <Compile Include="Music\438\Disz6.cs" />
-    <Compile Include="Music\438\Disz7.cs" />
-    <Compile Include="Music\438\Disz8.cs" />
-    <Compile Include="Music\438\E0.cs" />
-    <Compile Include="Music\438\E1.cs" />
-    <Compile Include="Music\438\E2.cs" />
-    <Compile Include="Music\438\E3.cs" />
-    <Compile Include="Music\438\E4.cs" />
-    <Compile Include="Music\438\E5.cs" />
-    <Compile Include="Music\438\E6.cs" />
-    <Compile Include="Music\438\E7.cs" />
-    <Compile Include="Music\438\E8.cs" />
-    <Compile Include="Music\438\F0.cs" />
-    <Compile Include="Music\438\F1.cs" />
-    <Compile Include="Music\438\F2.cs" />
-    <Compile Include="Music\438\F3.cs" />
-    <Compile Include="Music\438\F4.cs" />
-    <Compile Include="Music\438\F5.cs" />
-    <Compile Include="Music\438\F6.cs" />
-    <Compile Include="Music\438\F7.cs" />
-    <Compile Include="Music\438\F8.cs" />
-    <Compile Include="Music\438\Fisz0.cs" />
-    <Compile Include="Music\438\Fisz1.cs" />
-    <Compile Include="Music\438\Fisz2.cs" />
-    <Compile Include="Music\438\Fisz3.cs" />
-    <Compile Include="Music\438\Fisz4.cs" />
-    <Compile Include="Music\438\Fisz5.cs" />
-    <Compile Include="Music\438\Fisz6.cs" />
-    <Compile Include="Music\438\Fisz7.cs" />
-    <Compile Include="Music\438\Fisz8.cs" />
-    <Compile Include="Music\438\G0.cs" />
-    <Compile Include="Music\438\G1.cs" />
-    <Compile Include="Music\438\G2.cs" />
-    <Compile Include="Music\438\G3.cs" />
-    <Compile Include="Music\438\G4.cs" />
-    <Compile Include="Music\438\G5.cs" />
-    <Compile Include="Music\438\G6.cs" />
-    <Compile Include="Music\438\G7.cs" />
-    <Compile Include="Music\438\G8.cs" />
-    <Compile Include="Music\438\Gisz0.cs" />
-    <Compile Include="Music\438\Gisz1.cs" />
-    <Compile Include="Music\438\Gisz2.cs" />
-    <Compile Include="Music\438\Gisz3.cs" />
-    <Compile Include="Music\438\Gisz4.cs" />
-    <Compile Include="Music\438\Gisz5.cs" />
-    <Compile Include="Music\438\Gisz6.cs" />
-    <Compile Include="Music\438\Gisz7.cs" />
-    <Compile Include="Music\438\Gisz8.cs" />
-    <Compile Include="Music\440\A0.cs" />
-    <Compile Include="Music\440\A1.cs" />
-    <Compile Include="Music\440\A2.cs" />
-    <Compile Include="Music\440\A3.cs" />
-    <Compile Include="Music\440\A4.cs" />
-    <Compile Include="Music\440\A5.cs" />
-    <Compile Include="Music\440\A6.cs" />
-    <Compile Include="Music\440\A7.cs" />
-    <Compile Include="Music\440\A8.cs" />
-    <Compile Include="Music\440\Aisz0.cs" />
-    <Compile Include="Music\440\Aisz1.cs" />
-    <Compile Include="Music\440\Aisz2.cs" />
-    <Compile Include="Music\440\Aisz3.cs" />
-    <Compile Include="Music\440\Aisz4.cs" />
-    <Compile Include="Music\440\Aisz5.cs" />
-    <Compile Include="Music\440\Aisz6.cs" />
-    <Compile Include="Music\440\Aisz7.cs" />
-    <Compile Include="Music\440\Aisz8.cs" />
-    <Compile Include="Music\440\B0.cs" />
-    <Compile Include="Music\440\B1.cs" />
-    <Compile Include="Music\440\B2.cs" />
-    <Compile Include="Music\440\B3.cs" />
-    <Compile Include="Music\440\B4.cs" />
-    <Compile Include="Music\440\B5.cs" />
-    <Compile Include="Music\440\B6.cs" />
-    <Compile Include="Music\440\B7.cs" />
-    <Compile Include="Music\440\B8.cs" />
-    <Compile Include="Music\440\C0.cs" />
-    <Compile Include="Music\440\C1.cs" />
-    <Compile Include="Music\440\C2.cs" />
-    <Compile Include="Music\440\C3.cs" />
-    <Compile Include="Music\440\C4.cs" />
-    <Compile Include="Music\440\C5.cs" />
-    <Compile Include="Music\440\C6.cs" />
-    <Compile Include="Music\440\C7.cs" />
-    <Compile Include="Music\440\C8.cs" />
-    <Compile Include="Music\440\Cisz0.cs" />
-    <Compile Include="Music\440\Cisz1.cs" />
-    <Compile Include="Music\440\Cisz2.cs" />
-    <Compile Include="Music\440\Cisz3.cs" />
-    <Compile Include="Music\440\Cisz4.cs" />
-    <Compile Include="Music\440\Cisz5.cs" />
-    <Compile Include="Music\440\Cisz6.cs" />
-    <Compile Include="Music\440\Cisz7.cs" />
-    <Compile Include="Music\440\Cisz8.cs" />
-    <Compile Include="Music\440\D0.cs" />
-    <Compile Include="Music\440\D1.cs" />
-    <Compile Include="Music\440\D2.cs" />
-    <Compile Include="Music\440\D3.cs" />
-    <Compile Include="Music\440\D4.cs" />
-    <Compile Include="Music\440\D5.cs" />
-    <Compile Include="Music\440\D6.cs" />
-    <Compile Include="Music\440\D7.cs" />
-    <Compile Include="Music\440\D8.cs" />
-    <Compile Include="Music\440\Disz0.cs" />
-    <Compile Include="Music\440\Disz1.cs" />
-    <Compile Include="Music\440\Disz2.cs" />
-    <Compile Include="Music\440\Disz3.cs" />
-    <Compile Include="Music\440\Disz4.cs" />
-    <Compile Include="Music\440\Disz5.cs" />
-    <Compile Include="Music\440\Disz6.cs" />
-    <Compile Include="Music\440\Disz7.cs" />
-    <Compile Include="Music\440\Disz8.cs" />
-    <Compile Include="Music\440\E0.cs" />
-    <Compile Include="Music\440\E1.cs" />
-    <Compile Include="Music\440\E2.cs" />
-    <Compile Include="Music\440\E3.cs" />
-    <Compile Include="Music\440\E4.cs" />
-    <Compile Include="Music\440\E5.cs" />
-    <Compile Include="Music\440\E6.cs" />
-    <Compile Include="Music\440\E7.cs" />
-    <Compile Include="Music\440\E8.cs" />
-    <Compile Include="Music\440\F0.cs" />
-    <Compile Include="Music\440\F1.cs" />
-    <Compile Include="Music\440\F2.cs" />
-    <Compile Include="Music\440\F3.cs" />
-    <Compile Include="Music\440\F4.cs" />
-    <Compile Include="Music\440\F5.cs" />
-    <Compile Include="Music\440\F6.cs" />
-    <Compile Include="Music\440\F7.cs" />
-    <Compile Include="Music\440\F8.cs" />
-    <Compile Include="Music\440\Fisz0.cs" />
-    <Compile Include="Music\440\Fisz1.cs" />
-    <Compile Include="Music\440\Fisz2.cs" />
-    <Compile Include="Music\440\Fisz3.cs" />
-    <Compile Include="Music\440\Fisz4.cs" />
-    <Compile Include="Music\440\Fisz5.cs" />
-    <Compile Include="Music\440\Fisz6.cs" />
-    <Compile Include="Music\440\Fisz7.cs" />
-    <Compile Include="Music\440\Fisz8.cs" />
-    <Compile Include="Music\440\G0.cs" />
-    <Compile Include="Music\440\G1.cs" />
-    <Compile Include="Music\440\G2.cs" />
-    <Compile Include="Music\440\G3.cs" />
-    <Compile Include="Music\440\G4.cs" />
-    <Compile Include="Music\440\G5.cs" />
-    <Compile Include="Music\440\G6.cs" />
-    <Compile Include="Music\440\G7.cs" />
-    <Compile Include="Music\440\G8.cs" />
-    <Compile Include="Music\440\Gisz0.cs" />
-    <Compile Include="Music\440\Gisz1.cs" />
-    <Compile Include="Music\440\Gisz2.cs" />
-    <Compile Include="Music\440\Gisz3.cs" />
-    <Compile Include="Music\440\Gisz4.cs" />
-    <Compile Include="Music\440\Gisz5.cs" />
-    <Compile Include="Music\440\Gisz6.cs" />
-    <Compile Include="Music\440\Gisz7.cs" />
-    <Compile Include="Music\440\Gisz8.cs" />
-    <Compile Include="Music\442\A0.cs" />
-    <Compile Include="Music\442\A1.cs" />
-    <Compile Include="Music\442\A2.cs" />
-    <Compile Include="Music\442\A3.cs" />
-    <Compile Include="Music\442\A4.cs" />
-    <Compile Include="Music\442\A5.cs" />
-    <Compile Include="Music\442\A6.cs" />
-    <Compile Include="Music\442\A7.cs" />
-    <Compile Include="Music\442\A8.cs" />
-    <Compile Include="Music\442\Aisz0.cs" />
-    <Compile Include="Music\442\Aisz1.cs" />
-    <Compile Include="Music\442\Aisz2.cs" />
-    <Compile Include="Music\442\Aisz3.cs" />
-    <Compile Include="Music\442\Aisz4.cs" />
-    <Compile Include="Music\442\Aisz5.cs" />
-    <Compile Include="Music\442\Aisz6.cs" />
-    <Compile Include="Music\442\Aisz7.cs" />
-    <Compile Include="Music\442\Aisz8.cs" />
-    <Compile Include="Music\442\B0.cs" />
-    <Compile Include="Music\442\B1.cs" />
-    <Compile Include="Music\442\B2.cs" />
-    <Compile Include="Music\442\B3.cs" />
-    <Compile Include="Music\442\B4.cs" />
-    <Compile Include="Music\442\B5.cs" />
-    <Compile Include="Music\442\B6.cs" />
-    <Compile Include="Music\442\B7.cs" />
-    <Compile Include="Music\442\B8.cs" />
-    <Compile Include="Music\442\C0.cs" />
-    <Compile Include="Music\442\C1.cs" />
-    <Compile Include="Music\442\C2.cs" />
-    <Compile Include="Music\442\C3.cs" />
-    <Compile Include="Music\442\C4.cs" />
-    <Compile Include="Music\442\C5.cs" />
-    <Compile Include="Music\442\C6.cs" />
-    <Compile Include="Music\442\C7.cs" />
-    <Compile Include="Music\442\C8.cs" />
-    <Compile Include="Music\442\Cisz0.cs" />
-    <Compile Include="Music\442\Cisz1.cs" />
-    <Compile Include="Music\442\Cisz2.cs" />
-    <Compile Include="Music\442\Cisz3.cs" />
-    <Compile Include="Music\442\Cisz4.cs" />
-    <Compile Include="Music\442\Cisz5.cs" />
-    <Compile Include="Music\442\Cisz6.cs" />
-    <Compile Include="Music\442\Cisz7.cs" />
-    <Compile Include="Music\442\Cisz8.cs" />
-    <Compile Include="Music\442\D0.cs" />
-    <Compile Include="Music\442\D1.cs" />
-    <Compile Include="Music\442\D2.cs" />
-    <Compile Include="Music\442\D3.cs" />
-    <Compile Include="Music\442\D4.cs" />
-    <Compile Include="Music\442\D5.cs" />
-    <Compile Include="Music\442\D6.cs" />
-    <Compile Include="Music\442\D7.cs" />
-    <Compile Include="Music\442\D8.cs" />
-    <Compile Include="Music\442\Disz0.cs" />
-    <Compile Include="Music\442\Disz1.cs" />
-    <Compile Include="Music\442\Disz2.cs" />
-    <Compile Include="Music\442\Disz3.cs" />
-    <Compile Include="Music\442\Disz4.cs" />
-    <Compile Include="Music\442\Disz5.cs" />
-    <Compile Include="Music\442\Disz6.cs" />
-    <Compile Include="Music\442\Disz7.cs" />
-    <Compile Include="Music\442\Disz8.cs" />
-    <Compile Include="Music\442\E0.cs" />
-    <Compile Include="Music\442\E1.cs" />
-    <Compile Include="Music\442\E2.cs" />
-    <Compile Include="Music\442\E3.cs" />
-    <Compile Include="Music\442\E4.cs" />
-    <Compile Include="Music\442\E5.cs" />
-    <Compile Include="Music\442\E6.cs" />
-    <Compile Include="Music\442\E7.cs" />
-    <Compile Include="Music\442\E8.cs" />
-    <Compile Include="Music\442\F0.cs" />
-    <Compile Include="Music\442\F1.cs" />
-    <Compile Include="Music\442\F2.cs" />
-    <Compile Include="Music\442\F3.cs" />
-    <Compile Include="Music\442\F4.cs" />
-    <Compile Include="Music\442\F5.cs" />
-    <Compile Include="Music\442\F6.cs" />
-    <Compile Include="Music\442\F7.cs" />
-    <Compile Include="Music\442\F8.cs" />
-    <Compile Include="Music\442\Fisz0.cs" />
-    <Compile Include="Music\442\Fisz1.cs" />
-    <Compile Include="Music\442\Fisz2.cs" />
-    <Compile Include="Music\442\Fisz3.cs" />
-    <Compile Include="Music\442\Fisz4.cs" />
-    <Compile Include="Music\442\Fisz5.cs" />
-    <Compile Include="Music\442\Fisz6.cs" />
-    <Compile Include="Music\442\Fisz7.cs" />
-    <Compile Include="Music\442\Fisz8.cs" />
-    <Compile Include="Music\442\G0.cs" />
-    <Compile Include="Music\442\G1.cs" />
-    <Compile Include="Music\442\G2.cs" />
-    <Compile Include="Music\442\G3.cs" />
-    <Compile Include="Music\442\G4.cs" />
-    <Compile Include="Music\442\G5.cs" />
-    <Compile Include="Music\442\G6.cs" />
-    <Compile Include="Music\442\G7.cs" />
-    <Compile Include="Music\442\G8.cs" />
-    <Compile Include="Music\442\Gisz0.cs" />
-    <Compile Include="Music\442\Gisz1.cs" />
-    <Compile Include="Music\442\Gisz2.cs" />
-    <Compile Include="Music\442\Gisz3.cs" />
-    <Compile Include="Music\442\Gisz4.cs" />
-    <Compile Include="Music\442\Gisz5.cs" />
-    <Compile Include="Music\442\Gisz6.cs" />
-    <Compile Include="Music\442\Gisz7.cs" />
-    <Compile Include="Music\442\Gisz8.cs" />
-    <Compile Include="Music\444\A0.cs" />
-    <Compile Include="Music\444\A1.cs" />
-    <Compile Include="Music\444\A2.cs" />
-    <Compile Include="Music\444\A3.cs" />
-    <Compile Include="Music\444\A4.cs" />
-    <Compile Include="Music\444\A5.cs" />
-    <Compile Include="Music\444\A6.cs" />
-    <Compile Include="Music\444\A7.cs" />
-    <Compile Include="Music\444\A8.cs" />
-    <Compile Include="Music\444\Aisz0.cs" />
-    <Compile Include="Music\444\Aisz1.cs" />
-    <Compile Include="Music\444\Aisz2.cs" />
-    <Compile Include="Music\444\Aisz3.cs" />
-    <Compile Include="Music\444\Aisz4.cs" />
-    <Compile Include="Music\444\Aisz5.cs" />
-    <Compile Include="Music\444\Aisz6.cs" />
-    <Compile Include="Music\444\Aisz7.cs" />
-    <Compile Include="Music\444\Aisz8.cs" />
-    <Compile Include="Music\444\B0.cs" />
-    <Compile Include="Music\444\B1.cs" />
-    <Compile Include="Music\444\B2.cs" />
-    <Compile Include="Music\444\B3.cs" />
-    <Compile Include="Music\444\B4.cs" />
-    <Compile Include="Music\444\B5.cs" />
-    <Compile Include="Music\444\B6.cs" />
-    <Compile Include="Music\444\B7.cs" />
-    <Compile Include="Music\444\B8.cs" />
-    <Compile Include="Music\444\C0.cs" />
-    <Compile Include="Music\444\C1.cs" />
-    <Compile Include="Music\444\C2.cs" />
-    <Compile Include="Music\444\C3.cs" />
-    <Compile Include="Music\444\C4.cs" />
-    <Compile Include="Music\444\C5.cs" />
-    <Compile Include="Music\444\C6.cs" />
-    <Compile Include="Music\444\C7.cs" />
-    <Compile Include="Music\444\C8.cs" />
-    <Compile Include="Music\444\Cisz0.cs" />
-    <Compile Include="Music\444\Cisz1.cs" />
-    <Compile Include="Music\444\Cisz2.cs" />
-    <Compile Include="Music\444\Cisz3.cs" />
-    <Compile Include="Music\444\Cisz4.cs" />
-    <Compile Include="Music\444\Cisz5.cs" />
-    <Compile Include="Music\444\Cisz6.cs" />
-    <Compile Include="Music\444\Cisz7.cs" />
-    <Compile Include="Music\444\Cisz8.cs" />
-    <Compile Include="Music\444\D0.cs" />
-    <Compile Include="Music\444\D1.cs" />
-    <Compile Include="Music\444\D2.cs" />
-    <Compile Include="Music\444\D3.cs" />
-    <Compile Include="Music\444\D4.cs" />
-    <Compile Include="Music\444\D5.cs" />
-    <Compile Include="Music\444\D6.cs" />
-    <Compile Include="Music\444\D7.cs" />
-    <Compile Include="Music\444\D8.cs" />
-    <Compile Include="Music\444\Disz0.cs" />
-    <Compile Include="Music\444\Disz1.cs" />
-    <Compile Include="Music\444\Disz2.cs" />
-    <Compile Include="Music\444\Disz3.cs" />
-    <Compile Include="Music\444\Disz4.cs" />
-    <Compile Include="Music\444\Disz5.cs" />
-    <Compile Include="Music\444\Disz6.cs" />
-    <Compile Include="Music\444\Disz7.cs" />
-    <Compile Include="Music\444\Disz8.cs" />
-    <Compile Include="Music\444\E0.cs" />
-    <Compile Include="Music\444\E1.cs" />
-    <Compile Include="Music\444\E2.cs" />
-    <Compile Include="Music\444\E3.cs" />
-    <Compile Include="Music\444\E4.cs" />
-    <Compile Include="Music\444\E5.cs" />
-    <Compile Include="Music\444\E6.cs" />
-    <Compile Include="Music\444\E7.cs" />
-    <Compile Include="Music\444\E8.cs" />
-    <Compile Include="Music\444\F0.cs" />
-    <Compile Include="Music\444\F1.cs" />
-    <Compile Include="Music\444\F2.cs" />
-    <Compile Include="Music\444\F3.cs" />
-    <Compile Include="Music\444\F4.cs" />
-    <Compile Include="Music\444\F5.cs" />
-    <Compile Include="Music\444\F6.cs" />
-    <Compile Include="Music\444\F7.cs" />
-    <Compile Include="Music\444\F8.cs" />
-    <Compile Include="Music\444\Fisz0.cs" />
-    <Compile Include="Music\444\Fisz1.cs" />
-    <Compile Include="Music\444\Fisz2.cs" />
-    <Compile Include="Music\444\Fisz3.cs" />
-    <Compile Include="Music\444\Fisz4.cs" />
-    <Compile Include="Music\444\Fisz5.cs" />
-    <Compile Include="Music\444\Fisz6.cs" />
-    <Compile Include="Music\444\Fisz7.cs" />
-    <Compile Include="Music\444\Fisz8.cs" />
-    <Compile Include="Music\444\G0.cs" />
-    <Compile Include="Music\444\G1.cs" />
-    <Compile Include="Music\444\G2.cs" />
-    <Compile Include="Music\444\G3.cs" />
-    <Compile Include="Music\444\G4.cs" />
-    <Compile Include="Music\444\G5.cs" />
-    <Compile Include="Music\444\G6.cs" />
-    <Compile Include="Music\444\G7.cs" />
-    <Compile Include="Music\444\G8.cs" />
-    <Compile Include="Music\444\Gisz0.cs" />
-    <Compile Include="Music\444\Gisz1.cs" />
-    <Compile Include="Music\444\Gisz2.cs" />
-    <Compile Include="Music\444\Gisz3.cs" />
-    <Compile Include="Music\444\Gisz4.cs" />
-    <Compile Include="Music\444\Gisz5.cs" />
-    <Compile Include="Music\444\Gisz6.cs" />
-    <Compile Include="Music\444\Gisz7.cs" />
-    <Compile Include="Music\444\Gisz8.cs" />
-    <Compile Include="Music\446\A0.cs" />
-    <Compile Include="Music\446\A1.cs" />
-    <Compile Include="Music\446\A2.cs" />
-    <Compile Include="Music\446\A3.cs" />
-    <Compile Include="Music\446\A4.cs" />
-    <Compile Include="Music\446\A5.cs" />
-    <Compile Include="Music\446\A6.cs" />
-    <Compile Include="Music\446\A7.cs" />
-    <Compile Include="Music\446\A8.cs" />
-    <Compile Include="Music\446\Aisz0.cs" />
-    <Compile Include="Music\446\Aisz1.cs" />
-    <Compile Include="Music\446\Aisz2.cs" />
-    <Compile Include="Music\446\Aisz3.cs" />
-    <Compile Include="Music\446\Aisz4.cs" />
-    <Compile Include="Music\446\Aisz5.cs" />
-    <Compile Include="Music\446\Aisz6.cs" />
-    <Compile Include="Music\446\Aisz7.cs" />
-    <Compile Include="Music\446\Aisz8.cs" />
-    <Compile Include="Music\446\B0.cs" />
-    <Compile Include="Music\446\B1.cs" />
-    <Compile Include="Music\446\B2.cs" />
-    <Compile Include="Music\446\B3.cs" />
-    <Compile Include="Music\446\B4.cs" />
-    <Compile Include="Music\446\B5.cs" />
-    <Compile Include="Music\446\B6.cs" />
-    <Compile Include="Music\446\B7.cs" />
-    <Compile Include="Music\446\B8.cs" />
-    <Compile Include="Music\446\C0.cs" />
-    <Compile Include="Music\446\C1.cs" />
-    <Compile Include="Music\446\C2.cs" />
-    <Compile Include="Music\446\C3.cs" />
-    <Compile Include="Music\446\C4.cs" />
-    <Compile Include="Music\446\C5.cs" />
-    <Compile Include="Music\446\C6.cs" />
-    <Compile Include="Music\446\C7.cs" />
-    <Compile Include="Music\446\C8.cs" />
-    <Compile Include="Music\446\Cisz0.cs" />
-    <Compile Include="Music\446\Cisz1.cs" />
-    <Compile Include="Music\446\Cisz2.cs" />
-    <Compile Include="Music\446\Cisz3.cs" />
-    <Compile Include="Music\446\Cisz4.cs" />
-    <Compile Include="Music\446\Cisz5.cs" />
-    <Compile Include="Music\446\Cisz6.cs" />
-    <Compile Include="Music\446\Cisz7.cs" />
-    <Compile Include="Music\446\Cisz8.cs" />
-    <Compile Include="Music\446\D0.cs" />
-    <Compile Include="Music\446\D1.cs" />
-    <Compile Include="Music\446\D2.cs" />
-    <Compile Include="Music\446\D3.cs" />
-    <Compile Include="Music\446\D4.cs" />
-    <Compile Include="Music\446\D5.cs" />
-    <Compile Include="Music\446\D6.cs" />
-    <Compile Include="Music\446\D7.cs" />
-    <Compile Include="Music\446\D8.cs" />
-    <Compile Include="Music\446\Disz0.cs" />
-    <Compile Include="Music\446\Disz1.cs" />
-    <Compile Include="Music\446\Disz2.cs" />
-    <Compile Include="Music\446\Disz3.cs" />
-    <Compile Include="Music\446\Disz4.cs" />
-    <Compile Include="Music\446\Disz5.cs" />
-    <Compile Include="Music\446\Disz6.cs" />
-    <Compile Include="Music\446\Disz7.cs" />
-    <Compile Include="Music\446\Disz8.cs" />
-    <Compile Include="Music\446\E0.cs" />
-    <Compile Include="Music\446\E1.cs" />
-    <Compile Include="Music\446\E2.cs" />
-    <Compile Include="Music\446\E3.cs" />
-    <Compile Include="Music\446\E4.cs" />
-    <Compile Include="Music\446\E5.cs" />
-    <Compile Include="Music\446\E6.cs" />
-    <Compile Include="Music\446\E7.cs" />
-    <Compile Include="Music\446\E8.cs" />
-    <Compile Include="Music\446\F0.cs" />
-    <Compile Include="Music\446\F1.cs" />
-    <Compile Include="Music\446\F2.cs" />
-    <Compile Include="Music\446\F3.cs" />
-    <Compile Include="Music\446\F4.cs" />
-    <Compile Include="Music\446\F5.cs" />
-    <Compile Include="Music\446\F6.cs" />
-    <Compile Include="Music\446\F7.cs" />
-    <Compile Include="Music\446\F8.cs" />
-    <Compile Include="Music\446\Fisz0.cs" />
-    <Compile Include="Music\446\Fisz1.cs" />
-    <Compile Include="Music\446\Fisz2.cs" />
-    <Compile Include="Music\446\Fisz3.cs" />
-    <Compile Include="Music\446\Fisz4.cs" />
-    <Compile Include="Music\446\Fisz5.cs" />
-    <Compile Include="Music\446\Fisz6.cs" />
-    <Compile Include="Music\446\Fisz7.cs" />
-    <Compile Include="Music\446\Fisz8.cs" />
-    <Compile Include="Music\446\G0.cs" />
-    <Compile Include="Music\446\G1.cs" />
-    <Compile Include="Music\446\G2.cs" />
-    <Compile Include="Music\446\G3.cs" />
-    <Compile Include="Music\446\G4.cs" />
-    <Compile Include="Music\446\G5.cs" />
-    <Compile Include="Music\446\G6.cs" />
-    <Compile Include="Music\446\G7.cs" />
-    <Compile Include="Music\446\G8.cs" />
-    <Compile Include="Music\446\Gisz0.cs" />
-    <Compile Include="Music\446\Gisz1.cs" />
-    <Compile Include="Music\446\Gisz2.cs" />
-    <Compile Include="Music\446\Gisz3.cs" />
-    <Compile Include="Music\446\Gisz4.cs" />
-    <Compile Include="Music\446\Gisz5.cs" />
-    <Compile Include="Music\446\Gisz6.cs" />
-    <Compile Include="Music\446\Gisz7.cs" />
-    <Compile Include="Music\446\Gisz8.cs" />
-    <Compile Include="Music\Fermata.cs" />
-    <Compile Include="Music\Melodies\ImperialMarch.cs" />
-    <Compile Include="Music\Melodies\JingleBells.cs" />
-    <Compile Include="Music\Melodies\BociBoci.cs" />
-    <Compile Include="Music\Melodies\KisKeceLányom.cs" />
-    <Compile Include="Music\Melodies\NeverGonnaGiveYouUp.cs" />
-    <Compile Include="Music\Melody.cs" />
-    <Compile Include="Music\Note.cs" />
-    <Compile Include="Music\NoteType.cs" />
-    <Compile Include="Music\TimeSignature.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Enums\SensorMode.cs" />
-    <Compile Include="Enums\SensorPort.cs" />
-    <Compile Include="Enums\SensorType.cs" />
-    <Compile Include="Enums\ShortSign.cs" />
-    <Compile Include="Enums\SoundSubCode.cs" />
-    <Compile Include="Enums\SystemCommand.cs" />
-    <Compile Include="Enums\VariableScope.cs" />
-    <Compile Include="Enums\VariableType.cs" />
-    <Compile Include="DirectCommandReply.cs" />
-    <Compile Include="SystemCommandReply.cs" />
-    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{A2BD71A0-1B29-427D-AC30-69E589DFF200}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Application\GameFrame.rbf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\3Gens.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Accept 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Accept 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Accept.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Alert.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Angry.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Awake.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Backward.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bar 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bar 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bar 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bar 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bar 4.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Big smile.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Black eye.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bomb.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Boom.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bottom left.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Bottom right.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Box.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Busy 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Busy 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Color sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Crazy 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Crazy 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Decline 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Decline 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Decline.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dial 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dial 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dial 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dial 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dial 4.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Disappointed.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dizzy.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dot empty.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dot full.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dots 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dots 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dots 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Dots 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Down.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\EV3 icon.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\EV3 small.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\EV3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Evil.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Fire.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Flowers.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Forest.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Forward.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Gyro sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Heart large.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Heart small.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Hourglass 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Hourglass 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Hourglass 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Hurt.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\IR beacon.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\IR sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Knocked out.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Large motor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Left.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\LEGO.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Light off.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Light on.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Lightning.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Love.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Medium motor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Middle left.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Middle right.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\MINDSTORMS.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Mouth 1 open.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Mouth 1 shut.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Mouth 2 open.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Mouth 2 shut.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Neutral.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Night.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\No go.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Nuclear.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Pinch left.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Pinch middle.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Pinch right.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Pirate.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Play.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Question mark.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Right.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Sad.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Sick.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Sleeping.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 4.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 5.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 6.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 7.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Slider 8.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Smile.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Snow.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Sound sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Stop 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Stop 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Swearing.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Talking.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Target.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Tear.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Temp sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Thumbs down.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Thumbs up.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Timer 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Timer 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Timer 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Timer 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Timer 4.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Tired left.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Tired middle.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Tired right.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Touch sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Toxic.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Up.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\US sensor.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Warning.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Water level 0.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Water level 1.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Water level 2.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Water level 3.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Wink.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\Winking.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Images\ZZZ.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Activate.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Air release.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Airbrake.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Analyze.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Arm 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Arm 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Arm 3.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Arm 4.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Backing alert.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Backwards.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Black.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Blip 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Blip 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Blip 3.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Blip 4.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Blue.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Boing.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Boo.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Bravo.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Brown.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Cat purr.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Cheering.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Click.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Color.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Confirm.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Connect.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Crunching.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Crying.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Detected.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Dog bark 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Dog bark 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Dog growl.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Dog sniff.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Dog whine.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Down.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Download.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Drop load.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Eight.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Elephant call.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Error alarm.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Error.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\EV3.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Fanfare.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Fantastic.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Five.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Flashing.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Forward.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Four.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Game over.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\General alert.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Go.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Good job.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Good.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Goodbye.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Green.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Hello.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Hi.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Horn 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Horn 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Insect buzz 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Insect buzz 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Insect chirp.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Kung fu.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Laser.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Laughing 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Laughing 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Left.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\LEGO.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Lift load.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Magic wand.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\MINDSTORMS.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Morning.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Motor idle.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Motor start.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Motor stop.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Neutral.rgf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Nine.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\No.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Object.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Okay.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Okey-dokey.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\One.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Ouch.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Overpower.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Power down.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Project 2.rbf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Ratchet.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Ready.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Red.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Right.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Searching.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Servo 1.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Servo 2.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Servo 3.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Servo 4.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Seven.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Shouting.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Six.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Slide load.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Smack.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Snake hiss.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Snake rattle.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Snap.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Sneezing.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Snoring.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Sonar.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Sorry.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Speed down.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Speed idle.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Speed up.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Speeding.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Start up.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Start.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Stop.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\T-rex roar.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Ten.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Thank you.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Three.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Tick tack.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Touch.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Turn.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Two.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Uh-oh.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Up.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Walk.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\White.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Yellow.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Yes.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Sounds\Zero.rsf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Utils\Utils.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Application\GameFrame.rbf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\3Gens.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Accept 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Accept 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Accept.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Alert.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Angry.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Awake.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Backward.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bar 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bar 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bar 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bar 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bar 4.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Big smile.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Black eye.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bomb.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Boom.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bottom left.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Bottom right.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Box.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Busy 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Busy 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Color sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Crazy 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Crazy 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Decline 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Decline 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Decline.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dial 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dial 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dial 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dial 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dial 4.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Disappointed.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dizzy.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dot empty.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dot full.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dots 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dots 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dots 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Dots 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Down.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\EV3 icon.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\EV3 small.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\EV3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Evil.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Fire.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Flowers.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Forest.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Forward.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Gyro sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Heart large.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Heart small.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Hourglass 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Hourglass 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Hourglass 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Hurt.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\IR beacon.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\IR sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Knocked out.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Large motor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Left.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\LEGO.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Light off.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Light on.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Lightning.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Love.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Medium motor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Middle left.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Middle right.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\MINDSTORMS.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Mouth 1 open.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Mouth 1 shut.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Mouth 2 open.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Mouth 2 shut.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Neutral.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Night.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\No go.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Nuclear.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Pinch left.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Pinch middle.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Pinch right.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Pirate.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Play.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Project 3.rbf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Question mark.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Right.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Sad.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Sick.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Sleeping.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 4.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 5.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 6.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 7.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Slider 8.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Smile.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Snow.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Sound sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Stop 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Stop 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Swearing.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Talking.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Target.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Tear.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Temp sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Thumbs down.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Thumbs up.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Timer 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Timer 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Timer 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Timer 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Timer 4.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Tired left.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Tired middle.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Tired right.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Touch sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Toxic.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Up.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\US sensor.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Warning.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Water level 0.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Water level 1.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Water level 2.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Water level 3.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Wink.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\Winking.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Images\ZZZ.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Activate.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Air release.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Airbrake.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Analyze.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Arm 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Arm 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Arm 3.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Arm 4.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Backing alert.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Backwards.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Black.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Blip 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Blip 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Blip 3.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Blip 4.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Blue.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Boing.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Boo.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Bravo.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Brown.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Cat purr.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Cheering.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Click.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Color.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Confirm.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Connect.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Crunching.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Crying.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Detected.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Dog bark 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Dog bark 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Dog growl.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Dog sniff.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Dog whine.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Down.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Download.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Drop load.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Eight.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Elephant call.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Error alarm.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Error.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\EV3.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Fanfare.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Fantastic.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Five.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Flashing.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Forward.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Four.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Game over.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\General alert.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Go.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Good job.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Good.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Goodbye.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Green.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Hello.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Hi.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Horn 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Horn 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Insect buzz 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Insect buzz 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Insect chirp.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Kung fu.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Laser.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Laughing 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Laughing 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Left.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\LEGO.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Lift load.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Magic wand.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\MINDSTORMS.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Morning.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Motor idle.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Motor start.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Motor stop.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Neutral.rgf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Nine.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\No.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Object.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Okay.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Okey-dokey.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\One.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Ouch.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Overpower.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Power down.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Project 2.rbf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Project 3.rbf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Ratchet.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Ready.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Red.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Right.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Searching.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Servo 1.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Servo 2.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Servo 3.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Servo 4.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Seven.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Shouting.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Six.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Slide load.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Smack.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Snake hiss.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Snake rattle.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Snap.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Sneezing.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Snoring.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Sonar.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Sorry.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Speed down.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Speed idle.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Speed up.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Speeding.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Start up.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Start.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Stop.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\T-rex roar.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Ten.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Thank you.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Three.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Tick tack.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Touch.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Turn.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Two.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Uh-oh.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Up.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Walk.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\White.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Yellow.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Yes.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Sounds\Zero.rsf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

@@ -1,12 +1,11 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Mathematics.Arithmetic
+namespace Mindstorms.Core.Commands.Mathematics.Arithmetic;
+
+public class Exp : OneOperatorOperand
 {
-    public class Exp : OneOperatorOperand
+    public Exp(float value)
+        : base(value, MathSubCode.Exp)
     {
-        public Exp(float value)
-            : base(value, MathSubCode.Exp)
-        {
-        }
     }
 }

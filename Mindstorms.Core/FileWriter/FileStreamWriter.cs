@@ -1,47 +1,43 @@
-﻿using System;
-using System.IO;
+﻿namespace Mindstorms.Core.FileWriter;
 
-namespace Mindstorms.Core.FileWriter
+public class FileStreamWriter : IWriter, IDisposable
 {
-    public class FileStreamWriter : IWriter, IDisposable
+    private readonly FileStream fileStream;
+    private bool disposed;
+
+    public FileStreamWriter(string destinationFilePath)
     {
-        private readonly FileStream fileStream;
-        private bool disposed;
+        fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write);
+    }
 
-        public FileStreamWriter(string destinationFilePath)
+    ~FileStreamWriter()
+    {
+        Dispose(false);
+    }
+
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+        Dispose(true);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposed)
         {
-            fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write);
+            return;
         }
 
-        ~FileStreamWriter()
+        if (disposing)
         {
-            Dispose(false);
+            fileStream.Close();
         }
+        disposed = true;
+    }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-            {
-                return;
-            }
-
-            if (disposing)
-            {
-                fileStream.Close();
-            }
-            disposed = true;
-        }
-
-        public void Write(byte[] buffer, int offset, int count)
-        {
-            fileStream.Write(buffer, offset, count);
-            fileStream.Flush();
-        }
+    public void Write(byte[] buffer, int offset, int count)
+    {
+        fileStream.Write(buffer, offset, count);
+        fileStream.Flush();
     }
 }

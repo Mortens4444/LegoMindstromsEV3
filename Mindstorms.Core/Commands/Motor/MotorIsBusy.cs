@@ -1,21 +1,20 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Motor
+namespace Mindstorms.Core.Commands.Motor;
+
+public class MotorIsBusy : Command
 {
-    public class MotorIsBusy : Command
-    {
 #warning This command must be tested.
 
-        public MotorIsBusy(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
+    public MotorIsBusy(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
+    {
+        data = GetDirectCommandWithReply(1);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(1);
-            data.AddRange(new byte[]
-            {
-                OpCode.OutputTest,
-                daisyChainLayer,
-                outputPort,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.OutputTest,
+            daisyChainLayer,
+            outputPort,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

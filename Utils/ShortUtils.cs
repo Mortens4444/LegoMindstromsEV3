@@ -1,12 +1,11 @@
-﻿namespace Utils
+﻿namespace Utils;
+
+public static class ShortUtils
 {
-    public static class ShortUtils
+    public static void Swap(ref short a, ref short b)
     {
-        public static void Swap(ref short a, ref short b)
-        {
-            a ^= b;
-            b ^= a;
-            a ^= b;
-        }
+        a ^= b;
+        b ^= a;
+        a ^= b;
     }
 }

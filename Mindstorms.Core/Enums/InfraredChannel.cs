@@ -1,10 +1,9 @@
-﻿namespace Mindstorms.Core.Enums
+﻿namespace Mindstorms.Core.Enums;
+
+public enum InfraredChannel
 {
-    public enum InfraredChannel
-    {
-        CH1,
-        CH2,
-        CH3,
-        CH4
-    }
+    CH1,
+    CH2,
+    CH3,
+    CH4
 }

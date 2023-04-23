@@ -1,37 +1,36 @@
 ﻿using Mindstorms.Core.EV3;
 using Mindstorms.Core.Responses;
 
-namespace Mindstorms.Game.General
+namespace Mindstorms.Game.General;
+
+public class DirectionHandler
 {
-    public class DirectionHandler
+    private readonly IDirectable directable;
+
+    public DirectionHandler(IDirectable directable)
     {
-        private readonly IDirectable directable;
+        this.directable = directable;
+    }
 
-        public DirectionHandler(IDirectable directable)
+    public ButtonStates HandleKeyPress(Brick brick)
+    {
+        var buttonStates = brick.GetButtonStates();
+        if (buttonStates.IsRightButtonPressed())
         {
-            this.directable = directable;
+            directable.ChangeDirection(Direction.East);
         }
-
-        public ButtonStates HandleKeyPress(Brick brick)
+        else if (buttonStates.IsLeftButtonPressed())
         {
-            var buttonStates = brick.GetButtonStates();
-            if (buttonStates.IsRightButtonPressed())
-            {
-                directable.ChangeDirection(Direction.East);
-            }
-            else if (buttonStates.IsLeftButtonPressed())
-            {
-                directable.ChangeDirection(Direction.West);
-            }
-            else if (buttonStates.IsDownButtonPressed())
-            {
-                directable.ChangeDirection(Direction.South);
-            }
-            else if (buttonStates.IsUpButtonPressed())
-            {
-                directable.ChangeDirection(Direction.North);
-            }
-            return buttonStates;
+            directable.ChangeDirection(Direction.West);
         }
+        else if (buttonStates.IsDownButtonPressed())
+        {
+            directable.ChangeDirection(Direction.South);
+        }
+        else if (buttonStates.IsUpButtonPressed())
+        {
+            directable.ChangeDirection(Direction.North);
+        }
+        return buttonStates;
     }
 }

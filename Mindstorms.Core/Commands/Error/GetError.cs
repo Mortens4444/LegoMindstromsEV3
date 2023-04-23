@@ -1,15 +1,14 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Error
+namespace Mindstorms.Core.Commands.Error;
+
+public class GetError : Command
 {
-    public class GetError : Command
+    public GetError()
     {
-        public GetError()
-        {
-            data = GetDirectCommandWithReply(1);
-            data.Add(OpCode.Info);
-            data.Add(InfoSubCode.GetError);
-            data.Add(ParameterType.Variable | VariableScope.Global);
-        }
+        data = GetDirectCommandWithReply(1);
+        data.Add(OpCode.Info);
+        data.Add(InfoSubCode.GetError);
+        data.Add(ParameterType.Variable | VariableScope.Global);
     }
 }

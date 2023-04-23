@@ -1,91 +1,74 @@
 ﻿using Mindstorms.Core.Commands.LCD;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using Utils.ImageConvertion.Converter;
 
-namespace Mindstorms.Core.ImageConverter
+namespace Mindstorms.Core.ImageConverter;
+
+public class BmpToRgfConverter
 {
-    public class BmpToRgfConverter
+    private const int BitsInByte = 8;
+    private readonly BitmapToByteArrayConverter bitmapToByteArrayConverter = new();
+
+    public void WriteToRgf(Bitmap bitmap, string filePath)
     {
-        private const int BitsInByte = 8;
-        private readonly BitmapToByteArrayConverter bitmapToByteArrayConverter = new BitmapToByteArrayConverter();
+        var colorComponents = GetColorComponents(bitmap.PixelFormat);
+        var convertionResult = bitmapToByteArrayConverter.Convert(bitmap);
+        var imageBytes = convertionResult.Item1;
+        var stride = convertionResult.Item2;
 
-        public void WriteToRgf(Bitmap bitmap, string filePath)
+        var rgfBytes = new List<byte>
         {
-            var colorComponents = GetColorComponents(bitmap.PixelFormat);
-            var convertionResult = bitmapToByteArrayConverter.Convert(bitmap);
-            var imageBytes = convertionResult.Item1;
-            var stride = convertionResult.Item2;
+            LCDCommand.ScreenWidth - 2,//(byte)Math.Min(bitmap.Width, LCDCommand.ScreenWidth - 2),
+            (byte)Math.Min(bitmap.Height, LCDCommand.ScreenHeight),
+        };
 
-            var rgfBytes = new List<byte>
+        byte pixelIndex = 0;
+        for (int row = 0; row < rgfBytes[1]; row++)
+        {
+            for (int column = 0; column < rgfBytes[0]; column++)
             {
-                LCDCommand.ScreenWidth - 2,//(byte)Math.Min(bitmap.Width, LCDCommand.ScreenWidth - 2),
-                (byte)Math.Min(bitmap.Height, LCDCommand.ScreenHeight),
-            };
-
-            byte pixelIndex = 0;
-            for (int row = 0; row < rgfBytes[1]; row++)
-            {
-                for (int column = 0; column < rgfBytes[0]; column++)
+                var ix = row * stride + (column * colorComponents);
+                if (pixelIndex == 0)
                 {
-                    var ix = row * stride + (column * colorComponents);
-                    if (pixelIndex == 0)
-                    {
-                        rgfBytes.Add(0);
-                    }
-                    if (ix >= imageBytes.Length)
-                    {
-                        break;
-                    }
-                    rgfBytes[rgfBytes.Count - 1] |= GetValue(imageBytes[ix], pixelIndex++);
-                    if (pixelIndex == BitsInByte)
-                    {
-                        pixelIndex = 0;
-                    }
+                    rgfBytes.Add(0);
+                }
+                if (ix >= imageBytes.Length)
+                {
+                    break;
+                }
+                rgfBytes[^1] |= GetValue(imageBytes[ix], pixelIndex++);
+                if (pixelIndex == BitsInByte)
+                {
+                    pixelIndex = 0;
                 }
             }
-
-            File.WriteAllBytes(filePath, rgfBytes.ToArray());
         }
 
-        private int GetColorComponents(PixelFormat pixelFormat)
+        File.WriteAllBytes(filePath, rgfBytes.ToArray());
+    }
+
+    private static int GetColorComponents(PixelFormat pixelFormat)
+    {
+        return pixelFormat switch
         {
-            switch (pixelFormat)
-            {
-                case PixelFormat.Format24bppRgb:
-                    return 3;
-                case PixelFormat.Format32bppArgb:
-                case PixelFormat.Format32bppRgb:
-                    return 4;
-                case PixelFormat.Format48bppRgb:
-                    return 6;
-                case PixelFormat.Format64bppArgb:
-                case PixelFormat.Format64bppPArgb:
-                    return 8;
-                case PixelFormat.Format16bppRgb565:
-                case PixelFormat.Format16bppRgb555:
-                case PixelFormat.Format16bppArgb1555:
-                case PixelFormat.Format16bppGrayScale:
-                    return 2;
-                case PixelFormat.Format8bppIndexed:
-                    return 1;
-            }
-            
+            PixelFormat.Format24bppRgb => 3,
+            PixelFormat.Format32bppArgb or PixelFormat.Format32bppRgb => 4,
+            PixelFormat.Format48bppRgb => 6,
+            PixelFormat.Format64bppArgb or PixelFormat.Format64bppPArgb => 8,
+            PixelFormat.Format16bppRgb565 or PixelFormat.Format16bppRgb555 or PixelFormat.Format16bppArgb1555 or PixelFormat.Format16bppGrayScale => 2,
+            PixelFormat.Format8bppIndexed => 1,
+            _ => throw new NotImplementedException(),
+        };
+    }
 
-            throw new NotImplementedException();
-        }
-
-        private static byte GetValue(byte rgbByte, byte index)
+    private static byte GetValue(byte rgbByte, byte index)
+    {
+        if (rgbByte == Byte.MinValue)
         {
-            if (rgbByte == Byte.MinValue)
-            {
-                return (byte)Math.Pow(2, index);
-            }
-
-            return 0;
+            return (byte)Math.Pow(2, index);
         }
+
+        return 0;
     }
 }

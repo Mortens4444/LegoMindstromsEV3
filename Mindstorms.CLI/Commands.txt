@@ -1,63 +1,119 @@
-﻿portlist
+﻿------------------------------------------------------------------------------------------------------------------------
+portlist
 	- Get the serial port names for the current computer.
 	- Ex.: portlist
+	- Aliases: list, ls
 
+------------------------------------------------------------------------------------------------------------------------
 connect port
 	- Connect to EV3 device with COM port. This is the first command which must be called.
-	- Ex.: connect COM4 
+	- Ex.: connect COM4
+	- Aliases: open, link, join, attach, bind
 
+------------------------------------------------------------------------------------------------------------------------
 connect machine port
 	- Connect to EV3 device with naned pipe. This is the first command which must be called.
 	- Ex.: connect . COM4
+	- Aliases: open, link, join, attach, bind
 
+------------------------------------------------------------------------------------------------------------------------
 disconnect
 	- Disconnect from EV3 device. This is the last command which must be called.
 	- Ex.: disconnect
+	- Aliases: close, unlink, detach
 
+------------------------------------------------------------------------------------------------------------------------
 exit
 	- Exit from ev3-cli.
 	- Ex.: exit
+	- Aliases: quit, close, terminate, q
 
+------------------------------------------------------------------------------------------------------------------------
 beep frequency durationMs
 	- Play tone with given frequency and duration.
 	- Ex.: beep 440 300
+	- Aliases: tone, ping, bleep, chirp
 
+------------------------------------------------------------------------------------------------------------------------
 led state
 	- Change the LEDs state on the brick.
 	- Ex.: led greenflashing
-
+	
+	Default values for error handling
+	[state: OrangePulse]
+------------------------------------------------------------------------------------------------------------------------
 lcd clean
 	- Cleans the screen. This should be the very first UI command to execute.
 	- Ex.: lcd clean
+	- Aliases: screen
 
+------------------------------------------------------------------------------------------------------------------------
 lcd pixel x y color
 	- Put a pixel to the x, y coordinates of the screen with the given color.
 	- Ex.: lcd pixel 10 10 black
+	- Aliases: screen
+	
+	Default values for error handling
+	[color: black]
 
+------------------------------------------------------------------------------------------------------------------------
 lcd line x1 y2 x2 y2 color
 	- Draws a line from x1, y1 coordinates to x2, y2 coordinates with the given color.
 	- Ex.: lcd line 10 10 30 30 black
+	- Aliases: screen
 
+	Default values for error handling
+	[color: black]
+
+------------------------------------------------------------------------------------------------------------------------
 lcd circle x y radius color fill
 	- Draws a circle to the x, y coordinates of the screen with the given radius, color and fill.
 	- Ex.: lcd circle 10 10 30 black true
+	- Aliases: screen
 
+	Default values for error handling
+	[color: black]
+
+------------------------------------------------------------------------------------------------------------------------
 lcd rectangle x y width height color fill
 	- Draws a rectangle to the x, y coordinates of the screen with the given width, height, color and fill.
 	- Ex.: lcd rectangle 10 10 30 30 black true
+	- Aliases: screen
+	
+	Default values for error handling
+	[color: black]
 
+------------------------------------------------------------------------------------------------------------------------
 lcd string x y color fontType text
 	- Draws a rectangle to the x, y coordinates of the screen with the given width, height, color and fill.
-	- Ex.: lcd string 10 10 black normal Hello World!
+	- Ex.: lcd string 10 10 black big Hello World!
+	- Aliases: screen
+	
+	Default values for error handling
+	[color: black]
+	[fontType: normal]
 
-motor start port speed [daisyChainLayer]
-	- Start motor on given output port with the given speed.
-	- Ex.: motor start B 100 EV3
-
-motor stop port breaktype [daisyChainLayer]
-	- Stop motor on given output port.
-	- Ex.: motor stop B float first
-
+------------------------------------------------------------------------------------------------------------------------
 lcd update
 	- Updates the screen. This should be the very last UI command to execute.
 	- Ex.: lcd update
+	- Aliases: screen
+
+------------------------------------------------------------------------------------------------------------------------
+motor start port speed [daisyChainLayer]
+	- Start motor on given output port with the given speed.
+	- Ex.: motor start B 100 EV3
+	- Aliases: engine
+
+	Default values for error handling
+	[port: BC]
+
+------------------------------------------------------------------------------------------------------------------------
+motor stop port breakType [daisyChainLayer]
+	- Stop motor on given output port.
+	- Ex.: motor stop B float first
+	- Aliases: engine
+
+	Default values for error handling
+	[port: BC]
+	[breakType: break]

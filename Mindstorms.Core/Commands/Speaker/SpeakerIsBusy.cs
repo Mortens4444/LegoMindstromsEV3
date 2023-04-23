@@ -1,14 +1,13 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Speaker
+namespace Mindstorms.Core.Commands.Speaker;
+
+public class SpeakerIsBusy : Command
 {
-    public class SpeakerIsBusy : Command
+    public SpeakerIsBusy()
     {
-        public SpeakerIsBusy()
-        {
-            data = GetDirectCommandWithReply(1);
-            data.Add(OpCode.SoundTest);
-            data.Add(ParameterType.Variable | VariableScope.Global);
-        }
+        data = GetDirectCommandWithReply(1);
+        data.Add(OpCode.SoundTest);
+        data.Add(ParameterType.Variable | VariableScope.Global);
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Mathematics.Arithmetic
+namespace Mindstorms.Core.Commands.Mathematics.Arithmetic;
+
+public class Ln : OneOperatorOperand
 {
-    public class Ln : OneOperatorOperand
+    public Ln(float value)
+        : base(value, MathSubCode.Ln)
     {
-        public Ln(float value)
-            : base(value, MathSubCode.Ln)
-        {
-        }
     }
 }

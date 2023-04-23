@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Enums
+[Flags]
+public enum VariableType : byte
 {
-    [Flags]
-	public enum VariableType : byte
-	{
-		Value = 0x00,
-		Handle = 0x10
-	}
+	Value = 0x00,
+	Handle = 0x10
 }

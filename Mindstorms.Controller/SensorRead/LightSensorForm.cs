@@ -13,7 +13,7 @@ namespace Mindstorms.Controller.SensorRead
         private readonly Brick brick;
         private bool readSensor;
 
-        public LightSensorForm(Brick brick)
+        public LightSensorForm(Brick? brick)
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);

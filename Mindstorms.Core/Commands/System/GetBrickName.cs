@@ -1,22 +1,21 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.System
+namespace Mindstorms.Core.Commands.System;
+
+/// <summary>
+/// Get the name of the brick.
+/// </summary>
+public class GetBrickName : Command
 {
-    /// <summary>
-    /// Get the name of the brick.
-    /// </summary>
-    public class GetBrickName : Command
+    public GetBrickName()
     {
-        public GetBrickName()
+        data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(Constants.DefaultResponseLength);
-            data.AddRange(new byte[]
-            {
-                OpCode.ComGet,
-                ComGetSubCommand.GetBrickName,
-                Constants.DefaultResponseLength,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.ComGet,
+            ComGetSubCommand.GetBrickName,
+            Constants.DefaultResponseLength,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

@@ -1,10 +1,9 @@
-﻿namespace Utils
+﻿namespace Utils;
+
+public static class ByteExtensions
 {
-    public static class ByteExtensions
+    public static bool IsBitSet(this byte value, byte pattern)
     {
-        public static bool IsBitSet(this byte value, byte pattern)
-        {
-            return (value & pattern) == pattern;
-        }
+        return (value & pattern) == pattern;
     }
 }

@@ -1,48 +1,45 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 
-namespace Mindstorms.Core.Enums
+namespace Mindstorms.Core.Enums;
+
+public abstract class EnumLikeObject<T>
 {
-    public abstract class EnumLikeObject<T>
+    protected static readonly Dictionary<byte, T> Values = new();
+    
+    public byte Value { get; private set; }
+    
+    public string Name { get; private set; }
+
+    protected EnumLikeObject(byte value, string name)
     {
-        protected static readonly Dictionary<byte, T> Values = new Dictionary<byte, T>();
-        
-        public byte Value { get; private set; }
-        
-        public string Name { get; private set; }
+        Value = value;
+        Name = String.IsNullOrEmpty(name) ? value.ToString() : name;
+    }
 
-        protected EnumLikeObject(byte value, string name)
-        {
-            Value = value;
-            Name = String.IsNullOrEmpty(name) ? value.ToString() : name;
-        }
+    public override string ToString()
+    {
+        return Name;
+    }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+    public static IList GetValues()
+    {
+        return Values.Values.ToList();
+    }
 
-        public static IList GetValues()
+    public static IList GetNotCombinedValues()
+    {
+        var powersOfTwo = new List<byte>();
+        for (int i = 0; i < 8; i++)
         {
-            return Values.Values.ToList();
+            powersOfTwo.Add((byte)Math.Pow(2, i));
         }
+        return Values.Where(kvp => powersOfTwo.Contains(kvp.Key)).Select(kvp => kvp.Value).ToList();
+    }
 
-        public static IList GetNotCombinedValues()
-        {
-            var powersOfTwo = new List<byte>();
-            for (int i = 0; i < 8; i++)
-            {
-                powersOfTwo.Add((byte)Math.Pow(2, i));
-            }
-            return Values.Where(kvp => powersOfTwo.Contains(kvp.Key)).Select(kvp => kvp.Value).ToList();
-        }
-
-        public static T Parse(string name)
-        {
-            var fieldInfo = typeof(T).GetFields().Single(field => String.Equals(field.Name, name, StringComparison.OrdinalIgnoreCase));
-            return (T)fieldInfo.GetValue(null);
-        }
+    public static T? Parse(string name)
+    {
+        var fields = typeof(T).GetFields();
+        var fieldInfo = fields.Single(field => String.Equals(field.Name, name, StringComparison.OrdinalIgnoreCase));
+        return (T?)fieldInfo.GetValue(null);
     }
 }

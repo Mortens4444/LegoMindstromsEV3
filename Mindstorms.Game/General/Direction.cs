@@ -1,10 +1,9 @@
-﻿namespace Mindstorms.Game.General
+﻿namespace Mindstorms.Game.General;
+
+public enum Direction
 {
-    public enum Direction
-    {
-        North = -2,
-        West = -1,
-        East = 1,
-        South = 2
-    }
+    North = -2,
+    West = -1,
+    East = 1,
+    South = 2
 }

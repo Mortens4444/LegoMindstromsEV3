@@ -1,18 +1,23 @@
 ﻿using Mindstorms.Core.EV3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Mindstorms.CLI.Commands
+namespace Mindstorms.CLI.Commands;
+
+internal class Beep : ICliCommand
 {
-    internal class Beep : ICliCommand
-    {
-        public string Name => nameof(Beep);
+    public string Name => nameof(Beep);
 
-        public void Action(ref Brick brick, IEnumerable<string> arguments)
+    public List<string> Aliases => new() { "tone", "ping", "bleep", "chirp" };
+
+    public void Action(ref Brick? brick, IList<string> arguments)
+    {
+        if (brick == null)
         {
-            var frequency = Convert.ToUInt16(arguments.ElementAt(0));
-            var durationMs = Convert.ToUInt16(arguments.ElementAt(1));
+            Console.Error.WriteLine("Use 'connect' before this command.");
+        }
+        else
+        {
+            var frequency = Convert.ToUInt16(arguments[0]);
+            var durationMs = Convert.ToUInt16(arguments[1]);
             brick.Beep(frequency, durationMs);
         }
     }

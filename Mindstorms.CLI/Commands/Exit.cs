@@ -1,16 +1,16 @@
 ﻿using Mindstorms.Core.EV3;
-using System;
-using System.Collections.Generic;
 
-namespace Mindstorms.CLI.Commands
+namespace Mindstorms.CLI.Commands;
+
+internal class Exit : ICliCommand
 {
-    internal class Exit : ICliCommand
-    {
-        public string Name => nameof(Exit);
+    public string Name => nameof(Exit);
 
-        public void Action(ref Brick brick, IEnumerable<string> arguments)
-        {
-            Environment.Exit(0);
-        }
+    public List<string> Aliases => new() { "quit", "close", "terminate", "q" };
+
+    public void Action(ref Brick? brick, IList<string> arguments)
+    {
+        brick?.Disconnect();
+        Environment.Exit(0);
     }
 }

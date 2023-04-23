@@ -13,7 +13,7 @@ namespace Mindstorms.Controller.SensorRead
         private readonly Brick brick;
         private bool readSensor;
 
-        public GyroSensorForm(Brick brick)
+        public GyroSensorForm(Brick? brick)
         {
             InitializeComponent();
             this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);

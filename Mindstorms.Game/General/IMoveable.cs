@@ -1,13 +1,12 @@
-﻿namespace Mindstorms.Game.General
+﻿namespace Mindstorms.Game.General;
+
+public interface IMoveable
 {
-    public interface IMoveable
-    {
-        void MoveUp(bool move);
+    void MoveUp(bool move);
 
-        void MoveDown(bool move);
+    void MoveDown(bool move);
 
-        void MoveRight(bool move);
+    void MoveRight(bool move);
 
-        void MoveLeft(bool move);
-    }
+    void MoveLeft(bool move);
 }

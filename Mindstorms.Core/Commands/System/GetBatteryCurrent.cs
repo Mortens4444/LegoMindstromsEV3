@@ -1,18 +1,17 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.System
+namespace Mindstorms.Core.Commands.System;
+
+public class GetBatteryCurrent : Command
 {
-    public class GetBatteryCurrent : Command
+    public GetBatteryCurrent()
     {
-        public GetBatteryCurrent()
+        data = GetDirectCommandWithReply(4);
+        data.AddRange(new byte[]
         {
-            data = GetDirectCommandWithReply(4);
-            data.AddRange(new byte[]
-            {
-                OpCode.UIRead,
-                SystemInfoSubCommand.GetBatteryCurrent,
-                ParameterType.Variable | VariableScope.Global
-            });
-        }
+            OpCode.UIRead,
+            SystemInfoSubCommand.GetBatteryCurrent,
+            ParameterType.Variable | VariableScope.Global
+        });
     }
 }

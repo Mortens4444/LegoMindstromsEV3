@@ -1,17 +1,16 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core
+namespace Mindstorms.Core;
+
+public interface ICommandReply
 {
-    public interface ICommandReply
-    {
-        ushort MessageCounter { get; }
+    ushort MessageCounter { get; }
 
-        CommandType CommandType { get; }
+    CommandType CommandType { get; }
 
-        CommandReplyStatus CommandReplyStatus { get; }
+    CommandReplyStatus CommandReplyStatus { get; }
 
-        byte[] RawResponseData { get; }
+    byte[] RawResponseData { get; }
 
-        string GetResponseAsString();
-    }
+    string GetResponseAsString();
 }

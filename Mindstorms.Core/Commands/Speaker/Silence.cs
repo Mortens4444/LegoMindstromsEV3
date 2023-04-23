@@ -1,14 +1,13 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Speaker
+namespace Mindstorms.Core.Commands.Speaker;
+
+public class Silence : Command
 {
-    public class Silence : Command
+    public Silence()
     {
-        public Silence()
-        {
-            data = DirectCommandNoReply;
-            data.Add(OpCode.Sound);
-            data.Add(SoundSubCode.Break);
-        }
+        data = DirectCommandNoReply;
+        data.Add(OpCode.Sound);
+        data.Add(SoundSubCode.Break);
     }
 }

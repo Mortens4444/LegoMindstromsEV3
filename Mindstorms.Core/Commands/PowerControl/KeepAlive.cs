@@ -1,19 +1,18 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.PowerControl
+namespace Mindstorms.Core.Commands.PowerControl;
+
+public class KeepAlive : Command
 {
-    public class KeepAlive : Command
-    {
 #warning This command must be tested.
-        public KeepAlive(byte minutes)
+    public KeepAlive(byte minutes)
+    {
+        data = DirectCommandNoReply;
+        data.AddRange(new byte[]
         {
-            data = DirectCommandNoReply;
-            data.AddRange(new byte[]
-            {
-                OpCode.KeepAlive,
-                ParameterFormat.Long | FollowType.OneByte,
-                minutes
-            });
-        }
+            OpCode.KeepAlive,
+            ParameterFormat.Long | FollowType.OneByte,
+            minutes
+        });
     }
 }

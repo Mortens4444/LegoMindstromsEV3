@@ -1,19 +1,18 @@
 ﻿using Mindstorms.Core.Enums;
 
-namespace Mindstorms.Core.Commands.Motor
+namespace Mindstorms.Core.Commands.Motor;
+
+public class OutputPower : Command
 {
-    public class OutputPower : Command
+    public OutputPower(DaisyChainLayer daisyChainLayer, OutputPort outputPort, byte power)
     {
-        public OutputPower(DaisyChainLayer daisyChainLayer, OutputPort outputPort, byte power)
+        data = DirectCommandNoReply;
+        data.AddRange(new byte[]
         {
-            data = DirectCommandNoReply;
-            data.AddRange(new byte[]
-            {
-                OpCode.OutputPower,
-                daisyChainLayer,
-                outputPort,
-                power
-            });
-        }
+            OpCode.OutputPower,
+            daisyChainLayer,
+            outputPort,
+            power
+        });
     }
 }

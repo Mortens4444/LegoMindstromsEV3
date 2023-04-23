@@ -1,23 +1,19 @@
-﻿using System;
-using System.Windows.Forms;
+﻿namespace Utils;
 
-namespace Utils
+public static class FormExtensions
 {
-    public static class FormExtensions
+    public static bool IsDisposingOrDisposed(this Form form)
     {
-        public static bool IsDisposingOrDisposed(this Form form)
+        try
         {
-            try
+            return form.Invoke(delegate
             {
-                return (bool)form.Invoke((Func<bool>)delegate
-                {
-                    return form.Disposing || form.IsDisposed;
-                });
-            }
-            catch
-            {
-                return true;
-            }
+                return form.Disposing || form.IsDisposed;
+            });
+        }
+        catch
+        {
+            return true;
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.Extensions;
 
-namespace Mindstorms.Core.Commands.File
+namespace Mindstorms.Core.Commands.File;
+
+public class CreateDirectory : Command
 {
-    public class CreateDirectory : Command
+    public CreateDirectory(string fullPathDirectoryName)
     {
-        public CreateDirectory(string fullPathDirectoryName)
-        {
-            data = SystemCommandWithReply;
-            data.Add(SystemCommand.CreateDir);
-            data.Append(fullPathDirectoryName);
-        }
+        data = SystemCommandWithReply;
+        data.Add(SystemCommand.CreateDir);
+        data.Append(fullPathDirectoryName);
     }
 }

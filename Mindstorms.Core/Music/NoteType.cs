@@ -1,12 +1,11 @@
-﻿namespace Mindstorms.Core.Music
+﻿namespace Mindstorms.Core.Music;
+
+public enum NoteType
 {
-    public enum NoteType
-    {
-        Whole,
-        Half,
-        Quarter,
-        Eighth,
-        Sixteenth,
-        ThirthySecond
-    }
+    Whole,
+    Half,
+    Quarter,
+    Eighth,
+    Sixteenth,
+    ThirthySecond
 }

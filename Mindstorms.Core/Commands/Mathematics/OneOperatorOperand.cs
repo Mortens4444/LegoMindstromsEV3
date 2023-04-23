@@ -1,17 +1,16 @@
 ﻿using Mindstorms.Core.Enums;
 using Mindstorms.Core.Extensions;
 
-namespace Mindstorms.Core.Commands.Mathematics
+namespace Mindstorms.Core.Commands.Mathematics;
+
+public abstract class OneOperatorOperand : Command
 {
-    public abstract class OneOperatorOperand : Command
+    public OneOperatorOperand(float value, MathSubCode mathSubCode)
     {
-        public OneOperatorOperand(float value, MathSubCode mathSubCode)
-        {
-            data = GetDirectCommandWithReply(4);
-            data.Add(OpCode.Math);
-            data.Add(mathSubCode);
-            data.AppendFourBytesParameter(value);
-            data.Add(ParameterType.Variable | VariableScope.Global);
-        }
+        data = GetDirectCommandWithReply(4);
+        data.Add(OpCode.Math);
+        data.Add(mathSubCode);
+        data.AppendFourBytesParameter(value);
+        data.Add(ParameterType.Variable | VariableScope.Global);
     }
 }

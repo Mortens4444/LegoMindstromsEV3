@@ -1,19 +1,16 @@
-﻿using System;
+﻿namespace Utils;
 
-namespace Utils
+public class ComboBoxItem
 {
-    public class ComboBoxItem
+    public object Object { get; }
+
+    public ComboBoxItem(object @object)
     {
-        public Object Object { get; }
+        Object = @object;
+    }
 
-        public ComboBoxItem(Object @object)
-        {
-            Object = @object;
-        }
-
-        public override string ToString()
-        {
-            return Object.ToString();
-        }
+    public override string ToString()
+    {
+        return Object.ToString()!;
     }
 }

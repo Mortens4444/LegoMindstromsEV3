@@ -1,8 +1,7 @@
-﻿namespace Mindstorms.Core.Signaling
+﻿namespace Mindstorms.Core.Signaling;
+
+public enum Signal
 {
-    public enum Signal
-    {
-        Di = 1,
-        Dah = 3
-    }
+    Di = 1,
+    Dah = 3
 }

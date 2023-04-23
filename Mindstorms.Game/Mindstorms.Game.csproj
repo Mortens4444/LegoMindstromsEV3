@@ -1,71 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9D64565-E85F-4960-9C54-8E48454A8E54}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mindstorms.Game</RootNamespace>
-    <AssemblyName>Mindstorms.Game</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithoutJoystick|AnyCPU'">
-    <OutputPath>bin\ReleaseWithoutJoystick\</OutputPath>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Circles\CircleEater.cs" />
-    <Compile Include="Circles\CirclesGameEngine.cs" />
-    <Compile Include="General\MovingHandler.cs" />
-    <Compile Include="General\GameEngineBase.cs" />
-    <Compile Include="General\GameFrame.cs" />
-    <Compile Include="General\Directable.cs" />
-    <Compile Include="General\IMoveable.cs" />
-    <Compile Include="General\MovingDifference.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="General\ScoreCounter.cs" />
-    <Compile Include="Snake\Constants.cs" />
-    <Compile Include="General\Direction.cs" />
-    <Compile Include="General\MovingDifferenceProvider.cs" />
-    <Compile Include="Snake\FoodProducer.cs" />
-    <Compile Include="General\IDirectable.cs" />
-    <Compile Include="General\DirectionHandler.cs" />
-    <Compile Include="Snake\SnakeGameEngine.cs" />
-    <Compile Include="Snake\Wormy.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mindstorms.Core\Mindstorms.Core.csproj">
-      <Project>{3e4fad31-f6a5-4fc1-8d51-6b734e9738e3}</Project>
-      <Name>Mindstorms.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="**\*.bak" />
+		<None Remove="**\*.nupkg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Mindstorms.Core\Mindstorms.Core.csproj" />
+	</ItemGroup>
+
 </Project>
