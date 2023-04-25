@@ -1,6 +1,6 @@
 # Lego Mindstorms EV3 (Firmware: V1.09H)
 
-This application uses [Microsoft.DirectX.SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812) however can be disabled by editing the **Joystick** and **MindstromController** project properties or changing the configuration to ReleaseWithoutJoystick.
+This application uses [DirectInput API](http://sharpdx.org/wiki/class-library-api/directinput/) however can be disabled by editing the **Joystick** and **MindstromController** project properties or changing the configuration to ReleaseWithoutJoystick.
 Just remove the Conditional Compilation Symbol **USE_JOYSTICK** on the Build tab.
 
 For those who want to contribute, please read the *CONTRIBUTING.md* in the root folder of the solution.
