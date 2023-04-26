@@ -1,7 +1,10 @@
 ﻿#if USE_JOYSTICK
 using Joystick;
+using LargeLanguageModelClient.ChatGpt;
+using LargeLanguageModelClient.ChatGpt.Dto;
 #endif
 using MessageBoxes;
+using Microsoft.Extensions.Configuration;
 using Mindstorms.Controller.SensorRead;
 using Mindstorms.Core;
 using Mindstorms.Core.Commands.MailBox;
@@ -48,6 +51,7 @@ public partial class MainForm : Form
 #if USE_JOYSTICK
     private CancellationTokenSource? joystickPollCancellationTokenSource;
 #endif
+    public IConfiguration Configuration { get; set; }
 
     public MainForm()
     {
@@ -60,6 +64,10 @@ public partial class MainForm : Form
         tscbRightMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.C.GetIndex());
         cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());
         cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
+
+        Configuration = new ConfigurationBuilder()
+            .AddUserSecrets("2B00990C-D8D5-4CAC-9F94-810E5B9FE4B5")
+            .Build();
     }
 
     ~MainForm()
@@ -357,7 +365,7 @@ public partial class MainForm : Form
         }
         else
         {
-            JoystickHandler.StopJoystick(joystickPollCancellationTokenSource);                
+            JoystickHandler.StopJoystick(joystickPollCancellationTokenSource);
         }
 #else
         gbJoystick.Enabled = false;
@@ -498,5 +506,56 @@ public partial class MainForm : Form
     {
         var soundRecorder = new SoundRecorderForm();
         soundRecorder.Show();
+    }
+
+    private async void BtnAskChatGpt_Click(object sender, EventArgs e)
+    {
+        var client = new ChatGptClient();
+        var keyName = "OpenAI:ApiKey";
+        var keyValue = "openai-api-key";
+#if DEBUG
+        string? apiKey = Configuration[keyName];
+#else
+        string? apiKey = Environment.GetEnvironmentVariable(keyName, EnvironmentVariableTarget.User);
+#endif
+
+        if (apiKey != null)
+        {
+            if (apiKey == keyValue)
+            {
+                ErrorBox.Show("OpenAI API Key is wrong", $"To get a valid Open AI API Key, please visit https://platform.openai.com/docs/api-reference");
+            }
+            else
+            {
+                var chatGptRequest = new ChatGptRequest
+                {
+                    Model = "gpt-3.5-turbo",
+                    Temperature = tbTemperature.Value / 10.0,
+                    Messages = new List<Dictionary<string, string>>
+                    {
+                        new Dictionary<string, string> {
+                            { "role", "user" },
+                            { "content", rtbChatGpt.Text }
+                        }
+                    }
+                };
+                try
+                {
+                    rtbChatGpt.Text = await client.SendMessage(chatGptRequest, apiKey);
+                }
+                catch (Exception ex)
+                {
+                    ErrorBox.Show(ex);
+                }
+            }
+        }
+        else
+        {
+#if DEBUG
+            ErrorBox.Show("OpenAI API Key is missing", $"dotnet user-secrets set \"{keyName}\" \"{keyValue}\"");
+#else
+            ErrorBox.Show("OpenAI API Key is missing", $"Please create an environment variable named {keyName} with your {keyValue}");
+#endif
+        }
     }
 }

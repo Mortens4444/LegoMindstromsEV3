@@ -36,6 +36,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Mindstorms.Installer", "Min
 		{F07A63A5-870B-442B-9D78-CFF6B1269DF1} = {F07A63A5-870B-442B-9D78-CFF6B1269DF1}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargeLanguageModelClient", "LargeLanguageModelClient\LargeLanguageModelClient.csproj", "{7DC1A876-B892-4045-A11C-A6E9BB3B804F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,18 @@ Global
 		{72349DFB-0B8D-44DB-BAF7-E78A8B053F95}.ReleaseWithoutJoystick|Any CPU.ActiveCfg = Debug|x86
 		{72349DFB-0B8D-44DB-BAF7-E78A8B053F95}.ReleaseWithoutJoystick|x86.ActiveCfg = Release|x86
 		{72349DFB-0B8D-44DB-BAF7-E78A8B053F95}.ReleaseWithoutJoystick|x86.Build.0 = Release|x86
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Debug|x86.Build.0 = Debug|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.Release|x86.Build.0 = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.ReleaseWithoutJoystick|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.ReleaseWithoutJoystick|Any CPU.Build.0 = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.ReleaseWithoutJoystick|x86.ActiveCfg = Release|Any CPU
+		{7DC1A876-B892-4045-A11C-A6E9BB3B804F}.ReleaseWithoutJoystick|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

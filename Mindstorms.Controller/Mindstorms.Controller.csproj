@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
+		<UserSecretsId>2B00990C-D8D5-4CAC-9F94-810E5B9FE4B5</UserSecretsId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,11 +18,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
 	  <PackageReference Include="WinForms.MessageBoxes" Version="1.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Joystick\Joystick.csproj" />
+	  <ProjectReference Include="..\LargeLanguageModelClient\LargeLanguageModelClient.csproj" />
 	  <ProjectReference Include="..\Mindstorms.Core\Mindstorms.Core.csproj" />
 	  <ProjectReference Include="..\Mindstorms.Game\Mindstorms.Game.csproj" />
 	  <ProjectReference Include="..\SpeechRecognition\SpeechRecognition.csproj" />

@@ -7,6 +7,10 @@ For those who want to contribute, please read the *CONTRIBUTING.md* in the root 
 
 Using the code in another solution shouldn't be hard. Just reference the **MindstormCore** project and use the following code snippet.
 
+It also uses ChatGPT to communicate with. In order to obtain a valid OpenAI API Key,
+you need to create one at https://platform.openai.com/account/api-keys, and set it as an environment variable called OpenAI:ApiKey.
+Developers can use this command to create a secret in developer console: dotnet user-secrets set "OpenAI:ApiKey" "openai-api-key"
+
 ## Connect to brick
 ```
 var brick = new Brick("COM1"); // Note that you need to find the correct COM port to connect.

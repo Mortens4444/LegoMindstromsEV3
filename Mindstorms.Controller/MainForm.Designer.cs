@@ -29,663 +29,690 @@ namespace Mindstorms.Controller
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.cbPort = new System.Windows.Forms.ToolStripComboBox();
-            this.btnConnectOrDisconnect = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslLeftMotor = new System.Windows.Forms.ToolStripLabel();
-            this.tscbLeftMotor = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslRightMotor = new System.Windows.Forms.ToolStripLabel();
-            this.tscbRightMotor = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslLeverMotor = new System.Windows.Forms.ToolStripLabel();
-            this.tscbLeverMotor = new System.Windows.Forms.ToolStripComboBox();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.tsmiControl = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiButtons = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiFileSystem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMotors = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSpeaker = new System.Windows.Forms.ToolStripMenuItem();
-            this.separator = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiJoystick = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVoiceControl = new System.Windows.Forms.ToolStripMenuItem();
-            this.separator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiDeviceInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSensors = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiGyroSensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLightSensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTouchSensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiInfraredSensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUltrasonicSensor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiGames = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSnake = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCircles = new System.Windows.Forms.ToolStripMenuItem();
-            this.separator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiBehaveLikeADog = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiImageConverter = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSoundRecorder = new System.Windows.Forms.ToolStripMenuItem();
-            this.pMain = new System.Windows.Forms.Panel();
-            this.lblDaisyChainLayer = new System.Windows.Forms.Label();
-            this.cbDaisyChainLayer = new System.Windows.Forms.ComboBox();
-            this.gbMorse = new System.Windows.Forms.GroupBox();
-            this.tbRobotPartner = new System.Windows.Forms.TextBox();
-            this.rtbMorse = new System.Windows.Forms.RichTextBox();
-            this.btnMorse = new System.Windows.Forms.Button();
-            this.gbJoystick = new System.Windows.Forms.GroupBox();
-            this.tbMinimumDelta = new System.Windows.Forms.TrackBar();
-            this.tbDeltaModifier = new System.Windows.Forms.TrackBar();
-            this.gbControl = new System.Windows.Forms.GroupBox();
-            this.btnSouthEast = new System.Windows.Forms.Button();
-            this.btnSouth = new System.Windows.Forms.Button();
-            this.btnSouthWest = new System.Windows.Forms.Button();
-            this.btnEast = new System.Windows.Forms.Button();
-            this.btnWest = new System.Windows.Forms.Button();
-            this.btnNorthEast = new System.Windows.Forms.Button();
-            this.btnNorth = new System.Windows.Forms.Button();
-            this.btnNorthWest = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStrip.SuspendLayout();
-            this.menuStrip.SuspendLayout();
-            this.pMain.SuspendLayout();
-            this.gbMorse.SuspendLayout();
-            this.gbJoystick.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMinimumDelta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbDeltaModifier)).BeginInit();
-            this.gbControl.SuspendLayout();
-            this.SuspendLayout();
+            saveFileDialog = new SaveFileDialog();
+            openFileDialog = new OpenFileDialog();
+            toolStrip = new ToolStrip();
+            cbPort = new ToolStripComboBox();
+            btnConnectOrDisconnect = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            tslLeftMotor = new ToolStripLabel();
+            tscbLeftMotor = new ToolStripComboBox();
+            toolStripSeparator2 = new ToolStripSeparator();
+            tslRightMotor = new ToolStripLabel();
+            tscbRightMotor = new ToolStripComboBox();
+            toolStripSeparator3 = new ToolStripSeparator();
+            tslLeverMotor = new ToolStripLabel();
+            tscbLeverMotor = new ToolStripComboBox();
+            menuStrip = new MenuStrip();
+            tsmiControl = new ToolStripMenuItem();
+            tsmiButtons = new ToolStripMenuItem();
+            tsmiFileSystem = new ToolStripMenuItem();
+            tsmiMotors = new ToolStripMenuItem();
+            tsmiScreen = new ToolStripMenuItem();
+            tsmiSpeaker = new ToolStripMenuItem();
+            separator = new ToolStripSeparator();
+            tsmiJoystick = new ToolStripMenuItem();
+            tsmiVoiceControl = new ToolStripMenuItem();
+            separator2 = new ToolStripSeparator();
+            tsmiDeviceInfo = new ToolStripMenuItem();
+            tsmiSensors = new ToolStripMenuItem();
+            tsmiGyroSensor = new ToolStripMenuItem();
+            tsmiLightSensor = new ToolStripMenuItem();
+            tsmiTouchSensor = new ToolStripMenuItem();
+            tsmiInfraredSensor = new ToolStripMenuItem();
+            tsmiUltrasonicSensor = new ToolStripMenuItem();
+            tsmiGames = new ToolStripMenuItem();
+            tsmiSnake = new ToolStripMenuItem();
+            tsmiCircles = new ToolStripMenuItem();
+            separator3 = new ToolStripSeparator();
+            tsmiBehaveLikeADog = new ToolStripMenuItem();
+            tsmiTools = new ToolStripMenuItem();
+            tsmiImageConverter = new ToolStripMenuItem();
+            tsmiSoundRecorder = new ToolStripMenuItem();
+            pMain = new Panel();
+            tbTemperature = new TrackBar();
+            rtbChatGpt = new RichTextBox();
+            btnAskChatGpt = new Button();
+            lblDaisyChainLayer = new Label();
+            cbDaisyChainLayer = new ComboBox();
+            gbMorse = new GroupBox();
+            tbRobotPartner = new TextBox();
+            rtbMorse = new RichTextBox();
+            btnMorse = new Button();
+            gbJoystick = new GroupBox();
+            tbMinimumDelta = new TrackBar();
+            tbDeltaModifier = new TrackBar();
+            gbControl = new GroupBox();
+            btnSouthEast = new Button();
+            btnSouth = new Button();
+            btnSouthWest = new Button();
+            btnEast = new Button();
+            btnWest = new Button();
+            btnNorthEast = new Button();
+            btnNorth = new Button();
+            btnNorthWest = new Button();
+            btnStop = new Button();
+            toolTip = new ToolTip(components);
+            toolStrip.SuspendLayout();
+            menuStrip.SuspendLayout();
+            pMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbTemperature).BeginInit();
+            gbMorse.SuspendLayout();
+            gbJoystick.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbMinimumDelta).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tbDeltaModifier).BeginInit();
+            gbControl.SuspendLayout();
+            SuspendLayout();
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.DefaultExt = "cs";
-            this.saveFileDialog.Filter = "C# files|*.cs";
+            saveFileDialog.DefaultExt = "cs";
+            saveFileDialog.Filter = "C# files|*.cs";
             // 
             // openFileDialog
             // 
-            this.openFileDialog.DefaultExt = "cs";
-            this.openFileDialog.Filter = "C# files|*.cs";
+            openFileDialog.DefaultExt = "cs";
+            openFileDialog.Filter = "C# files|*.cs";
             // 
             // toolStrip
             // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cbPort,
-            this.btnConnectOrDisconnect,
-            this.toolStripSeparator1,
-            this.tslLeftMotor,
-            this.tscbLeftMotor,
-            this.toolStripSeparator2,
-            this.tslRightMotor,
-            this.tscbRightMotor,
-            this.toolStripSeparator3,
-            this.tslLeverMotor,
-            this.tscbLeverMotor});
-            this.toolStrip.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(619, 25);
-            this.toolStrip.TabIndex = 2;
-            this.toolStrip.Text = "toolStrip1";
+            toolStrip.Items.AddRange(new ToolStripItem[] { cbPort, btnConnectOrDisconnect, toolStripSeparator1, tslLeftMotor, tscbLeftMotor, toolStripSeparator2, tslRightMotor, tscbRightMotor, toolStripSeparator3, tslLeverMotor, tscbLeverMotor });
+            toolStrip.Location = new Point(0, 24);
+            toolStrip.Name = "toolStrip";
+            toolStrip.Size = new Size(722, 25);
+            toolStrip.TabIndex = 2;
+            toolStrip.Text = "toolStrip1";
             // 
             // cbPort
             // 
-            this.cbPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPort.Name = "cbPort";
-            this.cbPort.Size = new System.Drawing.Size(121, 25);
+            cbPort.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPort.Name = "cbPort";
+            cbPort.Size = new Size(140, 25);
             // 
             // btnConnectOrDisconnect
             // 
-            this.btnConnectOrDisconnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnConnectOrDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("btnConnectOrDisconnect.Image")));
-            this.btnConnectOrDisconnect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnConnectOrDisconnect.Name = "btnConnectOrDisconnect";
-            this.btnConnectOrDisconnect.Size = new System.Drawing.Size(23, 22);
-            this.btnConnectOrDisconnect.ToolTipText = "Connect/Disconnect";
-            this.btnConnectOrDisconnect.Click += new System.EventHandler(this.BtnConnectOrDisconnect_Click);
+            btnConnectOrDisconnect.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnConnectOrDisconnect.Image = (Image)resources.GetObject("btnConnectOrDisconnect.Image");
+            btnConnectOrDisconnect.ImageTransparentColor = Color.Magenta;
+            btnConnectOrDisconnect.Name = "btnConnectOrDisconnect";
+            btnConnectOrDisconnect.Size = new Size(23, 22);
+            btnConnectOrDisconnect.ToolTipText = "Connect/Disconnect";
+            btnConnectOrDisconnect.Click += BtnConnectOrDisconnect_Click;
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 25);
             // 
             // tslLeftMotor
             // 
-            this.tslLeftMotor.Name = "tslLeftMotor";
-            this.tslLeftMotor.Size = new System.Drawing.Size(63, 22);
-            this.tslLeftMotor.Text = "Left motor";
+            tslLeftMotor.Name = "tslLeftMotor";
+            tslLeftMotor.Size = new Size(63, 22);
+            tslLeftMotor.Text = "Left motor";
             // 
             // tscbLeftMotor
             // 
-            this.tscbLeftMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbLeftMotor.Name = "tscbLeftMotor";
-            this.tscbLeftMotor.Size = new System.Drawing.Size(75, 25);
+            tscbLeftMotor.DropDownStyle = ComboBoxStyle.DropDownList;
+            tscbLeftMotor.Name = "tscbLeftMotor";
+            tscbLeftMotor.Size = new Size(87, 25);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 25);
             // 
             // tslRightMotor
             // 
-            this.tslRightMotor.Name = "tslRightMotor";
-            this.tslRightMotor.Size = new System.Drawing.Size(71, 22);
-            this.tslRightMotor.Text = "Right motor";
+            tslRightMotor.Name = "tslRightMotor";
+            tslRightMotor.Size = new Size(71, 22);
+            tslRightMotor.Text = "Right motor";
             // 
             // tscbRightMotor
             // 
-            this.tscbRightMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbRightMotor.Name = "tscbRightMotor";
-            this.tscbRightMotor.Size = new System.Drawing.Size(75, 25);
+            tscbRightMotor.DropDownStyle = ComboBoxStyle.DropDownList;
+            tscbRightMotor.Name = "tscbRightMotor";
+            tscbRightMotor.Size = new Size(87, 25);
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 25);
             // 
             // tslLeverMotor
             // 
-            this.tslLeverMotor.Name = "tslLeverMotor";
-            this.tslLeverMotor.Size = new System.Drawing.Size(71, 22);
-            this.tslLeverMotor.Text = "Lever motor";
+            tslLeverMotor.Name = "tslLeverMotor";
+            tslLeverMotor.Size = new Size(71, 22);
+            tslLeverMotor.Text = "Lever motor";
             // 
             // tscbLeverMotor
             // 
-            this.tscbLeverMotor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbLeverMotor.Name = "tscbLeverMotor";
-            this.tscbLeverMotor.Size = new System.Drawing.Size(75, 25);
+            tscbLeverMotor.DropDownStyle = ComboBoxStyle.DropDownList;
+            tscbLeverMotor.Name = "tscbLeverMotor";
+            tscbLeverMotor.Size = new Size(87, 25);
             // 
             // menuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiControl,
-            this.tsmiSensors,
-            this.tsmiGames,
-            this.tsmiTools});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(619, 24);
-            this.menuStrip.TabIndex = 3;
-            this.menuStrip.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { tsmiControl, tsmiSensors, tsmiGames, tsmiTools });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Padding = new Padding(7, 2, 0, 2);
+            menuStrip.Size = new Size(722, 24);
+            menuStrip.TabIndex = 3;
+            menuStrip.Text = "menuStrip1";
             // 
             // tsmiControl
             // 
-            this.tsmiControl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiButtons,
-            this.tsmiFileSystem,
-            this.tsmiMotors,
-            this.tsmiScreen,
-            this.tsmiSpeaker,
-            this.separator,
-            this.tsmiJoystick,
-            this.tsmiVoiceControl,
-            this.separator2,
-            this.tsmiDeviceInfo});
-            this.tsmiControl.Name = "tsmiControl";
-            this.tsmiControl.Size = new System.Drawing.Size(59, 20);
-            this.tsmiControl.Text = "Control";
+            tsmiControl.DropDownItems.AddRange(new ToolStripItem[] { tsmiButtons, tsmiFileSystem, tsmiMotors, tsmiScreen, tsmiSpeaker, separator, tsmiJoystick, tsmiVoiceControl, separator2, tsmiDeviceInfo });
+            tsmiControl.Name = "tsmiControl";
+            tsmiControl.Size = new Size(59, 20);
+            tsmiControl.Text = "Control";
             // 
             // tsmiButtons
             // 
-            this.tsmiButtons.Enabled = false;
-            this.tsmiButtons.Image = global::Mindstorms.Controller.Properties.Resources.button;
-            this.tsmiButtons.Name = "tsmiButtons";
-            this.tsmiButtons.Size = new System.Drawing.Size(143, 22);
-            this.tsmiButtons.Text = "Buttons";
-            this.tsmiButtons.Click += new System.EventHandler(this.TsmiButtons_Click);
+            tsmiButtons.Enabled = false;
+            tsmiButtons.Image = Properties.Resources.button;
+            tsmiButtons.Name = "tsmiButtons";
+            tsmiButtons.Size = new Size(143, 22);
+            tsmiButtons.Text = "Buttons";
+            tsmiButtons.Click += TsmiButtons_Click;
             // 
             // tsmiFileSystem
             // 
-            this.tsmiFileSystem.Enabled = false;
-            this.tsmiFileSystem.Image = ((System.Drawing.Image)(resources.GetObject("tsmiFileSystem.Image")));
-            this.tsmiFileSystem.Name = "tsmiFileSystem";
-            this.tsmiFileSystem.Size = new System.Drawing.Size(143, 22);
-            this.tsmiFileSystem.Text = "File system";
-            this.tsmiFileSystem.Click += new System.EventHandler(this.TsmiFileSystem_Click);
+            tsmiFileSystem.Enabled = false;
+            tsmiFileSystem.Image = (Image)resources.GetObject("tsmiFileSystem.Image");
+            tsmiFileSystem.Name = "tsmiFileSystem";
+            tsmiFileSystem.Size = new Size(143, 22);
+            tsmiFileSystem.Text = "File system";
+            tsmiFileSystem.Click += TsmiFileSystem_Click;
             // 
             // tsmiMotors
             // 
-            this.tsmiMotors.Enabled = false;
-            this.tsmiMotors.Image = ((System.Drawing.Image)(resources.GetObject("tsmiMotors.Image")));
-            this.tsmiMotors.Name = "tsmiMotors";
-            this.tsmiMotors.Size = new System.Drawing.Size(143, 22);
-            this.tsmiMotors.Text = "Motors";
-            this.tsmiMotors.Click += new System.EventHandler(this.TsmiMotors_Click);
+            tsmiMotors.Enabled = false;
+            tsmiMotors.Image = (Image)resources.GetObject("tsmiMotors.Image");
+            tsmiMotors.Name = "tsmiMotors";
+            tsmiMotors.Size = new Size(143, 22);
+            tsmiMotors.Text = "Motors";
+            tsmiMotors.Click += TsmiMotors_Click;
             // 
             // tsmiScreen
             // 
-            this.tsmiScreen.Enabled = false;
-            this.tsmiScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScreen.Image")));
-            this.tsmiScreen.Name = "tsmiScreen";
-            this.tsmiScreen.Size = new System.Drawing.Size(143, 22);
-            this.tsmiScreen.Text = "Screen";
-            this.tsmiScreen.Click += new System.EventHandler(this.TsmiScreen_Click);
+            tsmiScreen.Enabled = false;
+            tsmiScreen.Image = (Image)resources.GetObject("tsmiScreen.Image");
+            tsmiScreen.Name = "tsmiScreen";
+            tsmiScreen.Size = new Size(143, 22);
+            tsmiScreen.Text = "Screen";
+            tsmiScreen.Click += TsmiScreen_Click;
             // 
             // tsmiSpeaker
             // 
-            this.tsmiSpeaker.Enabled = false;
-            this.tsmiSpeaker.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSpeaker.Image")));
-            this.tsmiSpeaker.Name = "tsmiSpeaker";
-            this.tsmiSpeaker.Size = new System.Drawing.Size(143, 22);
-            this.tsmiSpeaker.Text = "Speaker";
-            this.tsmiSpeaker.Click += new System.EventHandler(this.TsmiSpeaker_Click);
+            tsmiSpeaker.Enabled = false;
+            tsmiSpeaker.Image = (Image)resources.GetObject("tsmiSpeaker.Image");
+            tsmiSpeaker.Name = "tsmiSpeaker";
+            tsmiSpeaker.Size = new Size(143, 22);
+            tsmiSpeaker.Text = "Speaker";
+            tsmiSpeaker.Click += TsmiSpeaker_Click;
             // 
             // separator
             // 
-            this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(140, 6);
+            separator.Name = "separator";
+            separator.Size = new Size(140, 6);
             // 
             // tsmiJoystick
             // 
-            this.tsmiJoystick.CheckOnClick = true;
-            this.tsmiJoystick.Enabled = false;
-            this.tsmiJoystick.Image = ((System.Drawing.Image)(resources.GetObject("tsmiJoystick.Image")));
-            this.tsmiJoystick.Name = "tsmiJoystick";
-            this.tsmiJoystick.Size = new System.Drawing.Size(143, 22);
-            this.tsmiJoystick.Text = "Joystick";
-            this.tsmiJoystick.CheckedChanged += new System.EventHandler(this.ChkJoystick_CheckedChanged);
+            tsmiJoystick.CheckOnClick = true;
+            tsmiJoystick.Enabled = false;
+            tsmiJoystick.Image = (Image)resources.GetObject("tsmiJoystick.Image");
+            tsmiJoystick.Name = "tsmiJoystick";
+            tsmiJoystick.Size = new Size(143, 22);
+            tsmiJoystick.Text = "Joystick";
+            tsmiJoystick.CheckedChanged += ChkJoystick_CheckedChanged;
             // 
             // tsmiVoiceControl
             // 
-            this.tsmiVoiceControl.CheckOnClick = true;
-            this.tsmiVoiceControl.Enabled = false;
-            this.tsmiVoiceControl.Image = ((System.Drawing.Image)(resources.GetObject("tsmiVoiceControl.Image")));
-            this.tsmiVoiceControl.Name = "tsmiVoiceControl";
-            this.tsmiVoiceControl.Size = new System.Drawing.Size(143, 22);
-            this.tsmiVoiceControl.Text = "Voice control";
-            this.tsmiVoiceControl.CheckedChanged += new System.EventHandler(this.ChkVoiceControl_CheckedChanged);
+            tsmiVoiceControl.CheckOnClick = true;
+            tsmiVoiceControl.Enabled = false;
+            tsmiVoiceControl.Image = (Image)resources.GetObject("tsmiVoiceControl.Image");
+            tsmiVoiceControl.Name = "tsmiVoiceControl";
+            tsmiVoiceControl.Size = new Size(143, 22);
+            tsmiVoiceControl.Text = "Voice control";
+            tsmiVoiceControl.CheckedChanged += ChkVoiceControl_CheckedChanged;
             // 
             // separator2
             // 
-            this.separator2.Name = "separator2";
-            this.separator2.Size = new System.Drawing.Size(140, 6);
+            separator2.Name = "separator2";
+            separator2.Size = new Size(140, 6);
             // 
             // tsmiDeviceInfo
             // 
-            this.tsmiDeviceInfo.Enabled = false;
-            this.tsmiDeviceInfo.Name = "tsmiDeviceInfo";
-            this.tsmiDeviceInfo.Size = new System.Drawing.Size(143, 22);
-            this.tsmiDeviceInfo.Text = "Device info";
-            this.tsmiDeviceInfo.Click += new System.EventHandler(this.TsmiDeviceInfo_Click);
+            tsmiDeviceInfo.Enabled = false;
+            tsmiDeviceInfo.Name = "tsmiDeviceInfo";
+            tsmiDeviceInfo.Size = new Size(143, 22);
+            tsmiDeviceInfo.Text = "Device info";
+            tsmiDeviceInfo.Click += TsmiDeviceInfo_Click;
             // 
             // tsmiSensors
             // 
-            this.tsmiSensors.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiGyroSensor,
-            this.tsmiLightSensor,
-            this.tsmiTouchSensor,
-            this.tsmiInfraredSensor,
-            this.tsmiUltrasonicSensor});
-            this.tsmiSensors.Name = "tsmiSensors";
-            this.tsmiSensors.Size = new System.Drawing.Size(59, 20);
-            this.tsmiSensors.Text = "Sensors";
+            tsmiSensors.DropDownItems.AddRange(new ToolStripItem[] { tsmiGyroSensor, tsmiLightSensor, tsmiTouchSensor, tsmiInfraredSensor, tsmiUltrasonicSensor });
+            tsmiSensors.Name = "tsmiSensors";
+            tsmiSensors.Size = new Size(59, 20);
+            tsmiSensors.Text = "Sensors";
             // 
             // tsmiGyroSensor
             // 
-            this.tsmiGyroSensor.Enabled = false;
-            this.tsmiGyroSensor.Name = "tsmiGyroSensor";
-            this.tsmiGyroSensor.Size = new System.Drawing.Size(164, 22);
-            this.tsmiGyroSensor.Text = "Gyro sensor";
-            this.tsmiGyroSensor.Click += new System.EventHandler(this.TsmiGyroSensor_Click);
+            tsmiGyroSensor.Enabled = false;
+            tsmiGyroSensor.Name = "tsmiGyroSensor";
+            tsmiGyroSensor.Size = new Size(164, 22);
+            tsmiGyroSensor.Text = "Gyro sensor";
+            tsmiGyroSensor.Click += TsmiGyroSensor_Click;
             // 
             // tsmiLightSensor
             // 
-            this.tsmiLightSensor.Enabled = false;
-            this.tsmiLightSensor.Name = "tsmiLightSensor";
-            this.tsmiLightSensor.Size = new System.Drawing.Size(164, 22);
-            this.tsmiLightSensor.Text = "Light sensor";
-            this.tsmiLightSensor.Click += new System.EventHandler(this.TsmiLightSensor_Click);
+            tsmiLightSensor.Enabled = false;
+            tsmiLightSensor.Name = "tsmiLightSensor";
+            tsmiLightSensor.Size = new Size(164, 22);
+            tsmiLightSensor.Text = "Light sensor";
+            tsmiLightSensor.Click += TsmiLightSensor_Click;
             // 
             // tsmiTouchSensor
             // 
-            this.tsmiTouchSensor.Enabled = false;
-            this.tsmiTouchSensor.Name = "tsmiTouchSensor";
-            this.tsmiTouchSensor.Size = new System.Drawing.Size(164, 22);
-            this.tsmiTouchSensor.Text = "Touch sensor";
-            this.tsmiTouchSensor.Click += new System.EventHandler(this.TsmiTouchSensor_Click);
+            tsmiTouchSensor.Enabled = false;
+            tsmiTouchSensor.Name = "tsmiTouchSensor";
+            tsmiTouchSensor.Size = new Size(164, 22);
+            tsmiTouchSensor.Text = "Touch sensor";
+            tsmiTouchSensor.Click += TsmiTouchSensor_Click;
             // 
             // tsmiInfraredSensor
             // 
-            this.tsmiInfraredSensor.Enabled = false;
-            this.tsmiInfraredSensor.Name = "tsmiInfraredSensor";
-            this.tsmiInfraredSensor.Size = new System.Drawing.Size(164, 22);
-            this.tsmiInfraredSensor.Text = "Infrared sensor";
-            this.tsmiInfraredSensor.Click += new System.EventHandler(this.TsmiInfraredSensor_Click);
+            tsmiInfraredSensor.Enabled = false;
+            tsmiInfraredSensor.Name = "tsmiInfraredSensor";
+            tsmiInfraredSensor.Size = new Size(164, 22);
+            tsmiInfraredSensor.Text = "Infrared sensor";
+            tsmiInfraredSensor.Click += TsmiInfraredSensor_Click;
             // 
             // tsmiUltrasonicSensor
             // 
-            this.tsmiUltrasonicSensor.Enabled = false;
-            this.tsmiUltrasonicSensor.Name = "tsmiUltrasonicSensor";
-            this.tsmiUltrasonicSensor.Size = new System.Drawing.Size(164, 22);
-            this.tsmiUltrasonicSensor.Text = "Ultrasonic sensor";
-            this.tsmiUltrasonicSensor.Click += new System.EventHandler(this.TsmiUltrasonicSensor_Click);
+            tsmiUltrasonicSensor.Enabled = false;
+            tsmiUltrasonicSensor.Name = "tsmiUltrasonicSensor";
+            tsmiUltrasonicSensor.Size = new Size(164, 22);
+            tsmiUltrasonicSensor.Text = "Ultrasonic sensor";
+            tsmiUltrasonicSensor.Click += TsmiUltrasonicSensor_Click;
             // 
             // tsmiGames
             // 
-            this.tsmiGames.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSnake,
-            this.tsmiCircles,
-            this.separator3,
-            this.tsmiBehaveLikeADog});
-            this.tsmiGames.Name = "tsmiGames";
-            this.tsmiGames.Size = new System.Drawing.Size(55, 20);
-            this.tsmiGames.Text = "Games";
+            tsmiGames.DropDownItems.AddRange(new ToolStripItem[] { tsmiSnake, tsmiCircles, separator3, tsmiBehaveLikeADog });
+            tsmiGames.Name = "tsmiGames";
+            tsmiGames.Size = new Size(55, 20);
+            tsmiGames.Text = "Games";
             // 
             // tsmiSnake
             // 
-            this.tsmiSnake.Enabled = false;
-            this.tsmiSnake.Name = "tsmiSnake";
-            this.tsmiSnake.Size = new System.Drawing.Size(120, 22);
-            this.tsmiSnake.Text = "Snake";
-            this.tsmiSnake.Click += new System.EventHandler(this.TsmiSnake_Click);
+            tsmiSnake.Enabled = false;
+            tsmiSnake.Name = "tsmiSnake";
+            tsmiSnake.Size = new Size(120, 22);
+            tsmiSnake.Text = "Snake";
+            tsmiSnake.Click += TsmiSnake_Click;
             // 
             // tsmiCircles
             // 
-            this.tsmiCircles.Enabled = false;
-            this.tsmiCircles.Name = "tsmiCircles";
-            this.tsmiCircles.Size = new System.Drawing.Size(120, 22);
-            this.tsmiCircles.Text = "Circles";
-            this.tsmiCircles.Click += new System.EventHandler(this.TsmiCircles_Click);
+            tsmiCircles.Enabled = false;
+            tsmiCircles.Name = "tsmiCircles";
+            tsmiCircles.Size = new Size(120, 22);
+            tsmiCircles.Text = "Circles";
+            tsmiCircles.Click += TsmiCircles_Click;
             // 
             // separator3
             // 
-            this.separator3.Name = "separator3";
-            this.separator3.Size = new System.Drawing.Size(117, 6);
+            separator3.Name = "separator3";
+            separator3.Size = new Size(117, 6);
             // 
             // tsmiBehaveLikeADog
             // 
-            this.tsmiBehaveLikeADog.Enabled = false;
-            this.tsmiBehaveLikeADog.Name = "tsmiBehaveLikeADog";
-            this.tsmiBehaveLikeADog.Size = new System.Drawing.Size(120, 22);
-            this.tsmiBehaveLikeADog.Text = "Be a dog";
-            this.tsmiBehaveLikeADog.Click += new System.EventHandler(this.TsmiBehaveLikeADog_Click);
+            tsmiBehaveLikeADog.Enabled = false;
+            tsmiBehaveLikeADog.Name = "tsmiBehaveLikeADog";
+            tsmiBehaveLikeADog.Size = new Size(120, 22);
+            tsmiBehaveLikeADog.Text = "Be a dog";
+            tsmiBehaveLikeADog.Click += TsmiBehaveLikeADog_Click;
             // 
             // tsmiTools
             // 
-            this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiImageConverter,
-            this.tsmiSoundRecorder});
-            this.tsmiTools.Name = "tsmiTools";
-            this.tsmiTools.Size = new System.Drawing.Size(46, 20);
-            this.tsmiTools.Text = "Tools";
+            tsmiTools.DropDownItems.AddRange(new ToolStripItem[] { tsmiImageConverter, tsmiSoundRecorder });
+            tsmiTools.Name = "tsmiTools";
+            tsmiTools.Size = new Size(46, 20);
+            tsmiTools.Text = "Tools";
             // 
             // tsmiImageConverter
             // 
-            this.tsmiImageConverter.Name = "tsmiImageConverter";
-            this.tsmiImageConverter.Size = new System.Drawing.Size(160, 22);
-            this.tsmiImageConverter.Text = "Image converter";
-            this.tsmiImageConverter.Click += new System.EventHandler(this.TsmiImageConverter_Click);
+            tsmiImageConverter.Name = "tsmiImageConverter";
+            tsmiImageConverter.Size = new Size(160, 22);
+            tsmiImageConverter.Text = "Image converter";
+            tsmiImageConverter.Click += TsmiImageConverter_Click;
             // 
             // tsmiSoundRecorder
             // 
-            this.tsmiSoundRecorder.Name = "tsmiSoundRecorder";
-            this.tsmiSoundRecorder.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSoundRecorder.Text = "Sound recorder";
-            this.tsmiSoundRecorder.Click += new System.EventHandler(this.TsmiSoundRecorder_Click);
+            tsmiSoundRecorder.Name = "tsmiSoundRecorder";
+            tsmiSoundRecorder.Size = new Size(160, 22);
+            tsmiSoundRecorder.Text = "Sound recorder";
+            tsmiSoundRecorder.Click += TsmiSoundRecorder_Click;
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.lblDaisyChainLayer);
-            this.pMain.Controls.Add(this.cbDaisyChainLayer);
-            this.pMain.Controls.Add(this.gbMorse);
-            this.pMain.Controls.Add(this.gbJoystick);
-            this.pMain.Controls.Add(this.gbControl);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 49);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(619, 137);
-            this.pMain.TabIndex = 6;
+            pMain.Controls.Add(tbTemperature);
+            pMain.Controls.Add(rtbChatGpt);
+            pMain.Controls.Add(btnAskChatGpt);
+            pMain.Controls.Add(lblDaisyChainLayer);
+            pMain.Controls.Add(cbDaisyChainLayer);
+            pMain.Controls.Add(gbMorse);
+            pMain.Controls.Add(gbJoystick);
+            pMain.Controls.Add(gbControl);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 49);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(722, 166);
+            pMain.TabIndex = 6;
+            // 
+            // tbTemperature
+            // 
+            tbTemperature.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            tbTemperature.Location = new Point(534, 117);
+            tbTemperature.Maximum = 20;
+            tbTemperature.Minimum = 1;
+            tbTemperature.Name = "tbTemperature";
+            tbTemperature.Size = new Size(70, 45);
+            tbTemperature.TabIndex = 18;
+            tbTemperature.Value = 1;
+            // 
+            // rtbChatGpt
+            // 
+            rtbChatGpt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtbChatGpt.Location = new Point(523, 46);
+            rtbChatGpt.Name = "rtbChatGpt";
+            rtbChatGpt.Size = new Size(185, 65);
+            rtbChatGpt.TabIndex = 17;
+            rtbChatGpt.Text = "";
+            // 
+            // btnAskChatGpt
+            // 
+            btnAskChatGpt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAskChatGpt.Location = new Point(608, 121);
+            btnAskChatGpt.Name = "btnAskChatGpt";
+            btnAskChatGpt.Size = new Size(100, 23);
+            btnAskChatGpt.TabIndex = 16;
+            btnAskChatGpt.Text = "Ask Chat GPT";
+            btnAskChatGpt.UseVisualStyleBackColor = true;
+            btnAskChatGpt.Click += BtnAskChatGpt_Click;
             // 
             // lblDaisyChainLayer
             // 
-            this.lblDaisyChainLayer.AutoSize = true;
-            this.lblDaisyChainLayer.Location = new System.Drawing.Point(448, 14);
-            this.lblDaisyChainLayer.Name = "lblDaisyChainLayer";
-            this.lblDaisyChainLayer.Size = new System.Drawing.Size(87, 13);
-            this.lblDaisyChainLayer.TabIndex = 15;
-            this.lblDaisyChainLayer.Text = "Daisy chain layer";
+            lblDaisyChainLayer.AutoSize = true;
+            lblDaisyChainLayer.Location = new Point(523, 16);
+            lblDaisyChainLayer.Margin = new Padding(4, 0, 4, 0);
+            lblDaisyChainLayer.Name = "lblDaisyChainLayer";
+            lblDaisyChainLayer.Size = new Size(95, 15);
+            lblDaisyChainLayer.TabIndex = 15;
+            lblDaisyChainLayer.Text = "Daisy chain layer";
             // 
             // cbDaisyChainLayer
             // 
-            this.cbDaisyChainLayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDaisyChainLayer.FormattingEnabled = true;
-            this.cbDaisyChainLayer.Location = new System.Drawing.Point(448, 30);
-            this.cbDaisyChainLayer.Name = "cbDaisyChainLayer";
-            this.cbDaisyChainLayer.Size = new System.Drawing.Size(159, 21);
-            this.cbDaisyChainLayer.TabIndex = 14;
+            cbDaisyChainLayer.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbDaisyChainLayer.FormattingEnabled = true;
+            cbDaisyChainLayer.Location = new Point(626, 13);
+            cbDaisyChainLayer.Margin = new Padding(4, 3, 4, 3);
+            cbDaisyChainLayer.Name = "cbDaisyChainLayer";
+            cbDaisyChainLayer.Size = new Size(82, 23);
+            cbDaisyChainLayer.TabIndex = 14;
             // 
             // gbMorse
             // 
-            this.gbMorse.Controls.Add(this.tbRobotPartner);
-            this.gbMorse.Controls.Add(this.rtbMorse);
-            this.gbMorse.Controls.Add(this.btnMorse);
-            this.gbMorse.Enabled = false;
-            this.gbMorse.Location = new System.Drawing.Point(242, 14);
-            this.gbMorse.Name = "gbMorse";
-            this.gbMorse.Size = new System.Drawing.Size(200, 111);
-            this.gbMorse.TabIndex = 13;
-            this.gbMorse.TabStop = false;
-            this.gbMorse.Text = "Morse";
+            gbMorse.Controls.Add(tbRobotPartner);
+            gbMorse.Controls.Add(rtbMorse);
+            gbMorse.Controls.Add(btnMorse);
+            gbMorse.Enabled = false;
+            gbMorse.Location = new Point(282, 16);
+            gbMorse.Margin = new Padding(4, 3, 4, 3);
+            gbMorse.Name = "gbMorse";
+            gbMorse.Padding = new Padding(4, 3, 4, 3);
+            gbMorse.Size = new Size(233, 128);
+            gbMorse.TabIndex = 13;
+            gbMorse.TabStop = false;
+            gbMorse.Text = "Morse";
             // 
             // tbRobotPartner
             // 
-            this.tbRobotPartner.Location = new System.Drawing.Point(6, 85);
-            this.tbRobotPartner.Name = "tbRobotPartner";
-            this.tbRobotPartner.Size = new System.Drawing.Size(162, 20);
-            this.tbRobotPartner.TabIndex = 13;
+            tbRobotPartner.Location = new Point(7, 98);
+            tbRobotPartner.Margin = new Padding(4, 3, 4, 3);
+            tbRobotPartner.Name = "tbRobotPartner";
+            tbRobotPartner.Size = new Size(188, 23);
+            tbRobotPartner.TabIndex = 13;
             // 
             // rtbMorse
             // 
-            this.rtbMorse.Location = new System.Drawing.Point(6, 19);
-            this.rtbMorse.Name = "rtbMorse";
-            this.rtbMorse.Size = new System.Drawing.Size(188, 63);
-            this.rtbMorse.TabIndex = 12;
-            this.rtbMorse.Text = "SOS";
+            rtbMorse.Location = new Point(7, 22);
+            rtbMorse.Margin = new Padding(4, 3, 4, 3);
+            rtbMorse.Name = "rtbMorse";
+            rtbMorse.Size = new Size(219, 72);
+            rtbMorse.TabIndex = 12;
+            rtbMorse.Text = "SOS";
             // 
             // btnMorse
             // 
-            this.btnMorse.Image = global::Mindstorms.Controller.Properties.Resources.send;
-            this.btnMorse.Location = new System.Drawing.Point(174, 85);
-            this.btnMorse.Name = "btnMorse";
-            this.btnMorse.Size = new System.Drawing.Size(23, 23);
-            this.btnMorse.TabIndex = 11;
-            this.toolTip.SetToolTip(this.btnMorse, "Morse text");
-            this.btnMorse.UseVisualStyleBackColor = true;
-            this.btnMorse.Click += new System.EventHandler(this.BtnMorse_Click);
+            btnMorse.Image = Properties.Resources.send;
+            btnMorse.Location = new Point(203, 98);
+            btnMorse.Margin = new Padding(4, 3, 4, 3);
+            btnMorse.Name = "btnMorse";
+            btnMorse.Size = new Size(27, 27);
+            btnMorse.TabIndex = 11;
+            toolTip.SetToolTip(btnMorse, "Morse text");
+            btnMorse.UseVisualStyleBackColor = true;
+            btnMorse.Click += BtnMorse_Click;
             // 
             // gbJoystick
             // 
-            this.gbJoystick.Controls.Add(this.tbMinimumDelta);
-            this.gbJoystick.Controls.Add(this.tbDeltaModifier);
-            this.gbJoystick.Enabled = false;
-            this.gbJoystick.Location = new System.Drawing.Point(150, 12);
-            this.gbJoystick.Name = "gbJoystick";
-            this.gbJoystick.Size = new System.Drawing.Size(86, 113);
-            this.gbJoystick.TabIndex = 9;
-            this.gbJoystick.TabStop = false;
-            this.gbJoystick.Text = "Joystick settings";
+            gbJoystick.Controls.Add(tbMinimumDelta);
+            gbJoystick.Controls.Add(tbDeltaModifier);
+            gbJoystick.Enabled = false;
+            gbJoystick.Location = new Point(175, 14);
+            gbJoystick.Margin = new Padding(4, 3, 4, 3);
+            gbJoystick.Name = "gbJoystick";
+            gbJoystick.Padding = new Padding(4, 3, 4, 3);
+            gbJoystick.Size = new Size(100, 130);
+            gbJoystick.TabIndex = 9;
+            gbJoystick.TabStop = false;
+            gbJoystick.Text = "Joystick settings";
             // 
             // tbMinimumDelta
             // 
-            this.tbMinimumDelta.LargeChange = 10;
-            this.tbMinimumDelta.Location = new System.Drawing.Point(6, 62);
-            this.tbMinimumDelta.Maximum = 50;
-            this.tbMinimumDelta.Minimum = 5;
-            this.tbMinimumDelta.Name = "tbMinimumDelta";
-            this.tbMinimumDelta.Size = new System.Drawing.Size(75, 45);
-            this.tbMinimumDelta.SmallChange = 5;
-            this.tbMinimumDelta.TabIndex = 23;
-            this.tbMinimumDelta.TickFrequency = 5;
-            this.tbMinimumDelta.Value = 5;
+            tbMinimumDelta.LargeChange = 10;
+            tbMinimumDelta.Location = new Point(7, 72);
+            tbMinimumDelta.Margin = new Padding(4, 3, 4, 3);
+            tbMinimumDelta.Maximum = 50;
+            tbMinimumDelta.Minimum = 5;
+            tbMinimumDelta.Name = "tbMinimumDelta";
+            tbMinimumDelta.Size = new Size(88, 45);
+            tbMinimumDelta.SmallChange = 5;
+            tbMinimumDelta.TabIndex = 23;
+            tbMinimumDelta.TickFrequency = 5;
+            tbMinimumDelta.Value = 5;
             // 
             // tbDeltaModifier
             // 
-            this.tbDeltaModifier.LargeChange = 50;
-            this.tbDeltaModifier.Location = new System.Drawing.Point(3, 34);
-            this.tbDeltaModifier.Maximum = 400;
-            this.tbDeltaModifier.Minimum = 300;
-            this.tbDeltaModifier.Name = "tbDeltaModifier";
-            this.tbDeltaModifier.Size = new System.Drawing.Size(75, 45);
-            this.tbDeltaModifier.SmallChange = 10;
-            this.tbDeltaModifier.TabIndex = 22;
-            this.tbDeltaModifier.TickFrequency = 10;
-            this.tbDeltaModifier.Value = 380;
+            tbDeltaModifier.LargeChange = 50;
+            tbDeltaModifier.Location = new Point(4, 39);
+            tbDeltaModifier.Margin = new Padding(4, 3, 4, 3);
+            tbDeltaModifier.Maximum = 400;
+            tbDeltaModifier.Minimum = 300;
+            tbDeltaModifier.Name = "tbDeltaModifier";
+            tbDeltaModifier.Size = new Size(88, 45);
+            tbDeltaModifier.SmallChange = 10;
+            tbDeltaModifier.TabIndex = 22;
+            tbDeltaModifier.TickFrequency = 10;
+            tbDeltaModifier.Value = 380;
             // 
             // gbControl
             // 
-            this.gbControl.Controls.Add(this.btnSouthEast);
-            this.gbControl.Controls.Add(this.btnSouth);
-            this.gbControl.Controls.Add(this.btnSouthWest);
-            this.gbControl.Controls.Add(this.btnEast);
-            this.gbControl.Controls.Add(this.btnWest);
-            this.gbControl.Controls.Add(this.btnNorthEast);
-            this.gbControl.Controls.Add(this.btnNorth);
-            this.gbControl.Controls.Add(this.btnNorthWest);
-            this.gbControl.Controls.Add(this.btnStop);
-            this.gbControl.Enabled = false;
-            this.gbControl.Location = new System.Drawing.Point(3, 12);
-            this.gbControl.Name = "gbControl";
-            this.gbControl.Size = new System.Drawing.Size(141, 113);
-            this.gbControl.TabIndex = 8;
-            this.gbControl.TabStop = false;
-            this.gbControl.Text = "Control";
+            gbControl.Controls.Add(btnSouthEast);
+            gbControl.Controls.Add(btnSouth);
+            gbControl.Controls.Add(btnSouthWest);
+            gbControl.Controls.Add(btnEast);
+            gbControl.Controls.Add(btnWest);
+            gbControl.Controls.Add(btnNorthEast);
+            gbControl.Controls.Add(btnNorth);
+            gbControl.Controls.Add(btnNorthWest);
+            gbControl.Controls.Add(btnStop);
+            gbControl.Enabled = false;
+            gbControl.Location = new Point(4, 14);
+            gbControl.Margin = new Padding(4, 3, 4, 3);
+            gbControl.Name = "gbControl";
+            gbControl.Padding = new Padding(4, 3, 4, 3);
+            gbControl.Size = new Size(164, 130);
+            gbControl.TabIndex = 8;
+            gbControl.TabStop = false;
+            gbControl.Text = "Control";
             // 
             // btnSouthEast
             // 
-            this.btnSouthEast.Image = ((System.Drawing.Image)(resources.GetObject("btnSouthEast.Image")));
-            this.btnSouthEast.Location = new System.Drawing.Point(94, 80);
-            this.btnSouthEast.Name = "btnSouthEast";
-            this.btnSouthEast.Size = new System.Drawing.Size(34, 23);
-            this.btnSouthEast.TabIndex = 8;
-            this.btnSouthEast.UseVisualStyleBackColor = true;
-            this.btnSouthEast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnSouthEast_MouseDown);
-            this.btnSouthEast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnSouthEast.Image = (Image)resources.GetObject("btnSouthEast.Image");
+            btnSouthEast.Location = new Point(110, 92);
+            btnSouthEast.Margin = new Padding(4, 3, 4, 3);
+            btnSouthEast.Name = "btnSouthEast";
+            btnSouthEast.Size = new Size(40, 27);
+            btnSouthEast.TabIndex = 8;
+            btnSouthEast.UseVisualStyleBackColor = true;
+            btnSouthEast.MouseDown += BtnSouthEast_MouseDown;
+            btnSouthEast.MouseUp += BtnMouseUp;
             // 
             // btnSouth
             // 
-            this.btnSouth.Image = ((System.Drawing.Image)(resources.GetObject("btnSouth.Image")));
-            this.btnSouth.Location = new System.Drawing.Point(54, 80);
-            this.btnSouth.Name = "btnSouth";
-            this.btnSouth.Size = new System.Drawing.Size(34, 23);
-            this.btnSouth.TabIndex = 7;
-            this.btnSouth.UseVisualStyleBackColor = true;
-            this.btnSouth.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnSouth_MouseDown);
-            this.btnSouth.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnSouth.Image = (Image)resources.GetObject("btnSouth.Image");
+            btnSouth.Location = new Point(63, 92);
+            btnSouth.Margin = new Padding(4, 3, 4, 3);
+            btnSouth.Name = "btnSouth";
+            btnSouth.Size = new Size(40, 27);
+            btnSouth.TabIndex = 7;
+            btnSouth.UseVisualStyleBackColor = true;
+            btnSouth.MouseDown += BtnSouth_MouseDown;
+            btnSouth.MouseUp += BtnMouseUp;
             // 
             // btnSouthWest
             // 
-            this.btnSouthWest.Image = ((System.Drawing.Image)(resources.GetObject("btnSouthWest.Image")));
-            this.btnSouthWest.Location = new System.Drawing.Point(14, 80);
-            this.btnSouthWest.Name = "btnSouthWest";
-            this.btnSouthWest.Size = new System.Drawing.Size(34, 23);
-            this.btnSouthWest.TabIndex = 6;
-            this.btnSouthWest.UseVisualStyleBackColor = true;
-            this.btnSouthWest.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnSouthWest_MouseDown);
-            this.btnSouthWest.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnSouthWest.Image = (Image)resources.GetObject("btnSouthWest.Image");
+            btnSouthWest.Location = new Point(16, 92);
+            btnSouthWest.Margin = new Padding(4, 3, 4, 3);
+            btnSouthWest.Name = "btnSouthWest";
+            btnSouthWest.Size = new Size(40, 27);
+            btnSouthWest.TabIndex = 6;
+            btnSouthWest.UseVisualStyleBackColor = true;
+            btnSouthWest.MouseDown += BtnSouthWest_MouseDown;
+            btnSouthWest.MouseUp += BtnMouseUp;
             // 
             // btnEast
             // 
-            this.btnEast.Image = ((System.Drawing.Image)(resources.GetObject("btnEast.Image")));
-            this.btnEast.Location = new System.Drawing.Point(94, 51);
-            this.btnEast.Name = "btnEast";
-            this.btnEast.Size = new System.Drawing.Size(34, 23);
-            this.btnEast.TabIndex = 5;
-            this.btnEast.UseVisualStyleBackColor = true;
-            this.btnEast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnEast_MouseDown);
-            this.btnEast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnEast.Image = (Image)resources.GetObject("btnEast.Image");
+            btnEast.Location = new Point(110, 59);
+            btnEast.Margin = new Padding(4, 3, 4, 3);
+            btnEast.Name = "btnEast";
+            btnEast.Size = new Size(40, 27);
+            btnEast.TabIndex = 5;
+            btnEast.UseVisualStyleBackColor = true;
+            btnEast.MouseDown += BtnEast_MouseDown;
+            btnEast.MouseUp += BtnMouseUp;
             // 
             // btnWest
             // 
-            this.btnWest.Image = ((System.Drawing.Image)(resources.GetObject("btnWest.Image")));
-            this.btnWest.Location = new System.Drawing.Point(14, 51);
-            this.btnWest.Name = "btnWest";
-            this.btnWest.Size = new System.Drawing.Size(34, 23);
-            this.btnWest.TabIndex = 3;
-            this.btnWest.UseVisualStyleBackColor = true;
-            this.btnWest.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnWest_MouseDown);
-            this.btnWest.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnWest.Image = (Image)resources.GetObject("btnWest.Image");
+            btnWest.Location = new Point(16, 59);
+            btnWest.Margin = new Padding(4, 3, 4, 3);
+            btnWest.Name = "btnWest";
+            btnWest.Size = new Size(40, 27);
+            btnWest.TabIndex = 3;
+            btnWest.UseVisualStyleBackColor = true;
+            btnWest.MouseDown += BtnWest_MouseDown;
+            btnWest.MouseUp += BtnMouseUp;
             // 
             // btnNorthEast
             // 
-            this.btnNorthEast.Image = ((System.Drawing.Image)(resources.GetObject("btnNorthEast.Image")));
-            this.btnNorthEast.Location = new System.Drawing.Point(94, 22);
-            this.btnNorthEast.Name = "btnNorthEast";
-            this.btnNorthEast.Size = new System.Drawing.Size(34, 23);
-            this.btnNorthEast.TabIndex = 2;
-            this.btnNorthEast.UseVisualStyleBackColor = true;
-            this.btnNorthEast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnNorthEast_MouseDown);
-            this.btnNorthEast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnNorthEast.Image = (Image)resources.GetObject("btnNorthEast.Image");
+            btnNorthEast.Location = new Point(110, 25);
+            btnNorthEast.Margin = new Padding(4, 3, 4, 3);
+            btnNorthEast.Name = "btnNorthEast";
+            btnNorthEast.Size = new Size(40, 27);
+            btnNorthEast.TabIndex = 2;
+            btnNorthEast.UseVisualStyleBackColor = true;
+            btnNorthEast.MouseDown += BtnNorthEast_MouseDown;
+            btnNorthEast.MouseUp += BtnMouseUp;
             // 
             // btnNorth
             // 
-            this.btnNorth.Image = ((System.Drawing.Image)(resources.GetObject("btnNorth.Image")));
-            this.btnNorth.Location = new System.Drawing.Point(54, 22);
-            this.btnNorth.Name = "btnNorth";
-            this.btnNorth.Size = new System.Drawing.Size(34, 23);
-            this.btnNorth.TabIndex = 1;
-            this.btnNorth.UseVisualStyleBackColor = true;
-            this.btnNorth.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnNorth_MouseDown);
-            this.btnNorth.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnNorth.Image = (Image)resources.GetObject("btnNorth.Image");
+            btnNorth.Location = new Point(63, 25);
+            btnNorth.Margin = new Padding(4, 3, 4, 3);
+            btnNorth.Name = "btnNorth";
+            btnNorth.Size = new Size(40, 27);
+            btnNorth.TabIndex = 1;
+            btnNorth.UseVisualStyleBackColor = true;
+            btnNorth.MouseDown += BtnNorth_MouseDown;
+            btnNorth.MouseUp += BtnMouseUp;
             // 
             // btnNorthWest
             // 
-            this.btnNorthWest.Image = ((System.Drawing.Image)(resources.GetObject("btnNorthWest.Image")));
-            this.btnNorthWest.Location = new System.Drawing.Point(14, 22);
-            this.btnNorthWest.Name = "btnNorthWest";
-            this.btnNorthWest.Size = new System.Drawing.Size(34, 23);
-            this.btnNorthWest.TabIndex = 0;
-            this.btnNorthWest.UseVisualStyleBackColor = true;
-            this.btnNorthWest.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnNorthWest_MouseDown);
-            this.btnNorthWest.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMouseUp);
+            btnNorthWest.Image = (Image)resources.GetObject("btnNorthWest.Image");
+            btnNorthWest.Location = new Point(16, 25);
+            btnNorthWest.Margin = new Padding(4, 3, 4, 3);
+            btnNorthWest.Name = "btnNorthWest";
+            btnNorthWest.Size = new Size(40, 27);
+            btnNorthWest.TabIndex = 0;
+            btnNorthWest.UseVisualStyleBackColor = true;
+            btnNorthWest.MouseDown += BtnNorthWest_MouseDown;
+            btnNorthWest.MouseUp += BtnMouseUp;
             // 
             // btnStop
             // 
-            this.btnStop.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.Image")));
-            this.btnStop.Location = new System.Drawing.Point(54, 51);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(34, 23);
-            this.btnStop.TabIndex = 10;
-            this.toolTip.SetToolTip(this.btnStop, "Stop moving");
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            btnStop.Image = (Image)resources.GetObject("btnStop.Image");
+            btnStop.Location = new Point(63, 59);
+            btnStop.Margin = new Padding(4, 3, 4, 3);
+            btnStop.Name = "btnStop";
+            btnStop.Size = new Size(40, 27);
+            btnStop.TabIndex = 10;
+            toolTip.SetToolTip(btnStop, "Stop moving");
+            btnStop.UseVisualStyleBackColor = true;
+            btnStop.Click += BtnStop_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 186);
-            this.Controls.Add(this.pMain);
-            this.Controls.Add(this.toolStrip);
-            this.Controls.Add(this.menuStrip);
-            this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip;
-            this.MinimumSize = new System.Drawing.Size(485, 225);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lego Mindstorms EV3";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
-            this.pMain.ResumeLayout(false);
-            this.pMain.PerformLayout();
-            this.gbMorse.ResumeLayout(false);
-            this.gbMorse.PerformLayout();
-            this.gbJoystick.ResumeLayout(false);
-            this.gbJoystick.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMinimumDelta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbDeltaModifier)).EndInit();
-            this.gbControl.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(722, 215);
+            Controls.Add(pMain);
+            Controls.Add(toolStrip);
+            Controls.Add(menuStrip);
+            KeyPreview = true;
+            MainMenuStrip = menuStrip;
+            Margin = new Padding(4, 3, 4, 3);
+            MinimumSize = new Size(738, 254);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Lego Mindstorms EV3";
+            FormClosing += MainForm_FormClosing;
+            KeyDown += MainForm_KeyDown;
+            KeyUp += MainForm_KeyUp;
+            toolStrip.ResumeLayout(false);
+            toolStrip.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
+            pMain.ResumeLayout(false);
+            pMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbTemperature).EndInit();
+            gbMorse.ResumeLayout(false);
+            gbMorse.PerformLayout();
+            gbJoystick.ResumeLayout(false);
+            gbJoystick.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbMinimumDelta).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tbDeltaModifier).EndInit();
+            gbControl.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -750,6 +777,9 @@ namespace Mindstorms.Controller
         private System.Windows.Forms.ToolStripMenuItem tsmiSoundRecorder;
         private System.Windows.Forms.Label lblDaisyChainLayer;
         private System.Windows.Forms.ComboBox cbDaisyChainLayer;
+        private Button btnAskChatGpt;
+        private RichTextBox rtbChatGpt;
+        private TrackBar tbTemperature;
     }
 }
 
