@@ -13,12 +13,12 @@ namespace LargeLanguageModelClient.ChatGpt
             return base.SendMessage(ProcessRequest(chatGptRequest), "Bearer", apiKey);
         }
 
-        public Task<string> SendMessage(string message, string apiKey)
+        public Task<string> SendMessage(string message, string apiKey, double temperature = 0.1)
         {
             var request = new ChatGptRequest
             {
                 Model = "gpt-3.5-turbo",
-                Temperature = 0.1,
+                Temperature = temperature,
                 Messages = new List<Dictionary<string, string>>{
                     new Dictionary<string, string> {
                         { "role", "user" },

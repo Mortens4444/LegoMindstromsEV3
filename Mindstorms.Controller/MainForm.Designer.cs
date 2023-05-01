@@ -494,7 +494,7 @@ namespace Mindstorms.Controller
             rtbMorse.Name = "rtbMorse";
             rtbMorse.Size = new Size(219, 72);
             rtbMorse.TabIndex = 12;
-            rtbMorse.Text = "SOS";
+            rtbMorse.Text = "Hello!";
             // 
             // btnMorse
             // 

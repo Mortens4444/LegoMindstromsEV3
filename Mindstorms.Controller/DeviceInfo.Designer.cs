@@ -28,304 +28,314 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pMain = new System.Windows.Forms.Panel();
-            this.gbMain = new System.Windows.Forms.GroupBox();
-            this.rtbCommandResult = new System.Windows.Forms.RichTextBox();
-            this.btnExecute = new System.Windows.Forms.Button();
-            this.lblCommand = new System.Windows.Forms.Label();
-            this.btnGetLastError = new System.Windows.Forms.Button();
-            this.lblHardwareVersion = new System.Windows.Forms.Label();
-            this.lblFirmwareBuild = new System.Windows.Forms.Label();
-            this.lblFirmwareVersion = new System.Windows.Forms.Label();
-            this.lblOperatingSystemBuild = new System.Windows.Forms.Label();
-            this.lblOperatingSystemVersion = new System.Windows.Forms.Label();
-            this.lblBatteryTemperatureRise = new System.Windows.Forms.Label();
-            this.lblBatteryVoltage = new System.Windows.Forms.Label();
-            this.lblBatteryCurrent = new System.Windows.Forms.Label();
-            this.lblBatteryLevel = new System.Windows.Forms.Label();
-            this.btnChangePin = new System.Windows.Forms.Button();
-            this.tbPin = new System.Windows.Forms.TextBox();
-            this.lblPin = new System.Windows.Forms.Label();
-            this.lblCommunicationInterface = new System.Windows.Forms.Label();
-            this.cbCommunicationInterface = new System.Windows.Forms.ComboBox();
-            this.btnChangeName = new System.Windows.Forms.Button();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.cbCommand = new System.Windows.Forms.ComboBox();
-            this.pMain.SuspendLayout();
-            this.gbMain.SuspendLayout();
-            this.SuspendLayout();
+            pMain = new Panel();
+            gbMain = new GroupBox();
+            cbCommand = new ComboBox();
+            rtbCommandResult = new RichTextBox();
+            btnExecute = new Button();
+            lblCommand = new Label();
+            btnGetLastError = new Button();
+            lblHardwareVersion = new Label();
+            lblFirmwareBuild = new Label();
+            lblFirmwareVersion = new Label();
+            lblOperatingSystemBuild = new Label();
+            lblOperatingSystemVersion = new Label();
+            lblBatteryTemperatureRise = new Label();
+            lblBatteryVoltage = new Label();
+            lblBatteryCurrent = new Label();
+            lblBatteryLevel = new Label();
+            btnChangePin = new Button();
+            tbPin = new TextBox();
+            lblPin = new Label();
+            lblCommunicationInterface = new Label();
+            cbCommunicationInterface = new ComboBox();
+            btnChangeName = new Button();
+            tbName = new TextBox();
+            lblName = new Label();
+            pMain.SuspendLayout();
+            gbMain.SuspendLayout();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.gbMain);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 0);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(659, 297);
-            this.pMain.TabIndex = 0;
+            pMain.Controls.Add(gbMain);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 0);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(769, 343);
+            pMain.TabIndex = 0;
             // 
             // gbMain
             // 
-            this.gbMain.Controls.Add(this.cbCommand);
-            this.gbMain.Controls.Add(this.rtbCommandResult);
-            this.gbMain.Controls.Add(this.btnExecute);
-            this.gbMain.Controls.Add(this.lblCommand);
-            this.gbMain.Controls.Add(this.btnGetLastError);
-            this.gbMain.Controls.Add(this.lblHardwareVersion);
-            this.gbMain.Controls.Add(this.lblFirmwareBuild);
-            this.gbMain.Controls.Add(this.lblFirmwareVersion);
-            this.gbMain.Controls.Add(this.lblOperatingSystemBuild);
-            this.gbMain.Controls.Add(this.lblOperatingSystemVersion);
-            this.gbMain.Controls.Add(this.lblBatteryTemperatureRise);
-            this.gbMain.Controls.Add(this.lblBatteryVoltage);
-            this.gbMain.Controls.Add(this.lblBatteryCurrent);
-            this.gbMain.Controls.Add(this.lblBatteryLevel);
-            this.gbMain.Controls.Add(this.btnChangePin);
-            this.gbMain.Controls.Add(this.tbPin);
-            this.gbMain.Controls.Add(this.lblPin);
-            this.gbMain.Controls.Add(this.lblCommunicationInterface);
-            this.gbMain.Controls.Add(this.cbCommunicationInterface);
-            this.gbMain.Controls.Add(this.btnChangeName);
-            this.gbMain.Controls.Add(this.tbName);
-            this.gbMain.Controls.Add(this.lblName);
-            this.gbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbMain.Location = new System.Drawing.Point(0, 0);
-            this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(659, 297);
-            this.gbMain.TabIndex = 0;
-            this.gbMain.TabStop = false;
-            // 
-            // rtbCommandResult
-            // 
-            this.rtbCommandResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbCommandResult.Location = new System.Drawing.Point(9, 203);
-            this.rtbCommandResult.Name = "rtbCommandResult";
-            this.rtbCommandResult.Size = new System.Drawing.Size(638, 88);
-            this.rtbCommandResult.TabIndex = 21;
-            this.rtbCommandResult.Text = "";
-            // 
-            // btnExecute
-            // 
-            this.btnExecute.Location = new System.Drawing.Point(572, 175);
-            this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(75, 23);
-            this.btnExecute.TabIndex = 20;
-            this.btnExecute.Text = "Execute";
-            this.btnExecute.UseVisualStyleBackColor = true;
-            this.btnExecute.Click += new System.EventHandler(this.BtnExecute_Click);
-            // 
-            // lblCommand
-            // 
-            this.lblCommand.AutoSize = true;
-            this.lblCommand.Location = new System.Drawing.Point(6, 161);
-            this.lblCommand.Name = "lblCommand";
-            this.lblCommand.Size = new System.Drawing.Size(54, 13);
-            this.lblCommand.TabIndex = 19;
-            this.lblCommand.Text = "Command";
-            // 
-            // btnGetLastError
-            // 
-            this.btnGetLastError.Location = new System.Drawing.Point(572, 145);
-            this.btnGetLastError.Name = "btnGetLastError";
-            this.btnGetLastError.Size = new System.Drawing.Size(75, 23);
-            this.btnGetLastError.TabIndex = 17;
-            this.btnGetLastError.Text = "Get last error";
-            this.btnGetLastError.UseVisualStyleBackColor = true;
-            this.btnGetLastError.Click += new System.EventHandler(this.BtnGetLastError_Click);
-            // 
-            // lblHardwareVersion
-            // 
-            this.lblHardwareVersion.AutoSize = true;
-            this.lblHardwareVersion.Location = new System.Drawing.Point(437, 92);
-            this.lblHardwareVersion.Name = "lblHardwareVersion";
-            this.lblHardwareVersion.Size = new System.Drawing.Size(90, 13);
-            this.lblHardwareVersion.TabIndex = 16;
-            this.lblHardwareVersion.Text = "Hardware version";
-            // 
-            // lblFirmwareBuild
-            // 
-            this.lblFirmwareBuild.AutoSize = true;
-            this.lblFirmwareBuild.Location = new System.Drawing.Point(437, 73);
-            this.lblFirmwareBuild.Name = "lblFirmwareBuild";
-            this.lblFirmwareBuild.Size = new System.Drawing.Size(74, 13);
-            this.lblFirmwareBuild.TabIndex = 15;
-            this.lblFirmwareBuild.Text = "Firmware build";
-            // 
-            // lblFirmwareVersion
-            // 
-            this.lblFirmwareVersion.AutoSize = true;
-            this.lblFirmwareVersion.Location = new System.Drawing.Point(437, 54);
-            this.lblFirmwareVersion.Name = "lblFirmwareVersion";
-            this.lblFirmwareVersion.Size = new System.Drawing.Size(86, 13);
-            this.lblFirmwareVersion.TabIndex = 14;
-            this.lblFirmwareVersion.Text = "Firmware version";
-            // 
-            // lblOperatingSystemBuild
-            // 
-            this.lblOperatingSystemBuild.AutoSize = true;
-            this.lblOperatingSystemBuild.Location = new System.Drawing.Point(437, 35);
-            this.lblOperatingSystemBuild.Name = "lblOperatingSystemBuild";
-            this.lblOperatingSystemBuild.Size = new System.Drawing.Size(113, 13);
-            this.lblOperatingSystemBuild.TabIndex = 13;
-            this.lblOperatingSystemBuild.Text = "Operating system build";
-            // 
-            // lblOperatingSystemVersion
-            // 
-            this.lblOperatingSystemVersion.AutoSize = true;
-            this.lblOperatingSystemVersion.Location = new System.Drawing.Point(437, 16);
-            this.lblOperatingSystemVersion.Name = "lblOperatingSystemVersion";
-            this.lblOperatingSystemVersion.Size = new System.Drawing.Size(125, 13);
-            this.lblOperatingSystemVersion.TabIndex = 12;
-            this.lblOperatingSystemVersion.Text = "Operating system version";
-            // 
-            // lblBatteryTemperatureRise
-            // 
-            this.lblBatteryTemperatureRise.AutoSize = true;
-            this.lblBatteryTemperatureRise.Location = new System.Drawing.Point(273, 73);
-            this.lblBatteryTemperatureRise.Name = "lblBatteryTemperatureRise";
-            this.lblBatteryTemperatureRise.Size = new System.Drawing.Size(118, 13);
-            this.lblBatteryTemperatureRise.TabIndex = 11;
-            this.lblBatteryTemperatureRise.Text = "Battery temperature rise";
-            // 
-            // lblBatteryVoltage
-            // 
-            this.lblBatteryVoltage.AutoSize = true;
-            this.lblBatteryVoltage.Location = new System.Drawing.Point(273, 54);
-            this.lblBatteryVoltage.Name = "lblBatteryVoltage";
-            this.lblBatteryVoltage.Size = new System.Drawing.Size(78, 13);
-            this.lblBatteryVoltage.TabIndex = 10;
-            this.lblBatteryVoltage.Text = "Battery voltage";
-            // 
-            // lblBatteryCurrent
-            // 
-            this.lblBatteryCurrent.AutoSize = true;
-            this.lblBatteryCurrent.Location = new System.Drawing.Point(273, 35);
-            this.lblBatteryCurrent.Name = "lblBatteryCurrent";
-            this.lblBatteryCurrent.Size = new System.Drawing.Size(76, 13);
-            this.lblBatteryCurrent.TabIndex = 9;
-            this.lblBatteryCurrent.Text = "Battery current";
-            // 
-            // lblBatteryLevel
-            // 
-            this.lblBatteryLevel.AutoSize = true;
-            this.lblBatteryLevel.Location = new System.Drawing.Point(273, 16);
-            this.lblBatteryLevel.Name = "lblBatteryLevel";
-            this.lblBatteryLevel.Size = new System.Drawing.Size(65, 13);
-            this.lblBatteryLevel.TabIndex = 8;
-            this.lblBatteryLevel.Text = "Battery level";
-            // 
-            // btnChangePin
-            // 
-            this.btnChangePin.Location = new System.Drawing.Point(163, 122);
-            this.btnChangePin.Name = "btnChangePin";
-            this.btnChangePin.Size = new System.Drawing.Size(75, 23);
-            this.btnChangePin.TabIndex = 7;
-            this.btnChangePin.Text = "Change";
-            this.btnChangePin.UseVisualStyleBackColor = true;
-            this.btnChangePin.Click += new System.EventHandler(this.BtnChangePin_Click);
-            // 
-            // tbPin
-            // 
-            this.tbPin.Location = new System.Drawing.Point(9, 124);
-            this.tbPin.Name = "tbPin";
-            this.tbPin.Size = new System.Drawing.Size(148, 20);
-            this.tbPin.TabIndex = 6;
-            // 
-            // lblPin
-            // 
-            this.lblPin.AutoSize = true;
-            this.lblPin.Location = new System.Drawing.Point(6, 108);
-            this.lblPin.Name = "lblPin";
-            this.lblPin.Size = new System.Drawing.Size(22, 13);
-            this.lblPin.TabIndex = 5;
-            this.lblPin.Text = "Pin";
-            // 
-            // lblCommunicationInterface
-            // 
-            this.lblCommunicationInterface.AutoSize = true;
-            this.lblCommunicationInterface.Location = new System.Drawing.Point(12, 66);
-            this.lblCommunicationInterface.Name = "lblCommunicationInterface";
-            this.lblCommunicationInterface.Size = new System.Drawing.Size(123, 13);
-            this.lblCommunicationInterface.TabIndex = 4;
-            this.lblCommunicationInterface.Text = "Communication interface";
-            // 
-            // cbCommunicationInterface
-            // 
-            this.cbCommunicationInterface.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCommunicationInterface.Enabled = false;
-            this.cbCommunicationInterface.FormattingEnabled = true;
-            this.cbCommunicationInterface.Location = new System.Drawing.Point(9, 82);
-            this.cbCommunicationInterface.Name = "cbCommunicationInterface";
-            this.cbCommunicationInterface.Size = new System.Drawing.Size(145, 21);
-            this.cbCommunicationInterface.TabIndex = 3;
-            // 
-            // btnChangeName
-            // 
-            this.btnChangeName.Location = new System.Drawing.Point(163, 30);
-            this.btnChangeName.Name = "btnChangeName";
-            this.btnChangeName.Size = new System.Drawing.Size(75, 23);
-            this.btnChangeName.TabIndex = 2;
-            this.btnChangeName.Text = "Change";
-            this.btnChangeName.UseVisualStyleBackColor = true;
-            this.btnChangeName.Click += new System.EventHandler(this.BtnChangeName_Click);
-            // 
-            // tbName
-            // 
-            this.tbName.Location = new System.Drawing.Point(9, 32);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(148, 20);
-            this.tbName.TabIndex = 1;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(6, 16);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
+            gbMain.Controls.Add(cbCommand);
+            gbMain.Controls.Add(rtbCommandResult);
+            gbMain.Controls.Add(btnExecute);
+            gbMain.Controls.Add(lblCommand);
+            gbMain.Controls.Add(btnGetLastError);
+            gbMain.Controls.Add(lblHardwareVersion);
+            gbMain.Controls.Add(lblFirmwareBuild);
+            gbMain.Controls.Add(lblFirmwareVersion);
+            gbMain.Controls.Add(lblOperatingSystemBuild);
+            gbMain.Controls.Add(lblOperatingSystemVersion);
+            gbMain.Controls.Add(lblBatteryTemperatureRise);
+            gbMain.Controls.Add(lblBatteryVoltage);
+            gbMain.Controls.Add(lblBatteryCurrent);
+            gbMain.Controls.Add(lblBatteryLevel);
+            gbMain.Controls.Add(btnChangePin);
+            gbMain.Controls.Add(tbPin);
+            gbMain.Controls.Add(lblPin);
+            gbMain.Controls.Add(lblCommunicationInterface);
+            gbMain.Controls.Add(cbCommunicationInterface);
+            gbMain.Controls.Add(btnChangeName);
+            gbMain.Controls.Add(tbName);
+            gbMain.Controls.Add(lblName);
+            gbMain.Dock = DockStyle.Fill;
+            gbMain.Location = new Point(0, 0);
+            gbMain.Margin = new Padding(4, 3, 4, 3);
+            gbMain.Name = "gbMain";
+            gbMain.Padding = new Padding(4, 3, 4, 3);
+            gbMain.Size = new Size(769, 343);
+            gbMain.TabIndex = 0;
+            gbMain.TabStop = false;
             // 
             // cbCommand
             // 
-            this.cbCommand.FormattingEnabled = true;
-            this.cbCommand.Items.AddRange(new object[] {
-            "dmesg",
-            "mount",
-            "ps",
-            "pwd",
-            "ls -la /",
-            "df -h",
-            "reboot",
-            "find / -name output.rtf",
-            "ifconfig -a",
-            "uname -a",
-            "lsusb -v",
-            "lsmod",
-            "modprobe -l"});
-            this.cbCommand.Location = new System.Drawing.Point(9, 177);
-            this.cbCommand.Name = "cbCommand";
-            this.cbCommand.Size = new System.Drawing.Size(557, 21);
-            this.cbCommand.TabIndex = 22;
+            cbCommand.FormattingEnabled = true;
+            cbCommand.Items.AddRange(new object[] { "dmesg", "mount", "ps", "pwd", "ls -la /", "df -h", "reboot", "find / -name output.rtf", "ifconfig -a", "uname -a", "lsusb -v", "lsmod", "modprobe -l" });
+            cbCommand.Location = new Point(10, 204);
+            cbCommand.Margin = new Padding(4, 3, 4, 3);
+            cbCommand.Name = "cbCommand";
+            cbCommand.Size = new Size(649, 23);
+            cbCommand.TabIndex = 22;
+            // 
+            // rtbCommandResult
+            // 
+            rtbCommandResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtbCommandResult.Location = new Point(10, 234);
+            rtbCommandResult.Margin = new Padding(4, 3, 4, 3);
+            rtbCommandResult.Name = "rtbCommandResult";
+            rtbCommandResult.Size = new Size(744, 101);
+            rtbCommandResult.TabIndex = 21;
+            rtbCommandResult.Text = "";
+            // 
+            // btnExecute
+            // 
+            btnExecute.Location = new Point(667, 202);
+            btnExecute.Margin = new Padding(4, 3, 4, 3);
+            btnExecute.Name = "btnExecute";
+            btnExecute.Size = new Size(88, 27);
+            btnExecute.TabIndex = 20;
+            btnExecute.Text = "Execute";
+            btnExecute.UseVisualStyleBackColor = true;
+            btnExecute.Click += BtnExecute_Click;
+            // 
+            // lblCommand
+            // 
+            lblCommand.AutoSize = true;
+            lblCommand.Location = new Point(7, 186);
+            lblCommand.Margin = new Padding(4, 0, 4, 0);
+            lblCommand.Name = "lblCommand";
+            lblCommand.Size = new Size(64, 15);
+            lblCommand.TabIndex = 19;
+            lblCommand.Text = "Command";
+            // 
+            // btnGetLastError
+            // 
+            btnGetLastError.Location = new Point(667, 167);
+            btnGetLastError.Margin = new Padding(4, 3, 4, 3);
+            btnGetLastError.Name = "btnGetLastError";
+            btnGetLastError.Size = new Size(88, 27);
+            btnGetLastError.TabIndex = 17;
+            btnGetLastError.Text = "Get last error";
+            btnGetLastError.UseVisualStyleBackColor = true;
+            btnGetLastError.Click += BtnGetLastError_Click;
+            // 
+            // lblHardwareVersion
+            // 
+            lblHardwareVersion.AutoSize = true;
+            lblHardwareVersion.Location = new Point(510, 106);
+            lblHardwareVersion.Margin = new Padding(4, 0, 4, 0);
+            lblHardwareVersion.Name = "lblHardwareVersion";
+            lblHardwareVersion.Size = new Size(99, 15);
+            lblHardwareVersion.TabIndex = 16;
+            lblHardwareVersion.Text = "Hardware version";
+            // 
+            // lblFirmwareBuild
+            // 
+            lblFirmwareBuild.AutoSize = true;
+            lblFirmwareBuild.Location = new Point(510, 84);
+            lblFirmwareBuild.Margin = new Padding(4, 0, 4, 0);
+            lblFirmwareBuild.Name = "lblFirmwareBuild";
+            lblFirmwareBuild.Size = new Size(86, 15);
+            lblFirmwareBuild.TabIndex = 15;
+            lblFirmwareBuild.Text = "Firmware build";
+            // 
+            // lblFirmwareVersion
+            // 
+            lblFirmwareVersion.AutoSize = true;
+            lblFirmwareVersion.Location = new Point(510, 62);
+            lblFirmwareVersion.Margin = new Padding(4, 0, 4, 0);
+            lblFirmwareVersion.Name = "lblFirmwareVersion";
+            lblFirmwareVersion.Size = new Size(97, 15);
+            lblFirmwareVersion.TabIndex = 14;
+            lblFirmwareVersion.Text = "Firmware version";
+            // 
+            // lblOperatingSystemBuild
+            // 
+            lblOperatingSystemBuild.AutoSize = true;
+            lblOperatingSystemBuild.Location = new Point(510, 40);
+            lblOperatingSystemBuild.Margin = new Padding(4, 0, 4, 0);
+            lblOperatingSystemBuild.Name = "lblOperatingSystemBuild";
+            lblOperatingSystemBuild.Size = new Size(130, 15);
+            lblOperatingSystemBuild.TabIndex = 13;
+            lblOperatingSystemBuild.Text = "Operating system build";
+            // 
+            // lblOperatingSystemVersion
+            // 
+            lblOperatingSystemVersion.AutoSize = true;
+            lblOperatingSystemVersion.Location = new Point(510, 18);
+            lblOperatingSystemVersion.Margin = new Padding(4, 0, 4, 0);
+            lblOperatingSystemVersion.Name = "lblOperatingSystemVersion";
+            lblOperatingSystemVersion.Size = new Size(141, 15);
+            lblOperatingSystemVersion.TabIndex = 12;
+            lblOperatingSystemVersion.Text = "Operating system version";
+            // 
+            // lblBatteryTemperatureRise
+            // 
+            lblBatteryTemperatureRise.AutoSize = true;
+            lblBatteryTemperatureRise.Location = new Point(318, 84);
+            lblBatteryTemperatureRise.Margin = new Padding(4, 0, 4, 0);
+            lblBatteryTemperatureRise.Name = "lblBatteryTemperatureRise";
+            lblBatteryTemperatureRise.Size = new Size(133, 15);
+            lblBatteryTemperatureRise.TabIndex = 11;
+            lblBatteryTemperatureRise.Text = "Battery temperature rise";
+            // 
+            // lblBatteryVoltage
+            // 
+            lblBatteryVoltage.AutoSize = true;
+            lblBatteryVoltage.Location = new Point(318, 62);
+            lblBatteryVoltage.Margin = new Padding(4, 0, 4, 0);
+            lblBatteryVoltage.Name = "lblBatteryVoltage";
+            lblBatteryVoltage.Size = new Size(86, 15);
+            lblBatteryVoltage.TabIndex = 10;
+            lblBatteryVoltage.Text = "Battery voltage";
+            // 
+            // lblBatteryCurrent
+            // 
+            lblBatteryCurrent.AutoSize = true;
+            lblBatteryCurrent.Location = new Point(318, 40);
+            lblBatteryCurrent.Margin = new Padding(4, 0, 4, 0);
+            lblBatteryCurrent.Name = "lblBatteryCurrent";
+            lblBatteryCurrent.Size = new Size(85, 15);
+            lblBatteryCurrent.TabIndex = 9;
+            lblBatteryCurrent.Text = "Battery current";
+            // 
+            // lblBatteryLevel
+            // 
+            lblBatteryLevel.AutoSize = true;
+            lblBatteryLevel.Location = new Point(318, 18);
+            lblBatteryLevel.Margin = new Padding(4, 0, 4, 0);
+            lblBatteryLevel.Name = "lblBatteryLevel";
+            lblBatteryLevel.Size = new Size(71, 15);
+            lblBatteryLevel.TabIndex = 8;
+            lblBatteryLevel.Text = "Battery level";
+            // 
+            // btnChangePin
+            // 
+            btnChangePin.Location = new Point(190, 141);
+            btnChangePin.Margin = new Padding(4, 3, 4, 3);
+            btnChangePin.Name = "btnChangePin";
+            btnChangePin.Size = new Size(88, 27);
+            btnChangePin.TabIndex = 7;
+            btnChangePin.Text = "Change";
+            btnChangePin.UseVisualStyleBackColor = true;
+            btnChangePin.Click += BtnChangePin_Click;
+            // 
+            // tbPin
+            // 
+            tbPin.Location = new Point(10, 143);
+            tbPin.Margin = new Padding(4, 3, 4, 3);
+            tbPin.Name = "tbPin";
+            tbPin.Size = new Size(172, 23);
+            tbPin.TabIndex = 6;
+            // 
+            // lblPin
+            // 
+            lblPin.AutoSize = true;
+            lblPin.Location = new Point(7, 125);
+            lblPin.Margin = new Padding(4, 0, 4, 0);
+            lblPin.Name = "lblPin";
+            lblPin.Size = new Size(24, 15);
+            lblPin.TabIndex = 5;
+            lblPin.Text = "Pin";
+            // 
+            // lblCommunicationInterface
+            // 
+            lblCommunicationInterface.AutoSize = true;
+            lblCommunicationInterface.Location = new Point(14, 76);
+            lblCommunicationInterface.Margin = new Padding(4, 0, 4, 0);
+            lblCommunicationInterface.Name = "lblCommunicationInterface";
+            lblCommunicationInterface.Size = new Size(143, 15);
+            lblCommunicationInterface.TabIndex = 4;
+            lblCommunicationInterface.Text = "Communication interface";
+            // 
+            // cbCommunicationInterface
+            // 
+            cbCommunicationInterface.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCommunicationInterface.Enabled = false;
+            cbCommunicationInterface.FormattingEnabled = true;
+            cbCommunicationInterface.Location = new Point(10, 95);
+            cbCommunicationInterface.Margin = new Padding(4, 3, 4, 3);
+            cbCommunicationInterface.Name = "cbCommunicationInterface";
+            cbCommunicationInterface.Size = new Size(168, 23);
+            cbCommunicationInterface.TabIndex = 3;
+            // 
+            // btnChangeName
+            // 
+            btnChangeName.Location = new Point(190, 35);
+            btnChangeName.Margin = new Padding(4, 3, 4, 3);
+            btnChangeName.Name = "btnChangeName";
+            btnChangeName.Size = new Size(88, 27);
+            btnChangeName.TabIndex = 2;
+            btnChangeName.Text = "Change";
+            btnChangeName.UseVisualStyleBackColor = true;
+            btnChangeName.Click += BtnChangeName_Click;
+            // 
+            // tbName
+            // 
+            tbName.Location = new Point(10, 37);
+            tbName.Margin = new Padding(4, 3, 4, 3);
+            tbName.Name = "tbName";
+            tbName.Size = new Size(172, 23);
+            tbName.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Location = new Point(7, 18);
+            lblName.Margin = new Padding(4, 0, 4, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(39, 15);
+            lblName.TabIndex = 0;
+            lblName.Text = "Name";
             // 
             // DeviceInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 297);
-            this.Controls.Add(this.pMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "DeviceInfo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Device info";
-            this.Shown += new System.EventHandler(this.DeviceInfo_Shown);
-            this.pMain.ResumeLayout(false);
-            this.gbMain.ResumeLayout(false);
-            this.gbMain.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(769, 343);
+            Controls.Add(pMain);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "DeviceInfo";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Device info";
+            Shown += DeviceInfo_Shown;
+            pMain.ResumeLayout(false);
+            gbMain.ResumeLayout(false);
+            gbMain.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

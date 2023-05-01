@@ -24,8 +24,9 @@ public partial class ButtonForm : Form
                 while (!this.IsDisposingOrDisposed())
                 {
                     var buttonStates = brick.GetButtonStates();
-                
-                    Invoke(new Action(() => {
+
+                    Invoke(new Action(() =>
+                    {
                         lblButtonStates.Text = buttonStates.ToString();
                         btnBack.BackColor = buttonStates.IsBackButtonPressed() ? Color.Green : Color.WhiteSmoke;
                         btnUp.BackColor = buttonStates.IsUpButtonPressed() ? Color.Green : Color.WhiteSmoke;
@@ -34,7 +35,7 @@ public partial class ButtonForm : Form
                         btnRight.BackColor = buttonStates.IsRightButtonPressed() ? Color.Green : Color.WhiteSmoke;
                         btnLeft.BackColor = buttonStates.IsLeftButtonPressed() ? Color.Green : Color.WhiteSmoke;
                     }));
-                
+
                     Thread.Sleep(500);
                 }
             });

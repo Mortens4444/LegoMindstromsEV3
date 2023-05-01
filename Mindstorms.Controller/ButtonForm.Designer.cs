@@ -28,118 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbButtonStates = new System.Windows.Forms.GroupBox();
-            this.lblButtonStates = new System.Windows.Forms.Label();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
-            this.btnCenter = new System.Windows.Forms.Button();
-            this.btnLeft = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.gbButtonStates.SuspendLayout();
-            this.SuspendLayout();
+            gbButtonStates = new GroupBox();
+            lblButtonStates = new Label();
+            btnDown = new Button();
+            btnRight = new Button();
+            btnCenter = new Button();
+            btnLeft = new Button();
+            btnUp = new Button();
+            btnBack = new Button();
+            gbButtonStates.SuspendLayout();
+            SuspendLayout();
             // 
             // gbButtonStates
             // 
-            this.gbButtonStates.Controls.Add(this.lblButtonStates);
-            this.gbButtonStates.Controls.Add(this.btnDown);
-            this.gbButtonStates.Controls.Add(this.btnRight);
-            this.gbButtonStates.Controls.Add(this.btnCenter);
-            this.gbButtonStates.Controls.Add(this.btnLeft);
-            this.gbButtonStates.Controls.Add(this.btnUp);
-            this.gbButtonStates.Controls.Add(this.btnBack);
-            this.gbButtonStates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbButtonStates.Location = new System.Drawing.Point(0, 0);
-            this.gbButtonStates.Name = "gbButtonStates";
-            this.gbButtonStates.Size = new System.Drawing.Size(180, 146);
-            this.gbButtonStates.TabIndex = 6;
-            this.gbButtonStates.TabStop = false;
+            gbButtonStates.Controls.Add(lblButtonStates);
+            gbButtonStates.Controls.Add(btnDown);
+            gbButtonStates.Controls.Add(btnRight);
+            gbButtonStates.Controls.Add(btnCenter);
+            gbButtonStates.Controls.Add(btnLeft);
+            gbButtonStates.Controls.Add(btnUp);
+            gbButtonStates.Controls.Add(btnBack);
+            gbButtonStates.Dock = DockStyle.Fill;
+            gbButtonStates.Location = new Point(0, 0);
+            gbButtonStates.Margin = new Padding(4, 3, 4, 3);
+            gbButtonStates.Name = "gbButtonStates";
+            gbButtonStates.Padding = new Padding(4, 3, 4, 3);
+            gbButtonStates.Size = new Size(210, 168);
+            gbButtonStates.TabIndex = 6;
+            gbButtonStates.TabStop = false;
             // 
             // lblButtonStates
             // 
-            this.lblButtonStates.AutoSize = true;
-            this.lblButtonStates.Location = new System.Drawing.Point(6, 124);
-            this.lblButtonStates.Name = "lblButtonStates";
-            this.lblButtonStates.Size = new System.Drawing.Size(0, 13);
-            this.lblButtonStates.TabIndex = 12;
+            lblButtonStates.AutoSize = true;
+            lblButtonStates.Location = new Point(7, 143);
+            lblButtonStates.Margin = new Padding(4, 0, 4, 0);
+            lblButtonStates.Name = "lblButtonStates";
+            lblButtonStates.Size = new Size(0, 15);
+            lblButtonStates.TabIndex = 12;
             // 
             // btnDown
             // 
-            this.btnDown.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDown.Location = new System.Drawing.Point(76, 102);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(23, 23);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.UseVisualStyleBackColor = false;
-            this.btnDown.Click += new System.EventHandler(this.Btn_Click);
+            btnDown.BackColor = Color.WhiteSmoke;
+            btnDown.Location = new Point(89, 118);
+            btnDown.Margin = new Padding(4, 3, 4, 3);
+            btnDown.Name = "btnDown";
+            btnDown.Size = new Size(27, 27);
+            btnDown.TabIndex = 3;
+            btnDown.UseVisualStyleBackColor = false;
+            btnDown.Click += Btn_Click;
             // 
             // btnRight
             // 
-            this.btnRight.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRight.Location = new System.Drawing.Point(105, 73);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(23, 23);
-            this.btnRight.TabIndex = 4;
-            this.btnRight.UseVisualStyleBackColor = false;
-            this.btnRight.Click += new System.EventHandler(this.Btn_Click);
+            btnRight.BackColor = Color.WhiteSmoke;
+            btnRight.Location = new Point(122, 84);
+            btnRight.Margin = new Padding(4, 3, 4, 3);
+            btnRight.Name = "btnRight";
+            btnRight.Size = new Size(27, 27);
+            btnRight.TabIndex = 4;
+            btnRight.UseVisualStyleBackColor = false;
+            btnRight.Click += Btn_Click;
             // 
             // btnCenter
             // 
-            this.btnCenter.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCenter.Location = new System.Drawing.Point(76, 73);
-            this.btnCenter.Name = "btnCenter";
-            this.btnCenter.Size = new System.Drawing.Size(23, 23);
-            this.btnCenter.TabIndex = 2;
-            this.btnCenter.UseVisualStyleBackColor = false;
-            this.btnCenter.Click += new System.EventHandler(this.Btn_Click);
+            btnCenter.BackColor = Color.WhiteSmoke;
+            btnCenter.Location = new Point(89, 84);
+            btnCenter.Margin = new Padding(4, 3, 4, 3);
+            btnCenter.Name = "btnCenter";
+            btnCenter.Size = new Size(27, 27);
+            btnCenter.TabIndex = 2;
+            btnCenter.UseVisualStyleBackColor = false;
+            btnCenter.Click += Btn_Click;
             // 
             // btnLeft
             // 
-            this.btnLeft.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLeft.Location = new System.Drawing.Point(47, 73);
-            this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(23, 23);
-            this.btnLeft.TabIndex = 5;
-            this.btnLeft.UseVisualStyleBackColor = false;
-            this.btnLeft.Click += new System.EventHandler(this.Btn_Click);
+            btnLeft.BackColor = Color.WhiteSmoke;
+            btnLeft.Location = new Point(55, 84);
+            btnLeft.Margin = new Padding(4, 3, 4, 3);
+            btnLeft.Name = "btnLeft";
+            btnLeft.Size = new Size(27, 27);
+            btnLeft.TabIndex = 5;
+            btnLeft.UseVisualStyleBackColor = false;
+            btnLeft.Click += Btn_Click;
             // 
             // btnUp
             // 
-            this.btnUp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUp.Location = new System.Drawing.Point(76, 44);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(23, 23);
-            this.btnUp.TabIndex = 1;
-            this.btnUp.UseVisualStyleBackColor = false;
-            this.btnUp.Click += new System.EventHandler(this.Btn_Click);
+            btnUp.BackColor = Color.WhiteSmoke;
+            btnUp.Location = new Point(89, 51);
+            btnUp.Margin = new Padding(4, 3, 4, 3);
+            btnUp.Name = "btnUp";
+            btnUp.Size = new Size(27, 27);
+            btnUp.TabIndex = 1;
+            btnUp.UseVisualStyleBackColor = false;
+            btnUp.Click += Btn_Click;
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBack.Location = new System.Drawing.Point(16, 16);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(23, 23);
-            this.btnBack.TabIndex = 6;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.Btn_Click);
-            this.btnBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_MouseDown);
-            this.btnBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_MouseUp);
+            btnBack.BackColor = Color.WhiteSmoke;
+            btnBack.Location = new Point(19, 18);
+            btnBack.Margin = new Padding(4, 3, 4, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(27, 27);
+            btnBack.TabIndex = 6;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += Btn_Click;
+            btnBack.MouseDown += Btn_MouseDown;
+            btnBack.MouseUp += Btn_MouseUp;
             // 
             // ButtonForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(180, 146);
-            this.Controls.Add(this.gbButtonStates);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ButtonForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Buttons";
-            this.Shown += new System.EventHandler(this.ButtonForm_Shown);
-            this.gbButtonStates.ResumeLayout(false);
-            this.gbButtonStates.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(210, 168);
+            Controls.Add(gbButtonStates);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ButtonForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Buttons";
+            Shown += ButtonForm_Shown;
+            gbButtonStates.ResumeLayout(false);
+            gbButtonStates.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

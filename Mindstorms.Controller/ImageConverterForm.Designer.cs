@@ -28,148 +28,158 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pMain = new System.Windows.Forms.Panel();
-            this.gbMain = new System.Windows.Forms.GroupBox();
-            this.btnSaveRgf = new System.Windows.Forms.Button();
-            this.tbContrast = new System.Windows.Forms.TrackBar();
-            this.lblContrast = new System.Windows.Forms.Label();
-            this.pbImage = new System.Windows.Forms.PictureBox();
-            this.lblHint = new System.Windows.Forms.Label();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.lblFilePathToConvert = new System.Windows.Forms.Label();
-            this.tbFilePathToConvert = new System.Windows.Forms.TextBox();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.pMain.SuspendLayout();
-            this.gbMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbContrast)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
-            this.SuspendLayout();
+            pMain = new Panel();
+            gbMain = new GroupBox();
+            btnSaveRgf = new Button();
+            tbContrast = new TrackBar();
+            lblContrast = new Label();
+            pbImage = new PictureBox();
+            lblHint = new Label();
+            btnBrowse = new Button();
+            lblFilePathToConvert = new Label();
+            tbFilePathToConvert = new TextBox();
+            openFileDialog = new OpenFileDialog();
+            pMain.SuspendLayout();
+            gbMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbContrast).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.gbMain);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 0);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(533, 180);
-            this.pMain.TabIndex = 0;
+            pMain.Controls.Add(gbMain);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 0);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(622, 208);
+            pMain.TabIndex = 0;
             // 
             // gbMain
             // 
-            this.gbMain.Controls.Add(this.btnSaveRgf);
-            this.gbMain.Controls.Add(this.tbContrast);
-            this.gbMain.Controls.Add(this.lblContrast);
-            this.gbMain.Controls.Add(this.pbImage);
-            this.gbMain.Controls.Add(this.lblHint);
-            this.gbMain.Controls.Add(this.btnBrowse);
-            this.gbMain.Controls.Add(this.lblFilePathToConvert);
-            this.gbMain.Controls.Add(this.tbFilePathToConvert);
-            this.gbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbMain.Location = new System.Drawing.Point(0, 0);
-            this.gbMain.MinimumSize = new System.Drawing.Size(537, 180);
-            this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(537, 180);
-            this.gbMain.TabIndex = 0;
-            this.gbMain.TabStop = false;
+            gbMain.Controls.Add(btnSaveRgf);
+            gbMain.Controls.Add(tbContrast);
+            gbMain.Controls.Add(lblContrast);
+            gbMain.Controls.Add(pbImage);
+            gbMain.Controls.Add(lblHint);
+            gbMain.Controls.Add(btnBrowse);
+            gbMain.Controls.Add(lblFilePathToConvert);
+            gbMain.Controls.Add(tbFilePathToConvert);
+            gbMain.Dock = DockStyle.Fill;
+            gbMain.Location = new Point(0, 0);
+            gbMain.Margin = new Padding(4, 3, 4, 3);
+            gbMain.MinimumSize = new Size(626, 208);
+            gbMain.Name = "gbMain";
+            gbMain.Padding = new Padding(4, 3, 4, 3);
+            gbMain.Size = new Size(626, 208);
+            gbMain.TabIndex = 0;
+            gbMain.TabStop = false;
             // 
             // btnSaveRgf
             // 
-            this.btnSaveRgf.Enabled = false;
-            this.btnSaveRgf.Location = new System.Drawing.Point(455, 62);
-            this.btnSaveRgf.Name = "btnSaveRgf";
-            this.btnSaveRgf.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveRgf.TabIndex = 8;
-            this.btnSaveRgf.Text = "Save RGF";
-            this.btnSaveRgf.UseVisualStyleBackColor = true;
-            this.btnSaveRgf.Click += new System.EventHandler(this.BtnSaveRgf_Click);
+            btnSaveRgf.Enabled = false;
+            btnSaveRgf.Location = new Point(531, 72);
+            btnSaveRgf.Margin = new Padding(4, 3, 4, 3);
+            btnSaveRgf.Name = "btnSaveRgf";
+            btnSaveRgf.Size = new Size(88, 27);
+            btnSaveRgf.TabIndex = 8;
+            btnSaveRgf.Text = "Save RGF";
+            btnSaveRgf.UseVisualStyleBackColor = true;
+            btnSaveRgf.Click += BtnSaveRgf_Click;
             // 
             // tbContrast
             // 
-            this.tbContrast.Location = new System.Drawing.Point(15, 77);
-            this.tbContrast.Maximum = 255;
-            this.tbContrast.Minimum = 1;
-            this.tbContrast.Name = "tbContrast";
-            this.tbContrast.Size = new System.Drawing.Size(104, 45);
-            this.tbContrast.TabIndex = 7;
-            this.tbContrast.Value = 128;
-            this.tbContrast.ValueChanged += new System.EventHandler(this.TbContrast_ValueChanged);
+            tbContrast.Location = new Point(18, 89);
+            tbContrast.Margin = new Padding(4, 3, 4, 3);
+            tbContrast.Maximum = 255;
+            tbContrast.Minimum = 1;
+            tbContrast.Name = "tbContrast";
+            tbContrast.Size = new Size(121, 45);
+            tbContrast.TabIndex = 7;
+            tbContrast.Value = 128;
+            tbContrast.ValueChanged += TbContrast_ValueChanged;
             // 
             // lblContrast
             // 
-            this.lblContrast.AutoSize = true;
-            this.lblContrast.Location = new System.Drawing.Point(12, 61);
-            this.lblContrast.Name = "lblContrast";
-            this.lblContrast.Size = new System.Drawing.Size(46, 13);
-            this.lblContrast.TabIndex = 6;
-            this.lblContrast.Text = "Contrast";
+            lblContrast.AutoSize = true;
+            lblContrast.Location = new Point(14, 70);
+            lblContrast.Margin = new Padding(4, 0, 4, 0);
+            lblContrast.Name = "lblContrast";
+            lblContrast.Size = new Size(52, 15);
+            lblContrast.TabIndex = 6;
+            lblContrast.Text = "Contrast";
             // 
             // pbImage
             // 
-            this.pbImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pbImage.BackColor = System.Drawing.Color.CadetBlue;
-            this.pbImage.Location = new System.Drawing.Point(162, 61);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(178, 111);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbImage.TabIndex = 5;
-            this.pbImage.TabStop = false;
+            pbImage.Anchor = AnchorStyles.Top;
+            pbImage.BackColor = Color.CadetBlue;
+            pbImage.Location = new Point(189, 70);
+            pbImage.Margin = new Padding(4, 3, 4, 3);
+            pbImage.Name = "pbImage";
+            pbImage.Size = new Size(208, 128);
+            pbImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pbImage.TabIndex = 5;
+            pbImage.TabStop = false;
             // 
             // lblHint
             // 
-            this.lblHint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHint.AutoSize = true;
-            this.lblHint.Location = new System.Drawing.Point(196, 19);
-            this.lblHint.Name = "lblHint";
-            this.lblHint.Size = new System.Drawing.Size(253, 13);
-            this.lblHint.TabIndex = 4;
-            this.lblHint.Text = "Hint: It is best if you use images with 178x128 pixels.";
+            lblHint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblHint.AutoSize = true;
+            lblHint.Location = new Point(229, 22);
+            lblHint.Margin = new Padding(4, 0, 4, 0);
+            lblHint.Name = "lblHint";
+            lblHint.Size = new Size(281, 15);
+            lblHint.TabIndex = 4;
+            lblHint.Text = "Hint: It is best if you use images with 178x128 pixels.";
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.Location = new System.Drawing.Point(455, 33);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 3;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
+            btnBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnBrowse.Location = new Point(531, 38);
+            btnBrowse.Margin = new Padding(4, 3, 4, 3);
+            btnBrowse.Name = "btnBrowse";
+            btnBrowse.Size = new Size(88, 27);
+            btnBrowse.TabIndex = 3;
+            btnBrowse.Text = "Browse";
+            btnBrowse.UseVisualStyleBackColor = true;
+            btnBrowse.Click += BtnBrowse_Click;
             // 
             // lblFilePathToConvert
             // 
-            this.lblFilePathToConvert.AutoSize = true;
-            this.lblFilePathToConvert.Location = new System.Drawing.Point(6, 19);
-            this.lblFilePathToConvert.Name = "lblFilePathToConvert";
-            this.lblFilePathToConvert.Size = new System.Drawing.Size(98, 13);
-            this.lblFilePathToConvert.TabIndex = 1;
-            this.lblFilePathToConvert.Text = "File path to convert";
+            lblFilePathToConvert.AutoSize = true;
+            lblFilePathToConvert.Location = new Point(7, 22);
+            lblFilePathToConvert.Margin = new Padding(4, 0, 4, 0);
+            lblFilePathToConvert.Name = "lblFilePathToConvert";
+            lblFilePathToConvert.Size = new Size(109, 15);
+            lblFilePathToConvert.TabIndex = 1;
+            lblFilePathToConvert.Text = "File path to convert";
             // 
             // tbFilePathToConvert
             // 
-            this.tbFilePathToConvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFilePathToConvert.Location = new System.Drawing.Point(9, 35);
-            this.tbFilePathToConvert.Name = "tbFilePathToConvert";
-            this.tbFilePathToConvert.Size = new System.Drawing.Size(440, 20);
-            this.tbFilePathToConvert.TabIndex = 0;
+            tbFilePathToConvert.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbFilePathToConvert.Location = new Point(10, 40);
+            tbFilePathToConvert.Margin = new Padding(4, 3, 4, 3);
+            tbFilePathToConvert.Name = "tbFilePathToConvert";
+            tbFilePathToConvert.Size = new Size(513, 23);
+            tbFilePathToConvert.TabIndex = 0;
             // 
             // ImageConverterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 180);
-            this.Controls.Add(this.pMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "ImageConverterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image converter";
-            this.pMain.ResumeLayout(false);
-            this.gbMain.ResumeLayout(false);
-            this.gbMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbContrast)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(622, 208);
+            Controls.Add(pMain);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ImageConverterForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Image converter";
+            pMain.ResumeLayout(false);
+            gbMain.ResumeLayout(false);
+            gbMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbContrast).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbImage).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

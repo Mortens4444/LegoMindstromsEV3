@@ -28,248 +28,261 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pMain = new System.Windows.Forms.Panel();
-            this.gbScreen = new System.Windows.Forms.GroupBox();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.cbEmbeddedImages = new System.Windows.Forms.ComboBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnSetLedsState = new System.Windows.Forms.ToolStripButton();
-            this.cbLedPattern = new System.Windows.Forms.ToolStripComboBox();
-            this.chkFill = new System.Windows.Forms.CheckBox();
-            this.tbText = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.rbText = new System.Windows.Forms.RadioButton();
-            this.rbLine = new System.Windows.Forms.RadioButton();
-            this.rbInverseRectangle = new System.Windows.Forms.RadioButton();
-            this.rbRectangle = new System.Windows.Forms.RadioButton();
-            this.rbCircle = new System.Windows.Forms.RadioButton();
-            this.rbPixel = new System.Windows.Forms.RadioButton();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.pDisplay = new System.Windows.Forms.Panel();
-            this.pMain.SuspendLayout();
-            this.gbScreen.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.SuspendLayout();
+            pMain = new Panel();
+            gbScreen = new GroupBox();
+            btnShow = new Button();
+            cbEmbeddedImages = new ComboBox();
+            toolStrip1 = new ToolStrip();
+            btnSetLedsState = new ToolStripButton();
+            cbLedPattern = new ToolStripComboBox();
+            chkFill = new CheckBox();
+            tbText = new TextBox();
+            btnUpdate = new Button();
+            rbText = new RadioButton();
+            rbLine = new RadioButton();
+            rbInverseRectangle = new RadioButton();
+            rbRectangle = new RadioButton();
+            rbCircle = new RadioButton();
+            rbPixel = new RadioButton();
+            btnClear = new Button();
+            pDisplay = new Panel();
+            pMain.SuspendLayout();
+            gbScreen.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.gbScreen);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 0);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(194, 255);
-            this.pMain.TabIndex = 0;
+            pMain.Controls.Add(gbScreen);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 0);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(226, 294);
+            pMain.TabIndex = 0;
             // 
             // gbScreen
             // 
-            this.gbScreen.Controls.Add(this.btnShow);
-            this.gbScreen.Controls.Add(this.cbEmbeddedImages);
-            this.gbScreen.Controls.Add(this.toolStrip1);
-            this.gbScreen.Controls.Add(this.chkFill);
-            this.gbScreen.Controls.Add(this.tbText);
-            this.gbScreen.Controls.Add(this.btnUpdate);
-            this.gbScreen.Controls.Add(this.rbText);
-            this.gbScreen.Controls.Add(this.rbLine);
-            this.gbScreen.Controls.Add(this.rbInverseRectangle);
-            this.gbScreen.Controls.Add(this.rbRectangle);
-            this.gbScreen.Controls.Add(this.rbCircle);
-            this.gbScreen.Controls.Add(this.rbPixel);
-            this.gbScreen.Controls.Add(this.btnClear);
-            this.gbScreen.Controls.Add(this.pDisplay);
-            this.gbScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbScreen.Location = new System.Drawing.Point(0, 0);
-            this.gbScreen.Name = "gbScreen";
-            this.gbScreen.Size = new System.Drawing.Size(194, 255);
-            this.gbScreen.TabIndex = 0;
-            this.gbScreen.TabStop = false;
+            gbScreen.Controls.Add(btnShow);
+            gbScreen.Controls.Add(cbEmbeddedImages);
+            gbScreen.Controls.Add(toolStrip1);
+            gbScreen.Controls.Add(chkFill);
+            gbScreen.Controls.Add(tbText);
+            gbScreen.Controls.Add(btnUpdate);
+            gbScreen.Controls.Add(rbText);
+            gbScreen.Controls.Add(rbLine);
+            gbScreen.Controls.Add(rbInverseRectangle);
+            gbScreen.Controls.Add(rbRectangle);
+            gbScreen.Controls.Add(rbCircle);
+            gbScreen.Controls.Add(rbPixel);
+            gbScreen.Controls.Add(btnClear);
+            gbScreen.Controls.Add(pDisplay);
+            gbScreen.Dock = DockStyle.Fill;
+            gbScreen.Location = new Point(0, 0);
+            gbScreen.Margin = new Padding(4, 3, 4, 3);
+            gbScreen.Name = "gbScreen";
+            gbScreen.Padding = new Padding(4, 3, 4, 3);
+            gbScreen.Size = new Size(226, 294);
+            gbScreen.TabIndex = 0;
+            gbScreen.TabStop = false;
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(133, 201);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(58, 23);
-            this.btnShow.TabIndex = 35;
-            this.btnShow.Text = "Show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
+            btnShow.Location = new Point(155, 232);
+            btnShow.Margin = new Padding(4, 3, 4, 3);
+            btnShow.Name = "btnShow";
+            btnShow.Size = new Size(68, 27);
+            btnShow.TabIndex = 35;
+            btnShow.Text = "Show";
+            btnShow.UseVisualStyleBackColor = true;
+            btnShow.Click += BtnShow_Click;
             // 
             // cbEmbeddedImages
             // 
-            this.cbEmbeddedImages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEmbeddedImages.FormattingEnabled = true;
-            this.cbEmbeddedImages.Location = new System.Drawing.Point(6, 203);
-            this.cbEmbeddedImages.Name = "cbEmbeddedImages";
-            this.cbEmbeddedImages.Size = new System.Drawing.Size(121, 21);
-            this.cbEmbeddedImages.TabIndex = 34;
+            cbEmbeddedImages.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEmbeddedImages.FormattingEnabled = true;
+            cbEmbeddedImages.Location = new Point(7, 234);
+            cbEmbeddedImages.Margin = new Padding(4, 3, 4, 3);
+            cbEmbeddedImages.Name = "cbEmbeddedImages";
+            cbEmbeddedImages.Size = new Size(140, 23);
+            cbEmbeddedImages.TabIndex = 34;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSetLedsState,
-            this.cbLedPattern});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 227);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(188, 25);
-            this.toolStrip1.TabIndex = 33;
-            this.toolStrip1.Text = "toolStrip1";
+            toolStrip1.Dock = DockStyle.Bottom;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnSetLedsState, cbLedPattern });
+            toolStrip1.Location = new Point(4, 266);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(218, 25);
+            toolStrip1.TabIndex = 33;
+            toolStrip1.Text = "toolStrip1";
             // 
             // btnSetLedsState
             // 
-            this.btnSetLedsState.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnSetLedsState.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSetLedsState.Image = global::Mindstorms.Controller.Properties.Resources.led;
-            this.btnSetLedsState.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSetLedsState.Name = "btnSetLedsState";
-            this.btnSetLedsState.Size = new System.Drawing.Size(23, 22);
-            this.btnSetLedsState.Text = "Change LEDs state";
-            this.btnSetLedsState.Click += new System.EventHandler(this.BtnSetLedsState_Click);
+            btnSetLedsState.Alignment = ToolStripItemAlignment.Right;
+            btnSetLedsState.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSetLedsState.Image = Properties.Resources.led;
+            btnSetLedsState.ImageTransparentColor = Color.Magenta;
+            btnSetLedsState.Name = "btnSetLedsState";
+            btnSetLedsState.Size = new Size(23, 22);
+            btnSetLedsState.Text = "Change LEDs state";
+            btnSetLedsState.Click += BtnSetLedsState_Click;
             // 
             // cbLedPattern
             // 
-            this.cbLedPattern.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cbLedPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLedPattern.Name = "cbLedPattern";
-            this.cbLedPattern.Size = new System.Drawing.Size(121, 25);
+            cbLedPattern.Alignment = ToolStripItemAlignment.Right;
+            cbLedPattern.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLedPattern.Name = "cbLedPattern";
+            cbLedPattern.Size = new Size(140, 25);
             // 
             // chkFill
             // 
-            this.chkFill.AutoSize = true;
-            this.chkFill.Location = new System.Drawing.Point(8, 15);
-            this.chkFill.Name = "chkFill";
-            this.chkFill.Size = new System.Drawing.Size(38, 17);
-            this.chkFill.TabIndex = 32;
-            this.chkFill.Text = "Fill";
-            this.chkFill.UseVisualStyleBackColor = true;
+            chkFill.AutoSize = true;
+            chkFill.Location = new Point(9, 17);
+            chkFill.Margin = new Padding(4, 3, 4, 3);
+            chkFill.Name = "chkFill";
+            chkFill.Size = new Size(41, 19);
+            chkFill.TabIndex = 32;
+            chkFill.Text = "Fill";
+            chkFill.UseVisualStyleBackColor = true;
             // 
             // tbText
             // 
-            this.tbText.Enabled = false;
-            this.tbText.Location = new System.Drawing.Point(108, 174);
-            this.tbText.Name = "tbText";
-            this.tbText.Size = new System.Drawing.Size(78, 20);
-            this.tbText.TabIndex = 31;
+            tbText.Enabled = false;
+            tbText.Location = new Point(126, 201);
+            tbText.Margin = new Padding(4, 3, 4, 3);
+            tbText.Name = "tbText";
+            tbText.Size = new Size(90, 23);
+            tbText.TabIndex = 31;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(128, 11);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(58, 23);
-            this.btnUpdate.TabIndex = 30;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            btnUpdate.Location = new Point(149, 13);
+            btnUpdate.Margin = new Padding(4, 3, 4, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(68, 27);
+            btnUpdate.TabIndex = 30;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += BtnUpdate_Click;
             // 
             // rbText
             // 
-            this.rbText.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbText.AutoSize = true;
-            this.rbText.Location = new System.Drawing.Point(78, 172);
-            this.rbText.Name = "rbText";
-            this.rbText.Size = new System.Drawing.Size(24, 23);
-            this.rbText.TabIndex = 29;
-            this.rbText.Text = "A";
-            this.rbText.UseVisualStyleBackColor = true;
-            this.rbText.CheckedChanged += new System.EventHandler(this.RbText_CheckedChanged);
+            rbText.Appearance = Appearance.Button;
+            rbText.AutoSize = true;
+            rbText.Location = new Point(91, 198);
+            rbText.Margin = new Padding(4, 3, 4, 3);
+            rbText.Name = "rbText";
+            rbText.Size = new Size(25, 25);
+            rbText.TabIndex = 29;
+            rbText.Text = "A";
+            rbText.UseVisualStyleBackColor = true;
+            rbText.CheckedChanged += RbText_CheckedChanged;
             // 
             // rbLine
             // 
-            this.rbLine.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbLine.AutoSize = true;
-            this.rbLine.Image = global::Mindstorms.Controller.Properties.Resources.line;
-            this.rbLine.Location = new System.Drawing.Point(31, 172);
-            this.rbLine.Name = "rbLine";
-            this.rbLine.Size = new System.Drawing.Size(22, 22);
-            this.rbLine.TabIndex = 28;
-            this.rbLine.UseVisualStyleBackColor = true;
+            rbLine.Appearance = Appearance.Button;
+            rbLine.AutoSize = true;
+            rbLine.Image = Properties.Resources.line;
+            rbLine.Location = new Point(36, 198);
+            rbLine.Margin = new Padding(4, 3, 4, 3);
+            rbLine.Name = "rbLine";
+            rbLine.Size = new Size(22, 22);
+            rbLine.TabIndex = 28;
+            rbLine.UseVisualStyleBackColor = true;
             // 
             // rbInverseRectangle
             // 
-            this.rbInverseRectangle.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbInverseRectangle.AutoSize = true;
-            this.rbInverseRectangle.Image = global::Mindstorms.Controller.Properties.Resources.inverse_rectangle;
-            this.rbInverseRectangle.Location = new System.Drawing.Point(55, 172);
-            this.rbInverseRectangle.Name = "rbInverseRectangle";
-            this.rbInverseRectangle.Size = new System.Drawing.Size(22, 22);
-            this.rbInverseRectangle.TabIndex = 27;
-            this.rbInverseRectangle.UseVisualStyleBackColor = true;
+            rbInverseRectangle.Appearance = Appearance.Button;
+            rbInverseRectangle.AutoSize = true;
+            rbInverseRectangle.Image = Properties.Resources.inverse_rectangle;
+            rbInverseRectangle.Location = new Point(64, 198);
+            rbInverseRectangle.Margin = new Padding(4, 3, 4, 3);
+            rbInverseRectangle.Name = "rbInverseRectangle";
+            rbInverseRectangle.Size = new Size(22, 22);
+            rbInverseRectangle.TabIndex = 27;
+            rbInverseRectangle.UseVisualStyleBackColor = true;
             // 
             // rbRectangle
             // 
-            this.rbRectangle.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbRectangle.AutoSize = true;
-            this.rbRectangle.Image = global::Mindstorms.Controller.Properties.Resources.rectangle;
-            this.rbRectangle.Location = new System.Drawing.Point(71, 11);
-            this.rbRectangle.Name = "rbRectangle";
-            this.rbRectangle.Size = new System.Drawing.Size(22, 22);
-            this.rbRectangle.TabIndex = 26;
-            this.rbRectangle.UseVisualStyleBackColor = true;
+            rbRectangle.Appearance = Appearance.Button;
+            rbRectangle.AutoSize = true;
+            rbRectangle.Image = Properties.Resources.rectangle;
+            rbRectangle.Location = new Point(83, 13);
+            rbRectangle.Margin = new Padding(4, 3, 4, 3);
+            rbRectangle.Name = "rbRectangle";
+            rbRectangle.Size = new Size(22, 22);
+            rbRectangle.TabIndex = 26;
+            rbRectangle.UseVisualStyleBackColor = true;
             // 
             // rbCircle
             // 
-            this.rbCircle.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbCircle.AutoSize = true;
-            this.rbCircle.Image = global::Mindstorms.Controller.Properties.Resources.circle;
-            this.rbCircle.Location = new System.Drawing.Point(48, 11);
-            this.rbCircle.Name = "rbCircle";
-            this.rbCircle.Size = new System.Drawing.Size(22, 22);
-            this.rbCircle.TabIndex = 25;
-            this.rbCircle.UseVisualStyleBackColor = true;
+            rbCircle.Appearance = Appearance.Button;
+            rbCircle.AutoSize = true;
+            rbCircle.Image = Properties.Resources.circle;
+            rbCircle.Location = new Point(56, 13);
+            rbCircle.Margin = new Padding(4, 3, 4, 3);
+            rbCircle.Name = "rbCircle";
+            rbCircle.Size = new Size(22, 22);
+            rbCircle.TabIndex = 25;
+            rbCircle.UseVisualStyleBackColor = true;
             // 
             // rbPixel
             // 
-            this.rbPixel.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbPixel.AutoSize = true;
-            this.rbPixel.Checked = true;
-            this.rbPixel.Image = global::Mindstorms.Controller.Properties.Resources.pixel;
-            this.rbPixel.Location = new System.Drawing.Point(8, 172);
-            this.rbPixel.Name = "rbPixel";
-            this.rbPixel.Size = new System.Drawing.Size(22, 22);
-            this.rbPixel.TabIndex = 24;
-            this.rbPixel.TabStop = true;
-            this.rbPixel.UseVisualStyleBackColor = true;
+            rbPixel.Appearance = Appearance.Button;
+            rbPixel.AutoSize = true;
+            rbPixel.Checked = true;
+            rbPixel.Image = Properties.Resources.pixel;
+            rbPixel.Location = new Point(9, 198);
+            rbPixel.Margin = new Padding(4, 3, 4, 3);
+            rbPixel.Name = "rbPixel";
+            rbPixel.Size = new Size(22, 22);
+            rbPixel.TabIndex = 24;
+            rbPixel.TabStop = true;
+            rbPixel.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
-            this.btnClear.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnClear.Image = global::Mindstorms.Controller.Properties.Resources.eraser;
-            this.btnClear.Location = new System.Drawing.Point(99, 11);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(23, 23);
-            this.btnClear.TabIndex = 23;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            btnClear.Image = Properties.Resources.eraser;
+            btnClear.Location = new Point(115, 13);
+            btnClear.Margin = new Padding(4, 3, 4, 3);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(27, 27);
+            btnClear.TabIndex = 23;
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += BtnClear_Click;
             // 
             // pDisplay
             // 
-            this.pDisplay.BackColor = System.Drawing.Color.CadetBlue;
-            this.pDisplay.Location = new System.Drawing.Point(8, 38);
-            this.pDisplay.Name = "pDisplay";
-            this.pDisplay.Size = new System.Drawing.Size(178, 128);
-            this.pDisplay.TabIndex = 22;
-            this.pDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.Display_Paint);
-            this.pDisplay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Display_MouseDown);
-            this.pDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Display_MouseMove);
-            this.pDisplay.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Display_MouseUp);
+            pDisplay.BackColor = Color.CadetBlue;
+            pDisplay.Location = new Point(9, 44);
+            pDisplay.Margin = new Padding(4, 3, 4, 3);
+            pDisplay.Name = "pDisplay";
+            pDisplay.Size = new Size(208, 148);
+            pDisplay.TabIndex = 22;
+            pDisplay.Paint += Display_Paint;
+            pDisplay.MouseDown += Display_MouseDown;
+            pDisplay.MouseMove += Display_MouseMove;
+            pDisplay.MouseUp += Display_MouseUp;
             // 
             // ScreenForm
             // 
-            this.AcceptButton = this.btnShow;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(194, 255);
-            this.Controls.Add(this.pMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "ScreenForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Screen";
-            this.pMain.ResumeLayout(false);
-            this.gbScreen.ResumeLayout(false);
-            this.gbScreen.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AcceptButton = btnShow;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(226, 294);
+            Controls.Add(pMain);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ScreenForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Screen";
+            pMain.ResumeLayout(false);
+            gbScreen.ResumeLayout(false);
+            gbScreen.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

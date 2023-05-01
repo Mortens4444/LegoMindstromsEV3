@@ -527,21 +527,9 @@ public partial class MainForm : Form
             }
             else
             {
-                var chatGptRequest = new ChatGptRequest
-                {
-                    Model = "gpt-3.5-turbo",
-                    Temperature = tbTemperature.Value / 10.0,
-                    Messages = new List<Dictionary<string, string>>
-                    {
-                        new Dictionary<string, string> {
-                            { "role", "user" },
-                            { "content", rtbChatGpt.Text }
-                        }
-                    }
-                };
                 try
                 {
-                    rtbChatGpt.Text = await client.SendMessage(chatGptRequest, apiKey);
+                    rtbChatGpt.Text = await client.SendMessage(rtbChatGpt.Text, apiKey, tbTemperature.Value / 10.0);
                 }
                 catch (Exception ex)
                 {

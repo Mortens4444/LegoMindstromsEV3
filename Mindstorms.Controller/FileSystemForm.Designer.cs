@@ -28,228 +28,225 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.pMain = new System.Windows.Forms.Panel();
-            this.gbFilesystem = new System.Windows.Forms.GroupBox();
-            this.btnProjects = new System.Windows.Forms.Button();
-            this.btnStopProgram = new System.Windows.Forms.Button();
-            this.lblWorkingDirectory = new System.Windows.Forms.Label();
-            this.lvDirectoryContent = new System.Windows.Forms.ListView();
-            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chHash = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cmdFolderContent = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiViewFileContent = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDownloadFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDeleteFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.separator = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiUploadFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnCreateFolder = new System.Windows.Forms.Button();
-            this.tbFolder = new System.Windows.Forms.TextBox();
-            this.pMain.SuspendLayout();
-            this.gbFilesystem.SuspendLayout();
-            this.cmdFolderContent.SuspendLayout();
-            this.statusStrip.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            pMain = new Panel();
+            gbFilesystem = new GroupBox();
+            tbFolder = new TextBox();
+            btnCreateFolder = new Button();
+            btnProjects = new Button();
+            btnStopProgram = new Button();
+            lblWorkingDirectory = new Label();
+            lvDirectoryContent = new ListView();
+            chName = new ColumnHeader();
+            chType = new ColumnHeader();
+            chSize = new ColumnHeader();
+            chHash = new ColumnHeader();
+            cmdFolderContent = new ContextMenuStrip(components);
+            tsmiViewFileContent = new ToolStripMenuItem();
+            tsmiDownloadFiles = new ToolStripMenuItem();
+            tsmiDeleteFiles = new ToolStripMenuItem();
+            separator = new ToolStripSeparator();
+            tsmiUploadFile = new ToolStripMenuItem();
+            statusStrip = new StatusStrip();
+            tsslStatus = new ToolStripStatusLabel();
+            folderBrowserDialog = new FolderBrowserDialog();
+            openFileDialog = new OpenFileDialog();
+            pMain.SuspendLayout();
+            gbFilesystem.SuspendLayout();
+            cmdFolderContent.SuspendLayout();
+            statusStrip.SuspendLayout();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.gbFilesystem);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 0);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(800, 450);
-            this.pMain.TabIndex = 0;
+            pMain.Controls.Add(gbFilesystem);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 0);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(933, 519);
+            pMain.TabIndex = 0;
             // 
             // gbFilesystem
             // 
-            this.gbFilesystem.Controls.Add(this.tbFolder);
-            this.gbFilesystem.Controls.Add(this.btnCreateFolder);
-            this.gbFilesystem.Controls.Add(this.btnProjects);
-            this.gbFilesystem.Controls.Add(this.btnStopProgram);
-            this.gbFilesystem.Controls.Add(this.lblWorkingDirectory);
-            this.gbFilesystem.Controls.Add(this.lvDirectoryContent);
-            this.gbFilesystem.Controls.Add(this.statusStrip);
-            this.gbFilesystem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbFilesystem.Location = new System.Drawing.Point(0, 0);
-            this.gbFilesystem.Name = "gbFilesystem";
-            this.gbFilesystem.Size = new System.Drawing.Size(800, 450);
-            this.gbFilesystem.TabIndex = 8;
-            this.gbFilesystem.TabStop = false;
-            this.gbFilesystem.Text = "Filesystem";
-            // 
-            // btnProjects
-            // 
-            this.btnProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProjects.Location = new System.Drawing.Point(698, 11);
-            this.btnProjects.Name = "btnProjects";
-            this.btnProjects.Size = new System.Drawing.Size(56, 23);
-            this.btnProjects.TabIndex = 6;
-            this.btnProjects.Text = "Projects";
-            this.btnProjects.UseVisualStyleBackColor = true;
-            this.btnProjects.Click += new System.EventHandler(this.BtnProjects_Click);
-            // 
-            // btnStopProgram
-            // 
-            this.btnStopProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStopProgram.Image = global::Mindstorms.Controller.Properties.Resources.stop;
-            this.btnStopProgram.Location = new System.Drawing.Point(760, 11);
-            this.btnStopProgram.Name = "btnStopProgram";
-            this.btnStopProgram.Size = new System.Drawing.Size(33, 23);
-            this.btnStopProgram.TabIndex = 4;
-            this.btnStopProgram.UseVisualStyleBackColor = true;
-            this.btnStopProgram.Click += new System.EventHandler(this.BtnStopProgram_Click);
-            // 
-            // lblWorkingDirectory
-            // 
-            this.lblWorkingDirectory.AutoSize = true;
-            this.lblWorkingDirectory.Location = new System.Drawing.Point(6, 20);
-            this.lblWorkingDirectory.Name = "lblWorkingDirectory";
-            this.lblWorkingDirectory.Size = new System.Drawing.Size(12, 13);
-            this.lblWorkingDirectory.TabIndex = 3;
-            this.lblWorkingDirectory.Text = "/";
-            // 
-            // lvDirectoryContent
-            // 
-            this.lvDirectoryContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvDirectoryContent.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chName,
-            this.chType,
-            this.chSize,
-            this.chHash});
-            this.lvDirectoryContent.ContextMenuStrip = this.cmdFolderContent;
-            this.lvDirectoryContent.FullRowSelect = true;
-            this.lvDirectoryContent.HideSelection = false;
-            this.lvDirectoryContent.Location = new System.Drawing.Point(7, 36);
-            this.lvDirectoryContent.Name = "lvDirectoryContent";
-            this.lvDirectoryContent.Size = new System.Drawing.Size(787, 386);
-            this.lvDirectoryContent.TabIndex = 2;
-            this.lvDirectoryContent.UseCompatibleStateImageBehavior = false;
-            this.lvDirectoryContent.View = System.Windows.Forms.View.Details;
-            this.lvDirectoryContent.DoubleClick += new System.EventHandler(this.LvDirectoryContent_DoubleClick);
-            // 
-            // chName
-            // 
-            this.chName.Text = "Name";
-            this.chName.Width = 264;
-            // 
-            // chType
-            // 
-            this.chType.Text = "Type";
-            // 
-            // chSize
-            // 
-            this.chSize.Text = "Size";
-            // 
-            // chHash
-            // 
-            this.chHash.Text = "Hash";
-            // 
-            // cmdFolderContent
-            // 
-            this.cmdFolderContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiViewFileContent,
-            this.tsmiDownloadFiles,
-            this.tsmiDeleteFiles,
-            this.separator,
-            this.tsmiUploadFile});
-            this.cmdFolderContent.Name = "cmdFolderContent";
-            this.cmdFolderContent.Size = new System.Drawing.Size(182, 98);
-            this.cmdFolderContent.Opening += new System.ComponentModel.CancelEventHandler(this.CmdFolderContent_Opening);
-            // 
-            // tsmiViewFileContent
-            // 
-            this.tsmiViewFileContent.Name = "tsmiViewFileContent";
-            this.tsmiViewFileContent.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.tsmiViewFileContent.Size = new System.Drawing.Size(181, 22);
-            this.tsmiViewFileContent.Text = "View file content";
-            this.tsmiViewFileContent.Click += new System.EventHandler(this.TsmiViewFileContent_Click);
-            // 
-            // tsmiDownloadFiles
-            // 
-            this.tsmiDownloadFiles.Name = "tsmiDownloadFiles";
-            this.tsmiDownloadFiles.Size = new System.Drawing.Size(181, 22);
-            this.tsmiDownloadFiles.Text = "Download file(s)";
-            this.tsmiDownloadFiles.Click += new System.EventHandler(this.TsmiDownloadFile_Click);
-            // 
-            // tsmiDeleteFiles
-            // 
-            this.tsmiDeleteFiles.Name = "tsmiDeleteFiles";
-            this.tsmiDeleteFiles.Size = new System.Drawing.Size(181, 22);
-            this.tsmiDeleteFiles.Text = "Delete file(s)";
-            this.tsmiDeleteFiles.Click += new System.EventHandler(this.TsmiDeleteFiles_Click);
-            // 
-            // separator
-            // 
-            this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(178, 6);
-            // 
-            // tsmiUploadFile
-            // 
-            this.tsmiUploadFile.Name = "tsmiUploadFile";
-            this.tsmiUploadFile.Size = new System.Drawing.Size(181, 22);
-            this.tsmiUploadFile.Text = "Upload file";
-            this.tsmiUploadFile.Click += new System.EventHandler(this.TsmiUploadFile_Click);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslStatus});
-            this.statusStrip.Location = new System.Drawing.Point(3, 425);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(794, 22);
-            this.statusStrip.TabIndex = 5;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // tsslStatus
-            // 
-            this.tsslStatus.Name = "tsslStatus";
-            this.tsslStatus.Size = new System.Drawing.Size(0, 17);
-            // 
-            // btnCreateFolder
-            // 
-            this.btnCreateFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateFolder.Location = new System.Drawing.Point(617, 11);
-            this.btnCreateFolder.Name = "btnCreateFolder";
-            this.btnCreateFolder.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateFolder.TabIndex = 7;
-            this.btnCreateFolder.Text = "Create folder";
-            this.btnCreateFolder.UseVisualStyleBackColor = true;
-            this.btnCreateFolder.Click += new System.EventHandler(this.BtnCreateFolder_Click);
+            gbFilesystem.Controls.Add(tbFolder);
+            gbFilesystem.Controls.Add(btnCreateFolder);
+            gbFilesystem.Controls.Add(btnProjects);
+            gbFilesystem.Controls.Add(btnStopProgram);
+            gbFilesystem.Controls.Add(lblWorkingDirectory);
+            gbFilesystem.Controls.Add(lvDirectoryContent);
+            gbFilesystem.Controls.Add(statusStrip);
+            gbFilesystem.Dock = DockStyle.Fill;
+            gbFilesystem.Location = new Point(0, 0);
+            gbFilesystem.Margin = new Padding(4, 3, 4, 3);
+            gbFilesystem.Name = "gbFilesystem";
+            gbFilesystem.Padding = new Padding(4, 3, 4, 3);
+            gbFilesystem.Size = new Size(933, 519);
+            gbFilesystem.TabIndex = 8;
+            gbFilesystem.TabStop = false;
+            gbFilesystem.Text = "Filesystem";
             // 
             // tbFolder
             // 
-            this.tbFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFolder.Location = new System.Drawing.Point(451, 12);
-            this.tbFolder.Name = "tbFolder";
-            this.tbFolder.Size = new System.Drawing.Size(160, 20);
-            this.tbFolder.TabIndex = 8;
+            tbFolder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            tbFolder.Location = new Point(526, 14);
+            tbFolder.Margin = new Padding(4, 3, 4, 3);
+            tbFolder.Name = "tbFolder";
+            tbFolder.Size = new Size(186, 23);
+            tbFolder.TabIndex = 8;
+            // 
+            // btnCreateFolder
+            // 
+            btnCreateFolder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCreateFolder.Location = new Point(720, 13);
+            btnCreateFolder.Margin = new Padding(4, 3, 4, 3);
+            btnCreateFolder.Name = "btnCreateFolder";
+            btnCreateFolder.Size = new Size(88, 27);
+            btnCreateFolder.TabIndex = 7;
+            btnCreateFolder.Text = "Create folder";
+            btnCreateFolder.UseVisualStyleBackColor = true;
+            btnCreateFolder.Click += BtnCreateFolder_Click;
+            // 
+            // btnProjects
+            // 
+            btnProjects.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnProjects.Location = new Point(814, 13);
+            btnProjects.Margin = new Padding(4, 3, 4, 3);
+            btnProjects.Name = "btnProjects";
+            btnProjects.Size = new Size(65, 27);
+            btnProjects.TabIndex = 6;
+            btnProjects.Text = "Projects";
+            btnProjects.UseVisualStyleBackColor = true;
+            btnProjects.Click += BtnProjects_Click;
+            // 
+            // btnStopProgram
+            // 
+            btnStopProgram.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnStopProgram.Image = Properties.Resources.stop;
+            btnStopProgram.Location = new Point(887, 13);
+            btnStopProgram.Margin = new Padding(4, 3, 4, 3);
+            btnStopProgram.Name = "btnStopProgram";
+            btnStopProgram.Size = new Size(38, 27);
+            btnStopProgram.TabIndex = 4;
+            btnStopProgram.UseVisualStyleBackColor = true;
+            btnStopProgram.Click += BtnStopProgram_Click;
+            // 
+            // lblWorkingDirectory
+            // 
+            lblWorkingDirectory.AutoSize = true;
+            lblWorkingDirectory.Location = new Point(7, 23);
+            lblWorkingDirectory.Margin = new Padding(4, 0, 4, 0);
+            lblWorkingDirectory.Name = "lblWorkingDirectory";
+            lblWorkingDirectory.Size = new Size(12, 15);
+            lblWorkingDirectory.TabIndex = 3;
+            lblWorkingDirectory.Text = "/";
+            // 
+            // lvDirectoryContent
+            // 
+            lvDirectoryContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lvDirectoryContent.Columns.AddRange(new ColumnHeader[] { chName, chType, chSize, chHash });
+            lvDirectoryContent.ContextMenuStrip = cmdFolderContent;
+            lvDirectoryContent.FullRowSelect = true;
+            lvDirectoryContent.Location = new Point(8, 42);
+            lvDirectoryContent.Margin = new Padding(4, 3, 4, 3);
+            lvDirectoryContent.Name = "lvDirectoryContent";
+            lvDirectoryContent.Size = new Size(917, 445);
+            lvDirectoryContent.TabIndex = 2;
+            lvDirectoryContent.UseCompatibleStateImageBehavior = false;
+            lvDirectoryContent.View = View.Details;
+            lvDirectoryContent.DoubleClick += LvDirectoryContent_DoubleClick;
+            // 
+            // chName
+            // 
+            chName.Text = "Name";
+            chName.Width = 264;
+            // 
+            // chType
+            // 
+            chType.Text = "Type";
+            // 
+            // chSize
+            // 
+            chSize.Text = "Size";
+            // 
+            // chHash
+            // 
+            chHash.Text = "Hash";
+            // 
+            // cmdFolderContent
+            // 
+            cmdFolderContent.Items.AddRange(new ToolStripItem[] { tsmiViewFileContent, tsmiDownloadFiles, tsmiDeleteFiles, separator, tsmiUploadFile });
+            cmdFolderContent.Name = "cmdFolderContent";
+            cmdFolderContent.Size = new Size(182, 98);
+            cmdFolderContent.Opening += CmdFolderContent_Opening;
+            // 
+            // tsmiViewFileContent
+            // 
+            tsmiViewFileContent.Name = "tsmiViewFileContent";
+            tsmiViewFileContent.ShortcutKeys = Keys.F3;
+            tsmiViewFileContent.Size = new Size(181, 22);
+            tsmiViewFileContent.Text = "View file content";
+            tsmiViewFileContent.Click += TsmiViewFileContent_Click;
+            // 
+            // tsmiDownloadFiles
+            // 
+            tsmiDownloadFiles.Name = "tsmiDownloadFiles";
+            tsmiDownloadFiles.Size = new Size(181, 22);
+            tsmiDownloadFiles.Text = "Download file(s)";
+            tsmiDownloadFiles.Click += TsmiDownloadFile_Click;
+            // 
+            // tsmiDeleteFiles
+            // 
+            tsmiDeleteFiles.Name = "tsmiDeleteFiles";
+            tsmiDeleteFiles.Size = new Size(181, 22);
+            tsmiDeleteFiles.Text = "Delete file(s)";
+            tsmiDeleteFiles.Click += TsmiDeleteFiles_Click;
+            // 
+            // separator
+            // 
+            separator.Name = "separator";
+            separator.Size = new Size(178, 6);
+            // 
+            // tsmiUploadFile
+            // 
+            tsmiUploadFile.Name = "tsmiUploadFile";
+            tsmiUploadFile.Size = new Size(181, 22);
+            tsmiUploadFile.Text = "Upload file";
+            tsmiUploadFile.Click += TsmiUploadFile_Click;
+            // 
+            // statusStrip
+            // 
+            statusStrip.Items.AddRange(new ToolStripItem[] { tsslStatus });
+            statusStrip.Location = new Point(4, 494);
+            statusStrip.Name = "statusStrip";
+            statusStrip.Padding = new Padding(1, 0, 16, 0);
+            statusStrip.Size = new Size(925, 22);
+            statusStrip.TabIndex = 5;
+            statusStrip.Text = "statusStrip1";
+            // 
+            // tsslStatus
+            // 
+            tsslStatus.Name = "tsslStatus";
+            tsslStatus.Size = new Size(0, 17);
             // 
             // FileSystemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pMain);
-            this.Name = "FileSystemForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "File system";
-            this.Shown += new System.EventHandler(this.FileSystemForm_Shown);
-            this.pMain.ResumeLayout(false);
-            this.gbFilesystem.ResumeLayout(false);
-            this.gbFilesystem.PerformLayout();
-            this.cmdFolderContent.ResumeLayout(false);
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(pMain);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FileSystemForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "File system";
+            Shown += FileSystemForm_Shown;
+            pMain.ResumeLayout(false);
+            gbFilesystem.ResumeLayout(false);
+            gbFilesystem.PerformLayout();
+            cmdFolderContent.ResumeLayout(false);
+            statusStrip.ResumeLayout(false);
+            statusStrip.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

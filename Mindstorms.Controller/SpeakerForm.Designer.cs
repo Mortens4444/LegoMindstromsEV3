@@ -28,248 +28,233 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pMain = new System.Windows.Forms.Panel();
-            this.gbBeep = new System.Windows.Forms.GroupBox();
-            this.lblPlayType = new System.Windows.Forms.Label();
-            this.cbPlayType = new System.Windows.Forms.ComboBox();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.tsbPlayMusic = new System.Windows.Forms.ToolStripButton();
-            this.cbMelodies = new System.Windows.Forms.ToolStripComboBox();
-            this.cbSounds = new System.Windows.Forms.ToolStripComboBox();
-            this.tsbPlaySound = new System.Windows.Forms.ToolStripButton();
-            this.tbVolume = new System.Windows.Forms.TrackBar();
-            this.btnSilence = new System.Windows.Forms.Button();
-            this.lblFrequecncy = new System.Windows.Forms.Label();
-            this.nudFrequecncy = new System.Windows.Forms.NumericUpDown();
-            this.btnBeep = new System.Windows.Forms.Button();
-            this.lblVolume = new System.Windows.Forms.Label();
-            this.lblDuration = new System.Windows.Forms.Label();
-            this.nudDuration = new System.Windows.Forms.NumericUpDown();
-            this.pMain.SuspendLayout();
-            this.gbBeep.SuspendLayout();
-            this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFrequecncy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).BeginInit();
-            this.SuspendLayout();
+            pMain = new Panel();
+            gbBeep = new GroupBox();
+            lblPlayType = new Label();
+            cbPlayType = new ComboBox();
+            toolStrip = new ToolStrip();
+            tsbPlayMusic = new ToolStripButton();
+            cbMelodies = new ToolStripComboBox();
+            cbSounds = new ToolStripComboBox();
+            tsbPlaySound = new ToolStripButton();
+            tbVolume = new TrackBar();
+            btnSilence = new Button();
+            lblFrequecncy = new Label();
+            nudFrequecncy = new NumericUpDown();
+            btnBeep = new Button();
+            lblVolume = new Label();
+            lblDuration = new Label();
+            nudDuration = new NumericUpDown();
+            pMain.SuspendLayout();
+            gbBeep.SuspendLayout();
+            toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbVolume).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudFrequecncy).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudDuration).BeginInit();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.gbBeep);
-            this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMain.Location = new System.Drawing.Point(0, 0);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(372, 111);
-            this.pMain.TabIndex = 0;
+            pMain.Controls.Add(gbBeep);
+            pMain.Dock = DockStyle.Fill;
+            pMain.Location = new Point(0, 0);
+            pMain.Margin = new Padding(4, 3, 4, 3);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(434, 128);
+            pMain.TabIndex = 0;
             // 
             // gbBeep
             // 
-            this.gbBeep.Controls.Add(this.lblPlayType);
-            this.gbBeep.Controls.Add(this.cbPlayType);
-            this.gbBeep.Controls.Add(this.toolStrip);
-            this.gbBeep.Controls.Add(this.tbVolume);
-            this.gbBeep.Controls.Add(this.btnSilence);
-            this.gbBeep.Controls.Add(this.lblFrequecncy);
-            this.gbBeep.Controls.Add(this.nudFrequecncy);
-            this.gbBeep.Controls.Add(this.btnBeep);
-            this.gbBeep.Controls.Add(this.lblVolume);
-            this.gbBeep.Controls.Add(this.lblDuration);
-            this.gbBeep.Controls.Add(this.nudDuration);
-            this.gbBeep.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbBeep.Location = new System.Drawing.Point(0, 0);
-            this.gbBeep.Name = "gbBeep";
-            this.gbBeep.Size = new System.Drawing.Size(372, 111);
-            this.gbBeep.TabIndex = 5;
-            this.gbBeep.TabStop = false;
+            gbBeep.Controls.Add(lblPlayType);
+            gbBeep.Controls.Add(cbPlayType);
+            gbBeep.Controls.Add(toolStrip);
+            gbBeep.Controls.Add(tbVolume);
+            gbBeep.Controls.Add(btnSilence);
+            gbBeep.Controls.Add(lblFrequecncy);
+            gbBeep.Controls.Add(nudFrequecncy);
+            gbBeep.Controls.Add(btnBeep);
+            gbBeep.Controls.Add(lblVolume);
+            gbBeep.Controls.Add(lblDuration);
+            gbBeep.Controls.Add(nudDuration);
+            gbBeep.Dock = DockStyle.Fill;
+            gbBeep.Location = new Point(0, 0);
+            gbBeep.Margin = new Padding(4, 3, 4, 3);
+            gbBeep.Name = "gbBeep";
+            gbBeep.Padding = new Padding(4, 3, 4, 3);
+            gbBeep.Size = new Size(434, 128);
+            gbBeep.TabIndex = 5;
+            gbBeep.TabStop = false;
             // 
             // lblPlayType
             // 
-            this.lblPlayType.AutoSize = true;
-            this.lblPlayType.Location = new System.Drawing.Point(236, 19);
-            this.lblPlayType.Name = "lblPlayType";
-            this.lblPlayType.Size = new System.Drawing.Size(50, 13);
-            this.lblPlayType.TabIndex = 15;
-            this.lblPlayType.Text = "Play type";
+            lblPlayType.AutoSize = true;
+            lblPlayType.Location = new Point(275, 22);
+            lblPlayType.Margin = new Padding(4, 0, 4, 0);
+            lblPlayType.Name = "lblPlayType";
+            lblPlayType.Size = new Size(55, 15);
+            lblPlayType.TabIndex = 15;
+            lblPlayType.Text = "Play type";
             // 
             // cbPlayType
             // 
-            this.cbPlayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPlayType.FormattingEnabled = true;
-            this.cbPlayType.Location = new System.Drawing.Point(236, 41);
-            this.cbPlayType.Name = "cbPlayType";
-            this.cbPlayType.Size = new System.Drawing.Size(127, 21);
-            this.cbPlayType.TabIndex = 14;
+            cbPlayType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPlayType.FormattingEnabled = true;
+            cbPlayType.Location = new Point(275, 47);
+            cbPlayType.Margin = new Padding(4, 3, 4, 3);
+            cbPlayType.Name = "cbPlayType";
+            cbPlayType.Size = new Size(148, 23);
+            cbPlayType.TabIndex = 14;
             // 
             // toolStrip
             // 
-            this.toolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbPlayMusic,
-            this.cbMelodies,
-            this.cbSounds,
-            this.tsbPlaySound});
-            this.toolStrip.Location = new System.Drawing.Point(3, 83);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(366, 25);
-            this.toolStrip.TabIndex = 13;
-            this.toolStrip.Text = "toolStrip1";
+            toolStrip.Dock = DockStyle.Bottom;
+            toolStrip.Items.AddRange(new ToolStripItem[] { tsbPlayMusic, cbMelodies, cbSounds, tsbPlaySound });
+            toolStrip.Location = new Point(4, 100);
+            toolStrip.Name = "toolStrip";
+            toolStrip.Size = new Size(426, 25);
+            toolStrip.TabIndex = 13;
+            toolStrip.Text = "toolStrip1";
             // 
             // tsbPlayMusic
             // 
-            this.tsbPlayMusic.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbPlayMusic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPlayMusic.Image = global::Mindstorms.Controller.Properties.Resources.notes;
-            this.tsbPlayMusic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPlayMusic.Name = "tsbPlayMusic";
-            this.tsbPlayMusic.Size = new System.Drawing.Size(23, 22);
-            this.tsbPlayMusic.Text = "Play melody";
-            this.tsbPlayMusic.Click += new System.EventHandler(this.BtnPlayMusic_Click);
+            tsbPlayMusic.Alignment = ToolStripItemAlignment.Right;
+            tsbPlayMusic.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbPlayMusic.Image = Properties.Resources.notes;
+            tsbPlayMusic.ImageTransparentColor = Color.Magenta;
+            tsbPlayMusic.Name = "tsbPlayMusic";
+            tsbPlayMusic.Size = new Size(23, 22);
+            tsbPlayMusic.Text = "Play melody";
+            tsbPlayMusic.Click += BtnPlayMusic_Click;
             // 
             // cbMelodies
             // 
-            this.cbMelodies.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cbMelodies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMelodies.Name = "cbMelodies";
-            this.cbMelodies.Size = new System.Drawing.Size(121, 25);
+            cbMelodies.Alignment = ToolStripItemAlignment.Right;
+            cbMelodies.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbMelodies.Name = "cbMelodies";
+            cbMelodies.Size = new Size(140, 25);
             // 
             // cbSounds
             // 
-            this.cbSounds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSounds.Name = "cbSounds";
-            this.cbSounds.Size = new System.Drawing.Size(121, 25);
+            cbSounds.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSounds.Name = "cbSounds";
+            cbSounds.Size = new Size(140, 25);
             // 
             // tsbPlaySound
             // 
-            this.tsbPlaySound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPlaySound.Image = global::Mindstorms.Controller.Properties.Resources.notes;
-            this.tsbPlaySound.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPlaySound.Name = "tsbPlaySound";
-            this.tsbPlaySound.Size = new System.Drawing.Size(23, 22);
-            this.tsbPlaySound.Text = "Play sound";
-            this.tsbPlaySound.Click += new System.EventHandler(this.BtnPlaySound_Click);
+            tsbPlaySound.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbPlaySound.Image = Properties.Resources.notes;
+            tsbPlaySound.ImageTransparentColor = Color.Magenta;
+            tsbPlaySound.Name = "tsbPlaySound";
+            tsbPlaySound.Size = new Size(23, 22);
+            tsbPlaySound.Text = "Play sound";
+            tsbPlaySound.Click += BtnPlaySound_Click;
             // 
             // tbVolume
             // 
-            this.tbVolume.Location = new System.Drawing.Point(6, 29);
-            this.tbVolume.Maximum = 100;
-            this.tbVolume.Minimum = 1;
-            this.tbVolume.Name = "tbVolume";
-            this.tbVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tbVolume.Size = new System.Drawing.Size(45, 50);
-            this.tbVolume.TabIndex = 7;
-            this.tbVolume.Value = 10;
+            tbVolume.Location = new Point(7, 33);
+            tbVolume.Margin = new Padding(4, 3, 4, 3);
+            tbVolume.Maximum = 100;
+            tbVolume.Minimum = 1;
+            tbVolume.Name = "tbVolume";
+            tbVolume.Orientation = Orientation.Vertical;
+            tbVolume.Size = new Size(45, 58);
+            tbVolume.TabIndex = 7;
+            tbVolume.Value = 10;
             // 
             // btnSilence
             // 
-            this.btnSilence.Image = global::Mindstorms.Controller.Properties.Resources.mute;
-            this.btnSilence.Location = new System.Drawing.Point(207, 39);
-            this.btnSilence.Name = "btnSilence";
-            this.btnSilence.Size = new System.Drawing.Size(23, 23);
-            this.btnSilence.TabIndex = 12;
-            this.btnSilence.UseVisualStyleBackColor = true;
-            this.btnSilence.Click += new System.EventHandler(this.BtnSilence_Click);
+            btnSilence.Image = Properties.Resources.mute;
+            btnSilence.Location = new Point(241, 45);
+            btnSilence.Margin = new Padding(4, 3, 4, 3);
+            btnSilence.Name = "btnSilence";
+            btnSilence.Size = new Size(27, 27);
+            btnSilence.TabIndex = 12;
+            btnSilence.UseVisualStyleBackColor = true;
+            btnSilence.Click += BtnSilence_Click;
             // 
             // lblFrequecncy
             // 
-            this.lblFrequecncy.AutoSize = true;
-            this.lblFrequecncy.Location = new System.Drawing.Point(77, 47);
-            this.lblFrequecncy.Name = "lblFrequecncy";
-            this.lblFrequecncy.Size = new System.Drawing.Size(63, 13);
-            this.lblFrequecncy.TabIndex = 6;
-            this.lblFrequecncy.Text = "Frequecncy";
+            lblFrequecncy.AutoSize = true;
+            lblFrequecncy.Location = new Point(90, 54);
+            lblFrequecncy.Margin = new Padding(4, 0, 4, 0);
+            lblFrequecncy.Name = "lblFrequecncy";
+            lblFrequecncy.Size = new Size(68, 15);
+            lblFrequecncy.TabIndex = 6;
+            lblFrequecncy.Text = "Frequecncy";
             // 
             // nudFrequecncy
             // 
-            this.nudFrequecncy.Location = new System.Drawing.Point(146, 42);
-            this.nudFrequecncy.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudFrequecncy.Minimum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.nudFrequecncy.Name = "nudFrequecncy";
-            this.nudFrequecncy.Size = new System.Drawing.Size(55, 20);
-            this.nudFrequecncy.TabIndex = 5;
-            this.nudFrequecncy.Value = new decimal(new int[] {
-            440,
-            0,
-            0,
-            0});
+            nudFrequecncy.Location = new Point(170, 48);
+            nudFrequecncy.Margin = new Padding(4, 3, 4, 3);
+            nudFrequecncy.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            nudFrequecncy.Minimum = new decimal(new int[] { 250, 0, 0, 0 });
+            nudFrequecncy.Name = "nudFrequecncy";
+            nudFrequecncy.Size = new Size(64, 23);
+            nudFrequecncy.TabIndex = 5;
+            nudFrequecncy.Value = new decimal(new int[] { 440, 0, 0, 0 });
             // 
             // btnBeep
             // 
-            this.btnBeep.Image = global::Mindstorms.Controller.Properties.Resources.volume;
-            this.btnBeep.Location = new System.Drawing.Point(207, 14);
-            this.btnBeep.Name = "btnBeep";
-            this.btnBeep.Size = new System.Drawing.Size(23, 23);
-            this.btnBeep.TabIndex = 4;
-            this.btnBeep.UseVisualStyleBackColor = true;
-            this.btnBeep.Click += new System.EventHandler(this.BtnBeep_Click);
+            btnBeep.Image = Properties.Resources.volume;
+            btnBeep.Location = new Point(241, 16);
+            btnBeep.Margin = new Padding(4, 3, 4, 3);
+            btnBeep.Name = "btnBeep";
+            btnBeep.Size = new Size(27, 27);
+            btnBeep.TabIndex = 4;
+            btnBeep.UseVisualStyleBackColor = true;
+            btnBeep.Click += BtnBeep_Click;
             // 
             // lblVolume
             // 
-            this.lblVolume.AutoSize = true;
-            this.lblVolume.Location = new System.Drawing.Point(6, 16);
-            this.lblVolume.Name = "lblVolume";
-            this.lblVolume.Size = new System.Drawing.Size(42, 13);
-            this.lblVolume.TabIndex = 1;
-            this.lblVolume.Text = "Volume";
+            lblVolume.AutoSize = true;
+            lblVolume.Location = new Point(7, 18);
+            lblVolume.Margin = new Padding(4, 0, 4, 0);
+            lblVolume.Name = "lblVolume";
+            lblVolume.Size = new Size(47, 15);
+            lblVolume.TabIndex = 1;
+            lblVolume.Text = "Volume";
             // 
             // lblDuration
             // 
-            this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(77, 16);
-            this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(69, 13);
-            this.lblDuration.TabIndex = 3;
-            this.lblDuration.Text = "Duration (ms)";
+            lblDuration.AutoSize = true;
+            lblDuration.Location = new Point(90, 18);
+            lblDuration.Margin = new Padding(4, 0, 4, 0);
+            lblDuration.Name = "lblDuration";
+            lblDuration.Size = new Size(80, 15);
+            lblDuration.TabIndex = 3;
+            lblDuration.Text = "Duration (ms)";
             // 
             // nudDuration
             // 
-            this.nudDuration.Location = new System.Drawing.Point(146, 14);
-            this.nudDuration.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudDuration.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudDuration.Name = "nudDuration";
-            this.nudDuration.Size = new System.Drawing.Size(55, 20);
-            this.nudDuration.TabIndex = 2;
-            this.nudDuration.Value = new decimal(new int[] {
-            400,
-            0,
-            0,
-            0});
+            nudDuration.Location = new Point(170, 16);
+            nudDuration.Margin = new Padding(4, 3, 4, 3);
+            nudDuration.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            nudDuration.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudDuration.Name = "nudDuration";
+            nudDuration.Size = new Size(64, 23);
+            nudDuration.TabIndex = 2;
+            nudDuration.Value = new decimal(new int[] { 400, 0, 0, 0 });
             // 
             // SpeakerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 111);
-            this.Controls.Add(this.pMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "SpeakerForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Speaker";
-            this.pMain.ResumeLayout(false);
-            this.gbBeep.ResumeLayout(false);
-            this.gbBeep.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFrequecncy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(434, 128);
+            Controls.Add(pMain);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "SpeakerForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Speaker";
+            pMain.ResumeLayout(false);
+            gbBeep.ResumeLayout(false);
+            gbBeep.PerformLayout();
+            toolStrip.ResumeLayout(false);
+            toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbVolume).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudFrequecncy).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudDuration).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
