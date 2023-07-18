@@ -72,6 +72,7 @@ namespace Mindstorms.Controller
             tsmiImageConverter = new ToolStripMenuItem();
             tsmiSoundRecorder = new ToolStripMenuItem();
             pMain = new Panel();
+            cbChatGptModelName = new ComboBox();
             tbTemperature = new TrackBar();
             rtbChatGpt = new RichTextBox();
             btnAskChatGpt = new Button();
@@ -121,7 +122,7 @@ namespace Mindstorms.Controller
             toolStrip.Items.AddRange(new ToolStripItem[] { cbPort, btnConnectOrDisconnect, toolStripSeparator1, tslLeftMotor, tscbLeftMotor, toolStripSeparator2, tslRightMotor, tscbRightMotor, toolStripSeparator3, tslLeverMotor, tscbLeverMotor });
             toolStrip.Location = new Point(0, 24);
             toolStrip.Name = "toolStrip";
-            toolStrip.Size = new Size(722, 25);
+            toolStrip.Size = new Size(834, 25);
             toolStrip.TabIndex = 2;
             toolStrip.Text = "toolStrip1";
             // 
@@ -198,7 +199,7 @@ namespace Mindstorms.Controller
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(7, 2, 0, 2);
-            menuStrip.Size = new Size(722, 24);
+            menuStrip.Size = new Size(834, 24);
             menuStrip.TabIndex = 3;
             menuStrip.Text = "menuStrip1";
             // 
@@ -398,6 +399,7 @@ namespace Mindstorms.Controller
             // 
             // pMain
             // 
+            pMain.Controls.Add(cbChatGptModelName);
             pMain.Controls.Add(tbTemperature);
             pMain.Controls.Add(rtbChatGpt);
             pMain.Controls.Add(btnAskChatGpt);
@@ -410,13 +412,24 @@ namespace Mindstorms.Controller
             pMain.Location = new Point(0, 49);
             pMain.Margin = new Padding(4, 3, 4, 3);
             pMain.Name = "pMain";
-            pMain.Size = new Size(722, 166);
+            pMain.Size = new Size(834, 291);
             pMain.TabIndex = 6;
+            // 
+            // cbChatGptModelName
+            // 
+            cbChatGptModelName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbChatGptModelName.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbChatGptModelName.FormattingEnabled = true;
+            cbChatGptModelName.Items.AddRange(new object[] { "ada", "babbage", "curie", "davinci", "text-ada-001", "text-babbage-001", "text-curie-001", "code-davinci-002", "text-davinci-002", "text-davinci-003", "gpt-3.5-turbo-16k-0613", "gpt-3.5-turbo-0613", "gpt-3.5-turbo-16k", "gpt-3.5-turbo", "gpt-4-32k-0613", "gpt-4-32k", "gpt-4-0613", "gpt-4" });
+            cbChatGptModelName.Location = new Point(523, 42);
+            cbChatGptModelName.Name = "cbChatGptModelName";
+            cbChatGptModelName.Size = new Size(296, 23);
+            cbChatGptModelName.TabIndex = 19;
             // 
             // tbTemperature
             // 
             tbTemperature.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            tbTemperature.Location = new Point(534, 117);
+            tbTemperature.Location = new Point(646, 242);
             tbTemperature.Maximum = 20;
             tbTemperature.Minimum = 1;
             tbTemperature.Name = "tbTemperature";
@@ -427,16 +440,16 @@ namespace Mindstorms.Controller
             // rtbChatGpt
             // 
             rtbChatGpt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            rtbChatGpt.Location = new Point(523, 46);
+            rtbChatGpt.Location = new Point(523, 71);
             rtbChatGpt.Name = "rtbChatGpt";
-            rtbChatGpt.Size = new Size(185, 65);
+            rtbChatGpt.Size = new Size(297, 165);
             rtbChatGpt.TabIndex = 17;
-            rtbChatGpt.Text = "";
+            rtbChatGpt.Text = "What should I do now?";
             // 
             // btnAskChatGpt
             // 
             btnAskChatGpt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAskChatGpt.Location = new Point(608, 121);
+            btnAskChatGpt.Location = new Point(720, 246);
             btnAskChatGpt.Name = "btnAskChatGpt";
             btnAskChatGpt.Size = new Size(100, 23);
             btnAskChatGpt.TabIndex = 16;
@@ -456,12 +469,13 @@ namespace Mindstorms.Controller
             // 
             // cbDaisyChainLayer
             // 
+            cbDaisyChainLayer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cbDaisyChainLayer.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDaisyChainLayer.FormattingEnabled = true;
             cbDaisyChainLayer.Location = new Point(626, 13);
             cbDaisyChainLayer.Margin = new Padding(4, 3, 4, 3);
             cbDaisyChainLayer.Name = "cbDaisyChainLayer";
-            cbDaisyChainLayer.Size = new Size(82, 23);
+            cbDaisyChainLayer.Size = new Size(193, 23);
             cbDaisyChainLayer.TabIndex = 14;
             // 
             // gbMorse
@@ -683,7 +697,7 @@ namespace Mindstorms.Controller
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(722, 215);
+            ClientSize = new Size(834, 340);
             Controls.Add(pMain);
             Controls.Add(toolStrip);
             Controls.Add(menuStrip);
@@ -716,70 +730,71 @@ namespace Mindstorms.Controller
         }
 
         #endregion
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem tsmiControl;
-        private System.Windows.Forms.ToolStripMenuItem tsmiJoystick;
-        private System.Windows.Forms.ToolStripMenuItem tsmiVoiceControl;
-        private System.Windows.Forms.Panel pMain;
-        private System.Windows.Forms.GroupBox gbJoystick;
-        private System.Windows.Forms.TrackBar tbMinimumDelta;
-        private System.Windows.Forms.TrackBar tbDeltaModifier;
-        private System.Windows.Forms.GroupBox gbControl;
-        private System.Windows.Forms.Button btnSouthEast;
-        private System.Windows.Forms.Button btnSouth;
-        private System.Windows.Forms.Button btnSouthWest;
-        private System.Windows.Forms.Button btnEast;
-        private System.Windows.Forms.Button btnWest;
-        private System.Windows.Forms.Button btnNorthEast;
-        private System.Windows.Forms.Button btnNorth;
-        private System.Windows.Forms.Button btnNorthWest;
-        private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripComboBox cbPort;
-        private System.Windows.Forms.ToolStripButton btnConnectOrDisconnect;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel tslLeftMotor;
-        private System.Windows.Forms.ToolStripComboBox tscbLeftMotor;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripLabel tslRightMotor;
-        private System.Windows.Forms.ToolStripComboBox tscbRightMotor;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMotors;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSpeaker;
-        private System.Windows.Forms.ToolStripMenuItem tsmiFileSystem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiScreen;
-        private System.Windows.Forms.ToolStripSeparator separator;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSensors;
-        private System.Windows.Forms.ToolStripMenuItem tsmiLightSensor;
-        private System.Windows.Forms.ToolStripMenuItem tsmiUltrasonicSensor;
-        private System.Windows.Forms.ToolStripMenuItem tsmiTouchSensor;
-        private System.Windows.Forms.ToolStripMenuItem tsmiGyroSensor;
-        private System.Windows.Forms.Button btnMorse;
-        private System.Windows.Forms.RichTextBox rtbMorse;
-        private System.Windows.Forms.ToolStripLabel tslLeverMotor;
-        private System.Windows.Forms.ToolStripComboBox tscbLeverMotor;
-        private System.Windows.Forms.ToolStripMenuItem tsmiButtons;
-        private System.Windows.Forms.GroupBox gbMorse;
-        private System.Windows.Forms.ToolStripMenuItem tsmiGames;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSnake;
-        private System.Windows.Forms.ToolStripSeparator separator2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDeviceInfo;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCircles;
-        private System.Windows.Forms.ToolStripMenuItem tsmiInfraredSensor;
-        private System.Windows.Forms.TextBox tbRobotPartner;
-        private System.Windows.Forms.ToolStripMenuItem tsmiTools;
-        private System.Windows.Forms.ToolStripMenuItem tsmiImageConverter;
-        private System.Windows.Forms.ToolStripSeparator separator3;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBehaveLikeADog;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSoundRecorder;
-        private System.Windows.Forms.Label lblDaisyChainLayer;
-        private System.Windows.Forms.ComboBox cbDaisyChainLayer;
+        private SaveFileDialog saveFileDialog;
+        private OpenFileDialog openFileDialog;
+        private ToolStrip toolStrip;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem tsmiControl;
+        private ToolStripMenuItem tsmiJoystick;
+        private ToolStripMenuItem tsmiVoiceControl;
+        private Panel pMain;
+        private GroupBox gbJoystick;
+        private TrackBar tbMinimumDelta;
+        private TrackBar tbDeltaModifier;
+        private GroupBox gbControl;
+        private Button btnSouthEast;
+        private Button btnSouth;
+        private Button btnSouthWest;
+        private Button btnEast;
+        private Button btnWest;
+        private Button btnNorthEast;
+        private Button btnNorth;
+        private Button btnNorthWest;
+        private Button btnStop;
+        private ToolTip toolTip;
+        private ToolStripComboBox cbPort;
+        private ToolStripButton btnConnectOrDisconnect;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripLabel tslLeftMotor;
+        private ToolStripComboBox tscbLeftMotor;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripLabel tslRightMotor;
+        private ToolStripComboBox tscbRightMotor;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem tsmiMotors;
+        private ToolStripMenuItem tsmiSpeaker;
+        private ToolStripMenuItem tsmiFileSystem;
+        private ToolStripMenuItem tsmiScreen;
+        private ToolStripSeparator separator;
+        private ToolStripMenuItem tsmiSensors;
+        private ToolStripMenuItem tsmiLightSensor;
+        private ToolStripMenuItem tsmiUltrasonicSensor;
+        private ToolStripMenuItem tsmiTouchSensor;
+        private ToolStripMenuItem tsmiGyroSensor;
+        private Button btnMorse;
+        private RichTextBox rtbMorse;
+        private ToolStripLabel tslLeverMotor;
+        private ToolStripComboBox tscbLeverMotor;
+        private ToolStripMenuItem tsmiButtons;
+        private GroupBox gbMorse;
+        private ToolStripMenuItem tsmiGames;
+        private ToolStripMenuItem tsmiSnake;
+        private ToolStripSeparator separator2;
+        private ToolStripMenuItem tsmiDeviceInfo;
+        private ToolStripMenuItem tsmiCircles;
+        private ToolStripMenuItem tsmiInfraredSensor;
+        private TextBox tbRobotPartner;
+        private ToolStripMenuItem tsmiTools;
+        private ToolStripMenuItem tsmiImageConverter;
+        private ToolStripSeparator separator3;
+        private ToolStripMenuItem tsmiBehaveLikeADog;
+        private ToolStripMenuItem tsmiSoundRecorder;
+        private Label lblDaisyChainLayer;
+        private ComboBox cbDaisyChainLayer;
         private Button btnAskChatGpt;
         private RichTextBox rtbChatGpt;
         private TrackBar tbTemperature;
+        private ComboBox cbChatGptModelName;
     }
 }
 

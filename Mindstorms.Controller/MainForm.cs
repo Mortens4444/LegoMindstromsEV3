@@ -64,6 +64,7 @@ public partial class MainForm : Form
         tscbRightMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.C.GetIndex());
         cbPort.ComboBox.FillAndSelectLast(SerialPort.GetPortNames());
         cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
+        cbChatGptModelName.SafeSelect(13);
 
         Configuration = new ConfigurationBuilder()
             .AddUserSecrets("2B00990C-D8D5-4CAC-9F94-810E5B9FE4B5")
@@ -510,7 +511,7 @@ public partial class MainForm : Form
 
     private async void BtnAskChatGpt_Click(object sender, EventArgs e)
     {
-        var client = new ChatGptClient();
+        var client = new ChatGptClient(cbChatGptModelName.Text);
         var keyName = "OpenAI:ApiKey";
         var keyValue = "openai-api-key";
 #if DEBUG

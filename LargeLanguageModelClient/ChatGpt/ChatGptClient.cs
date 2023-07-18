@@ -8,6 +8,13 @@ namespace LargeLanguageModelClient.ChatGpt
     {
         public override string ServerUrl => "https://api.openai.com/v1/chat/completions";
 
+        public string ModelName { get; }
+
+        public ChatGptClient(string modelName)
+        {
+            ModelName = modelName;
+        }
+
         public Task<string> SendMessage(ChatGptRequest chatGptRequest, string apiKey)
         {
             return base.SendMessage(ProcessRequest(chatGptRequest), "Bearer", apiKey);
@@ -17,7 +24,7 @@ namespace LargeLanguageModelClient.ChatGpt
         {
             var request = new ChatGptRequest
             {
-                Model = "gpt-3.5-turbo",
+                Model = ModelName,
                 Temperature = temperature,
                 Messages = new List<Dictionary<string, string>>{
                     new Dictionary<string, string> {
