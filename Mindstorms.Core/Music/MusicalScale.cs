@@ -197,5 +197,4 @@
         public const int Fs8_Gb8 = 45;
         public const int G8 = 46;
     }
-
 }

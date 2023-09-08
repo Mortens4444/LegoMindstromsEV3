@@ -23,11 +23,8 @@ public partial class SpeakerForm : Form
         tbVolume.Value = volume;
         tbVolume.ValueChanged += new EventHandler(TbVolume_ValueChanged);
 
-        var assembly = Assembly.GetAssembly(typeof(BociBoci));
-        if (assembly == null)
-        {
-            throw new ArgumentNullException(nameof(assembly));
-        }
+        var assembly = Assembly.GetAssembly(typeof(BociBoci)) ?? throw new InvalidOperationException("Cannot find melodies.");
+
         cbSounds.ComboBox.FillAndSelect(Enum.GetValues(typeof(EmbeddedSound)), (int)EmbeddedSound.EV3);
         cbMelodies.ComboBox.FillWithTypesInNamespace(assembly, MelodiesNamespace);
         cbPlayType.FillAndSelectFirst(PlayType.GetValues());
