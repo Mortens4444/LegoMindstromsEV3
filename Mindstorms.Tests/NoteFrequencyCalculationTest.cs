@@ -1,13 +1,22 @@
+using Mindstorms.Core.Music;
 using Mindstorms.Core.Music.Notes;
 
 namespace Mindstorms.Tests;
 
 public class NoteFrequencyCalculationTests
 {
-    [Test]
-    public void TestNote()
+    private static readonly Dictionary<Note, double> expectations = new()
     {
-        var a4 = new A4();            
-        Assert.That(a4.Frequency, Is.EqualTo(440));
+        { new A4(), 440 },
+        { new C4(), 261.62556530059851 }
+    };
+
+    [Test]
+    public void TestNoteFrequencies()
+    {
+        foreach (var expectation in expectations)
+        {
+            Assert.That(expectation.Key.Frequency, Is.EqualTo(expectation.Value));
+        }
     }
 }

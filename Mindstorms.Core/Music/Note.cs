@@ -24,7 +24,7 @@ public abstract class Note
     /// <summary>
     /// Frequency in Hertz.
     /// </summary>
-    public virtual double Frequency => FundamentalFrequency * Math.Pow(2, (SemitoneDeviation / 12));
+    public virtual double Frequency => FundamentalFrequency * Math.Pow(Math.Pow(2, 1 / 12.0), SemitoneDeviation);
 
     public double FundamentalFrequency { get; set; } = 440;
 
