@@ -8,6 +8,6 @@ public class NoteFrequencyCalculationTests
     public void TestNote()
     {
         var a4 = new A4();            
-        Assert.That(a4.Frequency.Equals(440));
+        Assert.That(a4.Frequency, Is.EqualTo(440));
     }
 }
