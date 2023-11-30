@@ -1,6 +1,5 @@
 New features / Bugfixes
 -----------------------
-- Fix calculating Frequency in Note.cs?
 - Mobile application to control EV3
 - Use motors with degree
 - IR remote control

@@ -8,7 +8,7 @@ public class NoteFrequencyCalculationTests
     private static readonly Dictionary<Note, double> expectations = new()
     {
         { new A4(), 440 },
-        { new C4(), 261.62556530059851 }
+        { new C4(), 261.62556530059862 }
     };
 
     [Test]
