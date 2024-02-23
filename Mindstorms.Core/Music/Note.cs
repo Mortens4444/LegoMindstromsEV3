@@ -28,13 +28,13 @@ public abstract class Note
 
     public double FundamentalFrequency { get; set; } = 440;
 
-    public Note(NoteType noteType)
+    protected Note(NoteType noteType)
     {
         Name = "Pause";
         NoteType = noteType;
     }
 
-    public Note(NoteType noteType, int semitoneDeviation)
+    protected Note(NoteType noteType, int semitoneDeviation)
     {
         SemitoneDeviation = semitoneDeviation;
         Name = MusicalScale.NoteNames[semitoneDeviation];

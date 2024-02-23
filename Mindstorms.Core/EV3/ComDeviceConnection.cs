@@ -36,6 +36,7 @@ public class ComDeviceConnection : IDeviceConnection
 
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
         comPort.Dispose();
     }
 
@@ -51,6 +52,6 @@ public class ComDeviceConnection : IDeviceConnection
 
     private void ComPort_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
     {
-        throw new Exception($"Error Received from brick: {e.EventType}. Details: {e}");
+        throw new InvalidOperationException($"Error Received from brick: {e.EventType}. Details: {e}");
     }
 }

@@ -224,25 +224,28 @@ public class Brick : IDisposable
     public void FollowLine(DaisyChainLayer daisyChainLayer, SensorPort sensorPort)
     {
         var result = Execute(new InputRead(daisyChainLayer, sensorPort));
-        var lv0 = result.RawResponseData.Last();
-        lv0 /= 2;
-        lv0 += 15;
-
-        byte lv1;
-        while (true)
+        if (result.RawResponseData != null && result.RawResponseData.Length > 1)
         {
-            result = Execute(new InputRead(daisyChainLayer, sensorPort));
-            lv1 = result.RawResponseData.Last();
+            var lv0 = result.RawResponseData[^1];
+            lv0 /= 2;
+            lv0 += 15;
 
-            lv1 -= lv0;
-            lv1 /= 2;
+            byte lv1;
+            while (true)
+            {
+                result = Execute(new InputRead(daisyChainLayer, sensorPort));
+                lv1 = result.RawResponseData[^1];
 
-            var lv2 = (byte)(40 + lv1);
-            var lv3 = (byte)(40 - lv1);
+                lv1 -= lv0;
+                lv1 /= 2;
 
-            Execute(new OutputPower(daisyChainLayer, LeftMotor, lv3));
-            Execute(new OutputPower(daisyChainLayer, RightMotor, lv2));
-            Execute(new OutputStart(daisyChainLayer, Motors));
+                var lv2 = (byte)(40 + lv1);
+                var lv3 = (byte)(40 - lv1);
+
+                Execute(new OutputPower(daisyChainLayer, LeftMotor, lv3));
+                Execute(new OutputPower(daisyChainLayer, RightMotor, lv2));
+                Execute(new OutputStart(daisyChainLayer, Motors));
+            }
         }
     }
 
@@ -359,7 +362,7 @@ public class Brick : IDisposable
     public bool SpeakerIsBusy()
     {
         var response = Execute(new SpeakerIsBusy());
-        return response.RawResponseData.Last() != 0;
+        return response.RawResponseData[^1] != 0;
     }
 
     public void PlaySound(string soundFilePath, bool repeat = false)
@@ -446,13 +449,6 @@ public class Brick : IDisposable
     #endregion
 
     #region LED, LCD
-
-    public void ShowImage(EmbeddedImage embeddedImage)
-    {
-        var description = embeddedImage.GetDescription();
-        var file = ResourceUploader.UploadImage(this, $"{description}{Constants.GraphicsFileExtension}");
-        Execute(new ShowImage(0, 0, file, LCDColor.Black));
-    }
 
     public void ShowOnMiddleOfScreen(string text, FontType fontType, byte verticalDelta)
     {
@@ -560,6 +556,13 @@ public class Brick : IDisposable
     public void InverseRectangle(byte x, byte y, byte width, byte height)
     {
         Execute(new InverseRectangle(x, y, width, height));
+    }
+
+    public void ShowImage(EmbeddedImage embeddedImage)
+    {
+        var description = embeddedImage.GetDescription();
+        var file = ResourceUploader.UploadImage(this, $"{description}{Constants.GraphicsFileExtension}");
+        Execute(new ShowImage(0, 0, file, LCDColor.Black));
     }
 
     public void ShowImage(byte x, byte y, string imageFilePath, LCDColor color)
@@ -677,7 +680,7 @@ public class Brick : IDisposable
     public bool MotorIsBusy(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
     {
         var response = Execute(new MotorIsBusy(daisyChainLayer, outputPort));
-        return response.RawResponseData.Last() != 0;
+        return response.RawResponseData[^1] != 0;
     }
 
     public (byte Speed, int TachoCountLevel) GetSpeedAndTachoCountLevel(DaisyChainLayer daisyChainLayer, OutputPort outputPort)
@@ -696,16 +699,16 @@ public class Brick : IDisposable
     {
         var response = ExecuteSystemCommand(new ListFiles(path));
         var rawDataWithOffset = response.RawResponseData.Skip(SystemCommandReply.SystemCommandResponseHeaderLength).ToArray();
-        var folderContentString = Encoding.UTF8.GetString(rawDataWithOffset);
+        var folderContentStringBuilder = new StringBuilder(Encoding.UTF8.GetString(rawDataWithOffset));
 
         while (response.CommandReplyStatus != CommandReplyStatus.EndOfFile)
         {
             response = ExecuteSystemCommand(new ContinueListFiles(response.Handle));
             rawDataWithOffset = response.RawResponseData.Skip(SystemCommandReply.ContinueSystemCommandResponseHeaderLength).ToArray();
-            folderContentString += Encoding.UTF8.GetString(rawDataWithOffset);
+            folderContentStringBuilder.Append(Encoding.UTF8.GetString(rawDataWithOffset));
         }
 
-        return folderContentString.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        return folderContentStringBuilder.ToString().Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
     }
 
     public int GetSize(string filePath)
@@ -722,7 +725,7 @@ public class Brick : IDisposable
             }
         }
 
-        throw new Exception("Can't find file");
+        throw new FileNotFoundException($"Can't find file: {filePath}");
     }
 
     public bool IsExists(string filePath)
@@ -862,7 +865,7 @@ public class Brick : IDisposable
 
                             if (result.CommandType.HasError())
                             {
-                                throw new Exception($"Error occurred: {result}");
+                                throw new InvalidOperationException($"Error occurred: {result}");
                             }
                         }
                     } while (result?.MessageCounter != messageCounter);
@@ -893,7 +896,7 @@ public class Brick : IDisposable
     {
         var data = new byte[2];
         _ = deviceConnection.Read(data, 0, 2);
-        var expectedlength = (ushort)(0x0000 | data[0] | (data[1] << 8));
+        var expectedlength = (ushort)(data[0] | (data[1] << 8));
         var payload = new byte[expectedlength];
         _ = deviceConnection.Read(payload, 0, expectedlength);
         return payload;
@@ -911,6 +914,7 @@ public class Brick : IDisposable
     public void Dispose()
     {
         Dispose(true);
+        musicPlayerCancellationTokenSource.Dispose();
         GC.SuppressFinalize(this);
     }
 
