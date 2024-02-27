@@ -365,11 +365,6 @@ public class Brick : IDisposable
         return response.RawResponseData[^1] != 0;
     }
 
-    public void PlaySound(string soundFilePath, bool repeat = false)
-    {
-        Execute(new PlaySound(Volume, soundFilePath, repeat));
-    }
-
     public void PlayNote(string note, ushort durationMs = Constants.DefaultNoteDurationMs)
     {
         Execute(new PlayNote(Volume, note, durationMs));
@@ -429,6 +424,11 @@ public class Brick : IDisposable
                 CurrentlyPlayedMelody = null;
             }
         }, musicPlayerCancellationTokenSource.Token);
+    }
+
+    public void PlaySound(string soundFilePath, bool repeat = false)
+    {
+        Execute(new PlaySound(Volume, soundFilePath, repeat));
     }
 
     public void PlaySound(EmbeddedSound embeddedSound, PlayType playType)

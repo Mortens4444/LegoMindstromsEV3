@@ -2,10 +2,6 @@
 
 public abstract class Melody : List<Note>
 {
-    private readonly byte beatsPerMinunte;
-
-    private readonly double beatDuration;
-
     private readonly double measureDuration;
 
     private readonly double wholeNoteLength;
@@ -28,12 +24,11 @@ public abstract class Melody : List<Note>
 
     public double MeasureDuration => measureDuration;
 
-    protected Melody(TimeSignature timeSignature, byte bpm, params Note[] notes)
+    protected Melody(TimeSignature timeSignature, byte beatsPerMinute, params Note[] notes)
     {
         AddRange(notes);
 
-        beatsPerMinunte = bpm;
-        beatDuration = 60.0 / beatsPerMinunte;
+        var beatDuration = 60.0 / beatsPerMinute;
         measureDuration = beatDuration * timeSignature.NumberOfQuarterNotes;
         wholeNoteLength = beatDuration * timeSignature.Bar;
     }
