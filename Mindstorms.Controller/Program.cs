@@ -1,4 +1,5 @@
 ﻿using MessageBoxes;
+using SourceInfo;
 
 namespace Mindstorms.Controller;
 
@@ -47,10 +48,36 @@ static class Program
 
     private static void ShowException(Exception exception)
     {
+        var ex = new ExceptionDetails(exception);
+        SaveToFile(ex.Details);
+
 #if DEBUG
         ErrorBox.Show(exception);
 #else
         ErrorBox.Show("Unhandled exception", exception.Message);
 #endif
+    }
+
+    private static void SaveToFile(string message)
+    {
+        try
+        {
+            var directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ErrorMessages");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            var timestamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+            var fileName = $"{timestamp}_error.txt";
+            var filePath = Path.Combine(directory, fileName);
+
+            File.WriteAllText(filePath, message);
+            InfoBox.Show("Save success", $"Message saved to file: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            ErrorBox.Show("Save failed", $"Failed to save the message to file: {ex.Message}");
+        }
     }
 }

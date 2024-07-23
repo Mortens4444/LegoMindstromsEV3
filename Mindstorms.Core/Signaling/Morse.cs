@@ -15,7 +15,7 @@ public class Morse
     {
         this.brick = brick ?? throw new ArgumentNullException(nameof(brick));
         ShortMorseUnit = shortMorseUnit;
-        brick.ChangeLedsState(LedPattern.Off);
+        brick.ChangeLEDsState(LedPattern.Off);
     }
 
     public ushort ShortMorseUnit { get; }
@@ -73,9 +73,9 @@ public class Morse
 
     private void Signal(ushort duration)
     {
-        brick.ChangeLedsState(LedPattern);
+        brick.ChangeLEDsState(LedPattern);
         brick.BeepAndWait(MorseFrequency, duration);
-        brick.ChangeLedsState(LedPattern.Off);
+        brick.ChangeLEDsState(LedPattern.Off);
     }
 
     private static MorseCode? GetCharacterMorseCode(char ch)

@@ -74,7 +74,7 @@ public class Brick : IDisposable
     {
         deviceConnection = new NamedPipeClientStreamDeviceConnection(machine, pipeName);
     }
-
+    
     public void SetMotors(OutputPort leftMotor, OutputPort rightMotor, OutputPort leverMotor)
     {
         LeftMotor = leftMotor;
@@ -102,6 +102,11 @@ public class Brick : IDisposable
     {
         if (IsConnected)
         {
+            SetLargeMotorSpeed(DaisyChainLayer.EV3, new SetMotorSpeedParams(Motors, 0));
+            SetLargeMotorSpeed(DaisyChainLayer.First, new SetMotorSpeedParams(Motors, 0));
+            SetLargeMotorSpeed(DaisyChainLayer.Second, new SetMotorSpeedParams(Motors, 0));
+            SetLargeMotorSpeed(DaisyChainLayer.Third, new SetMotorSpeedParams(Motors, 0));
+
             deviceConnection.Disconnect();
             IsConnected = false;
         }
@@ -461,7 +466,7 @@ public class Brick : IDisposable
         UpdateScreen();
     }
 
-    public void ChangeLedsState(LedPattern ledPattern)
+    public void ChangeLEDsState(LedPattern ledPattern)
     {
         Execute(new ChangeLedsState(ledPattern));
     }
@@ -896,9 +901,9 @@ public class Brick : IDisposable
     {
         var data = new byte[2];
         _ = deviceConnection.Read(data, 0, 2);
-        var expectedlength = (ushort)(data[0] | (data[1] << 8));
-        var payload = new byte[expectedlength];
-        _ = deviceConnection.Read(payload, 0, expectedlength);
+        var expectedLength = (ushort)(data[0] | (data[1] << 8));
+        var payload = new byte[expectedLength];
+        _ = deviceConnection.Read(payload, 0, expectedLength);
         return payload;
     }
 

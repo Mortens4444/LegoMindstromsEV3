@@ -8,17 +8,17 @@ public class DaisyChainLayer : EnumLikeObject<DaisyChainLayer>
 	public static readonly DaisyChainLayer EV3 = new(0x00, nameof(EV3));
 
 	/// <summary>
-	/// First EV3 in the Daisychain
+	/// First EV3 in the daisy chain
 	/// </summary>
 	public static readonly DaisyChainLayer First = new(0x01, nameof(First));
 
 	/// <summary>
-	/// Second EV3 in the Daisychain
+	/// Second EV3 in the daisy chain
 	/// </summary>
 	public static readonly DaisyChainLayer Second = new(0x02, nameof(Second));
 
 	/// <summary>
-	/// Third EV3 in the Daisychain
+	/// Third EV3 in the daisy chain
 	/// </summary>
 	public static readonly DaisyChainLayer Third = new(0x03, nameof(Third));
 

@@ -8,7 +8,7 @@ public class ButtonEvent : EnumLikeObject<ButtonEvent>
     public static readonly ButtonEvent Flush = new(0x04, nameof(Flush));
     public static readonly ButtonEvent Press = new(0x05, nameof(Press));
     public static readonly ButtonEvent Release = new(0x06, nameof(Release));
-    public static readonly ButtonEvent GetHoizontalArrowsState = new(0x07, nameof(GetHoizontalArrowsState));
+    public static readonly ButtonEvent GetHorizontalArrowsState = new(0x07, nameof(GetHorizontalArrowsState));
     public static readonly ButtonEvent GetVerticalArrowsState = new(0x08, nameof(GetVerticalArrowsState));
     public static readonly ButtonEvent Pressed = new(0x09, nameof(Pressed));
     public static readonly ButtonEvent SetBackButtonBlock = new(0x0A, nameof(SetBackButtonBlock));

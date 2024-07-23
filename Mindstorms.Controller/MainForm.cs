@@ -240,13 +240,13 @@ public partial class MainForm : Form
 #if USE_SPEECH_RECOGNITION
             var voiceCommands = new List<VoiceCommand>
             {
-                new VoiceCommand("Ok Lego, go ahead", () => { MoveNorth(); }),
-                new VoiceCommand("Ok Lego, go forward", () => { MoveNorth(); }),
-                new VoiceCommand("Ok Lego, go backward", () => { MoveSouth(); }),
-                new VoiceCommand("Ok Lego, turn left", () => { TurnWest(); }),
-                new VoiceCommand("Ok Lego, turn right", () => { TurnEast(); }),
-                new VoiceCommand("Ok Lego, stop", () => { StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem); }),
-                new VoiceCommand("Ok Lego, play some music", () => { brick?.PlayMusic(new KisKeceLányom()); }),
+                new("Ok Lego, go ahead", () => { MoveNorth(); }),
+                new("Ok Lego, go forward", () => { MoveNorth(); }),
+                new("Ok Lego, go backward", () => { MoveSouth(); }),
+                new("Ok Lego, turn left", () => { TurnWest(); }),
+                new("Ok Lego, turn right", () => { TurnEast(); }),
+                new("Ok Lego, stop", () => { StopMotors((DaisyChainLayer)cbDaisyChainLayer.SelectedItem); }),
+                new("Ok Lego, play some music", () => { brick?.PlayMusic(new KisKeceLányom()); }),
             };
 
             speechRecognitionEngine = VoiceControl.InitializeVoiceControl(voiceCommands);
@@ -272,14 +272,14 @@ public partial class MainForm : Form
                 },
                 () =>
                 {
-                    return (int)Invoke(delegate
+                    return Invoke(delegate
                     {
                         return tbDeltaModifier.Value;
                     });
                 },
                 () =>
                 {
-                    return (int)Invoke(delegate
+                    return Invoke(delegate
                     {
                         return tbMinimumDelta.Value;
                     });

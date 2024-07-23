@@ -18,7 +18,7 @@ internal class Led : ICliCommand
         else
         {
             var ledPattern = LedPattern.Parse(arguments[0]) ?? LedPattern.OrangePulse;
-            brick.ChangeLedsState(ledPattern);
+            brick.ChangeLEDsState(ledPattern);
         }
     }
 }

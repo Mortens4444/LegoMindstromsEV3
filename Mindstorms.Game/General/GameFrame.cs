@@ -14,6 +14,6 @@ public static class GameFrame
     {
         var destinationAppName = ResourceUploader.UploadApplication(brick, "GameFrame.rbf");
         brick.Start(destinationAppName);
-        brick.ChangeLedsState(LedPattern.Off);
+        brick.ChangeLEDsState(LedPattern.Off);
     }
 }

@@ -27,7 +27,8 @@ namespace LargeLanguageModelClient.ChatGpt
                 Model = ModelName,
                 Temperature = temperature,
                 Messages = new List<Dictionary<string, string>>{
-                    new Dictionary<string, string> {
+                    new()
+                    {
                         { "role", "user" },
                         { "content", message }
                     }

@@ -126,7 +126,7 @@ public partial class ScreenForm : Form
 
     private void BtnSetLedsState_Click(object sender, EventArgs e)
     {
-        brick.ChangeLedsState((LedPattern)cbLedPattern.SelectedItem);
+        brick.ChangeLEDsState((LedPattern)cbLedPattern.SelectedItem);
     }
 
     private void BtnShow_Click(object sender, EventArgs e)
