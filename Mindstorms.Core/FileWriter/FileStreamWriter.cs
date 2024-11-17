@@ -23,16 +23,15 @@ public class FileStreamWriter : IWriter, IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        if (disposed)
+        if (!disposed)
         {
-            return;
-        }
+            if (disposing)
+            {
+                fileStream.Close();
+            }
 
-        if (disposing)
-        {
-            fileStream.Close();
+            disposed = true;
         }
-        disposed = true;
     }
 
     public void Write(byte[] buffer, int offset, int count)

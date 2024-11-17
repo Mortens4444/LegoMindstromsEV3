@@ -5,6 +5,7 @@ namespace Mindstorms.Core.EV3;
 public class ComDeviceConnection : IDeviceConnection
 {
     private readonly SerialPort comPort;
+    private bool disposed;
 
     public ComDeviceConnection(string portName)
     {
@@ -16,28 +17,41 @@ public class ComDeviceConnection : IDeviceConnection
         comPort.ErrorReceived += ComPort_ErrorReceived;
     }
 
-    public void Connect()
+    ~ComDeviceConnection()
     {
-        try
-        {
-            comPort.Open();
-        }
-        catch
-        {
-            // Sometimes the first attempt to connect fails.
-            comPort.Open();
-        }
-    }
-
-    public void Disconnect()
-    {
-        comPort.Close();
+        Dispose(false);
     }
 
     public void Dispose()
     {
+        Dispose(true);
         GC.SuppressFinalize(this);
-        comPort.Dispose();
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposed)
+        {
+            if (disposing)
+            {
+                comPort.Dispose();
+            }
+
+            disposed = true;
+        }
+    }
+
+    public void Connect()
+    {
+        comPort.Open();
+    }
+
+    public void Disconnect()
+    {
+        if (comPort.IsOpen)
+        {
+            comPort.Close();
+        }
     }
 
     public int Read(byte[] buffer, int offset, int count)

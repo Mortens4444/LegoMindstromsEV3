@@ -106,6 +106,7 @@ public class Brick : IDisposable
             SetLargeMotorSpeed(DaisyChainLayer.First, new SetMotorSpeedParams(Motors, 0));
             SetLargeMotorSpeed(DaisyChainLayer.Second, new SetMotorSpeedParams(Motors, 0));
             SetLargeMotorSpeed(DaisyChainLayer.Third, new SetMotorSpeedParams(Motors, 0));
+            Silence();
 
             deviceConnection.Disconnect();
             IsConnected = false;
@@ -919,7 +920,6 @@ public class Brick : IDisposable
     public void Dispose()
     {
         Dispose(true);
-        musicPlayerCancellationTokenSource.Dispose();
         GC.SuppressFinalize(this);
     }
 
@@ -930,6 +930,7 @@ public class Brick : IDisposable
         {
             if (disposing)
             {
+                musicPlayerCancellationTokenSource.Dispose();
                 deviceConnection.Dispose();
             }
 

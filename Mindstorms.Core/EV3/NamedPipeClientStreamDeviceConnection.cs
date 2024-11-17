@@ -6,11 +6,37 @@ public class NamedPipeClientStreamDeviceConnection : IDeviceConnection
 {
     private readonly NamedPipeClientStream namedPipeClientStream;
     private readonly IntPtr pipeHandle;
+    private bool disposed;
 
     public NamedPipeClientStreamDeviceConnection(string machine, string pipeName)
     {
         pipeHandle = NamedPipeCreator.CreatePipe(pipeName);
         namedPipeClientStream = new NamedPipeClientStream(machine, pipeName, PipeDirection.InOut);
+    }
+
+    ~NamedPipeClientStreamDeviceConnection()
+    {
+        Dispose(false);
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposed)
+        {
+            if (disposing)
+            {
+                namedPipeClientStream.Dispose();
+            }
+            NamedPipeCreator.ClosePipe(pipeHandle);
+
+            disposed = true;
+        }
     }
 
     public void Connect()
@@ -21,13 +47,6 @@ public class NamedPipeClientStreamDeviceConnection : IDeviceConnection
     public void Disconnect()
     {
         namedPipeClientStream.Close();
-    }
-
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-        NamedPipeCreator.ClosePipe(pipeHandle);
-        namedPipeClientStream.Dispose();
     }
 
     public int Read(byte[] buffer, int offset, int count)

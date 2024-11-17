@@ -5,7 +5,7 @@
 **/*.exe
 **/*.user
 **/*.nupkg
-**/nuget.config
+**/nuget.config*
 **/publish.bat
 .vs/
 packages/

@@ -1,0 +1,32 @@
+EV3 Classroom
+https://education.lego.com/_/downloads/EV3_Classroom_Windows_1.5.3_Global.msi
+
+Build driving base
+https://education.lego.com/v3/assets/blt293eea581807678a/bltc8481dd2666822ff/5f8801e3f4f4cf0fa39d2fef/ev3-rem-driving-base.pdf
+
+Medium motor driving base
+https://education.lego.com/v3/assets/blt293eea581807678a/blt9f94cc95ebe17900/5f8801dd69efd81ab4debf02/ev3-medium-motor-driving-base.pdf
+
+Build color sensor (down)
+https://education.lego.com/v3/assets/blt293eea581807678a/blt8b300493e30608e9/5f8801dfb8b59a77a945d13c/ev3-rem-color-sensor-down-driving-base.pdf
+Build color sensor (forward)
+https://education.lego.com/v3/assets/blt293eea581807678a/blt4e905d4d328957d7/5f8801d9d041c37a4af70688/ev3-color-sensor-forward-driving-base.pdf
+
+Build cuboid
+https://education.lego.com/v3/assets/blt293eea581807678a/blt1fe124b60c33b2b7/5f8801dd30c48e7ee7c062df/ev3-cuboid.pdf
+
+Build touch sensor
+https://education.lego.com/v3/assets/blt293eea581807678a/blt95682a19090a6923/5f8801e2ad20281d51fbc1cc/ev3-touch-sensor-driving-base.pdf
+
+Build ultrasonic sensor
+https://education.lego.com/v3/assets/blt293eea581807678a/blte04fb7bf4f716f3d/5f8801e3bf5ab07ee90076c9/ev3-ultrasonic-sensor-driving-base.pdf
+
+Build gyro sensor
+https://education.lego.com/v3/assets/blt293eea581807678a/bltc961107e6587a579/5f8801dd3b19d21d4a6085bf/ev3-gyro-sensor-driving-base.pdf
+
+Build instructions
+https://education.lego.com/en-us/product-resources/mindstorms-ev3/downloads/building-instructions
+
+Programming documentation
+https://education.lego.com/v3/assets/blt293eea581807678a/blt09ac3101d9df2051/5f88037a69efd81ab4debf2e/lego-mindstorms-ev3-communication-developer-kit.pdf
+https://education.lego.com/v3/assets/blt293eea581807678a/blt469be1e11ad37696/5f880384f71916144453a49f/lego-mindstorms-ev3-firmware-developer-kit.pdf
