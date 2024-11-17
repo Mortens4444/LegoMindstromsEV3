@@ -1,5 +1,5 @@
 ﻿#if USE_JOYSTICK
-using Joystick;
+using Mtf.Joystick;
 using LargeLanguageModelClient.ChatGpt;
 using LargeLanguageModelClient.ChatGpt.Dto;
 #endif

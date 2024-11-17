@@ -20,11 +20,11 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-	  <PackageReference Include="WinForms.MessageBoxes" Version="1.0.6" />
+	  <PackageReference Include="Mtf.Joystick" Version="1.0.0" />
+	  <PackageReference Include="Mtf.MessageBoxes" Version="1.0.14" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Joystick\Joystick.csproj" />
 	  <ProjectReference Include="..\LargeLanguageModelClient\LargeLanguageModelClient.csproj" />
 	  <ProjectReference Include="..\Mindstorms.Core\Mindstorms.Core.csproj" />
 	  <ProjectReference Include="..\Mindstorms.Game\Mindstorms.Game.csproj" />
