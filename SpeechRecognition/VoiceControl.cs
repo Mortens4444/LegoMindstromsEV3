@@ -6,7 +6,7 @@ namespace SpeechRecognition
 {
     public static class VoiceControl
     {
-        public static SpeechRecognitionEngine? InitializeVoiceControl(IList<VoiceCommand> voiceCommands)
+        public static SpeechRecognitionEngine InitializeVoiceControl(IList<VoiceCommand> voiceCommands)
         {
             var recognizers = SpeechRecognitionEngine.InstalledRecognizers();
             if (recognizers.Count == 0)
@@ -15,7 +15,7 @@ namespace SpeechRecognition
             }
 
             var speechRecognitionEngine = new SpeechRecognitionEngine(recognizers[0].Culture);
-            speechRecognitionEngine.SpeechRecognized += (object? sender, SpeechRecognizedEventArgs e) =>
+            speechRecognitionEngine.SpeechRecognized += (object sender, SpeechRecognizedEventArgs e) =>
             {
                 if (e.Result.Confidence > 0.75)
                 {
@@ -39,7 +39,7 @@ namespace SpeechRecognition
             return speechRecognitionEngine;
         }
 
-        public static void StopVoiceControl(ref SpeechRecognitionEngine? speechRecognitionEngine)
+        public static void StopVoiceControl(ref SpeechRecognitionEngine speechRecognitionEngine)
         {
             if (speechRecognitionEngine != null)
             {
