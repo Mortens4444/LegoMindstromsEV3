@@ -20,7 +20,7 @@
 	</releaseNotes>
     <copyright>Copyright © 2022</copyright>
     <tags>Lego Mindstorms EV3 Mortens</tags>
-	<repository type="git" url="https://github.com/Mortens4444/LegoMindstromsEV3.git" branch="main" />
+	<repository type="git" url="https://github.com/Mortens4444/LegoMindstromsEV3.git" branch="main" commit="eaea757ec0616d1f10619ce64d2924d52966e387" />
 	<readme>docs\README.md</readme>
     <dependencies>
 	  <group targetFramework="net7.0-windows7">
