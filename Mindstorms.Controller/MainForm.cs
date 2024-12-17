@@ -3,7 +3,6 @@ using Mtf.Joystick;
 using LargeLanguageModelClient.ChatGpt;
 using LargeLanguageModelClient.ChatGpt.Dto;
 #endif
-using MessageBoxes;
 using Microsoft.Extensions.Configuration;
 using Mindstorms.Controller.SensorRead;
 using Mindstorms.Core;
@@ -36,6 +35,7 @@ using System.Windows.Forms;
 using Utils;
 #if USE_JOYSTICK
 using Action = System.Action;
+using Mtf.MessageBoxes;
 #endif
 
 namespace Mindstorms.Controller;
