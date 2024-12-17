@@ -77,6 +77,7 @@
             // 
             // btnSaveRgf
             // 
+            btnSaveRgf.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSaveRgf.Enabled = false;
             btnSaveRgf.Location = new Point(531, 72);
             btnSaveRgf.Margin = new Padding(4, 3, 4, 3);
@@ -128,7 +129,7 @@
             lblHint.Location = new Point(229, 22);
             lblHint.Margin = new Padding(4, 0, 4, 0);
             lblHint.Name = "lblHint";
-            lblHint.Size = new Size(281, 15);
+            lblHint.Size = new Size(279, 15);
             lblHint.TabIndex = 4;
             lblHint.Text = "Hint: It is best if you use images with 178x128 pixels.";
             // 
