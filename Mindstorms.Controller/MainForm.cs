@@ -48,9 +48,6 @@ public partial class MainForm : Form
 #if USE_SPEECH_RECOGNITION
     private SpeechRecognitionEngine? speechRecognitionEngine;
 #endif
-#if USE_JOYSTICK
-    private CancellationTokenSource? joystickPollCancellationTokenSource;
-#endif
     public IConfiguration Configuration { get; set; }
 
     public MainForm()
@@ -265,7 +262,10 @@ public partial class MainForm : Form
         if (tsmiJoystick.Checked)
         {
             var daisyChainLayer = cbDaisyChainLayer.GetSelectedItemThreadSafe() as DaisyChainLayer ?? DaisyChainLayer.EV3;
-            joystickPollCancellationTokenSource = JoystickHandler.InitializeJoystick(
+            JoystickHandler.InitializeJoystick(() =>
+                {
+                    return 0;
+                },
                 () =>
                 {
                     return !this.IsDisposingOrDisposed() && (brick?.IsConnected ?? false);
@@ -366,7 +366,7 @@ public partial class MainForm : Form
         }
         else
         {
-            JoystickHandler.StopJoystick(joystickPollCancellationTokenSource);
+            JoystickHandler.StopJoystick();
         }
 #else
         gbJoystick.Enabled = false;
@@ -376,7 +376,7 @@ public partial class MainForm : Form
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
     {
 #if USE_JOYSTICK
-        JoystickHandler.StopJoystick(joystickPollCancellationTokenSource);
+        JoystickHandler.StopJoystick();
 #endif
         if (brick?.IsConnected ?? false)
         {
