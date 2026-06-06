@@ -49,7 +49,7 @@ public partial class MainForm : Form
     public MainForm()
     {
         var assembly = typeof(ButtonEvent).Assembly;
-        Mtf.Lego.Mindstorms.EV3.AssemblyExtensions.InitializeStaticObjects(assembly, EnumsNamespace);
+        assembly.InitializeStaticObjects(EnumsNamespace);
 
         InitializeComponent();
         tscbLeverMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.D.GetIndex());
@@ -294,7 +294,7 @@ public partial class MainForm : Form
                     var rightMotorSpeed = (sbyte)deltaY;
                     if (leftMotorSpeed > rightMotorSpeed)
                     {
-                        SByteUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
+                        ObjectUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                     }
                     Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
@@ -305,7 +305,7 @@ public partial class MainForm : Form
                     var rightMotorSpeed = (sbyte)Math.Abs(deltaY - deltaX);
                     if (rightMotorSpeed > leftMotorSpeed)
                     {
-                        SByteUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
+                        ObjectUtils.Swap(ref leftMotorSpeed, ref rightMotorSpeed);
                     }
                     Console.WriteLine($"Forward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
