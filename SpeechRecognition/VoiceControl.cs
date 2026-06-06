@@ -15,7 +15,7 @@ namespace SpeechRecognition
             }
 
             var speechRecognitionEngine = new SpeechRecognitionEngine(recognizers[0].Culture);
-            speechRecognitionEngine.SpeechRecognized += (object sender, SpeechRecognizedEventArgs e) =>
+            speechRecognitionEngine.SpeechRecognized += (sender, e) =>
             {
                 if (e.Result.Confidence > 0.75)
                 {
@@ -41,11 +41,8 @@ namespace SpeechRecognition
 
         public static void StopVoiceControl(ref SpeechRecognitionEngine speechRecognitionEngine)
         {
-            if (speechRecognitionEngine != null)
-            {
-                speechRecognitionEngine.RecognizeAsyncStop();
-                speechRecognitionEngine = null;
-            }
+            speechRecognitionEngine?.RecognizeAsyncStop();
+            speechRecognitionEngine = null;
         }
     }
 }

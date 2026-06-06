@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core.EV3;
+﻿using Mtf.Lego.Mindstorms.EV3.EV3;
 using System.IO.Ports;
 
 namespace Mindstorms.CLI.Commands;

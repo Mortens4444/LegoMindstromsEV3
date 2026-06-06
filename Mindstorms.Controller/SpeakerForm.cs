@@ -1,8 +1,9 @@
-﻿using Mindstorms.Core.Commands.System;
-using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Mindstorms.Core.Music;
-using Mindstorms.Core.Music.Melodies;
+﻿using Mtf.Extensions;
+using Mtf.Lego.Mindstorms.EV3.Commands.System;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Music;
+using Mtf.Music.Melodies;
 using System.Reflection;
 using Utils;
 

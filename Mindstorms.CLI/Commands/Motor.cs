@@ -1,6 +1,6 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
+﻿using Mtf.Lego.Mindstorms.EV3;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
 
 namespace Mindstorms.CLI.Commands;
 
@@ -8,7 +8,7 @@ internal class Motor : ICliCommand
 {
     public string Name => nameof(Motor);
 
-    public List<string> Aliases => new() { "engine" };
+    public List<string> Aliases => ["engine"];
 
     public void Action(ref Brick? brick, IList<string> arguments)
     {

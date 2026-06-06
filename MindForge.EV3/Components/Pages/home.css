@@ -1,0 +1,77 @@
+﻿.movement-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.middle-row {
+    display: flex;
+    gap: 10px;
+}
+
+.direction-button,
+.stop-button {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+}
+
+.stop-button {
+    font-size: 24px;
+}
+
+.control-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+select {
+    min-width: 180px;
+    padding: 8px;
+}
+
+button {
+    padding: 8px 16px;
+}
+
+.ev3-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    grid-template-rows: repeat(3, 64px);
+    gap: 8px;
+    width: fit-content;
+}
+
+.ev3-pad button {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+}
+
+.ev3-pad button:nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.ev3-pad button:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.ev3-pad button:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.ev3-pad button:nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.ev3-pad button:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+}

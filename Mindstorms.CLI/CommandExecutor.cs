@@ -1,5 +1,5 @@
 ﻿using Mindstorms.CLI.Commands;
-using Mindstorms.Core.EV3;
+using Mtf.Lego.Mindstorms.EV3.EV3;
 using System.Reflection;
 
 namespace Mindstorms.CLI;

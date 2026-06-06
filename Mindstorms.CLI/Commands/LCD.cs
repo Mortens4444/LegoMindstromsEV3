@@ -1,5 +1,5 @@
-﻿using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
+﻿using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
 
 namespace Mindstorms.CLI.Commands;
 

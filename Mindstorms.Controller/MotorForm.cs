@@ -1,9 +1,9 @@
-﻿using Mindstorms.Core;
-using Mindstorms.Core.Commands.Motor;
-using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
+﻿using Mtf.Extensions;
+using Mtf.Lego.Mindstorms.EV3;
+using Mtf.Lego.Mindstorms.EV3.Commands.Motor;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
 using Mtf.MessageBoxes;
-using Utils;
 
 namespace Mindstorms.Controller;
 

@@ -1,6 +1,6 @@
-﻿using Mindstorms.Core.Commands.LCD;
-using Mindstorms.Core.ImageConverter;
-using Utils.ImageConvertion.Converter;
+﻿using Mtf.Lego.Mindstorms.EV3.Commands.LCD;
+using Mtf.Lego.Mindstorms.EV3.ImageConverter;
+using Mtf.Lego.Mindstorms.EV3.ImageConvertion.Converter;
 
 namespace Mindstorms.Controller;
 
@@ -62,7 +62,7 @@ public partial class ImageConverterForm : Form
         {
             var bmpToRgfConverter = new BmpToRgfConverter();
             var ext = Path.GetExtension(tbFilePathToConvert.Text);
-            bmpToRgfConverter.WriteToRgf(convertedBitmap, $"{tbFilePathToConvert.Text.Replace(ext, Core.Constants.GraphicsFileExtension)}");
+            bmpToRgfConverter.WriteToRgf(convertedBitmap, $"{tbFilePathToConvert.Text.Replace(ext, Mtf.Lego.Mindstorms.EV3.Constants.GraphicsFileExtension)}");
         }
     }
 }

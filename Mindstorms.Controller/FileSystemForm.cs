@@ -1,10 +1,9 @@
-﻿using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Mindstorms.Core.Extensions;
-using Mindstorms.Core.FileWriter;
-using Mindstorms.Core.Resources;
+﻿using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Lego.Mindstorms.EV3.FileWriter;
+using Mtf.Lego.Mindstorms.EV3.Resources;
 using Mtf.MessageBoxes;
-using StringWriter = Mindstorms.Core.FileWriter.StringWriter;
+using Mtf.Windows.Forms.Extensions;
 
 namespace Mindstorms.Controller;
 
@@ -41,15 +40,15 @@ public partial class FileSystemForm : Form
             {
                 ListFolder(lvDirectoryContent.SelectedItems[0].ChangeWorkingDirectory(lblWorkingDirectory.Text));
             }
-            else if (selectedFilenameFullPath.EndsWith(Core.Constants.SoundFileExtension))
+            else if (selectedFilenameFullPath.EndsWith(Mtf.Lego.Mindstorms.EV3.Constants.SoundFileExtension))
             {
                 brick.PlaySound(selectedFilenameFullPath);
             }
-            else if (selectedFilenameFullPath.EndsWith(Core.Constants.GraphicsFileExtension))
+            else if (selectedFilenameFullPath.EndsWith(Mtf.Lego.Mindstorms.EV3.Constants.GraphicsFileExtension))
             {
                 brick.ShowImage(0, 0, selectedFilenameFullPath, LCDColor.Black);
             }
-            else if (selectedFilenameFullPath.EndsWith(Core.Constants.BinaryFileExtension))
+            else if (selectedFilenameFullPath.EndsWith(Mtf.Lego.Mindstorms.EV3.Constants.BinaryFileExtension))
             {
                 brick.Start(selectedFilenameFullPath);
             }
@@ -148,7 +147,7 @@ public partial class FileSystemForm : Form
     {
         var sourceFilenameFullPath = $"{lblWorkingDirectory.Text}/{lvDirectoryContent.SelectedItems[0].Text}";
         int fileSize = lvDirectoryContent.SelectedItems[0].GetFileSize();
-        var stringWriter = new StringWriter(fileSize);
+        var stringWriter = new Mtf.Lego.Mindstorms.EV3.FileWriter.StringWriter(fileSize);
         if (brick.CopyFileFromBrick(sourceFilenameFullPath, fileSize, stringWriter))
         {
             var fileReaderForm = new FileReaderForm(sourceFilenameFullPath, stringWriter.GetContent());

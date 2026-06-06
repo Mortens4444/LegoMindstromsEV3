@@ -1,0 +1,298 @@
+﻿@page "/"
+@inject IDeviceProvider deviceProvider
+@using MindForge.EV3.Interfaces
+@using Mtf.Lego.Mindstorms.EV3
+@using Mtf.Lego.Mindstorms.EV3.EV3
+@using Mtf.Lego.Mindstorms.EV3.Enums
+
+@* <h3>EV3 Controller</h3> *@
+
+<div class="card-grid">
+    <div class="card">
+        <h4>Connection</h4>
+        <select @bind="selectedPort">
+            @foreach (var port in availablePorts)
+            {
+                <option value="@port">@port</option>
+            }
+        </select>
+
+        <h4>Layer</h4>
+        <select @bind="selectedLayer">
+            @foreach (var layer in daisyChainLayers)
+            {
+                <option value="@layer">@layer.Name</option>
+            }
+        </select>
+
+        <button @onclick="Connect">
+            Connect
+        </button>
+    </div>
+
+    <div class="card">
+        <h4>Drive</h4>
+        <label>Speed: @speed</label>
+
+        <input type="range" min="0" max="100" @bind="speed" />
+
+        <h4>Motors</h4>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+
+            <div style="display: flex; flex-direction: column;">
+
+                <label>Left Motor</label>
+
+                <select @bind="leftMotor">
+                    @foreach (var port in motorPorts)
+                    {
+                        <option value="@port">@port.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <label>Right Motor</label>
+
+                <select @bind="rightMotor">
+                    @foreach (var port in motorPorts)
+                    {
+                        <option value="@port">@port.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <label>Lever Motor</label>
+
+                <select @bind="leverMotor">
+                    @foreach (var port in motorPorts)
+                    {
+                        <option value="@port">@port.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h4>Sound</h4>
+        <div class="control-row">
+            <select @bind="selectedSound">
+                @foreach (var sound in sounds)
+                {
+                    <option value="@sound">@sound</option>
+                }
+            </select>
+            <button @onclick="PlaySound">Play</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h4>LED</h4>
+        <div class="control-row">
+            <select @bind="selectedLedPattern">
+                @foreach (var state in ledStates)
+                {
+                    <option value="@state.Value">@state.Name</option>
+                }
+            </select>
+
+            <button @onclick="ApplyLedState">Apply</button>
+        </div>
+    </div>
+</div>
+
+@if (!String.IsNullOrEmpty(errorMessage))
+{
+    <div style="color: #e50000; margin-top: 15px; font-weight: 500;">
+        @errorMessage
+    </div>
+}
+
+<div class="card">
+    <div class="drive-pad">
+        <div></div>
+        <button class="btn btn-primary">▲</button>
+        <div></div>
+
+        <button class="btn btn-primary">◄</button>
+        <button class="btn btn-danger">⏹</button>
+        <button class="btn btn-primary">►</button>
+
+        <div></div>
+        <button class="btn btn-primary">▼</button>
+        <div></div>
+    </div>
+</div>
+
+@code {
+
+    private sbyte speed = 50;
+    private Brick? brick;
+    private string? errorMessage;
+
+    private string? selectedPort;
+    private List<string> availablePorts = [];
+
+    private EmbeddedSound selectedSound;
+    private readonly List<EmbeddedSound> sounds = Enum.GetValues<EmbeddedSound>().ToList();
+
+    private byte selectedLedPattern = LedPattern.Off.Value;
+    private LedPattern SelectedLedState => LedPattern.Values.Values.First(x => x.Value == selectedLedPattern);
+    private List<LedPattern> ledStates;
+
+    private string selectedLayer = DaisyChainLayer.EV3.Name;
+    private DaisyChainLayer SelectedLayer => DaisyChainLayer.Values.Values.First(x => x.Name == selectedLayer);
+    private List<DaisyChainLayer> daisyChainLayers;
+
+    private readonly List<OutputPort> motorPorts =
+    [
+        OutputPort.A,
+        OutputPort.B,
+        OutputPort.C,
+        OutputPort.D
+    ];
+
+    private string leftMotor = OutputPort.B.Name;
+    private OutputPort LeftMotor => OutputPort.Values.Values.First(x => x.Name == leftMotor);
+
+    private string rightMotor = OutputPort.C.Name;
+    private OutputPort RightMotor => OutputPort.Values.Values.First(x => x.Name == rightMotor);
+
+    private string leverMotor = OutputPort.D.Name;
+    private OutputPort LeverMotor => OutputPort.Values.Values.First(x => x.Name == leverMotor);
+
+    protected override async Task OnInitializedAsync()
+    {
+        selectedLedPattern = LedPattern.Off.Value;
+        selectedLayer = DaisyChainLayer.EV3.Name;
+        leftMotor = OutputPort.B.Name;
+        rightMotor = OutputPort.C.Name;
+        selectedSound = Enum.GetValues<EmbeddedSound>().FirstOrDefault();
+
+        ledStates = LedPattern.Values.Values.ToList();
+        daisyChainLayers = DaisyChainLayer.Values.Values.ToList();
+
+        availablePorts = (await deviceProvider.GetDevicesAsync()).ToList();
+        if (availablePorts.Any())
+        {
+            selectedPort = availablePorts.First();
+        }
+    }
+
+    private Task Connect()
+    {
+        errorMessage = null;
+        if (String.IsNullOrWhiteSpace(selectedPort))
+        {
+            errorMessage = "Please select a port.";
+            return Task.CompletedTask;
+        }
+
+        try
+        {
+            brick?.Dispose();
+            brick = new Brick(selectedPort);
+            brick.SetMotors((OutputPort)LeftMotor, (OutputPort)RightMotor, (OutputPort)LeverMotor);
+            brick.Connect();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Connection error: {ex.Message}";
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private Task MoveForward()
+    {
+        try
+        {
+            brick?.SetLargeMotorSpeed(SelectedLayer, new SetMotorSpeedParams(LeftMotor, speed), new SetMotorSpeedParams(RightMotor, speed));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task MoveBackward()
+    {
+        try
+        {
+            brick?.SetLargeMotorSpeed(SelectedLayer, new SetMotorSpeedParams(LeftMotor, (sbyte)-speed), new SetMotorSpeedParams(RightMotor, (sbyte)-speed));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task TurnLeft()
+    {
+        try
+        {
+            brick?.SetLargeMotorSpeed(SelectedLayer, new SetMotorSpeedParams(LeftMotor, (sbyte)-speed), new SetMotorSpeedParams(RightMotor, speed));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task TurnRight()
+    {
+        try
+        {
+            brick?.SetLargeMotorSpeed(SelectedLayer, new SetMotorSpeedParams(LeftMotor, speed), new SetMotorSpeedParams(RightMotor, (sbyte)-speed));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task StopAllMotors()
+    {
+        try
+        {
+            brick?.StopMotor(SelectedLayer, LeftMotor | RightMotor, BreakType.Break);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task PlaySound()
+    {
+        try
+        {
+            brick?.PlaySound(selectedSound.ToString());
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task ApplyLedState()
+    {
+        try
+        {
+            brick?.ChangeLEDsState(SelectedLedState);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        return Task.CompletedTask;
+    }
+}

@@ -1,6 +1,6 @@
-﻿using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Utils;
+﻿using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Windows.Forms.Extensions;
 using Color = System.Drawing.Color;
 
 namespace Mindstorms.Controller;

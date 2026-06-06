@@ -1,10 +1,7 @@
-﻿using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Utils;
+﻿using Mtf.Extensions;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Windows.Forms.Extensions;
 
 namespace Mindstorms.Controller.SensorRead
 {

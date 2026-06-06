@@ -85,20 +85,20 @@ or
 brick.DrawString(new EV3Text(new EV3Point(10, 10), "Hello World!"));
 ```
 
-Create an *IEV3DrawingElement*
+Create an *IPrimitive*
 ```
-IEV3DrawingElement element = new EV3Circle(50, 50, 20, true);
+IPrimitive element = new EV3Circle(50, 50, 20, true);
 or
-IEV3DrawingElement element = new EV3Line(50, 50, 100, 100);
+IPrimitive element = new EV3Line(50, 50, 100, 100);
 or
-IEV3DrawingElement element = new EV3Point(10, 10);
+IPrimitive element = new EV3Point(10, 10);
 or
-IEV3DrawingElement element = new EV3Rectangle(10, 10, 90, 90, false);
+IPrimitive element = new EV3Rectangle(10, 10, 90, 90, false);
 or
-IEV3DrawingElement element = new EV3Text(10, 10, "Hello World!");
+IPrimitive element = new EV3Text(10, 10, "Hello World!");
 ```
 
-Draw an *IEV3DrawingElement* on the screen
+Draw an *IPrimitive* on the screen
 ```
 brick.Draw(element, LCDColor.Black);
 ```

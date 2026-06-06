@@ -1,4 +1,4 @@
-﻿using Mindstorms.Core.EV3;
+﻿using Mtf.Lego.Mindstorms.EV3.EV3;
 
 namespace Mindstorms.CLI.Commands;
 
@@ -6,7 +6,7 @@ internal class Connect : ICliCommand
 {
     public string Name => nameof(Connect);
 
-    public List<string> Aliases => new() { "open", "link", "join", "attach", "bind" };
+    public List<string> Aliases => ["open", "link", "join", "attach", "bind"];
 
     public void Action(ref Brick? brick, IList<string> arguments)
     {

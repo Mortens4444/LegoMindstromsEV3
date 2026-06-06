@@ -1,16 +1,18 @@
-﻿using Mindstorms.Core.Drawing;
-using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Utils;
+﻿using Mtf.Drawing.Geometry;
+using Mtf.Drawing.Interfaces;
+using Mtf.Drawing.Render;
+using Mtf.Extensions;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
 
 namespace Mindstorms.Controller;
 
 public partial class ScreenForm : Form
 {
     private readonly Brick brick;
-    private EV3Point? startPoint;
-    private List<IEV3DrawingElement> objectsToDraw = new();
-    private IEV3DrawingElement? temporaryElementToDraw;
+    private PointPrimitive? startPoint;
+    private List<IPrimitive> objectsToDraw = [];
+    private IPrimitive? temporaryElementToDraw;
 
     public ScreenForm(Brick? brick)
     {
@@ -23,7 +25,7 @@ public partial class ScreenForm : Form
     private void BtnClear_Click(object sender, EventArgs e)
     {
         brick.ClearScreen();
-        objectsToDraw = new List<IEV3DrawingElement>();
+        objectsToDraw = [];
         pDisplay.Invalidate();
     }
 
@@ -50,7 +52,7 @@ public partial class ScreenForm : Form
 
     private void Display_MouseDown(object sender, MouseEventArgs e)
     {
-        var point = new EV3Point((byte)e.X, (byte)e.Y);
+        var point = new PointPrimitive((byte)e.X, (byte)e.Y);
         if (rbPixel.Checked)
         {
             objectsToDraw.Add(point);
@@ -60,7 +62,7 @@ public partial class ScreenForm : Form
         {
             if (tbText.Text != String.Empty)
             {
-                var text = new EV3Text(point, tbText.Text);
+                var text = new TextPrimitive(point, tbText.Text);
                 objectsToDraw.Add(text);
                 brick.DrawString(text);
             }
@@ -83,29 +85,29 @@ public partial class ScreenForm : Form
         pDisplay.Invalidate();
     }
 
-    private IEV3DrawingElement? GetEV3DrawingElement(MouseEventArgs e)
+    private IPrimitive? GetEV3DrawingElement(MouseEventArgs e)
     {
         if (startPoint != null)
         {
             if (rbLine.Checked)
             {
-                return new EV3Line(startPoint.X, startPoint.Y, (byte)e.X, (byte)e.Y);
+                return new LinePrimitive { Line = new LineF(new PointF(startPoint.ShapeData.Center.X, startPoint.ShapeData.Center.Y), new PointF((byte)e.X, (byte)e.Y)) };
             }
             else if (rbCircle.Checked)
             {
-                return new EV3Circle(startPoint.X, startPoint.Y, (byte)e.X, (byte)e.Y, chkFill.Checked);
+                return new CirclePrimitive { Center = new PointF(startPoint.ShapeData.Center.X, startPoint.ShapeData.Center.Y), Radius = (byte)Math.Abs(e.X - startPoint.Shape.Center.X), Fill = chkFill.Checked };
             }
             else if (rbRectangle.Checked)
             {
-                var width = (byte)Math.Abs(e.X - startPoint.X);
-                var height = (byte)Math.Abs(e.Y - startPoint.Y);
-                return new EV3Rectangle(startPoint, width, height, chkFill.Checked);
+                var width = (byte)Math.Abs(e.X - startPoint.Shape.Center.X);
+                var height = (byte)Math.Abs(e.Y - startPoint.Shape.Center.Y);
+                return new EllipsePrimitive { Ellipse = new EllipseF(startPoint.Shape.Center, width, height), Fill = chkFill.Checked };
             }
             else if (rbInverseRectangle.Checked)
             {
-                var width = (byte)Math.Abs(e.X - startPoint.X);
-                var height = (byte)Math.Abs(e.Y - startPoint.Y);
-                return new EV3InverseRectangle(startPoint, width, height, pDisplay);
+                var width = (byte)Math.Abs(e.X - startPoint.Shape.Center.X);
+                var height = (byte)Math.Abs(e.Y - startPoint.Shape.Center.Y);
+                return new InverseRectanglePrimitive { Rect = new RectF(startPoint.Shape.Center.X, startPoint.Shape.Center.Y, width, height) };
             }
         }
         return null;

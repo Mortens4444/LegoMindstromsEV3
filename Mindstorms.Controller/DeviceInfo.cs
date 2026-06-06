@@ -1,8 +1,8 @@
-﻿using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Mindstorms.Core.Resources;
+﻿using Mtf.Extensions;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Lego.Mindstorms.EV3.Resources;
 using Mtf.MessageBoxes;
-using Utils;
 
 namespace Mindstorms.Controller;
 
@@ -82,7 +82,7 @@ public partial class DeviceInfo : Form
         var destinationFile = $"{ResourceUploader.BaseDirectory}/output.rtf";
         brick.SystemCall(String.Concat(cbCommand.Text, $" > {destinationFile} 2>&1"));
         int fileSize = brick.GetSize(destinationFile);
-        var stringWriter = new Core.FileWriter.StringWriter(fileSize);
+        var stringWriter = new Mtf.Lego.Mindstorms.EV3.FileWriter.StringWriter(fileSize);
         if (brick.CopyFileFromBrick(destinationFile, fileSize, stringWriter))
         {
             rtbCommandResult.Text = stringWriter.GetContent();

@@ -1,41 +1,35 @@
 ﻿#if USE_JOYSTICK
 using Mtf.Joystick;
 using LargeLanguageModelClient.ChatGpt;
-using LargeLanguageModelClient.ChatGpt.Dto;
 #endif
 using Microsoft.Extensions.Configuration;
 using Mindstorms.Controller.SensorRead;
-using Mindstorms.Core;
-using Mindstorms.Core.Commands.MailBox;
-using Mindstorms.Core.Commands.Motor;
-using Mindstorms.Core.Enums;
-using Mindstorms.Core.EV3;
-using Mindstorms.Core.Extensions;
-#if USE_SPEECH_RECOGNITION
-using Mindstorms.Core.Music.Melodies;
-#endif
-using Mindstorms.Core.Signaling;
-using Mindstorms.Game.Snake;
 #if USE_SPEECH_RECOGNITION
 using SpeechRecognition;
 #endif
-using System;
 #if USE_SPEECH_RECOGNITION
-using System.Collections.Generic;
 #endif
 using System.IO.Ports;
 #if USE_SPEECH_RECOGNITION
 using System.Speech.Recognition;
 #endif
-using System.Threading;
 #if USE_JOYSTICK
-using System.Threading.Tasks;
 #endif
-using System.Windows.Forms;
-using Utils;
 #if USE_JOYSTICK
 using Action = System.Action;
 using Mtf.MessageBoxes;
+using System.ComponentModel;
+using Mtf.Lego.Mindstorms.EV3.Enums;
+using Mtf.Music.Melodies;
+using Mtf.Lego.Mindstorms.EV3;
+using Mtf.Lego.Mindstorms.EV3.Commands.Motor;
+using Mtf.Lego.Mindstorms.EV3.EV3;
+using Mtf.Games.Snake;
+using Mtf.Lego.Mindstorms.EV3.Commands.MailBox;
+using Mtf.Lego.Mindstorms.EV3.Signaling;
+using Mtf.Games.Circles;
+using Mtf.Extensions;
+using Mtf.Windows.Forms.Extensions;
 #endif
 
 namespace Mindstorms.Controller;
@@ -48,12 +42,14 @@ public partial class MainForm : Form
 #if USE_SPEECH_RECOGNITION
     private SpeechRecognitionEngine? speechRecognitionEngine;
 #endif
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public IConfiguration Configuration { get; set; }
 
     public MainForm()
     {
         var assembly = typeof(ButtonEvent).Assembly;
-        assembly.InitializeStaticObjects(EnumsNamespace);
+        Mtf.Lego.Mindstorms.EV3.AssemblyExtensions.InitializeStaticObjects(assembly, EnumsNamespace);
 
         InitializeComponent();
         tscbLeverMotor.ComboBox.FillAndSelect(OutputPort.GetValues(), OutputPort.D.GetIndex());
@@ -232,9 +228,9 @@ public partial class MainForm : Form
 
     private void ChkVoiceControl_CheckedChanged(object sender, EventArgs e)
     {
+#if USE_SPEECH_RECOGNITION
         if (tsmiVoiceControl.Checked)
         {
-#if USE_SPEECH_RECOGNITION
             var voiceCommands = new List<VoiceCommand>
             {
                 new("Ok Lego, go ahead", () => { MoveNorth(); }),
@@ -251,8 +247,8 @@ public partial class MainForm : Form
         else
         {
             VoiceControl.StopVoiceControl(ref speechRecognitionEngine);
-#endif
         }
+#endif
     }
 
     private void ChkJoystick_CheckedChanged(object sender, EventArgs e)
@@ -284,15 +280,15 @@ public partial class MainForm : Form
                         return tbMinimumDelta.Value;
                     });
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.Motors, 0));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.Motors, (sbyte)deltaY));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     var leftMotorSpeed = (sbyte)Math.Abs(deltaY + deltaX);
                     var rightMotorSpeed = (sbyte)deltaY;
@@ -303,7 +299,7 @@ public partial class MainForm : Form
                     Console.WriteLine($"Forward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     var leftMotorSpeed = (sbyte)deltaY;
                     var rightMotorSpeed = (sbyte)Math.Abs(deltaY - deltaX);
@@ -314,21 +310,21 @@ public partial class MainForm : Form
                     Console.WriteLine($"Forward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     var leftMotorSpeed = (sbyte)deltaY;
                     var rightMotorSpeed = (sbyte)(deltaY + deltaX);
                     Console.WriteLine($"Backward with left turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     var leftMotorSpeed = (sbyte)(deltaY - deltaX);
                     var rightMotorSpeed = (sbyte)deltaY;
                     Console.WriteLine($"Backward with right turn. Left: {leftMotorSpeed}, Right: {rightMotorSpeed}");
                     brick?.SetLargeMotorSpeed(daisyChainLayer, new SetMotorSpeedParams(brick.LeftMotor, leftMotorSpeed), new SetMotorSpeedParams(brick.RightMotor, rightMotorSpeed));
                 },
-                (int deltaX, int deltaY) =>
+                (deltaX, deltaY) =>
                 {
                     var leftMotorSpeed = (sbyte)deltaX;
                     var rightMotorSpeed = (sbyte)-deltaX;
@@ -339,8 +335,7 @@ public partial class MainForm : Form
                 {
                     Invoke(new Action(() => { tsmiJoystick.Checked = false; }));
                 },
-                new Action[]
-                {
+                [
                     () =>
                     {
                         brick?.PlayMusic(new BociBoci());
@@ -361,7 +356,7 @@ public partial class MainForm : Form
                     {
                         brick?.PlayMusic(new ImperialMarch());
                     }
-                }
+                ]
             );
         }
         else
