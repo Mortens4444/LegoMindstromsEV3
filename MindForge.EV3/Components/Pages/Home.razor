@@ -5,8 +5,6 @@
 @using Mtf.Lego.Mindstorms.EV3.EV3
 @using Mtf.Lego.Mindstorms.EV3.Enums
 
-@* <h3>EV3 Controller</h3> *@
-
 <div class="card-grid">
     <div class="card">
         <h4>Connection</h4>
@@ -25,9 +23,7 @@
             }
         </select>
 
-        <button @onclick="Connect">
-            Connect
-        </button>
+        <button @onclick="Connect">Connect</button>
     </div>
 
     <div class="card">
@@ -113,15 +109,15 @@
 <div class="card">
     <div class="drive-pad">
         <div></div>
-        <button class="btn btn-primary">▲</button>
+        <button class="btn btn-primary" @onpointerdown="MoveForward" @onpointerup="StopAllMotors" @onpointercancel="StopAllMotors">▲</button>
         <div></div>
 
-        <button class="btn btn-primary">◄</button>
-        <button class="btn btn-danger">⏹</button>
-        <button class="btn btn-primary">►</button>
+        <button class="btn btn-primary" @onpointerdown="TurnLeft" @onpointerup="StopAllMotors" @onpointercancel="StopAllMotors">◄</button>
+        <button class="btn btn-danger" @onpointerdown="StopAllMotors">⏹</button>
+        <button class="btn btn-primary" @onpointerdown="TurnRight" @onpointerup="StopAllMotors" @onpointercancel="StopAllMotors">►</button>
 
         <div></div>
-        <button class="btn btn-primary">▼</button>
+        <button class="btn btn-primary"@onpointerdown="MoveBackward" @onpointerup="StopAllMotors" @onpointercancel="StopAllMotors">▼</button>
         <div></div>
     </div>
 </div>
@@ -274,7 +270,7 @@
     {
         try
         {
-            brick?.PlaySound(selectedSound.ToString());
+            brick?.PlaySound(selectedSound, PlayType.PlayOnce);
         }
         catch (Exception ex)
         {

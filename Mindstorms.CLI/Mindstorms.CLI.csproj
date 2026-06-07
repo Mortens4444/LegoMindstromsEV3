@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Mtf.Lego.Mindstorms.EV3" Version="2.0.3" />
+	  <PackageReference Include="Mtf.Lego.Mindstorms.EV3" Version="2.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

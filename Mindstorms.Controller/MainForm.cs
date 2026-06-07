@@ -30,6 +30,7 @@ using Mtf.Lego.Mindstorms.EV3.Signaling;
 using Mtf.Games.Circles;
 using Mtf.Extensions;
 using Mtf.Windows.Forms.Extensions;
+using System.Runtime.CompilerServices;
 #endif
 
 namespace Mindstorms.Controller;

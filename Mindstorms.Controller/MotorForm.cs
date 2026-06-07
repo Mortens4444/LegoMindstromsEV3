@@ -4,6 +4,7 @@ using Mtf.Lego.Mindstorms.EV3.Commands.Motor;
 using Mtf.Lego.Mindstorms.EV3.Enums;
 using Mtf.Lego.Mindstorms.EV3.EV3;
 using Mtf.MessageBoxes;
+using System.Runtime.CompilerServices;
 
 namespace Mindstorms.Controller;
 
@@ -15,7 +16,6 @@ public partial class MotorForm : Form
     {
         InitializeComponent();
         this.brick = brick ?? throw new ArgumentNullException(nameof(brick), Constants.ConnectEV3Brick);
-
         cbDaisyChainLayer.FillAndSelectFirst(DaisyChainLayer.GetValues());
         cbPolarity.FillAndSelectFirst(Polarity.GetValues());
         cbMotor.FillAndSelectFirst(OutputPort.GetNotCombinedValues());
