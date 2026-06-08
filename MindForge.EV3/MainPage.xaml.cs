@@ -1,4 +1,8 @@
-﻿namespace MindForge.EV3;
+﻿#if ANDROID
+using MindForge.EV3.Platforms.Android;
+#endif
+
+namespace MindForge.EV3;
 
 public partial class MainPage : ContentPage
 {
@@ -13,10 +17,17 @@ public partial class MainPage : ContentPage
 
 #if ANDROID
         await Task.Delay(300);
-        var status = await Permissions.RequestAsync<Platforms.Android.BluetoothConnectPermission>();
-        if (status != PermissionStatus.Granted)
+
+        var scanStatus = await Permissions.CheckStatusAsync<BluetoothScanPermission>();
+        if (scanStatus != PermissionStatus.Granted)
         {
-            return;
+            scanStatus = await Permissions.RequestAsync<BluetoothScanPermission>();
+        }
+
+        var connectStatus = await Permissions.CheckStatusAsync<BluetoothConnectPermission>();
+        if (connectStatus != PermissionStatus.Granted)
+        {
+            connectStatus = await Permissions.RequestAsync<BluetoothConnectPermission>();
         }
 #endif
     }

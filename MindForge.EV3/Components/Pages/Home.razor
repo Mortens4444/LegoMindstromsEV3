@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IDeviceProvider deviceProvider
+@inject IBluetoothConnectionFactory bluetoothFactory
 @using MindForge.EV3.Interfaces
 @using Mtf.Lego.Mindstorms.EV3
 @using Mtf.Lego.Mindstorms.EV3.EV3
@@ -189,7 +190,8 @@
         try
         {
             brick?.Dispose();
-            brick = new Brick(selectedPort);
+            var deviceConnection = bluetoothFactory.Create(selectedPort);
+            brick = new Brick(deviceConnection);
             brick.SetMotors((OutputPort)LeftMotor, (OutputPort)RightMotor, (OutputPort)LeverMotor);
             brick.Connect();
         }

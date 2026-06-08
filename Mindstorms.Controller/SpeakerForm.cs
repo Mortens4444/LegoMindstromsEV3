@@ -26,7 +26,7 @@ public partial class SpeakerForm : Form
 
         var assembly = Assembly.GetAssembly(typeof(BociBoci)) ?? throw new InvalidOperationException("Cannot find melodies.");
 
-        cbSounds.ComboBox.FillAndSelect(Enum.GetValues(typeof(EmbeddedSound)), (int)EmbeddedSound.EV3);
+        cbSounds.ComboBox.FillAndSelect(Enum.GetValues<EmbeddedSound>(), (int)EmbeddedSound.EV3);
         cbMelodies.ComboBox.FillWithTypesInNamespace(assembly, MelodiesNamespace);
         cbPlayType.FillAndSelectFirst(PlayType.GetValues());
     }

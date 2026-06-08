@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using MindForge.EV3.Interfaces;
+using MindForge.EV3.Services;
 
 namespace MindForge.EV3;
 
@@ -17,6 +19,8 @@ public static partial class MauiProgram
         builder.Services.AddMauiBlazorWebView();
 
         RegisterPlatformServices(builder.Services);
+        builder.Services.AddSingleton<IBluetoothConnectionFactory, BluetoothConnectionFactory>();
+
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
